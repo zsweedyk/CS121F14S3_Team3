@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2692B35D19E84D3200EE08F8 /* StageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35C19E84D3200EE08F8 /* StageController.m */; };
+		2692B36019E84D4700EE08F8 /* StageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35F19E84D4700EE08F8 /* StageView.m */; };
+		2692B36319E84D8200EE08F8 /* StageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36219E84D8200EE08F8 /* StageModel.m */; };
+		2692B36619E84DAE00EE08F8 /* InteriorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36519E84DAE00EE08F8 /* InteriorModel.m */; };
+		2692B36919E84DD000EE08F8 /* InteriorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36819E84DD000EE08F8 /* InteriorController.m */; };
+		2692B36C19E84DE200EE08F8 /* InteriorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36B19E84DE200EE08F8 /* InteriorView.m */; };
+		2692B36F19E84DF100EE08F8 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36E19E84DF100EE08F8 /* MapView.m */; };
+		2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37119E84E1300EE08F8 /* ProgressView.m */; };
 		937AE89F19E73A4500CEB0E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937AE89E19E73A4500CEB0E7 /* Foundation.framework */; };
 		937AE8A119E73A4500CEB0E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937AE8A019E73A4500CEB0E7 /* CoreGraphics.framework */; };
 		937AE8A319E73A4500CEB0E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937AE8A219E73A4500CEB0E7 /* UIKit.framework */; };
@@ -34,6 +42,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2692B35B19E84D3200EE08F8 /* StageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageController.h; sourceTree = "<group>"; };
+		2692B35C19E84D3200EE08F8 /* StageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageController.m; sourceTree = "<group>"; };
+		2692B35E19E84D4700EE08F8 /* StageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageView.h; sourceTree = "<group>"; };
+		2692B35F19E84D4700EE08F8 /* StageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageView.m; sourceTree = "<group>"; };
+		2692B36119E84D8200EE08F8 /* StageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageModel.h; sourceTree = "<group>"; };
+		2692B36219E84D8200EE08F8 /* StageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageModel.m; sourceTree = "<group>"; };
+		2692B36419E84DAE00EE08F8 /* InteriorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteriorModel.h; sourceTree = "<group>"; };
+		2692B36519E84DAE00EE08F8 /* InteriorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorModel.m; sourceTree = "<group>"; };
+		2692B36719E84DCF00EE08F8 /* InteriorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteriorController.h; sourceTree = "<group>"; };
+		2692B36819E84DD000EE08F8 /* InteriorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorController.m; sourceTree = "<group>"; };
+		2692B36A19E84DE200EE08F8 /* InteriorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteriorView.h; sourceTree = "<group>"; };
+		2692B36B19E84DE200EE08F8 /* InteriorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorView.m; sourceTree = "<group>"; };
+		2692B36D19E84DF100EE08F8 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
+		2692B36E19E84DF100EE08F8 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
+		2692B37019E84E1300EE08F8 /* ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
+		2692B37119E84E1300EE08F8 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		937AE89B19E73A4500CEB0E7 /* SilkRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SilkRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		937AE89E19E73A4500CEB0E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		937AE8A019E73A4500CEB0E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +143,22 @@
 				937AE8B419E73A4500CEB0E7 /* ViewController.m */,
 				937AE8B619E73A4500CEB0E7 /* Images.xcassets */,
 				937AE8A519E73A4500CEB0E7 /* Supporting Files */,
+				2692B35B19E84D3200EE08F8 /* StageController.h */,
+				2692B35C19E84D3200EE08F8 /* StageController.m */,
+				2692B35E19E84D4700EE08F8 /* StageView.h */,
+				2692B36119E84D8200EE08F8 /* StageModel.h */,
+				2692B36219E84D8200EE08F8 /* StageModel.m */,
+				2692B36419E84DAE00EE08F8 /* InteriorModel.h */,
+				2692B36519E84DAE00EE08F8 /* InteriorModel.m */,
+				2692B36719E84DCF00EE08F8 /* InteriorController.h */,
+				2692B36819E84DD000EE08F8 /* InteriorController.m */,
+				2692B36A19E84DE200EE08F8 /* InteriorView.h */,
+				2692B36B19E84DE200EE08F8 /* InteriorView.m */,
+				2692B36D19E84DF100EE08F8 /* MapView.h */,
+				2692B36E19E84DF100EE08F8 /* MapView.m */,
+				2692B37019E84E1300EE08F8 /* ProgressView.h */,
+				2692B37119E84E1300EE08F8 /* ProgressView.m */,
+				2692B35F19E84D4700EE08F8 /* StageView.m */,
 			);
 			path = SilkRoad;
 			sourceTree = "<group>";
@@ -249,9 +289,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2692B36319E84D8200EE08F8 /* StageModel.m in Sources */,
+				2692B35D19E84D3200EE08F8 /* StageController.m in Sources */,
+				2692B36019E84D4700EE08F8 /* StageView.m in Sources */,
+				2692B36C19E84DE200EE08F8 /* InteriorView.m in Sources */,
 				937AE8B519E73A4500CEB0E7 /* ViewController.m in Sources */,
+				2692B36619E84DAE00EE08F8 /* InteriorModel.m in Sources */,
 				937AE8AF19E73A4500CEB0E7 /* AppDelegate.m in Sources */,
 				937AE8AB19E73A4500CEB0E7 /* main.m in Sources */,
+				2692B36919E84DD000EE08F8 /* InteriorController.m in Sources */,
+				2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */,
+				2692B36F19E84DF100EE08F8 /* MapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +506,7 @@
 				937AE8CF19E73A4500CEB0E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		937AE8D019E73A4500CEB0E7 /* Build configuration list for PBXNativeTarget "SilkRoadTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +515,7 @@
 				937AE8D219E73A4500CEB0E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
