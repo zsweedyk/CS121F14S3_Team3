@@ -8,6 +8,12 @@
 
 #import "InteriorModel.h"
 
+@interface InteriorModel() {
+    NSMutableArray* _dialogue; // Array of strings
+}
+
+@end
+
 @implementation InteriorModel
 
 @end

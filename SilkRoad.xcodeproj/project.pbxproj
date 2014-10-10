@@ -146,6 +146,7 @@
 				2692B35B19E84D3200EE08F8 /* StageController.h */,
 				2692B35C19E84D3200EE08F8 /* StageController.m */,
 				2692B35E19E84D4700EE08F8 /* StageView.h */,
+				2692B35F19E84D4700EE08F8 /* StageView.m */,
 				2692B36119E84D8200EE08F8 /* StageModel.h */,
 				2692B36219E84D8200EE08F8 /* StageModel.m */,
 				2692B36419E84DAE00EE08F8 /* InteriorModel.h */,
@@ -158,7 +159,6 @@
 				2692B36E19E84DF100EE08F8 /* MapView.m */,
 				2692B37019E84E1300EE08F8 /* ProgressView.h */,
 				2692B37119E84E1300EE08F8 /* ProgressView.m */,
-				2692B35F19E84D4700EE08F8 /* StageView.m */,
 			);
 			path = SilkRoad;
 			sourceTree = "<group>";

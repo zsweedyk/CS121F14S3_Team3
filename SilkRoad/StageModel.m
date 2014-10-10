@@ -8,6 +8,16 @@
 
 #import "StageModel.h"
 
+@interface StageModel(){
+    NSMutableArray* _houses;
+}
+
+@end
+
 @implementation StageModel
+
+-(void)initWithStuffYetToBeDetermined {
+    
+}
 
 @end

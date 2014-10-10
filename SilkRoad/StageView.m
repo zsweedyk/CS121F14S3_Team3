@@ -10,12 +10,10 @@
 
 @implementation StageView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+-(void)initWithBackground:(UIImage*)background {
 }
-*/
+
+-(void)createHouseWithBackground:(UIImage*)background atXCoord:(int)x andYCoord:(int)y withLabel:(NSString*)label {
+}
 
 @end
