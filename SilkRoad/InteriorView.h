@@ -10,4 +10,8 @@
 
 @interface InteriorView : UIView
 
+-(void)setInteriorBGTo:(NSString*)backgroundName;
+-(void)setCharacterTo:(NSString*)characterName;
+-(void)setDialogueTextTo:(NSString*)dialogueText;
+
 @end

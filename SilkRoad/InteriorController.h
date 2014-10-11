@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ReturnToStage
+-(void)returnToStage;
+@end
+
 @interface InteriorController : UIViewController
+
+@property (assign, nonatomic) id <ReturnToStage> delegate;
 
 @end

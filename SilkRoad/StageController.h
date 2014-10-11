@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InteriorController.h"
 
-@interface StageController : UIViewController
+@protocol ProgressToNextStage
+-(void)progressToNextStage;
+@end
+
+@interface StageController : UIViewController <ReturnToStage>
+
+@property (assign, nonatomic) id <ProgressToNextStage> delegate;
 
 @end
