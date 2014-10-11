@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LeaveInterior
+-(void)leaveInterior;
+@end
+
 @interface InteriorView : UIView
+
+@property (assign, nonatomic) id <LeaveInterior> delegate;
 
 -(void)setInteriorBGTo:(NSString*)backgroundName;
 -(void)setCharacterTo:(NSString*)characterName;

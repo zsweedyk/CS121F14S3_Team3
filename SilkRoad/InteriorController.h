@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InteriorView.h"
 
 @protocol ReturnToStage
 -(void)returnToStage;
 @end
 
-@interface InteriorController : UIViewController
+@interface InteriorController : UIViewController <LeaveInterior>
 
 @property (assign, nonatomic) id <ReturnToStage> delegate;
 

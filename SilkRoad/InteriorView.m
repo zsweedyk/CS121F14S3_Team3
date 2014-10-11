@@ -9,7 +9,7 @@
 #import "InteriorView.h"
 
 @implementation InteriorView {
-  UILabel *_dialogueBox;
+  UIButton *_dialogueBox;
   UILabel *_characterBox;
 }
 
@@ -52,12 +52,15 @@
   CGRect dialogueBoxFrame = CGRectMake(dialogueBoxXOffset, dialogueBoxYOffset, dialogueBoxWidth, dialogueBoxHeight);
   
   // Add the box to the subview
-  _dialogueBox = [[UILabel alloc] initWithFrame:dialogueBoxFrame];
+  _dialogueBox = [[UIButton alloc] initWithFrame:dialogueBoxFrame];
   
   // TODO: Change background color to RED for temporary visibility
   [_dialogueBox setBackgroundColor:[UIColor redColor]];
   
   [self addSubview:_dialogueBox];
+  
+  // TODO: Temporarily let clicking on the dialogue box dismiss the view
+  [_dialogueBox addTarget:self action:@selector(endOfDialogue) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)initCharacterBox
@@ -67,11 +70,11 @@
   CGFloat frameWidth = CGRectGetWidth(frame);
   CGFloat frameHeight = CGRectGetHeight(frame);
   
-  // Make character box 35% the height of the frame and 15% the width,
+  // Make character box 40% the height of the frame and 20% the width,
   //   with padding equal to 5% of the width on either side
   int characterBoxPadding = frameWidth * 0.05;
-  int characterBoxHeight = frameHeight * 0.35;
-  int characterBoxWidth = frameWidth * 0.15;
+  int characterBoxHeight = frameHeight * 0.40;
+  int characterBoxWidth = frameWidth * 0.20;
   
   // The x-offset is equal to the width of the frame, minus the width of the
   //   character box (including padding)
@@ -88,6 +91,11 @@
   [_characterBox setBackgroundColor:[UIColor blueColor]];
   
   [self addSubview:_characterBox];
+}
+
+-(void)endOfDialogue
+{
+  [self.delegate leaveInterior];
 }
 
 -(void)setInteriorBGTo:(NSString*)backgroundName
