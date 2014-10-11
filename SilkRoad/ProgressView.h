@@ -10,4 +10,6 @@
 
 @interface ProgressView : UIView
 
+-(void)moveToNextStage;
+
 @end

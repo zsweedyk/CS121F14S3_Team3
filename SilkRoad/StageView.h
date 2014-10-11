@@ -10,4 +10,7 @@
 
 @interface StageView : UIView
 
+-(void)loadNewStage: (int)stage
+         withHouses: (NSMutableArray*) houses;
+
 @end

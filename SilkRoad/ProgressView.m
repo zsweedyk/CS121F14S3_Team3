@@ -8,16 +8,25 @@
 
 #import "ProgressView.h"
 
-@interface ProgressView() {
+@interface ProgressView()
+{
     int _currentStage;
     UIImage* _progressBar;
+    NSMutableArray* _stageButtons;
 }
 @end
 
 @implementation ProgressView
 
--(void)moveToNextStage {
+-(void)moveToNextStage
+{
+    UIButton* oldStageButton = [_stageButtons objectAtIndex:_currentStage];
+    [oldStageButton setBackgroundColor:[UIColor blackColor]];
     
+    _currentStage++;
+    
+    UIButton* currentStageButton = [_stageButtons objectAtIndex:_currentStage];
+    [currentStageButton setBackgroundColor:[UIColor greenColor]];
 }
 
 @end

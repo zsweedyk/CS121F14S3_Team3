@@ -10,4 +10,6 @@
 
 @interface MapView : UIView
 
+-(void)moveToNextStage;
+
 @end

@@ -53,12 +53,13 @@
 
 - (void)returnToStage
 {
-  
+    [self dismissViewControllerAnimated:YES completion:NO];
 }
 
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 
@@ -68,7 +69,13 @@
   [self.delegate progressToNextStage];
 }
 
-// When house is clicked, display interior view
--(void)enterHouse:(int)houseNumber {
+- (void)miniGameCompleted
+{
 }
+// When house is clicked, display interior view
+-(void)enterHouse:(int)houseNumber
+{
+}
+
+
 @end

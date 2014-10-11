@@ -8,12 +8,37 @@
 
 #import "StageView.h"
 
-@implementation StageView
-
--(void)initWithBackground:(UIImage*)background {
+@interface StageView()
+{
+    NSMutableArray* _houseButtons;
 }
 
--(void)createHouseWithBackground:(UIImage*)background atXCoord:(int)x andYCoord:(int)y withLabel:(NSString*)label {
+@end
+
+
+@implementation StageView
+
+-(void)initWithBackground:(UIImage*)background
+{
+}
+
+-(void)createHouseWithBackground:(UIImage*)background atXCoord:(int)x andYCoord:(int)y withLabel:(NSString*)label
+{
+}
+
+-(void)loadNewStage: (int)stage
+         withHouses: (NSMutableArray*) houses
+{
+    //houses is a mutable array containing the labels for the houses
+    //at the current stage. The labels will be read in and used to set
+    //the button titles.
+    NSString* currHouseTitle;
+    UIButton* currHouseButton;
+    for (int i = 0; i < [houses count]; i++) {
+        currHouseTitle = [houses objectAtIndex:i];
+        currHouseButton = [_houseButtons objectAtIndex:i];
+        [currHouseButton setTitle:currHouseTitle forState:UIControlStateNormal];
+    }
 }
 
 @end
