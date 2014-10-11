@@ -8,7 +8,6 @@
 
 #import "InteriorController.h"
 #import "InteriorModel.h"
-#import "InteriorView.h"
 
 @interface InteriorController () {
     InteriorModel* _interiorModel;
@@ -40,6 +39,10 @@
   
   // Create interior view
   _interiorView = [[InteriorView alloc] initWithFrame:interiorFrame];
+  
+  // Set up the delegate to know when to leave
+  _interiorView.delegate = self;
+  
   [self.view addSubview:_interiorView];
 }
 
