@@ -9,11 +9,8 @@
 #import "StageModel.h"
 
 @interface House : NSObject
-{
-@public
-    BOOL visited;
-    NSString* label;
-}
+    @property BOOL visited;
+    @property NSString* label;
 @end
 
 @interface StageModel()
@@ -27,7 +24,7 @@
 
 -(void)initWithStuffYetToBeDetermined
 {
-  
+    _houses = [[NSMutableArray alloc] initWithCapacity:4];
 }
 
 -(NSMutableArray*)getHouseLabels
@@ -35,7 +32,7 @@
     NSMutableArray* labels = [[NSMutableArray alloc] initWithCapacity:[_houses count]];
     for (int i = 0; i < [_houses count]; i++) {
         House* currHouse = [_houses objectAtIndex:i];
-        [labels insertObject:currHouse->label atIndex:i];
+        [labels insertObject:currHouse.label atIndex:i];
     }
     
     return labels;
