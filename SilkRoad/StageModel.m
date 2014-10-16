@@ -40,7 +40,7 @@
 
 -(void)visitedHouse: (int)house
 {
-  BOOL currHouseVisited = [_houses objectAtIndex:house];
+  BOOL currHouseVisited = ((House*)[_houses objectAtIndex:house]).visited;
   currHouseVisited = YES;
 }
 

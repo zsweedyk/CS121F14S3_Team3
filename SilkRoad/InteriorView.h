@@ -16,9 +16,13 @@
 -(void)enterMinigame;
 @end
 
+@protocol ProgressDialogue
+-(void)progressDialogue;
+@end
+
 @interface InteriorView : UIView
 
-@property (assign, nonatomic) id <LeaveInterior, EnterMinigame> delegate;
+@property (assign, nonatomic) id <LeaveInterior, EnterMinigame, ProgressDialogue> delegate;
 
 -(void)setInteriorBGTo:(NSString*)backgroundName;
 -(void)setCharacterTo:(NSString*)characterName;

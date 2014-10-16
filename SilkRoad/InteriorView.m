@@ -56,11 +56,14 @@
   
   // TODO: Change background color to RED for temporary visibility
   [_dialogueBox setBackgroundColor:[UIColor redColor]];
+  [_dialogueBox setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   
   [self addSubview:_dialogueBox];
   
+  [_dialogueBox addTarget:self action:@selector(progressDialogue) forControlEvents:UIControlEventTouchUpInside];
+  
   // TODO: Temporarily let clicking on the dialogue box mark the end of the convo
-  [_dialogueBox addTarget:self action:@selector(endOfDialogue) forControlEvents:UIControlEventTouchUpInside];
+ // [_dialogueBox addTarget:self action:@selector(endOfDialogue) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)initCharacterBox
@@ -111,7 +114,12 @@
 
 -(void)setDialogueTextTo:(NSString*)dialogueText
 {
-  
+  [_dialogueBox setTitle:dialogueText forState:UIControlStateNormal];
+}
+
+-(void)progressDialogue
+{
+  [self.delegate progressDialogue];
 }
 
 -(void)endOfDialogue
