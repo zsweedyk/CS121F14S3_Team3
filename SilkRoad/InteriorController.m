@@ -62,6 +62,8 @@
   // Set up model to read in all dialogue
   _interiorModel = [[InteriorModel alloc] init];
   [_interiorModel initializeAllDialogue];
+  
+  // TODO make this not hard coded
   [_interiorModel initForStage:0 AndHouse:0];
   
   [self progressDialogue];
