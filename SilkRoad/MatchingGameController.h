@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MatchingGameView.h"
 
-@interface MatchingGameController : UIViewController
+@protocol ReturnToInterior
+-(void)returnToInterior;
+@end
+
+@interface MatchingGameController : UIViewController <ExitMinigame, CheckForMatch>
+
+@property (assign, nonatomic) id <ReturnToInterior> delegate;
 
 @end

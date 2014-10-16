@@ -8,10 +8,14 @@
 
 #import "InteriorController.h"
 #import "InteriorModel.h"
+#import "MatchingGameController.h"
 
 @interface InteriorController () {
-    InteriorModel* _interiorModel;
-    InteriorView* _interiorView;
+  InteriorModel* _interiorModel;
+  InteriorView* _interiorView;
+  
+  // Available minigames should have their controllers included here
+  MatchingGameController* _matchingGameController;
 }
 @end
 
@@ -19,11 +23,26 @@
 
 - (void)viewDidLoad
 {
+  NSLog(@"Starting to load InteriorController");
   [super viewDidLoad];
+
+  // Initialize the Minigame Controllers
+  _matchingGameController = [[MatchingGameController alloc] init];
   
-  NSLog(@"Initialized InteriorController");
+  NSLog(@"Finished loading Minigame Controller");
   // Initialize the InteriorView
   [self initInteriorView];
+  NSLog(@"Finished loading interior view");
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:YES];
+  [super viewDidAppear:NO];
+  
+  // TODO: Test minigame by displaying the MinigameController
+  // [self enterMinigame];
+  
 }
 
 - (void)initInteriorView
@@ -44,6 +63,23 @@
   _interiorView.delegate = self;
   
   [self.view addSubview:_interiorView];
+}
+
+- (void)enterMinigame
+{
+  // Configure MinigameController to report any changes to InteriorController
+  _matchingGameController.delegate = self;
+  
+  // Create the navigation controller and present it.
+  UINavigationController *matchingNavController = [[UINavigationController alloc]
+                                                  initWithRootViewController:_matchingGameController];
+  [self presentViewController:matchingNavController animated:YES completion: nil];
+}
+
+- (void)returnToInterior
+{
+  // Dismiss the minigame controller and return to the interior view
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)leaveInterior

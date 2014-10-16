@@ -27,6 +27,8 @@
   NSLog(@"Initialized StageController, initializing interiorController");
   // Initialize the InteriorController
   _interiorController = [[InteriorController alloc] init];
+  // Configure InteriorController to report any changes to ViewController
+  _interiorController.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -42,13 +44,10 @@
 
 - (void)displayInteriorController
 {
-  // Configure InteriorController to report any changes to ViewController
-  _interiorController.delegate = self;
-  
   // Create the navigation controller and present it.
-  UINavigationController *navigationController = [[UINavigationController alloc]
+  UINavigationController *interiorNavController = [[UINavigationController alloc]
                                                   initWithRootViewController:_interiorController];
-  [self presentViewController:navigationController animated:YES completion: nil];
+  [self presentViewController:interiorNavController animated:YES completion: nil];
 }
 
 - (void)returnToStage

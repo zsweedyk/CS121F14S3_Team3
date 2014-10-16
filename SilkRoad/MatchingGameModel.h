@@ -10,8 +10,9 @@
 
 @interface MatchingGameModel : NSObject
 
--(void)initializePhrasesAndMatches;
+-(void)initializeGame;
 -(NSMutableArray*)getLeftSidePhrases;
 -(NSMutableArray*)getRightSidePhrases;
+-(BOOL)checkMatchBetweenLeftPhrase:(NSString*)leftPhrase andRightPhrase:(NSString*)rightPhrase;
 
 @end

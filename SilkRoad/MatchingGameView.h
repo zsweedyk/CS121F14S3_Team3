@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ExitMinigame
+-(void) exitMinigame;
+@end
+
+@protocol CheckForMatch
+-(void) checkForMatchWithLeftPhrase:(NSString*)leftPhrase andRightPhrase:(NSString*)rightPhrase;
+@end
+
 @interface MatchingGameView : UIView
 
-- (id)initWithFrame:(CGRect)frame leftSidePhrases:(NSMutableArray*)leftSide andRightSidePhrases:(NSMutableArray*)rightSide;
+@property (assign, nonatomic) id <ExitMinigame, CheckForMatch> delegate;
 
+-(id)initWithFrame:(CGRect)frame leftSidePhrases:(NSMutableArray*)leftSide andRightSidePhrases:(NSMutableArray*)rightSide;
+-(void)matchFound:(BOOL)match;
 @end

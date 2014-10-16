@@ -12,9 +12,13 @@
 -(void)leaveInterior;
 @end
 
+@protocol EnterMinigame
+-(void)enterMinigame;
+@end
+
 @interface InteriorView : UIView
 
-@property (assign, nonatomic) id <LeaveInterior> delegate;
+@property (assign, nonatomic) id <LeaveInterior, EnterMinigame> delegate;
 
 -(void)setInteriorBGTo:(NSString*)backgroundName;
 -(void)setCharacterTo:(NSString*)characterName;

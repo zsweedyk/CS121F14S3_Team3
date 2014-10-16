@@ -59,7 +59,7 @@
   
   [self addSubview:_dialogueBox];
   
-  // TODO: Temporarily let clicking on the dialogue box dismiss the view
+  // TODO: Temporarily let clicking on the dialogue box mark the end of the convo
   [_dialogueBox addTarget:self action:@selector(endOfDialogue) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -93,11 +93,6 @@
   [self addSubview:_characterBox];
 }
 
--(void)endOfDialogue
-{
-  [self.delegate leaveInterior];
-}
-
 -(void)setInteriorBGTo:(NSString*)backgroundName
 {
   // TODO: Change background color to GREEN for temporary visibility
@@ -117,6 +112,12 @@
 -(void)setDialogueTextTo:(NSString*)dialogueText
 {
   
+}
+
+-(void)endOfDialogue
+{
+  // TODO: Temporarily let clicking on the dialogue box go to the minigame
+  [self.delegate enterMinigame];
 }
 
 @end

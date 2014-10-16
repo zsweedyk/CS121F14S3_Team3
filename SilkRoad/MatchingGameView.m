@@ -8,17 +8,16 @@
 
 #import "MatchingGameView.h"
 
-// completely arbitrary right now
-static int const xOffsetForLeftPhrases = 10;
-static int const xOffsetForRightPhrases = 100;
-static int const phraseButtonWidth = 50;
-static int const phraseButtonHeight = 20;
-static int const padding = 10;
-
 @interface MatchingGameView()
 {
-  NSMutableArray* _leftSidePhraseButtons;
-  NSMutableArray* _rightSidePhraseButtons;
+  NSMutableArray *_leftSidePhraseButtons;
+  NSMutableArray *_rightSidePhraseButtons;
+  NSMutableArray *_leftMatched;
+  NSMutableArray *_rightMatched;
+  int _leftSelected;
+  int _rightSelected;
+  int _numPhrases;
+  int _countMatched;
 }
 @end
 
@@ -27,30 +26,219 @@ static int const padding = 10;
 - (id)initWithFrame:(CGRect)frame leftSidePhrases:(NSMutableArray*)leftSide andRightSidePhrases:(NSMutableArray*)rightSide
 {
   self = [super initWithFrame:frame];
+  
   if (self) {
-    // Initialization code
-    CGFloat yOffset = padding;
+
+    // Set the minigame background
+    [self setBackgroundColor:[UIColor whiteColor]];
     
-    int count = [leftSide count];
-    for (int i = 0; i < count; i++) {
+    // Find the number of terms that are going to be matched
+    // Assume that the number of phrases for each side is equal
+    // Also assume that we won't have over 2^31-1 items to match, so casting
+    //    count to an int should be okay
+    _numPhrases = (int)[leftSide count];
+    _countMatched = 0;
+    
+    // Initialize the arrays
+    _leftSidePhraseButtons = [[NSMutableArray alloc] initWithCapacity:_numPhrases];
+    _rightSidePhraseButtons = [[NSMutableArray alloc] initWithCapacity:_numPhrases];
+    _leftMatched = [[NSMutableArray alloc] initWithCapacity:_numPhrases];
+    _rightMatched = [[NSMutableArray alloc] initWithCapacity:_numPhrases];
+
+    // Get the dimensions of the frame
+    CGFloat frameWidth = CGRectGetWidth(frame);
+    CGFloat frameHeight = CGRectGetHeight(frame);
+    
+    // The game frame will be 90% of the screen, the bottom 10% is for the game
+    //    bottom bar
+    CGFloat gameFrameWidth = frameWidth;
+    CGFloat gameFrameHeight = frameHeight * 0.90;
+    
+    // Set offset values for the game phrases
+    // Have 10% padding on all sides
+    CGFloat horizontalPadding = gameFrameWidth * 0.10;
+    CGFloat verticalPadding = gameFrameHeight * 0.10;
+    // Make the phrases 35% of the frame width
+    // 80% of the screen height is left for the phrases; distribute it evenly
+    //    according to number of phrases (also accounts for vertical space
+    //    between phrases that are 10% of the phrase height)
+    CGFloat phraseWidth = gameFrameWidth * 0.35;
+    CGFloat phraseHeight = (gameFrameHeight * 0.80) / (_numPhrases * 1.10);
+    // Set the x-offset accordingly
+    CGFloat xOffsetForLeftPhrases = horizontalPadding;
+    CGFloat xOffsetForRightPhrases = gameFrameWidth - (phraseWidth + horizontalPadding);
+    // Set the phrase vertical padding
+    CGFloat phrasePadding = phraseHeight * 0.10;
+    // Set the initial y-offset
+    CGFloat yOffset = verticalPadding;
+    
+    // Simultaenously create the buttons on the left and the right side
+    for (int i = 0; i < _numPhrases; i++) {
       // Create a button containing a phrase on the left side
-      CGRect buttonFrame = CGRectMake(xOffsetForLeftPhrases, yOffset, phraseButtonWidth, phraseButtonHeight);
+      // Left side buttons are tagged with a 1 and then the index of the phrase
+      //    in the array
+      CGRect buttonFrame = CGRectMake(xOffsetForLeftPhrases, yOffset, phraseWidth, phraseHeight);
       UIButton* phraseButton = [[UIButton alloc] initWithFrame:buttonFrame];
-      [phraseButton setTitle:[leftSide objectAtIndex:count] forState:UIControlStateNormal];
-      [_leftSidePhraseButtons addObject:phraseButton];
+      [phraseButton setTitle:[leftSide objectAtIndex:i] forState:UIControlStateNormal];
+      // TODO: set background color to blue for visibility
+      [phraseButton setBackgroundColor:[UIColor blueColor]];
+      phraseButton.tag = (1 * 10) + (i + 1);
+      [phraseButton addTarget:self action:@selector(phraseSelected:) forControlEvents:UIControlEventTouchUpInside];
       [self addSubview:phraseButton];
+      [_leftSidePhraseButtons insertObject:phraseButton atIndex:i];
       
-      // Same for the right side
-      buttonFrame = CGRectMake(xOffsetForRightPhrases, yOffset, phraseButtonWidth, phraseButtonHeight);
+      // Create a button containing a phrase on the left side
+      // Right side buttons are tagged with a 2 and then the index of the phrase
+      //    in the array
+      buttonFrame = CGRectMake(xOffsetForRightPhrases, yOffset, phraseWidth, phraseHeight);
       phraseButton = [[UIButton alloc] initWithFrame:buttonFrame];
-      [phraseButton setTitle:[rightSide objectAtIndex:count] forState:UIControlStateNormal];
-      [_rightSidePhraseButtons addObject:phraseButton];
+      [phraseButton setTitle:[rightSide objectAtIndex:i] forState:UIControlStateNormal];
+      // TODO: set background color to blue for visibility
+      [phraseButton setBackgroundColor:[UIColor blueColor]];
+      phraseButton.tag = (2 * 10) + (i + 1);
+      [phraseButton addTarget:self action:@selector(phraseSelected:) forControlEvents:UIControlEventTouchUpInside];
       [self addSubview:phraseButton];
+      [_rightSidePhraseButtons insertObject:phraseButton atIndex:i];
       
-      yOffset += phraseButtonHeight + padding;
+      // Initialize matched array to all 0s
+      [_leftMatched insertObject:[NSNumber numberWithInt:0] atIndex:i];
+      [_rightMatched insertObject:[NSNumber numberWithInt:0] atIndex:i];
+
+      yOffset += phraseHeight + phrasePadding;
     }
+    
+    // Initialize the return button
+    [self initReturnButtonWithFrame:frame];
   }
+  
   return self;
+}
+
+- (void)initReturnButtonWithFrame:(CGRect)frame
+{
+  // Get the dimensions of the frame
+  CGFloat frameWidth = CGRectGetWidth(frame);
+  CGFloat frameHeight = CGRectGetHeight(frame);
+  
+  // The return button will be 10% of the screen height and 15% of the width, with
+  //   padding equal to 10% of button width all around
+  CGFloat returnFrameWidth = frameWidth * 0.15;
+  CGFloat returnFrameHeight = frameHeight * 0.10;
+  CGFloat padding = returnFrameWidth * 0.10;
+  
+  CGFloat verticalOffset = frameHeight - (returnFrameHeight + padding);
+  CGFloat horizontalOffset = frameWidth - (returnFrameWidth + padding);
+  
+  // Make the frame for the return button
+  CGRect returnFrame = CGRectMake(horizontalOffset, verticalOffset, returnFrameWidth, returnFrameHeight);
+  // Make the button and add it to the view
+  UIButton* returnButton = [[UIButton alloc] initWithFrame:returnFrame];
+  [returnButton setTitle:@"Return to Hut" forState:UIControlStateNormal];
+  // TODO: set background color to blue for visibility
+  [returnButton setBackgroundColor:[UIColor blueColor]];
+  [returnButton addTarget:self action:@selector(exitGame) forControlEvents:UIControlEventTouchUpInside];
+  [self addSubview:returnButton];
+}
+
+- (void)phraseSelected:(id)sender
+{
+  UIButton *newButton = (UIButton*) sender;
+  UIButton *oldButton;
+  
+  // 1 = left, 2 = right
+  int sideSelected = (int) newButton.tag / 10;
+  int phraseSelected = (newButton.tag % 10);
+  
+  if (sideSelected == 1) {
+    // If the phrase has already been matched, no more to do
+    if ([[_leftMatched objectAtIndex:phraseSelected - 1] intValue]) {
+      NSLog(@"Already matched!");
+      return;
+    }
+    else if (_leftSelected != 0) {
+      oldButton = [_leftSidePhraseButtons objectAtIndex:_leftSelected - 1];
+      [oldButton setBackgroundColor:[UIColor blueColor]];
+    }
+    
+    _leftSelected = phraseSelected;
+  }
+  else if (sideSelected == 2) {
+    // If the phrase has already been matched, no more to do
+    if ([[_rightMatched objectAtIndex:phraseSelected - 1] intValue]) {
+      NSLog(@"Already matched!");
+      return;
+    }
+    else if (_rightSelected != 0) {
+      oldButton = [_rightSidePhraseButtons objectAtIndex:_rightSelected - 1];
+      [oldButton setBackgroundColor:[UIColor blueColor]];
+    }
+    
+    _rightSelected = phraseSelected;
+  }
+  
+  [oldButton setBackgroundColor:[UIColor blueColor]];
+  [newButton setBackgroundColor:[UIColor greenColor]];
+  
+  // If both sides have been selected, then check to see if the match is correct
+  if (_leftSelected != 0 && _rightSelected != 0) {
+    NSLog(@"Checking for a match...");
+    [self checkMatchWithLeft:_leftSelected andRight:_rightSelected];
+  }
+}
+
+- (void)checkMatchWithLeft:(int)left andRight:(int)right
+{
+  // Get the associated phrases
+  UIButton *button = [_leftSidePhraseButtons objectAtIndex:left - 1];
+  NSString *leftPhrase = button.currentTitle;
+  button = [_rightSidePhraseButtons objectAtIndex:right - 1];
+  NSString *rightPhrase = button.currentTitle;
+  
+  // Delegate this to the game controller
+  [self.delegate checkForMatchWithLeftPhrase:leftPhrase andRightPhrase:rightPhrase];
+}
+
+- (void)matchFound:(BOOL)match
+{
+  UIButton *leftButton = [_leftSidePhraseButtons objectAtIndex:_leftSelected - 1];
+  UIButton *rightButton = [_rightSidePhraseButtons objectAtIndex:_rightSelected - 1];
+  
+  if (match) {
+    // Increment number of matches
+    _countMatched++;
+    // Mark down the match so that they will be unclickable
+    [_leftMatched replaceObjectAtIndex:_leftSelected - 1 withObject:[NSNumber numberWithInt:1]];
+    [_rightMatched replaceObjectAtIndex:_rightSelected - 1 withObject:[NSNumber numberWithInt:1]];
+    // Change the background color to matched
+    [leftButton setBackgroundColor:[UIColor grayColor]];
+    [rightButton setBackgroundColor:[UIColor grayColor]];
+  }
+  else {
+    // Reset the background color to original
+    [leftButton setBackgroundColor:[UIColor blueColor]];
+    [rightButton setBackgroundColor:[UIColor blueColor]];
+  }
+  
+  _leftSelected = 0;
+  _rightSelected = 0;
+  
+  // If we've matched everything, the game is won!
+  if (_countMatched == _numPhrases) {
+    NSLog(@"Congrats, you won!");
+    [self wonGame];
+  }
+}
+
+- (void)wonGame
+{
+  // Tell game controller to leave the view
+  [self.delegate exitMinigame];
+}
+
+- (void)exitGame
+{
+  // Tell game controller to leave the view
+  [self.delegate exitMinigame];
 }
 
 @end

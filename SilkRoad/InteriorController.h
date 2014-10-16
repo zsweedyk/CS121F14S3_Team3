@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "InteriorView.h"
+#import "MatchingGameController.h"
 
 @protocol ReturnToStage
 -(void)returnToStage;
 @end
 
-@interface InteriorController : UIViewController <LeaveInterior>
+@interface InteriorController : UIViewController <LeaveInterior, ReturnToInterior, EnterMinigame>
 
 @property (assign, nonatomic) id <ReturnToStage> delegate;
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2628DEF119EF2AB9003487ED /* TemplateIcon2x.png */; };
+		2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2628DEF519EF2DD8003487ED /* MatchingGamePhrases.txt */; };
 		2692B35D19E84D3200EE08F8 /* StageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35C19E84D3200EE08F8 /* StageController.m */; };
 		2692B36019E84D4700EE08F8 /* StageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35F19E84D4700EE08F8 /* StageView.m */; };
 		2692B36319E84D8200EE08F8 /* StageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36219E84D8200EE08F8 /* StageModel.m */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2628DEF119EF2AB9003487ED /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
+		2628DEF519EF2DD8003487ED /* MatchingGamePhrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MatchingGamePhrases.txt; sourceTree = "<group>"; };
 		2692B35B19E84D3200EE08F8 /* StageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageController.h; sourceTree = "<group>"; };
 		2692B35C19E84D3200EE08F8 /* StageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageController.m; sourceTree = "<group>"; };
 		2692B35E19E84D4700EE08F8 /* StageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageView.h; sourceTree = "<group>"; };
@@ -112,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2628DEF419EF2AD1003487ED /* Minigame Files */ = {
+			isa = PBXGroup;
+			children = (
+				2628DEF519EF2DD8003487ED /* MatchingGamePhrases.txt */,
+			);
+			name = "Minigame Files";
+			sourceTree = "<group>";
+		};
 		937AE89219E73A4500CEB0E7 = {
 			isa = PBXGroup;
 			children = (
@@ -168,12 +180,14 @@
 				2692B36E19E84DF100EE08F8 /* MapView.m */,
 				2692B37019E84E1300EE08F8 /* ProgressView.h */,
 				2692B37119E84E1300EE08F8 /* ProgressView.m */,
+				2628DEF419EF2AD1003487ED /* Minigame Files */,
 				937AE8DC19E9A8C300CEB0E7 /* MatchingGameController.h */,
 				937AE8DD19E9A8C300CEB0E7 /* MatchingGameController.m */,
 				937AE8DE19E9A8C300CEB0E7 /* MatchingGameModel.h */,
 				937AE8DF19E9A8C300CEB0E7 /* MatchingGameModel.m */,
 				937AE8E019E9A8C300CEB0E7 /* MatchingGameView.h */,
 				937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */,
+				2628DEF119EF2AB9003487ED /* TemplateIcon2x.png */,
 			);
 			path = SilkRoad;
 			sourceTree = "<group>";
@@ -283,6 +297,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */,
+				2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */,
 				937AE8B719E73A4500CEB0E7 /* Images.xcassets in Resources */,
 				937AE8A919E73A4500CEB0E7 /* InfoPlist.strings in Resources */,
 				937AE8B219E73A4500CEB0E7 /* Main.storyboard in Resources */,
