@@ -34,6 +34,7 @@
 		937AE8E219E9A8C300CEB0E7 /* MatchingGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8DD19E9A8C300CEB0E7 /* MatchingGameController.m */; };
 		937AE8E319E9A8C300CEB0E7 /* MatchingGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8DF19E9A8C300CEB0E7 /* MatchingGameModel.m */; };
 		937AE8E419E9A8C300CEB0E7 /* MatchingGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */; };
+		937AE8E619F0505B00CEB0E7 /* Dialogue.txt in Resources */ = {isa = PBXBuildFile; fileRef = 937AE8E519F0505B00CEB0E7 /* Dialogue.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +67,7 @@
 		2692B37019E84E1300EE08F8 /* ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
 		2692B37119E84E1300EE08F8 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		2692B37619E995E300EE08F8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2692B37719E995E300EE08F8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2692B37719E995E300EE08F8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		937AE89B19E73A4500CEB0E7 /* SilkRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SilkRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		937AE89E19E73A4500CEB0E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		937AE8A019E73A4500CEB0E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,6 +91,7 @@
 		937AE8DF19E9A8C300CEB0E7 /* MatchingGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchingGameModel.m; sourceTree = "<group>"; };
 		937AE8E019E9A8C300CEB0E7 /* MatchingGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchingGameView.h; sourceTree = "<group>"; };
 		937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchingGameView.m; sourceTree = "<group>"; };
+		937AE8E519F0505B00CEB0E7 /* Dialogue.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				937AE8A719E73A4500CEB0E7 /* InfoPlist.strings */,
 				937AE8AA19E73A4500CEB0E7 /* main.m */,
 				937AE8AC19E73A4500CEB0E7 /* SilkRoad-Prefix.pch */,
+				937AE8E519F0505B00CEB0E7 /* Dialogue.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				937AE8E619F0505B00CEB0E7 /* Dialogue.txt in Resources */,
 				2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */,
 				2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */,
 				937AE8B719E73A4500CEB0E7 /* Images.xcassets in Resources */,

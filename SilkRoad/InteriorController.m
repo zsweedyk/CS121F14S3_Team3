@@ -59,6 +59,15 @@
   // Create interior view
   _interiorView = [[InteriorView alloc] initWithFrame:interiorFrame];
   
+  // Set up model to read in all dialogue
+  _interiorModel = [[InteriorModel alloc] init];
+  [_interiorModel initializeAllDialogue];
+  
+  // TODO make this not hard coded
+  [_interiorModel initForStage:0 AndHouse:0];
+  
+  [self progressDialogue];
+  
   // Set up the delegate to know when to leave
   _interiorView.delegate = self;
   
@@ -86,6 +95,17 @@
 {
   // Tell StageController that the interaction in the interior is done
   [self.delegate returnToStage];
+}
+
+-(void)progressDialogue
+{
+  // Check to see if there are still available dialogue lines to display
+  if ([_interiorModel dialogueFinished]) {
+    [_interiorView setDialogueTextTo:[_interiorModel getNextLineOfDialogue]];
+  } else {
+    // TODO not all houses should enter minigames, more logic here, probably
+    [self enterMinigame];
+  }
 }
 
 - (void)didReceiveMemoryWarning

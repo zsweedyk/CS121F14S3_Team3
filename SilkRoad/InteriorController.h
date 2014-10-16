@@ -14,7 +14,7 @@
 -(void)returnToStage;
 @end
 
-@interface InteriorController : UIViewController <LeaveInterior, ReturnToInterior, EnterMinigame>
+@interface InteriorController : UIViewController <LeaveInterior, ReturnToInterior, EnterMinigame, ProgressDialogue>
 
 @property (assign, nonatomic) id <ReturnToStage> delegate;
 
