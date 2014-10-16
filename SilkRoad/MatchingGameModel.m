@@ -21,7 +21,6 @@
 @implementation MatchingGameModel
 
 - (id)init {
-  NSLog(@"Initializing game model");
   self = [super init];
   
   if (self) {
@@ -34,8 +33,6 @@
     NSString *phrasesString = [[NSString alloc] initWithContentsOfFile:path
                                 encoding:NSUTF8StringEncoding error:&error];
     _phrases = [phrasesString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    
-    NSLog(@"Done reading file");
   }
   
   return self;
@@ -43,7 +40,6 @@
 
 -(void)initializeGame
 {
-  NSLog(@"Initialize game!");
   // Generate the phrases for this level (hardcoded to 1 for now)
   [self generatePhrasesForLevel:1];
   
@@ -81,7 +77,6 @@
         lenLeft++;
       }
 
-      NSLog(@"1");
       startRight = startLeft + lenLeft + 1;
       // Loop through looking for a quotation mark, which marks the start of the right phrase
       while ([phraseString characterAtIndex:startRight] != '"') {
@@ -104,8 +99,6 @@
       [_leftSidePhrases addObject:leftPhrase];
       [_rightSidePhrases addObject:rightPhrase];
       [_matches setObject:rightPhrase forKey:leftPhrase];
-      
-      NSLog(@"Left phrase: %@, right phrase: %@", leftPhrase, rightPhrase);
       
       // Cut this set of phrases off the string
       phraseString = [phraseString substringFromIndex:startRight+lenRight];

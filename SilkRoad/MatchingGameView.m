@@ -144,6 +144,7 @@
 {
   UIButton *newButton = (UIButton*) sender;
   UIButton *oldButton;
+  BOOL deselect = NO;
   
   // 1 = left, 2 = right
   int sideSelected = (int) newButton.tag / 10;
@@ -160,7 +161,13 @@
       [oldButton setBackgroundColor:[UIColor blueColor]];
     }
     
-    _leftSelected = phraseSelected;
+    if (_leftSelected == phraseSelected) {
+      deselect = YES;
+      _leftSelected = 0;
+    }
+    else {
+      _leftSelected = phraseSelected;
+    }
   }
   else if (sideSelected == 2) {
     // If the phrase has already been matched, no more to do
@@ -173,11 +180,21 @@
       [oldButton setBackgroundColor:[UIColor blueColor]];
     }
     
-    _rightSelected = phraseSelected;
+    if (_rightSelected == phraseSelected) {
+      deselect = YES;
+      _rightSelected = 0;
+    }
+    else {
+      _rightSelected = phraseSelected;
+    }
   }
   
-  [oldButton setBackgroundColor:[UIColor blueColor]];
-  [newButton setBackgroundColor:[UIColor greenColor]];
+  if (deselect) {
+    return;
+  }
+  else {
+   [newButton setBackgroundColor:[UIColor greenColor]];
+  }
   
   // If both sides have been selected, then check to see if the match is correct
   if (_leftSelected != 0 && _rightSelected != 0) {
@@ -237,6 +254,21 @@
 
 - (void)exitGame
 {
+  // Clear any current selections
+  UIButton *oldButton;
+  
+  if (_leftSelected != 0) {
+    oldButton = [_leftSidePhraseButtons objectAtIndex:_leftSelected - 1];
+    [oldButton setBackgroundColor:[UIColor blueColor]];
+    _leftSelected = 0;
+  }
+  
+  if (_rightSelected != 0) {
+    oldButton = [_rightSidePhraseButtons objectAtIndex:_rightSelected - 1];
+    [oldButton setBackgroundColor:[UIColor blueColor]];
+    _rightSelected = 0;
+  }
+  
   // Tell game controller to leave the view
   [self.delegate exitMinigame];
 }

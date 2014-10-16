@@ -34,8 +34,6 @@
     // Initialize gameModel
     _gameModel = [[MatchingGameModel alloc] init];
     [_gameModel initializeGame];
-    NSLog(@"Done initializing game model");
-
     
     // Create the minigame view
     _gameView = [[MatchingGameView alloc] initWithFrame:self.view.frame leftSidePhrases:[_gameModel getLeftSidePhrases] andRightSidePhrases:[_gameModel getRightSidePhrases]];
@@ -44,7 +42,6 @@
     _gameView.delegate = self;
     
     [self.view addSubview:_gameView];
-    NSLog(@"Done initializing game view");
   }
   
   return self;
