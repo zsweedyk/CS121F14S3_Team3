@@ -11,6 +11,8 @@
 #import "StageModel.h"
 
 @interface StageController () {
+  int _currentStage;
+  
   StageView* _stageView;
   StageModel* _stageModel;
   InteriorController* _interiorController;
@@ -20,11 +22,15 @@
 
 @implementation StageController
 
+- (void)setStageTo:(int)stage
+{
+  _currentStage = stage;
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   
-  NSLog(@"Initialized StageController, initializing interiorController");
   // Initialize the InteriorController
   _interiorController = [[InteriorController alloc] init];
   // Configure InteriorController to report any changes to ViewController
@@ -35,19 +41,20 @@
 {
   [super viewDidAppear:YES];
   [super viewDidAppear:NO];
-  
-  NSLog(@"Displaying InteriorController");
-  // Display the InteriorController
-  [self displayInteriorController];
+  // TODO: Display the InteriorController, currently hardcoded to 1
+  [self displayInteriorControllerForInterior:1];
   
 }
 
-- (void)displayInteriorController
+- (void)displayInteriorControllerForInterior:(int)interior
 {
+  // Set the correct interior
+  [_interiorController setStageTo:_currentStage andInteriorTo:interior];
   // Create the navigation controller and present it.
   UINavigationController *interiorNavController = [[UINavigationController alloc]
                                                   initWithRootViewController:_interiorController];
   [self presentViewController:interiorNavController animated:YES completion: nil];
+  NSLog(@"SUCCESSFULLY PRESENTED INTERIOR FROM STAGE");
 }
 
 - (void)returnToStage

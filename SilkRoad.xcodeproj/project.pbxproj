@@ -164,6 +164,8 @@
 				937AE8B019E73A4500CEB0E7 /* Main.storyboard */,
 				937AE8B619E73A4500CEB0E7 /* Images.xcassets */,
 				937AE8A519E73A4500CEB0E7 /* Supporting Files */,
+				2692B37619E995E300EE08F8 /* ViewController.h */,
+				2692B37719E995E300EE08F8 /* ViewController.m */,
 				2692B35B19E84D3200EE08F8 /* StageController.h */,
 				2692B35C19E84D3200EE08F8 /* StageController.m */,
 				2692B35E19E84D4700EE08F8 /* StageView.h */,
@@ -176,13 +178,10 @@
 				2692B36819E84DD000EE08F8 /* InteriorController.m */,
 				2692B36A19E84DE200EE08F8 /* InteriorView.h */,
 				2692B36B19E84DE200EE08F8 /* InteriorView.m */,
-				2692B37619E995E300EE08F8 /* ViewController.h */,
-				2692B37719E995E300EE08F8 /* ViewController.m */,
 				2692B36D19E84DF100EE08F8 /* MapView.h */,
 				2692B36E19E84DF100EE08F8 /* MapView.m */,
 				2692B37019E84E1300EE08F8 /* ProgressView.h */,
 				2692B37119E84E1300EE08F8 /* ProgressView.m */,
-				2628DEF419EF2AD1003487ED /* Minigame Files */,
 				937AE8DC19E9A8C300CEB0E7 /* MatchingGameController.h */,
 				937AE8DD19E9A8C300CEB0E7 /* MatchingGameController.m */,
 				937AE8DE19E9A8C300CEB0E7 /* MatchingGameModel.h */,
@@ -202,6 +201,7 @@
 				937AE8AA19E73A4500CEB0E7 /* main.m */,
 				937AE8AC19E73A4500CEB0E7 /* SilkRoad-Prefix.pch */,
 				937AE8E519F0505B00CEB0E7 /* Dialogue.txt */,
+				2628DEF419EF2AD1003487ED /* Minigame Files */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

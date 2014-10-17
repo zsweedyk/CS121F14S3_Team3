@@ -10,7 +10,7 @@
 
 @interface MatchingGameModel : NSObject
 
--(void)initializeGame;
+-(void)initializeGameForLevel:(int)level;
 -(NSMutableArray*)getLeftSidePhrases;
 -(NSMutableArray*)getRightSidePhrases;
 -(BOOL)checkMatchBetweenLeftPhrase:(NSString*)leftPhrase andRightPhrase:(NSString*)rightPhrase;

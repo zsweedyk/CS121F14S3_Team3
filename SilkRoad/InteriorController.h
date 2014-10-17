@@ -18,4 +18,6 @@
 
 @property (assign, nonatomic) id <ReturnToStage> delegate;
 
+- (void)setStageTo:(int)stage andInteriorTo:(int)interior;
+
 @end

@@ -11,7 +11,7 @@
 @interface InteriorModel : NSObject
 
 -(void)initializeAllDialogue;
--(void)initForStage:(int)stage AndHouse:(int)house;
+-(void)initForStage:(int)stage andHouse:(int)house;
 -(BOOL)dialogueFinished;
 -(NSString*)getNextLineOfDialogue;
 

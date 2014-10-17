@@ -12,6 +12,8 @@
 
 @interface MatchingGameController ()
 {
+  int _currentLevel;
+  
   MatchingGameModel* _gameModel;
   MatchingGameView* _gameView;
 }
@@ -20,28 +22,37 @@
 
 @implementation MatchingGameController
 
+- (void)setLevelTo:(int)level
+{
+  NSLog(@"Set the game controller level to %d", level);
+  _currentLevel = level;
+  
+  // Now initialize the game for that level
+  [_gameModel initializeGameForLevel:_currentLevel];
+  
+  // Create the minigame view
+  _gameView = [[MatchingGameView alloc] initWithFrame:self.view.frame leftSidePhrases:[_gameModel getLeftSidePhrases] andRightSidePhrases:[_gameModel getRightSidePhrases]];
+  
+  // Set up the delegate to know when to leave
+  _gameView.delegate = self;
+  
+  [self.view addSubview:_gameView];
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  self = [super init];
   
   if (self) {
     // Initialize gameModel
     _gameModel = [[MatchingGameModel alloc] init];
-    [_gameModel initializeGame];
-    
-    // Create the minigame view
-    _gameView = [[MatchingGameView alloc] initWithFrame:self.view.frame leftSidePhrases:[_gameModel getLeftSidePhrases] andRightSidePhrases:[_gameModel getRightSidePhrases]];
-    
-    // Set up the delegate to know when to leave
-    _gameView.delegate = self;
-    
-    [self.view addSubview:_gameView];
+//    [_gameModel initializeGameForLevel:_currentLevel];
   }
   
   return self;

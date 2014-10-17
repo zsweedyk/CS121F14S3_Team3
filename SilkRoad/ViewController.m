@@ -11,6 +11,8 @@
 #import "ProgressView.h"
 
 @interface ViewController () {
+  int _currentStage;
+  
   MapView* _mapView;
   ProgressView* _progressView;
   StageController* _stageController;
@@ -24,17 +26,19 @@
 {
   [super viewDidLoad];
   
+  // TODO: Currently hardcoding the current stage to 1
+  _currentStage = 1;
+  
   // Initialize the StageController
   _stageController = [[StageController alloc] init];
+  [_stageController setStageTo:_currentStage];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:YES];
   [super viewDidAppear:NO];
-  
-  NSLog(@"Loaded ViewController, initializing StageController");
-  
+    
   // TODO: Display the StageView
   [self displayStageController];
 }

@@ -17,4 +17,6 @@
 
 @property (assign, nonatomic) id <ProgressToNextStage> delegate;
 
+- (void)setStageTo:(int)currentStage;
+
 @end

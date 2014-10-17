@@ -38,10 +38,11 @@
   return self;
 }
 
--(void)initializeGame
+-(void)initializeGameForLevel:(int)level
 {
-  // Generate the phrases for this level (hardcoded to 1 for now)
-  [self generatePhrasesForLevel:1];
+  NSLog(@"K, let's do it... the level is %d!", level);
+  // Generate the phrases for this level
+  [self generatePhrasesForLevel:level];
   
   // Shuffle phrase arrays so they do not appear in order when displayed
   [self shuffleArray:_leftSidePhrases];
@@ -50,7 +51,15 @@
 
 -(void)generatePhrasesForLevel:(int)level
 {
+  NSLog(@"Getting the phrase string for level %d!", level);
+  NSLog(@"Here's the array:");
+  
+  for (int i = 0; i < [_phrases count]; i++) {
+    NSLog(@"Index %d: %@", i, [_phrases objectAtIndex:i]);
+  }
+  
   NSString *phraseString = [_phrases objectAtIndex:level-1];
+  NSLog(@"K, got it!");
   
   // Iinitialize all arrays
   _leftSidePhrases = [[NSMutableArray alloc] init];

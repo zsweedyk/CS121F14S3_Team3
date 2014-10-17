@@ -11,6 +11,9 @@
 #import "MatchingGameController.h"
 
 @interface InteriorController () {
+  int _currentStage;
+  int _currentInterior;
+  
   InteriorModel* _interiorModel;
   InteriorView* _interiorView;
   
@@ -21,33 +24,27 @@
 
 @implementation InteriorController
 
-- (void)viewDidLoad
+- (void)setStageTo:(int)stage andInteriorTo:(int)interior
 {
-  NSLog(@"Starting to load InteriorController");
-  [super viewDidLoad];
-
-  // Initialize the Minigame Controllers
-  _matchingGameController = [[MatchingGameController alloc] init];
-  
-  NSLog(@"Finished loading Minigame Controller");
-  // Initialize the InteriorView
-  [self initInteriorView];
-  NSLog(@"Finished loading interior view");
+  _currentStage = stage;
+  _currentInterior = interior;
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidLoad
 {
-  [super viewDidAppear:YES];
-  [super viewDidAppear:NO];
+  [super viewDidLoad];
   
-  // TODO: Test minigame by displaying the MinigameController
-  // [self enterMinigame];
+  // Initialize the minigame controllers
+  NSLog(@"Initializing matching game for level %d", _currentStage);
+  _matchingGameController = [[MatchingGameController alloc] init];
+  [_matchingGameController setLevelTo:_currentStage];
   
+  // Initialize the InteriorView
+  [self initInteriorView];
 }
 
 - (void)initInteriorView
 {
-  NSLog(@"Initializing InteriorView");
   // Get stage frame dimensions
   CGRect frame = self.view.frame;
   CGFloat frameWidth = CGRectGetWidth(frame);
@@ -64,7 +61,7 @@
   [_interiorModel initializeAllDialogue];
   
   // TODO make this not hard coded
-  [_interiorModel initForStage:0 AndHouse:0];
+  [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
   
   [self progressDialogue];
   
