@@ -35,7 +35,6 @@
   [super viewDidLoad];
   
   // Initialize the minigame controllers
-  NSLog(@"Initializing matching game for level %d", _currentStage);
   _matchingGameController = [[MatchingGameController alloc] init];
   [_matchingGameController setLevelTo:_currentStage];
   
@@ -80,6 +79,8 @@
   UINavigationController *matchingNavController = [[UINavigationController alloc]
                                                   initWithRootViewController:_matchingGameController];
   [self presentViewController:matchingNavController animated:YES completion: nil];
+  matchingNavController.navigationBar.hidden = YES;
+
 }
 
 - (void)returnToInterior

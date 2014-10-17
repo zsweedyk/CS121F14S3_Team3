@@ -54,7 +54,8 @@
   UINavigationController *interiorNavController = [[UINavigationController alloc]
                                                   initWithRootViewController:_interiorController];
   [self presentViewController:interiorNavController animated:YES completion: nil];
-  NSLog(@"SUCCESSFULLY PRESENTED INTERIOR FROM STAGE");
+  interiorNavController.navigationBar.hidden = YES;
+
 }
 
 - (void)returnToStage
