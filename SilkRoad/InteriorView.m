@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Kate Finlay, Melissa Galonsky, Rachel Macfarlane, and Sarah Trisorus. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "InteriorView.h"
 
 @implementation InteriorView {
@@ -54,16 +55,25 @@
   // Add the box to the subview
   _dialogueBox = [[UIButton alloc] initWithFrame:dialogueBoxFrame];
   
-  // TODO: Change background color to RED for temporary visibility
-  [_dialogueBox setBackgroundColor:[UIColor redColor]];
-  [_dialogueBox setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+  // Set background color to offwhite
+  [_dialogueBox setBackgroundColor:[[UIColor alloc] initWithRed:0.98 green:0.94 blue:0.89 alpha:1]];
+  [_dialogueBox setTitleColor:[UIColor brownColor] forState:UIControlStateNormal];
+  
+  // Create border
+  [[_dialogueBox layer] setBorderWidth:3.0f];
+  [[_dialogueBox layer] setBorderColor:[UIColor brownColor].CGColor];
+  
+  // Top and left align text in dialogue box
+  _dialogueBox.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+  _dialogueBox.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+  
+  // Add padding around text
+  _dialogueBox.contentEdgeInsets= UIEdgeInsetsMake(30, 30, 30, 30);
+  _dialogueBox.titleLabel.font = [UIFont systemFontOfSize:24];
   
   [self addSubview:_dialogueBox];
   
   [_dialogueBox addTarget:self action:@selector(progressDialogue) forControlEvents:UIControlEventTouchUpInside];
-  
-  // TODO: Temporarily let clicking on the dialogue box mark the end of the convo
- // [_dialogueBox addTarget:self action:@selector(endOfDialogue) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)initCharacterBox
@@ -119,7 +129,9 @@
 
 -(void)progressDialogue
 {
+  [UIView animateWithDuration:0.5 animations:^{_dialogueBox.titleLabel.alpha = 0.0;}];
   [self.delegate progressDialogue];
+  [UIView animateWithDuration:0.5 animations:^{_dialogueBox.titleLabel.alpha = 1;}];
 }
 
 -(void)endOfDialogue

@@ -58,7 +58,7 @@
     NSLog(@"Index %d: %@", i, [_phrases objectAtIndex:i]);
   }
   
-  NSString *phraseString = [_phrases objectAtIndex:level-1];
+  NSString *phraseString = [_phrases objectAtIndex:level];
   NSLog(@"K, got it!");
   
   // Iinitialize all arrays

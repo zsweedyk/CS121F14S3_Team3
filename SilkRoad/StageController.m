@@ -41,8 +41,8 @@
 {
   [super viewDidAppear:YES];
   [super viewDidAppear:NO];
-  // TODO: Display the InteriorController, currently hardcoded to 1
-  [self displayInteriorControllerForInterior:1];
+  // TODO: Display the InteriorController, currently hardcoded to 0
+  [self displayInteriorControllerForInterior:0];
   
 }
 

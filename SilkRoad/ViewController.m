@@ -26,8 +26,8 @@
 {
   [super viewDidLoad];
   
-  // TODO: Currently hardcoding the current stage to 1
-  _currentStage = 1;
+  // TODO: Currently hardcoding the current stage to 0
+  _currentStage = 0;
   
   // Initialize the StageController
   _stageController = [[StageController alloc] init];
