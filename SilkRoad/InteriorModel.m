@@ -41,7 +41,6 @@
     
     NSArray* separateHouses = [[separateStages objectAtIndex:i] componentsSeparatedByString:@"/"];
     [_allDialogue addObject:[[NSMutableArray alloc] init]];
-    NSLog(@"%@", separateHouses);
     
     int numHousesInStage = [separateHouses count];
     for (int j = 0; j < numHousesInStage; j++) {

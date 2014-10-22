@@ -9,6 +9,7 @@
 #import "InteriorController.h"
 #import "InteriorModel.h"
 #import "MatchingGameController.h"
+#import "RoadGameController.h"
 
 @interface InteriorController () {
   int _currentStage;
@@ -19,6 +20,7 @@
   
   // Available minigames should have their controllers included here
   MatchingGameController* _matchingGameController;
+  RoadGameController* _roadGameController;
 }
 @end
 
@@ -37,6 +39,8 @@
   // Initialize the minigame controllers
   _matchingGameController = [[MatchingGameController alloc] init];
   [_matchingGameController setLevelTo:_currentStage];
+  _roadGameController = [[RoadGameController alloc] init];
+  
   
   // Initialize the InteriorView
   [self initInteriorView];
@@ -72,11 +76,22 @@
 - (void)enterMinigame
 {
   // Configure MinigameController to report any changes to InteriorController
-  _matchingGameController.delegate = self;
-  
+  UIViewController* minigameViewController;
+  switch (_currentStage) {
+    case 0:
+       _matchingGameController.delegate = self;
+      minigameViewController = _matchingGameController;
+      break;
+    case 1:
+      _roadGameController.delegate = self;
+      minigameViewController = _roadGameController;
+      break;
+    default:
+      break;
+  }
+
   // Create the navigation controller and present it.
-  UINavigationController *matchingNavController = [[UINavigationController alloc]
-                                                  initWithRootViewController:_matchingGameController];
+  UINavigationController* matchingNavController = [[UINavigationController alloc] initWithRootViewController:minigameViewController];
   [self presentViewController:matchingNavController animated:YES completion: nil];
   matchingNavController.navigationBar.hidden = YES;
 
