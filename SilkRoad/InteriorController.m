@@ -127,7 +127,6 @@
       // If the game has been won and there is no more dialogue, go to
       // the next stage
       if ([_matchingGameController hasBeenWon]) {
-        [self leaveInterior];
         [self.delegate notifyStageComplete];
       } else {
         // If the game has yet to be won, enter the game

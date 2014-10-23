@@ -114,6 +114,15 @@
         newHouse2.image = house;
         newHouse2.tag = 2;
         [_houses addObject:newHouse2];
+        
+        House* newHouse3 = [House alloc];
+        newHouse3.visited = NO;
+        newHouse3.label = @"Farmer";
+        newHouse3.xCord = 500;
+        newHouse3.yCord = 300;
+        newHouse3.image = house;
+        newHouse3.tag = 3;
+        [_houses addObject:newHouse3];
     }
     
     if(stage == 1) {
@@ -122,7 +131,7 @@
         newHouse.label = @"Village Elder";
         newHouse.xCord = 300;
         newHouse.yCord = 300;
-        UIImage* house = [UIImage imageNamed:@"ChinaHouse_400"];
+        UIImage* house = [UIImage imageNamed:@"ChinaHouse400_250"];
         newHouse.image = house;
         newHouse.tag = 0;
         [_houses addObject:newHouse];
@@ -144,6 +153,15 @@
         newHouse2.image = house;
         newHouse2.tag = 2;
         [_houses addObject:newHouse2];
+        
+        House* newHouse3 = [House alloc];
+        newHouse3.visited = NO;
+        newHouse3.label = @"Farmer";
+        newHouse3.xCord = 500;
+        newHouse3.yCord = 300;
+        newHouse3.image = house;
+        newHouse3.tag = 3;
+        [_houses addObject:newHouse3];
     }
 }
 
@@ -175,15 +193,7 @@
 {
     // Let ViewController know the stage has been finished
   NSLog(@"Stage complete!");
-    [self.delegate progressToNextStage];
-}
-
-- (void)miniGameCompleted
-{
-}
-// When house is clicked, display interior view
-- (void)enterHouse:(int)houseNumber
-{
+  [self.delegate progressToNextStage];
 }
 
 - (void)buttonPressed:(id)button

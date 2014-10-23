@@ -43,7 +43,7 @@
   //   with padding equal to 5% of the width on either side
   int dialogueBoxPadding = frameWidth * 0.05;
   int dialogueBoxHeight = frameHeight * 0.20;
-  int dialogueBoxWidth = frameWidth - (2 * dialogueBoxPadding);
+  int dialogueBoxWidth = frameWidth - (5.5 * dialogueBoxPadding);
   
   // The x-offset is equal to the horizontal padding
   // The y-offset is equal to the height of the interior frame, minus the
@@ -63,7 +63,9 @@
   [[_dialogueBox layer] setBorderWidth:3.0f];
   [[_dialogueBox layer] setBorderColor:[UIColor brownColor].CGColor];
   
-  // Top and left align text in dialogue box
+  // Top and left align text in dialogue box, let it be multiline
+  [_dialogueBox.titleLabel setAdjustsFontSizeToFitWidth:NO];
+  [_dialogueBox.titleLabel setNumberOfLines:0];
   _dialogueBox.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
   _dialogueBox.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
   
