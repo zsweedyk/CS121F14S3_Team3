@@ -109,7 +109,9 @@
     [_interiorModel setWinDialogueForStage:_currentStage];
     [self progressDialogue];
   }
-  [self dismissViewControllerAnimated:YES completion:nil];
+  // When animated, causes timing issue and does not properly return
+  // to stage if minigame has not been won
+  [self dismissViewControllerAnimated:NO completion:nil];
   
   if (!winning) {
     [self.delegate returnToStage];
