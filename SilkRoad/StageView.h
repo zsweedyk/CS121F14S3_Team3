@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "House.h"
+
+@protocol ButtonPressed
+-(void)buttonPressed:(id)button;
+@end
 
 @interface StageView : UIView
 
--(void)loadNewStage: (int)stage
-         withHouses: (NSMutableArray*) houses;
+-(id)initWithFrame:(CGRect)frame background:(UIImage*)background;
+
+-(void)loadNewStageWithHouses: (NSMutableArray*) houses;
+
+@property (assign, nonatomic) id <ButtonPressed> delegate;
 
 @end

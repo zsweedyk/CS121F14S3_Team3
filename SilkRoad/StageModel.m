@@ -8,14 +8,9 @@
 
 #import "StageModel.h"
 
-@interface House : NSObject
-    @property BOOL visited;
-    @property NSString* label;
-@end
-
 @interface StageModel()
 {
-  NSMutableArray* _houses;
+    NSMutableArray* _houses;
 }
 
 @end

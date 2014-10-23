@@ -8,15 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "InteriorController.h"
+#import "House.h"
+#import "StageView.h"
 
 @protocol ProgressToNextStage
 -(void)progressToNextStage;
 @end
 
-@interface StageController : UIViewController <ReturnToStage>
+
+
+@interface StageController : UIViewController <ReturnToStage, ButtonPressed>
 
 @property (assign, nonatomic) id <ProgressToNextStage> delegate;
 
 - (void)setStageTo:(int)currentStage;
+
+- (void)buttonPressed:(id)button;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "House.h"
 
 @interface StageModel : NSObject
 
