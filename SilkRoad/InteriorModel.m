@@ -53,7 +53,7 @@
 // TODO this may change when houses are clickable
 -(void)initForStage:(int)stage andHouse:(int)house
 {
-  _dialogueForCurrentHouse = [[NSMutableArray alloc] initWithArray:[[_allDialogue objectAtIndex:stage]objectAtIndex:house]];
+  _dialogueForCurrentHouse = [[_allDialogue objectAtIndex:stage]objectAtIndex:house];
 }
 
 -(BOOL)dialogueFinished
