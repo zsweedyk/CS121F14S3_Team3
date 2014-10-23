@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "StageController.h"
+#import "MainMenuView.h"
 
-@interface ViewController : UIViewController <ProgressToNextStage>
+@interface ViewController : UIViewController <ShowStage, ProgressToNextStage>
 
 @end

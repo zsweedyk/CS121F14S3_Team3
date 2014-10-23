@@ -103,13 +103,17 @@
 
 - (void)returnToInterior
 {
+  BOOL winning = [_matchingGameController hasBeenWon];
   // Dismiss the minigame controller and return to the interior view
-  if ([_matchingGameController hasBeenWon]) {
+  if (winning) {
     [_interiorModel setWinDialogueForStage:_currentStage];
     [self progressDialogue];
   }
   [self dismissViewControllerAnimated:YES completion:nil];
-
+  
+  if (!winning) {
+    [self.delegate returnToStage];
+  }
 }
 
 - (void)leaveInterior
