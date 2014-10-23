@@ -36,6 +36,10 @@
 		937AE8E319E9A8C300CEB0E7 /* MatchingGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8DF19E9A8C300CEB0E7 /* MatchingGameModel.m */; };
 		937AE8E419E9A8C300CEB0E7 /* MatchingGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */; };
 		937AE8E619F0505B00CEB0E7 /* Dialogue.txt in Resources */ = {isa = PBXBuildFile; fileRef = 937AE8E519F0505B00CEB0E7 /* Dialogue.txt */; };
+		937AE8E919F2FB6E00CEB0E7 /* RoadGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8E819F2FB6E00CEB0E7 /* RoadGameModel.m */; };
+		937AE8EF19F3000300CEB0E7 /* RoadGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8EE19F3000300CEB0E7 /* RoadGameController.m */; };
+		937AE8F219F3002600CEB0E7 /* RoadGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8F119F3002600CEB0E7 /* RoadGameView.m */; };
+		937AE8F419F47A3B00CEB0E7 /* RoadPuzzle1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 937AE8F319F47A3B00CEB0E7 /* RoadPuzzle1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +99,13 @@
 		937AE8E019E9A8C300CEB0E7 /* MatchingGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchingGameView.h; sourceTree = "<group>"; };
 		937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchingGameView.m; sourceTree = "<group>"; };
 		937AE8E519F0505B00CEB0E7 /* Dialogue.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue.txt; sourceTree = "<group>"; };
+		937AE8E719F2FB6E00CEB0E7 /* RoadGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoadGameModel.h; path = ../RoadGameModel.h; sourceTree = "<group>"; };
+		937AE8E819F2FB6E00CEB0E7 /* RoadGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoadGameModel.m; path = ../RoadGameModel.m; sourceTree = "<group>"; };
+		937AE8ED19F3000300CEB0E7 /* RoadGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoadGameController.h; path = ../RoadGameController.h; sourceTree = "<group>"; };
+		937AE8EE19F3000300CEB0E7 /* RoadGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoadGameController.m; path = ../RoadGameController.m; sourceTree = "<group>"; };
+		937AE8F019F3002600CEB0E7 /* RoadGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoadGameView.h; path = ../RoadGameView.h; sourceTree = "<group>"; };
+		937AE8F119F3002600CEB0E7 /* RoadGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoadGameView.m; path = ../RoadGameView.m; sourceTree = "<group>"; };
+		937AE8F319F47A3B00CEB0E7 /* RoadPuzzle1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +135,7 @@
 		2628DEF419EF2AD1003487ED /* Minigame Files */ = {
 			isa = PBXGroup;
 			children = (
+				937AE8F319F47A3B00CEB0E7 /* RoadPuzzle1.txt */,
 				2628DEF519EF2DD8003487ED /* MatchingGamePhrases.txt */,
 			);
 			name = "Minigame Files";
@@ -183,6 +195,12 @@
 				2692B36819E84DD000EE08F8 /* InteriorController.m */,
 				2692B36A19E84DE200EE08F8 /* InteriorView.h */,
 				2692B36B19E84DE200EE08F8 /* InteriorView.m */,
+				26FF36AE19F5C6EA00DA76C4 /* ScalesGameModel.h */,
+				26FF36AF19F5C6EA00DA76C4 /* ScalesGameModel.m */,
+				26FF36AB19F5C6D800DA76C4 /* ScalesGameView.h */,
+				26FF36AC19F5C6D800DA76C4 /* ScalesGameView.m */,
+				26FF36A819F5C6C000DA76C4 /* ScalesGameController.h */,
+				26FF36A919F5C6C000DA76C4 /* ScalesGameController.m */,
 				2692B36D19E84DF100EE08F8 /* MapView.h */,
 				2692B36E19E84DF100EE08F8 /* MapView.m */,
 				2692B37019E84E1300EE08F8 /* ProgressView.h */,
@@ -193,6 +211,12 @@
 				937AE8DF19E9A8C300CEB0E7 /* MatchingGameModel.m */,
 				937AE8E019E9A8C300CEB0E7 /* MatchingGameView.h */,
 				937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */,
+				937AE8E719F2FB6E00CEB0E7 /* RoadGameModel.h */,
+				937AE8E819F2FB6E00CEB0E7 /* RoadGameModel.m */,
+				937AE8ED19F3000300CEB0E7 /* RoadGameController.h */,
+				937AE8EE19F3000300CEB0E7 /* RoadGameController.m */,
+				937AE8F019F3002600CEB0E7 /* RoadGameView.h */,
+				937AE8F119F3002600CEB0E7 /* RoadGameView.m */,
 				2628DEF119EF2AB9003487ED /* TemplateIcon2x.png */,
 			);
 			path = SilkRoad;
@@ -308,6 +332,7 @@
 				937AE8E619F0505B00CEB0E7 /* Dialogue.txt in Resources */,
 				2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */,
 				2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */,
+				937AE8F419F47A3B00CEB0E7 /* RoadPuzzle1.txt in Resources */,
 				937AE8B719E73A4500CEB0E7 /* Images.xcassets in Resources */,
 				937AE8A919E73A4500CEB0E7 /* InfoPlist.strings in Resources */,
 				937AE8B219E73A4500CEB0E7 /* Main.storyboard in Resources */,
@@ -337,9 +362,14 @@
 				937AE8E219E9A8C300CEB0E7 /* MatchingGameController.m in Sources */,
 				2692B36619E84DAE00EE08F8 /* InteriorModel.m in Sources */,
 				2692B37819E995E300EE08F8 /* ViewController.m in Sources */,
+				937AE8E919F2FB6E00CEB0E7 /* RoadGameModel.m in Sources */,
 				937AE8E419E9A8C300CEB0E7 /* MatchingGameView.m in Sources */,
+				26FF36AA19F5C6C000DA76C4 /* ScalesGameController.m in Sources */,
 				937AE8E319E9A8C300CEB0E7 /* MatchingGameModel.m in Sources */,
+				937AE8F219F3002600CEB0E7 /* RoadGameView.m in Sources */,
 				937AE8AF19E73A4500CEB0E7 /* AppDelegate.m in Sources */,
+				26FF36AD19F5C6D800DA76C4 /* ScalesGameView.m in Sources */,
+				26FF36B019F5C6EA00DA76C4 /* ScalesGameModel.m in Sources */,
 				937AE8AB19E73A4500CEB0E7 /* main.m in Sources */,
 				2692B36919E84DD000EE08F8 /* InteriorController.m in Sources */,
 				2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */,
