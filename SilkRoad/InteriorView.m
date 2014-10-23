@@ -43,7 +43,7 @@
   //   with padding equal to 5% of the width on either side
   int dialogueBoxPadding = frameWidth * 0.05;
   int dialogueBoxHeight = frameHeight * 0.20;
-  int dialogueBoxWidth = frameWidth - (5 * dialogueBoxPadding);
+  int dialogueBoxWidth = frameWidth - (5.5 * dialogueBoxPadding);
   
   // The x-offset is equal to the horizontal padding
   // The y-offset is equal to the height of the interior frame, minus the
