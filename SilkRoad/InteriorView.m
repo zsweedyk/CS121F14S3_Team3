@@ -92,15 +92,15 @@
     // Make character box 40% the height of the frame and 20% the width,
     //   with padding equal to 5% of the width on either side
     int characterBoxPadding = frameWidth * 0.05;
-    int characterBoxHeight = frameHeight * 0.40;
-    int characterBoxWidth = frameWidth * 0.35;
+    int characterBoxHeight = frameHeight * 0.60;
+    int characterBoxWidth = frameWidth * 0.30;
     
     // The x-offset is equal to the width of the frame, minus the width of the
     //   character box (including padding)
     // The y-offset is equal to the height of the interior frame, minus the
     //   height of the character box
-    int characterBoxXOffset = (_dialogueBox.frame.origin.x + _dialogueBox.frame.size.width) - characterBoxPadding;
-    int characterBoxYOffset = (_dialogueBox.frame.origin.y + _dialogueBox.frame.size.height) - characterBoxHeight;
+    int characterBoxXOffset = frameWidth - characterBoxWidth;
+    int characterBoxYOffset = frameHeight - characterBoxHeight;
     CGRect characterBoxFrame = CGRectMake(characterBoxXOffset, characterBoxYOffset, characterBoxWidth, characterBoxHeight);
   
   // Add the box to the subview
