@@ -16,8 +16,7 @@
 @end
 
 
-
-@interface StageController : UIViewController <ReturnToStage, ButtonPressed>
+@interface StageController : UIViewController <ReturnToStage, ButtonPressed, NotifyStageComplete>
 
 @property (assign, nonatomic) id <ProgressToNextStage> delegate;
 

@@ -14,9 +14,14 @@
 -(void)returnToStage;
 @end
 
+@protocol NotifyStageComplete
+-(void)notifyStageComplete;
+@end
+
+
 @interface InteriorController : UIViewController <LeaveInterior, ReturnToInterior, EnterMinigame, ProgressDialogue>
 
-@property (assign, nonatomic) id <ReturnToStage> delegate;
+@property (assign, nonatomic) id <ReturnToStage, NotifyStageComplete> delegate;
 
 - (void)setStageTo:(int)stage andInteriorTo:(int)interior;
 

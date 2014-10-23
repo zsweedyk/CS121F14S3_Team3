@@ -14,7 +14,6 @@
 -(void)initForStage:(int)stage andHouse:(int)house;
 -(BOOL)dialogueFinished;
 -(NSString*)getNextLineOfDialogue;
--(void)setWinDialogue;
 -(void)setWinDialogueForStage:(int)stage;
 
 @end

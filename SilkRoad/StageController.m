@@ -119,6 +119,7 @@
 - (void)notifyStageComplete
 {
     // Let ViewController know the stage has been finished
+  NSLog(@"Stage complete!");
     [self.delegate progressToNextStage];
 }
 
