@@ -102,7 +102,10 @@
 - (void)returnToInterior
 {
   // Dismiss the minigame controller and return to the interior view
+  [_interiorModel setWinDialogueForStage:_currentInterior];
+  [self progressDialogue];
   [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 - (void)leaveInterior
