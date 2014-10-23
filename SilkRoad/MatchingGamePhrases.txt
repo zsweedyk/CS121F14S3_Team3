@@ -1,2 +1,2 @@
-("Ariel", "Eric"), ("Rapunzel", "Flynn"), ("Belle", "Adam"), ("Mulan", "Shang"), ("Cinderella", "Charming")
-("1", "1"), ("2","2"), ("3","3"), ("4","4")
+("Number of characters", ">100"), ("Number of tones", "4"), ("Number of pronouns", "3")
+("Sanskrit","Language of the well-educated"), ("Vedas","Religious text of Hinduism"), ("Panini","Indian grammarian who standardized the language"), ("Prakrit","Any language dialect in India")

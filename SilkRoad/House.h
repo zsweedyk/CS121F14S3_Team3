@@ -15,5 +15,6 @@
 @property CGFloat xCord;
 @property CGFloat yCord;
 @property UIImage* image;
+@property NSInteger tag;
 
 @end
