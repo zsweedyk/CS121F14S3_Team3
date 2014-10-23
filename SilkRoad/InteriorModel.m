@@ -66,4 +66,10 @@
   return _dialogueForCurrentHouse[_currentLine++];
 }
 
+-(void)setWinDialogueForStage:(int)stage
+{
+  NSMutableArray* allStageDialogue = [_allDialogue objectAtIndex:stage];
+  _dialogueForCurrentHouse = [allStageDialogue objectAtIndex:[allStageDialogue count] - 1];
+  _currentLine = 0;
+}
 @end
