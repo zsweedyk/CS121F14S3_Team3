@@ -41,6 +41,7 @@
 }
 
 - (void)showStage {
+  [_menuView removeFromSuperview];
   [self displayStageController];
 }
 
@@ -70,6 +71,7 @@
   UINavigationController *navigationController = [[UINavigationController alloc]
                                                   initWithRootViewController:_stageController];
   [self presentViewController:navigationController animated:YES completion: nil];
+  navigationController.navigationBar.hidden = YES;
 }
 
 @end
