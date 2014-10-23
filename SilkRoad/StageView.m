@@ -11,34 +11,65 @@
 @interface StageView()
 {
     NSMutableArray* _houseButtons;
+    
+    
 }
-
 @end
 
 
 @implementation StageView
 
--(void)initWithBackground:(UIImage*)background
+const CGFloat tempButtonSize = 100;
+
+
+//Creates the view and adds the background
+-(id)initWithFrame:(CGRect)frame background:(UIImage*)background
 {
+    UIImageView* backgroundView = [[UIImageView alloc] initWithImage:background];
+    self = [super initWithFrame:frame];
+    backgroundView.frame = frame;
+    [self addSubview:backgroundView];
+
+    return self;
 }
 
--(void)createHouseWithBackground:(UIImage*)background atXCoord:(int)x andYCoord:(int)y withLabel:(NSString*)label
+// Convert the UIImage to a UIButton, set up target action, and add the button to the array of house buttons
+-(void)createHouseWithImage:(UIImage*)image atXCoord:(CGFloat)x andYCoord:(CGFloat)y withLabel:(NSString*)label
 {
+    
+    CGFloat width = image.size.width;
+    CGFloat height = image.size.height;
+    NSLog(@"Creating a button at coords (%f, %f) with size (%f, %f", x, y, tempButtonSize, tempButtonSize);
+    CGRect buttonFrame = CGRectMake(300, 300, tempButtonSize, tempButtonSize);
+    UIButton* house = [[UIButton alloc] initWithFrame:buttonFrame];
+    [house setBackgroundImage:image forState:UIControlStateNormal];
+    [house setBackgroundColor:[UIColor blueColor]];
+    [house setTitle:label forState:UIControlStateNormal];
+    
+    [house addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:house];
+    [_houseButtons addObject:house];
 }
 
--(void)loadNewStage: (int)stage
-         withHouses: (NSMutableArray*) houses
+
+// Loop over every house and call create house with image
+-(void)loadNewStageWithHouses: (NSMutableArray*) houses
 {
-    //houses is a mutable array containing the labels for the houses
-    //at the current stage. The labels will be read in and used to set
-    //the button titles.
-    NSString* currHouseTitle;
-    UIButton* currHouseButton;
+    House* currHouse;
+    NSLog(@"%d", [houses count]);
     for (int i = 0; i < [houses count]; i++) {
-        currHouseTitle = [houses objectAtIndex:i];
-        currHouseButton = [_houseButtons objectAtIndex:i];
-        [currHouseButton setTitle:currHouseTitle forState:UIControlStateNormal];
+        currHouse = [houses objectAtIndex:i];
+        CGFloat xCord = currHouse.xCord;
+        CGFloat yCord = currHouse.yCord;
+        UIImage* image = currHouse.image;
+        NSString* title = currHouse.label;
+        [self createHouseWithImage:image atXCoord:xCord andYCoord:yCord withLabel:title];
     }
+}
+
+-(void)buttonPressed:(id)button
+{
+    [_delegate buttonPressed:button];
 }
 
 @end
