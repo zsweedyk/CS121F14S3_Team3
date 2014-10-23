@@ -65,12 +65,18 @@
     CGRect stageFrame = CGRectMake(0, 0, frameWidth, frameHeight);
     
     // Stage 0 is hardcoded for now
-    [self initializeHousesForStage:0];
+    [self initializeHousesForStage:_currentStage];
     
     NSLog(@"%d", [_houses count]);
     
-    UIImage* india = [UIImage imageNamed:@"india2"];
-    _stageView = [[StageView alloc] initWithFrame:stageFrame background:india];
+    
+    if (_currentStage == 0) {
+        UIImage* india = [UIImage imageNamed:@"india2"];
+        _stageView = [[StageView alloc] initWithFrame:stageFrame background:india];
+    } else if (_currentStage == 1) {
+        UIImage* china = [UIImage imageNamed:@"china2"];
+        _stageView = [[StageView alloc] initWithFrame:stageFrame background:china];
+    }
     [_stageView loadNewStageWithHouses:_houses];
     
     _stageView.delegate = self;
@@ -108,8 +114,36 @@
         newHouse2.image = house;
         newHouse2.tag = 2;
         [_houses addObject:newHouse2];
+    }
+    
+    if(stage == 1) {
+        House* newHouse = [House alloc];
+        newHouse.visited = NO;
+        newHouse.label = @"Village Elder";
+        newHouse.xCord = 300;
+        newHouse.yCord = 300;
+        UIImage* house = [UIImage imageNamed:@"ChinaHouse_400"];
+        newHouse.image = house;
+        newHouse.tag = 0;
+        [_houses addObject:newHouse];
         
+        House* newHouse1 = [House alloc];
+        newHouse1.visited = NO;
+        newHouse1.label = @"Cobbler";
+        newHouse1.xCord = 500;
+        newHouse1.yCord = 500;
+        newHouse1.image = house;
+        newHouse1.tag = 1;
+        [_houses addObject:newHouse1];
         
+        House* newHouse2 = [House alloc];
+        newHouse2.visited = NO;
+        newHouse2.label = @"Butcher";
+        newHouse2.xCord = 300;
+        newHouse2.yCord = 500;
+        newHouse2.image = house;
+        newHouse2.tag = 2;
+        [_houses addObject:newHouse2];
     }
 }
 
