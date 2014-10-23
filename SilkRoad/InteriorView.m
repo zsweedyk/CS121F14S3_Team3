@@ -110,10 +110,10 @@
 {
   // TODO: Change background color to GREEN for temporary visibility
   if ([backgroundName isEqual:@"default"]) {
-    self.backgroundColor = [UIColor greenColor];
+    [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mohenjodaro.jpg"]]];
   }
   else {
-    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:backgroundName]];
+    [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:backgroundName]]];
   }
 }
 

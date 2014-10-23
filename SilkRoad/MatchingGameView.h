@@ -22,4 +22,5 @@
 
 -(id)initWithFrame:(CGRect)frame leftSidePhrases:(NSMutableArray*)leftSide andRightSidePhrases:(NSMutableArray*)rightSide;
 -(void)matchFound:(BOOL)match;
+
 @end

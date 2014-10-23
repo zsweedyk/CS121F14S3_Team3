@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScalesGameCoin.h"
+
+@protocol ExitMinigame
+-(void) exitMinigame;
+@end
+
+@protocol CheckCoin
+-(void) checkIfCoinFake:(ScalesGameCoin*)coin;
+@end
 
 @interface ScalesGameView : UIView
+
+@property (assign, nonatomic) id <ExitMinigame, CheckCoin> delegate;
+
+-(id)initWithFrame:(CGRect)frame andCoins:coins;
+-(void)foundFakeCoin:(BOOL)found;
 
 @end

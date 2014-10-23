@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScalesGameView.h"
 
-@interface ScalesGameController : UIViewController
+@protocol ReturnToInterior
+-(void)returnToInterior;
+@end
+
+@interface ScalesGameController : UIViewController <ExitMinigame, CheckCoin>
+
+@property (assign, nonatomic) id <ReturnToInterior> delegate;
 
 @end
