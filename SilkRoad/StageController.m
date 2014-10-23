@@ -69,8 +69,8 @@
     
     NSLog(@"%d", [_houses count]);
     
-    UIImage* green = [StageController imageWithColor:[UIColor greenColor]];
-    _stageView = [[StageView alloc] initWithFrame:stageFrame background:green];
+    UIImage* india = [UIImage imageNamed:@"india2"];
+    _stageView = [[StageView alloc] initWithFrame:stageFrame background:india];
     [_stageView loadNewStageWithHouses:_houses];
     
     _stageView.delegate = self;
@@ -86,8 +86,8 @@
         newHouse.label = @"House 1";
         newHouse.xCord = 300;
         newHouse.yCord = 300;
-        UIImage* blue = [StageController imageWithColor:[UIColor blueColor]];
-        newHouse.image = blue;
+        UIImage* house = [UIImage imageNamed:@"IndiaHouse_400"];
+        newHouse.image = house;
         [_houses addObject:newHouse];
     }
 }
