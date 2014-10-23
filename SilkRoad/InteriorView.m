@@ -11,7 +11,7 @@
 
 @implementation InteriorView {
   UIButton *_dialogueBox;
-  UILabel *_characterBox;
+  UIButton *_character;
 }
 
 -(id)initWithFrame:(CGRect)frame
@@ -27,7 +27,7 @@
     [self initDialogueBox];
     
     // Create the character box
-    [self initCharacterBox];
+    [self initCharacter];
   }
   
   return self;
@@ -79,32 +79,32 @@
   [_dialogueBox addTarget:self action:@selector(progressDialogue) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)initCharacterBox
+-(void)initCharacter
 {
   // Get interior frame dimensions
-  CGRect frame = self.frame;
-  CGFloat frameWidth = CGRectGetWidth(frame);
-  CGFloat frameHeight = CGRectGetHeight(frame);
-  
-  // Make character box 40% the height of the frame and 20% the width,
-  //   with padding equal to 5% of the width on either side
-  int characterBoxPadding = frameWidth * 0.05;
-  int characterBoxHeight = frameHeight * 0.40;
-  int characterBoxWidth = frameWidth * 0.20;
-  
-  // The x-offset is equal to the width of the frame, minus the width of the
-  //   character box (including padding)
-  // The y-offset is equal to the height of the interior frame, minus the
-  //   height of the character box
-  int characterBoxXOffset = frameWidth - (characterBoxWidth + characterBoxPadding);
-  int characterBoxYOffset = frameHeight - characterBoxHeight;
-  CGRect characterBoxFrame = CGRectMake(characterBoxXOffset, characterBoxYOffset, characterBoxWidth, characterBoxHeight);
+    // TODO: Change background color to GREEN for temporary visibility
+    //CGRect frame = _characterBox.frame;
+    // Get interior frame dimensions
+    CGRect frame = self.frame;
+    CGFloat frameWidth = CGRectGetWidth(frame);
+    CGFloat frameHeight = CGRectGetHeight(frame);
+    
+    // Make character box 40% the height of the frame and 20% the width,
+    //   with padding equal to 5% of the width on either side
+    int characterBoxPadding = frameWidth * 0.05;
+    int characterBoxHeight = frameHeight * 0.40;
+    int characterBoxWidth = frameWidth * 0.35;
+    
+    // The x-offset is equal to the width of the frame, minus the width of the
+    //   character box (including padding)
+    // The y-offset is equal to the height of the interior frame, minus the
+    //   height of the character box
+    int characterBoxXOffset = (_dialogueBox.frame.origin.x + _dialogueBox.frame.size.width) - characterBoxPadding;
+    int characterBoxYOffset = (_dialogueBox.frame.origin.y + _dialogueBox.frame.size.height) - characterBoxHeight;
+    CGRect characterBoxFrame = CGRectMake(characterBoxXOffset, characterBoxYOffset, characterBoxWidth, characterBoxHeight);
   
   // Add the box to the subview
-  _characterBox = [[UILabel alloc] initWithFrame:characterBoxFrame];
-  
-  // TODO: Change background color to BLUE for temporary visibility
-  [_characterBox setBackgroundColor:[UIColor blueColor]];
+  _character = [[UIButton alloc] initWithFrame:characterBoxFrame];
 
   
   //[self addSubview:_characterBox];
@@ -123,27 +123,7 @@
 
 -(void)setCharacterTo:(NSString*)characterName withImage:(UIImage*)image
 {
-    // TODO: Change background color to GREEN for temporary visibility
-    //CGRect frame = _characterBox.frame;
-    // Get interior frame dimensions
-    CGRect frame = self.frame;
-    CGFloat frameWidth = CGRectGetWidth(frame);
-    CGFloat frameHeight = CGRectGetHeight(frame);
-    
-    // Make character box 40% the height of the frame and 20% the width,
-    //   with padding equal to 5% of the width on either side
-    int characterBoxPadding = frameWidth * 0.05;
-    int characterBoxHeight = frameHeight * 0.40;
-    int characterBoxWidth = frameWidth * 0.35;
-    
-    // The x-offset is equal to the width of the frame, minus the width of the
-    //   character box (including padding)
-    // The y-offset is equal to the height of the interior frame, minus the
-    //   height of the character box
-    int characterBoxXOffset = frameWidth - (characterBoxWidth + characterBoxPadding) - 68;
-    int characterBoxYOffset = _dialogueBox.frame.origin.y - characterBoxHeight;
-    CGRect characterBoxFrame = CGRectMake(characterBoxXOffset, characterBoxYOffset, characterBoxWidth, characterBoxHeight);
-    UIButton* character = [[UIButton alloc] initWithFrame:characterBoxFrame];
+    UIButton* character = [[UIButton alloc] initWithFrame:_character.frame];
     [character setBackgroundImage:image forState:UIControlStateNormal];
     
     [self addSubview:character];

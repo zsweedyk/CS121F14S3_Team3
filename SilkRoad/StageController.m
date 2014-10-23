@@ -87,21 +87,26 @@
 {
     _houses =  [[NSMutableArray alloc] init];
     if(stage == 0) {
+        
         House* newHouse = [House alloc];
         newHouse.visited = NO;
         newHouse.label = @"Village Elder";
-        newHouse.xCord = 300;
-        newHouse.yCord = 300;
+        newHouse.xCord = 200;
+        newHouse.yCord = 750;
         UIImage* house = [UIImage imageNamed:@"IndiaHouse_400"];
         newHouse.image = house;
         newHouse.tag = 0;
         [_houses addObject:newHouse];
+        UIImage *scaledHouse =
+        [UIImage imageWithCGImage:[house CGImage]
+                            scale:(house.scale * 1.5)
+                      orientation:(house.imageOrientation)];
         
         House* newHouse1 = [House alloc];
         newHouse1.visited = NO;
         newHouse1.label = @"Cobbler";
-        newHouse1.xCord = 500;
-        newHouse1.yCord = 500;
+        newHouse1.xCord = 425;
+        newHouse1.yCord = 675;
         newHouse1.image = house;
         newHouse1.tag = 1;
         [_houses addObject:newHouse1];
@@ -109,17 +114,17 @@
         House* newHouse2 = [House alloc];
         newHouse2.visited = NO;
         newHouse2.label = @"Butcher";
-        newHouse2.xCord = 300;
-        newHouse2.yCord = 500;
-        newHouse2.image = house;
+        newHouse2.xCord = 350;
+        newHouse2.yCord = 600;
+        newHouse2.image = scaledHouse;
         newHouse2.tag = 2;
         [_houses addObject:newHouse2];
         
         House* newHouse3 = [House alloc];
         newHouse3.visited = NO;
         newHouse3.label = @"Farmer";
-        newHouse3.xCord = 500;
-        newHouse3.yCord = 300;
+        newHouse3.xCord = 600;
+        newHouse3.yCord = 700;
         newHouse3.image = house;
         newHouse3.tag = 3;
         [_houses addObject:newHouse3];
@@ -130,17 +135,19 @@
         newHouse.visited = NO;
         newHouse.label = @"Village Elder";
         newHouse.xCord = 300;
-        newHouse.yCord = 300;
+        newHouse.yCord = 700;
         UIImage* house = [UIImage imageNamed:@"ChinaHouse400_250"];
         newHouse.image = house;
         newHouse.tag = 0;
         [_houses addObject:newHouse];
         
+        UIImage* bigHouse = [UIImage imageNamed:@"ChinaHouse_600_375"];
+        
         House* newHouse1 = [House alloc];
         newHouse1.visited = NO;
         newHouse1.label = @"Cobbler";
         newHouse1.xCord = 500;
-        newHouse1.yCord = 500;
+        newHouse1.yCord = 550;
         newHouse1.image = house;
         newHouse1.tag = 1;
         [_houses addObject:newHouse1];
@@ -148,18 +155,18 @@
         House* newHouse2 = [House alloc];
         newHouse2.visited = NO;
         newHouse2.label = @"Butcher";
-        newHouse2.xCord = 300;
-        newHouse2.yCord = 500;
-        newHouse2.image = house;
+        newHouse2.xCord = 150;
+        newHouse2.yCord = 800;
+        newHouse2.image = bigHouse;
         newHouse2.tag = 2;
         [_houses addObject:newHouse2];
         
         House* newHouse3 = [House alloc];
         newHouse3.visited = NO;
         newHouse3.label = @"Farmer";
-        newHouse3.xCord = 500;
-        newHouse3.yCord = 300;
-        newHouse3.image = house;
+        newHouse3.xCord = 450;
+        newHouse3.yCord = 750;
+        newHouse3.image = bigHouse;
         newHouse3.tag = 3;
         [_houses addObject:newHouse3];
     }
