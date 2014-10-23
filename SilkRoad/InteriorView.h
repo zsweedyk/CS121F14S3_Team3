@@ -25,7 +25,7 @@
 @property (assign, nonatomic) id <LeaveInterior, EnterMinigame, ProgressDialogue> delegate;
 
 -(void)setInteriorBGTo:(NSString*)backgroundName;
--(void)setCharacterTo:(NSString*)characterName;
+-(void)setCharacterTo:(NSString*)characterName withImage:(UIImage*)image;
 -(void)setDialogueTextTo:(NSString*)dialogueText;
 
 @end

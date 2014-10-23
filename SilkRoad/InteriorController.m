@@ -118,6 +118,28 @@
 
 -(void)progressDialogue
 {
+    if (_currentStage == 0) {
+      if (_currentInterior == 0) {
+        [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndiaMan1"]];
+      } else if (_currentInterior == 1) {
+        [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"IndiaWoman1"]];
+      } else if (_currentInterior == 2) {
+        [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"IndianWoman2"]];
+      } else if (_currentInterior == 3) {
+          [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"IndianMan2"]];
+      }
+    } else if (_currentStage == 1) {
+      if (_currentInterior == 0) {
+        [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"ChineseMan1"]];
+      } else if (_currentInterior == 1) {
+        [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"ChineseWoman1"]];
+      } else if (_currentInterior == 2) {
+        [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"ChineseWoman2"]];
+      } else if (_currentInterior == 3) {
+          [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"ChineseMan2"]];
+      }
+    }
+    
   // Check to see if there are still available dialogue lines to display
   if ([_interiorModel dialogueFinished]) {
     [_interiorView setDialogueTextTo:[_interiorModel getNextLineOfDialogue]];

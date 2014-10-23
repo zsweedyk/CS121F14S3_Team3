@@ -10,4 +10,9 @@
 
 @interface Character : NSObject
 
+@property BOOL visited;
+@property CGFloat xCord;
+@property CGFloat yCord;
+@property UIImage* image;
+
 @end

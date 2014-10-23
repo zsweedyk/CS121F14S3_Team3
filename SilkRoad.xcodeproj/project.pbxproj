@@ -19,6 +19,7 @@
 		2692B36F19E84DF100EE08F8 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36E19E84DF100EE08F8 /* MapView.m */; };
 		2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37119E84E1300EE08F8 /* ProgressView.m */; };
 		2692B37819E995E300EE08F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37719E995E300EE08F8 /* ViewController.m */; };
+		51D9447A19F8CC6E00335978 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D9447919F8CC6E00335978 /* Character.m */; };
 		7FF6C79519F6F58B00CA4D19 /* House.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF6C79419F6F58B00CA4D19 /* House.m */; };
 		937AE89F19E73A4500CEB0E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937AE89E19E73A4500CEB0E7 /* Foundation.framework */; };
 		937AE8A119E73A4500CEB0E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937AE8A019E73A4500CEB0E7 /* CoreGraphics.framework */; };
@@ -38,7 +39,6 @@
 		937AE8E419E9A8C300CEB0E7 /* MatchingGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */; };
 		937AE8E619F0505B00CEB0E7 /* Dialogue.txt in Resources */ = {isa = PBXBuildFile; fileRef = 937AE8E519F0505B00CEB0E7 /* Dialogue.txt */; };
 		937AE8E919F2FB6E00CEB0E7 /* RoadGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8E819F2FB6E00CEB0E7 /* RoadGameModel.m */; };
-		937AE8EF19F3000300CEB0E7 /* RoadGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8EE19F3000300CEB0E7 /* RoadGameController.m */; };
 		937AE8F219F3002600CEB0E7 /* RoadGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8F119F3002600CEB0E7 /* RoadGameView.m */; };
 		937AE8F419F47A3B00CEB0E7 /* RoadPuzzle1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 937AE8F319F47A3B00CEB0E7 /* RoadPuzzle1.txt */; };
 /* End PBXBuildFile section */
@@ -76,6 +76,8 @@
 		2692B37119E84E1300EE08F8 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		2692B37619E995E300EE08F8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2692B37719E995E300EE08F8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		51D9447819F8CC6E00335978 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		51D9447919F8CC6E00335978 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
 		7FF6C79319F6F58B00CA4D19 /* House.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = House.h; sourceTree = "<group>"; };
 		7FF6C79419F6F58B00CA4D19 /* House.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = House.m; sourceTree = "<group>"; };
 		937AE89B19E73A4500CEB0E7 /* SilkRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SilkRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				937AE8AD19E73A4500CEB0E7 /* AppDelegate.h */,
+				51D9447819F8CC6E00335978 /* Character.h */,
+				51D9447919F8CC6E00335978 /* Character.m */,
 				937AE8AE19E73A4500CEB0E7 /* AppDelegate.m */,
 				937AE8B019E73A4500CEB0E7 /* Main.storyboard */,
 				937AE8B619E73A4500CEB0E7 /* Images.xcassets */,
@@ -200,12 +204,6 @@
 				2692B36B19E84DE200EE08F8 /* InteriorView.m */,
 				261E657E19F89ADB00D12027 /* ScalesGameCoin.h */,
 				261E657F19F89ADB00D12027 /* ScalesGameCoin.m */,
-				26FF36AE19F5C6EA00DA76C4 /* ScalesGameModel.h */,
-				26FF36AF19F5C6EA00DA76C4 /* ScalesGameModel.m */,
-				26FF36AB19F5C6D800DA76C4 /* ScalesGameView.h */,
-				26FF36AC19F5C6D800DA76C4 /* ScalesGameView.m */,
-				26FF36A819F5C6C000DA76C4 /* ScalesGameController.h */,
-				26FF36A919F5C6C000DA76C4 /* ScalesGameController.m */,
 				2692B36D19E84DF100EE08F8 /* MapView.h */,
 				2692B36E19E84DF100EE08F8 /* MapView.m */,
 				2692B37019E84E1300EE08F8 /* ProgressView.h */,
@@ -368,13 +366,11 @@
 				2692B36619E84DAE00EE08F8 /* InteriorModel.m in Sources */,
 				2692B37819E995E300EE08F8 /* ViewController.m in Sources */,
 				937AE8E919F2FB6E00CEB0E7 /* RoadGameModel.m in Sources */,
+				51D9447A19F8CC6E00335978 /* Character.m in Sources */,
 				937AE8E419E9A8C300CEB0E7 /* MatchingGameView.m in Sources */,
-				26FF36AA19F5C6C000DA76C4 /* ScalesGameController.m in Sources */,
 				937AE8E319E9A8C300CEB0E7 /* MatchingGameModel.m in Sources */,
 				937AE8F219F3002600CEB0E7 /* RoadGameView.m in Sources */,
 				937AE8AF19E73A4500CEB0E7 /* AppDelegate.m in Sources */,
-				26FF36AD19F5C6D800DA76C4 /* ScalesGameView.m in Sources */,
-				26FF36B019F5C6EA00DA76C4 /* ScalesGameModel.m in Sources */,
 				261E658019F89ADB00D12027 /* ScalesGameCoin.m in Sources */,
 				937AE8AB19E73A4500CEB0E7 /* main.m in Sources */,
 				2692B36919E84DD000EE08F8 /* InteriorController.m in Sources */,
