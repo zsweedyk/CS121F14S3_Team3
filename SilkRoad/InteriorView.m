@@ -140,10 +140,9 @@
     //   character box (including padding)
     // The y-offset is equal to the height of the interior frame, minus the
     //   height of the character box
-    int characterBoxXOffset = frameWidth - (characterBoxWidth + characterBoxPadding);
+    int characterBoxXOffset = frameWidth - (characterBoxWidth + characterBoxPadding) - 68;
     int characterBoxYOffset = _dialogueBox.frame.origin.y - characterBoxHeight;
     CGRect characterBoxFrame = CGRectMake(characterBoxXOffset, characterBoxYOffset, characterBoxWidth, characterBoxHeight);
-    NSLog(@"Creating a Character at coords (%d, %d) with size (%f, %f)", characterBoxXOffset, characterBoxYOffset, frameHeight, frameWidth);
     UIButton* character = [[UIButton alloc] initWithFrame:characterBoxFrame];
     [character setBackgroundImage:image forState:UIControlStateNormal];
     
