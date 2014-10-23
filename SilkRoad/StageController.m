@@ -114,6 +114,15 @@
         newHouse2.image = house;
         newHouse2.tag = 2;
         [_houses addObject:newHouse2];
+        
+        House* newHouse3 = [House alloc];
+        newHouse3.visited = NO;
+        newHouse3.label = @"Farmer";
+        newHouse3.xCord = 500;
+        newHouse3.yCord = 300;
+        newHouse3.image = house;
+        newHouse3.tag = 3;
+        [_houses addObject:newHouse3];
     }
     
     if(stage == 1) {
@@ -144,6 +153,15 @@
         newHouse2.image = house;
         newHouse2.tag = 2;
         [_houses addObject:newHouse2];
+        
+        House* newHouse3 = [House alloc];
+        newHouse3.visited = NO;
+        newHouse3.label = @"Farmer";
+        newHouse3.xCord = 500;
+        newHouse3.yCord = 300;
+        newHouse3.image = house;
+        newHouse3.tag = 3;
+        [_houses addObject:newHouse3];
     }
 }
 
