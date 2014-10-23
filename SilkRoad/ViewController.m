@@ -68,10 +68,8 @@
   [self dismissViewControllerAnimated:YES completion:nil];
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:++_currentStage];
-  UINavigationController *navigationController = [[UINavigationController alloc]
-                                                  initWithRootViewController:_stageController];
-  [self presentViewController:navigationController animated:YES completion: nil];
-  navigationController.navigationBar.hidden = YES;
+  
+  [self displayStageController];
 }
 
 @end
