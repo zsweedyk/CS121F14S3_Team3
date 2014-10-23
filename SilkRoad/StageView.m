@@ -43,7 +43,6 @@ const CGFloat tempButtonSize = 100;
     CGRect buttonFrame = CGRectMake(x, y, tempButtonSize, tempButtonSize);
     UIButton* house = [[UIButton alloc] initWithFrame:buttonFrame];
     [house setBackgroundImage:image forState:UIControlStateNormal];
-    [house setBackgroundColor:[UIColor blueColor]];
     [house setTitle:label forState:UIControlStateNormal];
     
     [house addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
