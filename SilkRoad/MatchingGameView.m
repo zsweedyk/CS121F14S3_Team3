@@ -28,7 +28,8 @@
   self = [super initWithFrame:frame];
   
   if (self) {
-
+    // Game begins as not won
+    
     // Set the minigame background
     [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"stonebg"]]];
     
@@ -248,7 +249,7 @@
 - (void)wonGame
 {
   // Tell game controller to leave the view
-  [self.delegate exitMinigame];
+  [self.delegate exitMinigame:YES];
 }
 
 - (void)exitGame
@@ -269,7 +270,8 @@
   }
   
   // Tell game controller to leave the view
-  [self.delegate exitMinigame];
+  [self.delegate exitMinigame:NO];
 }
+
 
 @end

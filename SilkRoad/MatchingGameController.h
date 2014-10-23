@@ -18,5 +18,6 @@
 @property (assign, nonatomic) id <ReturnToInterior> delegate;
 
 - (void)setLevelTo:(int)level;
+- (BOOL)hasBeenWon;
 
 @end

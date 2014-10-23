@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol ExitMinigame
--(void) exitMinigame;
+-(void) exitMinigame:(BOOL)won;
 @end
 
 @protocol CheckForMatch

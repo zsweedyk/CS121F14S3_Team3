@@ -13,6 +13,7 @@
 @interface MatchingGameController ()
 {
   int _currentLevel;
+  BOOL _won;
   
   MatchingGameModel* _gameModel;
   MatchingGameView* _gameView;
@@ -53,6 +54,7 @@
     // Initialize gameModel
     _gameModel = [[MatchingGameModel alloc] init];
 //    [_gameModel initializeGameForLevel:_currentLevel];
+    _won = NO;
   }
   
   return self;
@@ -74,12 +76,17 @@
   }
 }
 
-- (void)exitMinigame
+- (void)exitMinigame:(BOOL)won
 {
   // Tell InteriorController that the interaction in the minigame is done
+  _won = won;
   [self.delegate returnToInterior];
 }
 
+- (BOOL)hasBeenWon
+{
+  return _won;
+}
 
 - (void)didReceiveMemoryWarning
 {
