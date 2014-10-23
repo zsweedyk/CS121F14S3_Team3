@@ -41,8 +41,6 @@
   // Initialize the minigame controllers
   _matchingGameController = [[MatchingGameController alloc] init];
   [_matchingGameController setLevelTo:_currentStage];
-  //_roadGameController = [[RoadGameController alloc] init];
-  
   
   // Initialize the InteriorView
   [self initInteriorView];
@@ -85,10 +83,14 @@
       minigameViewController = _matchingGameController;
       break;
     case 1:
-      //_roadGameController.delegate = self;
-      //minigameViewController = _roadGameController;
+      _matchingGameController.delegate = self;
+      minigameViewController = _matchingGameController;
+      [_matchingGameController setLevelTo:_currentStage];
       break;
     default:
+      _matchingGameController.delegate = self;
+      minigameViewController = _matchingGameController;
+      [_matchingGameController setLevelTo:_currentStage];
       break;
   }
 
