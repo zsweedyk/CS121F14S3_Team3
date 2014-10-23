@@ -105,7 +105,7 @@
 {
   // Dismiss the minigame controller and return to the interior view
   if ([_matchingGameController hasBeenWon]) {
-    [_interiorModel setWinDialogueForStage:_currentInterior];
+    [_interiorModel setWinDialogueForStage:_currentStage];
     [self progressDialogue];
   }
   [self dismissViewControllerAnimated:YES completion:nil];
