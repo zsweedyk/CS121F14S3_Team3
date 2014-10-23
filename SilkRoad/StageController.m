@@ -122,7 +122,7 @@
         newHouse.label = @"Village Elder";
         newHouse.xCord = 300;
         newHouse.yCord = 300;
-        UIImage* house = [UIImage imageNamed:@"ChinaHouse_400"];
+        UIImage* house = [UIImage imageNamed:@"ChinaHouse400_250"];
         newHouse.image = house;
         newHouse.tag = 0;
         [_houses addObject:newHouse];
@@ -175,15 +175,7 @@
 {
     // Let ViewController know the stage has been finished
   NSLog(@"Stage complete!");
-    [self.delegate progressToNextStage];
-}
-
-- (void)miniGameCompleted
-{
-}
-// When house is clicked, display interior view
-- (void)enterHouse:(int)houseNumber
-{
+  [self.delegate progressToNextStage];
 }
 
 - (void)buttonPressed:(id)button
