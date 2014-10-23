@@ -84,8 +84,8 @@
         House* newHouse = [House alloc];
         newHouse.visited = NO;
         newHouse.label = @"House 1";
-        newHouse.xCord = 50;
-        newHouse.yCord = 50;
+        newHouse.xCord = 300;
+        newHouse.yCord = 300;
         UIImage* blue = [StageController imageWithColor:[UIColor blueColor]];
         newHouse.image = blue;
         [_houses addObject:newHouse];

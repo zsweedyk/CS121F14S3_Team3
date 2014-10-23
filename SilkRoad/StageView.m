@@ -40,7 +40,7 @@ const CGFloat tempButtonSize = 100;
     CGFloat width = image.size.width;
     CGFloat height = image.size.height;
     NSLog(@"Creating a button at coords (%f, %f) with size (%f, %f", x, y, tempButtonSize, tempButtonSize);
-    CGRect buttonFrame = CGRectMake(300, 300, tempButtonSize, tempButtonSize);
+    CGRect buttonFrame = CGRectMake(x, y, tempButtonSize, tempButtonSize);
     UIButton* house = [[UIButton alloc] initWithFrame:buttonFrame];
     [house setBackgroundImage:image forState:UIControlStateNormal];
     [house setBackgroundColor:[UIColor blueColor]];
