@@ -24,7 +24,7 @@
 
 - (void)setLevelTo:(int)level
 {
-  NSLog(@"Set the game controller level to %d", level);
+  NSLog(@"Set the matching level to %d", level);
   _currentLevel = level;
   
   // Now initialize the game for that level

@@ -40,7 +40,6 @@
 
 -(void)initializeGameForLevel:(int)level
 {
-  NSLog(@"K, let's do it... the level is %d!", level);
   // Generate the phrases for this level
   [self generatePhrasesForLevel:level];
   
@@ -51,17 +50,9 @@
 
 -(void)generatePhrasesForLevel:(int)level
 {
-  NSLog(@"Getting the phrase string for level %d!", level);
-  NSLog(@"Here's the array:");
-  
-  for (int i = 0; i < [_phrases count]; i++) {
-    NSLog(@"Index %d: %@", i, [_phrases objectAtIndex:i]);
-  }
-  
   NSString *phraseString = [_phrases objectAtIndex:level];
-  NSLog(@"K, got it!");
   
-  // Iinitialize all arrays
+  // Initialize all arrays
   _leftSidePhrases = [[NSMutableArray alloc] init];
   _rightSidePhrases = [[NSMutableArray alloc] init];
   _matches = [[NSMutableDictionary alloc] init];

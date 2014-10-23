@@ -7,31 +7,43 @@
 //
 
 #import "ScalesGameController.h"
+#import "ScalesGameModel.h"
 
 @interface ScalesGameController ()
+{
+  ScalesGameView *_gameView;
+  ScalesGameModel *_gameModel;
+}
 
 @end
 
 @implementation ScalesGameController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (id)init
+{
+  self = [super init];
+  
+  if (self) {
+    _gameModel = [[ScalesGameModel alloc] init];
+    _gameView = [[ScalesGameView alloc] initWithFrame:self.view.frame];
+  }
+  
+  return self;
+}
+
+- (void)checkIfCoinFake:(ScalesGameCoin*)coin {
+  BOOL fakeCoin = [_gameModel checkIfCoinFake:coin];
+  [_gameView foundFakeCoin:fakeCoin];
+}
+
+- (void)exitMinigame {
+  // Tell InteriorController that the interaction in the minigame is done
+  [self.delegate returnToInterior];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

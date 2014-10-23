@@ -30,7 +30,7 @@
   if (self) {
 
     // Set the minigame background
-    [self setBackgroundColor:[UIColor whiteColor]];
+    [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"stonebg"]]];
     
     // Find the number of terms that are going to be matched
     // Assume that the number of phrases for each side is equal
@@ -80,8 +80,7 @@
       CGRect buttonFrame = CGRectMake(xOffsetForLeftPhrases, yOffset, phraseWidth, phraseHeight);
       UIButton* phraseButton = [[UIButton alloc] initWithFrame:buttonFrame];
       [phraseButton setTitle:[leftSide objectAtIndex:i] forState:UIControlStateNormal];
-      // TODO: set background color to blue for visibility
-      [phraseButton setBackgroundColor:[UIColor blueColor]];
+      [phraseButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
       phraseButton.tag = (1 * 10) + (i + 1);
       [phraseButton addTarget:self action:@selector(phraseSelected:) forControlEvents:UIControlEventTouchUpInside];
       [self addSubview:phraseButton];
@@ -93,8 +92,7 @@
       buttonFrame = CGRectMake(xOffsetForRightPhrases, yOffset, phraseWidth, phraseHeight);
       phraseButton = [[UIButton alloc] initWithFrame:buttonFrame];
       [phraseButton setTitle:[rightSide objectAtIndex:i] forState:UIControlStateNormal];
-      // TODO: set background color to blue for visibility
-      [phraseButton setBackgroundColor:[UIColor blueColor]];
+      [phraseButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
       phraseButton.tag = (2 * 10) + (i + 1);
       [phraseButton addTarget:self action:@selector(phraseSelected:) forControlEvents:UIControlEventTouchUpInside];
       [self addSubview:phraseButton];
@@ -128,14 +126,15 @@
   
   CGFloat verticalOffset = frameHeight - (returnFrameHeight + padding);
   CGFloat horizontalOffset = frameWidth - (returnFrameWidth + padding);
-  
+  NSLog(@"Return: width x height: %f x %f", returnFrameWidth, returnFrameHeight);
+
   // Make the frame for the return button
   CGRect returnFrame = CGRectMake(horizontalOffset, verticalOffset, returnFrameWidth, returnFrameHeight);
   // Make the button and add it to the view
   UIButton* returnButton = [[UIButton alloc] initWithFrame:returnFrame];
   [returnButton setTitle:@"Return to Hut" forState:UIControlStateNormal];
   // TODO: set background color to blue for visibility
-  [returnButton setBackgroundColor:[UIColor blueColor]];
+  [returnButton setBackgroundImage:[UIImage imageNamed:@"geodered"] forState:UIControlStateNormal];
   [returnButton addTarget:self action:@selector(exitGame) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:returnButton];
 }
@@ -158,7 +157,7 @@
     }
     else if (_leftSelected != 0) {
       oldButton = [_leftSidePhraseButtons objectAtIndex:_leftSelected - 1];
-      [oldButton setBackgroundColor:[UIColor blueColor]];
+      [oldButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
     }
     
     if (_leftSelected == phraseSelected) {
@@ -177,7 +176,7 @@
     }
     else if (_rightSelected != 0) {
       oldButton = [_rightSidePhraseButtons objectAtIndex:_rightSelected - 1];
-      [oldButton setBackgroundColor:[UIColor blueColor]];
+      [oldButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
     }
     
     if (_rightSelected == phraseSelected) {
@@ -193,7 +192,7 @@
     return;
   }
   else {
-   [newButton setBackgroundColor:[UIColor greenColor]];
+    [newButton setBackgroundImage:[UIImage imageNamed:@"geodeselected"] forState:UIControlStateNormal];
   }
   
   // If both sides have been selected, then check to see if the match is correct
@@ -227,13 +226,13 @@
     [_leftMatched replaceObjectAtIndex:_leftSelected - 1 withObject:[NSNumber numberWithInt:1]];
     [_rightMatched replaceObjectAtIndex:_rightSelected - 1 withObject:[NSNumber numberWithInt:1]];
     // Change the background color to matched
-    [leftButton setBackgroundColor:[UIColor grayColor]];
-    [rightButton setBackgroundColor:[UIColor grayColor]];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"geodegrey"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"geodegrey"] forState:UIControlStateNormal];
   }
   else {
     // Reset the background color to original
-    [leftButton setBackgroundColor:[UIColor blueColor]];
-    [rightButton setBackgroundColor:[UIColor blueColor]];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
   }
   
   _leftSelected = 0;
@@ -259,13 +258,13 @@
   
   if (_leftSelected != 0) {
     oldButton = [_leftSidePhraseButtons objectAtIndex:_leftSelected - 1];
-    [oldButton setBackgroundColor:[UIColor blueColor]];
+    [oldButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
     _leftSelected = 0;
   }
   
   if (_rightSelected != 0) {
     oldButton = [_rightSidePhraseButtons objectAtIndex:_rightSelected - 1];
-    [oldButton setBackgroundColor:[UIColor blueColor]];
+    [oldButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
     _rightSelected = 0;
   }
   

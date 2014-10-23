@@ -7,7 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ScalesGameCoin.h"
 
 @interface ScalesGameModel : NSObject
+
+-(void)newGame;
+
+-(NSMutableArray*)getCoinsInLeftScale;
+-(NSMutableArray*)getCoinsInRightScale;
+-(NSMutableArray*)getCoinsInTray;
+
+-(void)moveToLeftScale:(ScalesGameCoin*)coin;
+-(void)removeFromLeftScale:(ScalesGameCoin*)coin;
+-(void)moveToRightScale:(ScalesGameCoin*)coin;
+-(void)removeFromRightScale:(ScalesGameCoin*)coin;
+
+-(BOOL)checkIfCoinFake:(ScalesGameCoin*)coin;
 
 @end
