@@ -119,9 +119,9 @@
   CGFloat frameWidth = CGRectGetWidth(frame);
   CGFloat frameHeight = CGRectGetHeight(frame);
   
-  // The return button will be 10% of the screen height and 15% of the width, with
+  // The return button will be 10% of the screen height and 25% of the width, with
   //   padding equal to 10% of button width all around
-  CGFloat returnFrameWidth = frameWidth * 0.15;
+  CGFloat returnFrameWidth = frameWidth * 0.25;
   CGFloat returnFrameHeight = frameHeight * 0.10;
   CGFloat padding = returnFrameWidth * 0.10;
   
@@ -133,7 +133,7 @@
   CGRect returnFrame = CGRectMake(horizontalOffset, verticalOffset, returnFrameWidth, returnFrameHeight);
   // Make the button and add it to the view
   UIButton* returnButton = [[UIButton alloc] initWithFrame:returnFrame];
-  [returnButton setTitle:@"Return to Hut" forState:UIControlStateNormal];
+  [returnButton setTitle:@"Return to Village" forState:UIControlStateNormal];
   // TODO: set background color to blue for visibility
   [returnButton setBackgroundImage:[UIImage imageNamed:@"geodered"] forState:UIControlStateNormal];
   [returnButton addTarget:self action:@selector(exitGame) forControlEvents:UIControlEventTouchUpInside];
