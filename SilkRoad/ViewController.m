@@ -13,6 +13,7 @@
 @interface ViewController () {
   int _currentStage;
   
+  MainMenuView* _menuView;
   MapView* _mapView;
   ProgressView* _progressView;
   StageController* _stageController;
@@ -29,17 +30,18 @@
   // TODO: Currently hardcoding the current stage to 0
   _currentStage = 0;
   
-  // Initialize the StageController
+  // Initialize the controllers
+  _menuView = [[MainMenuView alloc] initWithFrame:self.view.frame];
+  _menuView.delegate = self;
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:_currentStage];
+  
+  // Show Main Menu
+  [self.view addSubview:_menuView];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-  [super viewDidAppear:YES];
-  [super viewDidAppear:NO];
-    
-  // TODO: Display the StageView
+- (void)showStage {
+  [_menuView removeFromSuperview];
   [self displayStageController];
 }
 
@@ -57,8 +59,8 @@
   UINavigationController *navigationController = [[UINavigationController alloc]
                                                   initWithRootViewController:_stageController];
   [self presentViewController:navigationController animated:YES completion: nil];
+  navigationController.navigationBar.hidden = YES;
 }
-
 
 
 // Initialize new stageController, set this to be the current stage
@@ -66,9 +68,8 @@
   [self dismissViewControllerAnimated:YES completion:nil];
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:++_currentStage];
-  UINavigationController *navigationController = [[UINavigationController alloc]
-                                                  initWithRootViewController:_stageController];
-  [self presentViewController:navigationController animated:YES completion: nil];
+  
+  [self displayStageController];
 }
 
 @end

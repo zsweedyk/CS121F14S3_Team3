@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		261E658019F89ADB00D12027 /* ScalesGameCoin.m in Sources */ = {isa = PBXBuildFile; fileRef = 261E657F19F89ADB00D12027 /* ScalesGameCoin.m */; };
+		261E658319F978B200D12027 /* MainMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 261E658219F978B200D12027 /* MainMenuView.m */; };
 		2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2628DEF119EF2AB9003487ED /* TemplateIcon2x.png */; };
 		2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2628DEF519EF2DD8003487ED /* MatchingGamePhrases.txt */; };
 		2692B35D19E84D3200EE08F8 /* StageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35C19E84D3200EE08F8 /* StageController.m */; };
@@ -56,6 +57,8 @@
 /* Begin PBXFileReference section */
 		261E657E19F89ADB00D12027 /* ScalesGameCoin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScalesGameCoin.h; sourceTree = "<group>"; };
 		261E657F19F89ADB00D12027 /* ScalesGameCoin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalesGameCoin.m; sourceTree = "<group>"; };
+		261E658119F978B200D12027 /* MainMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuView.h; sourceTree = "<group>"; };
+		261E658219F978B200D12027 /* MainMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuView.m; sourceTree = "<group>"; };
 		2628DEF119EF2AB9003487ED /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
 		2628DEF519EF2DD8003487ED /* MatchingGamePhrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MatchingGamePhrases.txt; sourceTree = "<group>"; };
 		2692B35B19E84D3200EE08F8 /* StageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageController.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				2692B35F19E84D4700EE08F8 /* StageView.m */,
 				2692B36119E84D8200EE08F8 /* StageModel.h */,
 				2692B36219E84D8200EE08F8 /* StageModel.m */,
+				261E658119F978B200D12027 /* MainMenuView.h */,
+				261E658219F978B200D12027 /* MainMenuView.m */,
 				2692B36419E84DAE00EE08F8 /* InteriorModel.h */,
 				2692B36519E84DAE00EE08F8 /* InteriorModel.m */,
 				2692B36719E84DCF00EE08F8 /* InteriorController.h */,
@@ -367,6 +372,7 @@
 				2692B37819E995E300EE08F8 /* ViewController.m in Sources */,
 				937AE8E919F2FB6E00CEB0E7 /* RoadGameModel.m in Sources */,
 				51D9447A19F8CC6E00335978 /* Character.m in Sources */,
+				261E658319F978B200D12027 /* MainMenuView.m in Sources */,
 				937AE8E419E9A8C300CEB0E7 /* MatchingGameView.m in Sources */,
 				937AE8E319E9A8C300CEB0E7 /* MatchingGameModel.m in Sources */,
 				937AE8F219F3002600CEB0E7 /* RoadGameView.m in Sources */,

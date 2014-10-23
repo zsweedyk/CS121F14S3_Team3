@@ -80,6 +80,10 @@
       //    in the array
       CGRect buttonFrame = CGRectMake(xOffsetForLeftPhrases, yOffset, phraseWidth, phraseHeight);
       UIButton* phraseButton = [[UIButton alloc] initWithFrame:buttonFrame];
+      [phraseButton.titleLabel setAdjustsFontSizeToFitWidth:NO];
+      [phraseButton.titleLabel setNumberOfLines:0];
+      // Add padding around text
+      phraseButton.contentEdgeInsets= UIEdgeInsetsMake(30, 30, 30, 30);
       [phraseButton setTitle:[leftSide objectAtIndex:i] forState:UIControlStateNormal];
       [phraseButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
       phraseButton.tag = (1 * 10) + (i + 1);
@@ -92,6 +96,10 @@
       //    in the array
       buttonFrame = CGRectMake(xOffsetForRightPhrases, yOffset, phraseWidth, phraseHeight);
       phraseButton = [[UIButton alloc] initWithFrame:buttonFrame];
+      [phraseButton.titleLabel setAdjustsFontSizeToFitWidth:NO];
+      [phraseButton.titleLabel setNumberOfLines:0];
+      // Add padding around text
+      phraseButton.contentEdgeInsets= UIEdgeInsetsMake(30, 30, 30, 30);
       [phraseButton setTitle:[rightSide objectAtIndex:i] forState:UIControlStateNormal];
       [phraseButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
       phraseButton.tag = (2 * 10) + (i + 1);

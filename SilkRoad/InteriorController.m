@@ -103,13 +103,19 @@
 
 - (void)returnToInterior
 {
+  BOOL winning = [_matchingGameController hasBeenWon];
   // Dismiss the minigame controller and return to the interior view
-  if ([_matchingGameController hasBeenWon]) {
-    [_interiorModel setWinDialogueForStage:_currentInterior];
+  if (winning) {
+    [_interiorModel setWinDialogueForStage:_currentStage];
     [self progressDialogue];
   }
-  [self dismissViewControllerAnimated:YES completion:nil];
-
+  // When animated, causes timing issue and does not properly return
+  // to stage if minigame has not been won
+  [self dismissViewControllerAnimated:NO completion:nil];
+  
+  if (!winning) {
+    [self.delegate returnToStage];
+  }
 }
 
 - (void)leaveInterior
@@ -121,6 +127,7 @@
 -(void)progressDialogue
 {
     if (_currentStage == 0) {
+      [_interiorView setInteriorBGTo:@"mohenjodaro.jpg"];
       if (_currentInterior == 0) {
         [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndiaMan1"]];
       } else if (_currentInterior == 1) {
@@ -131,6 +138,7 @@
           [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"IndianMan2"]];
       }
     } else if (_currentStage == 1) {
+      [_interiorView setInteriorBGTo:@"chinabg"];
       if (_currentInterior == 0) {
         [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"ChineseMan1"]];
       } else if (_currentInterior == 1) {

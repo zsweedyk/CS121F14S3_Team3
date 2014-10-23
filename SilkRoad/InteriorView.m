@@ -105,14 +105,10 @@
   
   // Add the box to the subview
   _character = [[UIButton alloc] initWithFrame:characterBoxFrame];
-
-  
-  //[self addSubview:_characterBox];
 }
 
 -(void)setInteriorBGTo:(NSString*)backgroundName
 {
-  // TODO: Change background color to GREEN for temporary visibility
   if ([backgroundName isEqual:@"default"]) {
     [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mohenjodaro.jpg"]]];
   }
