@@ -30,6 +30,8 @@
 {
   _currentStage = stage;
   _currentInterior = interior;
+  
+  [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
 }
 
 - (void)viewDidLoad
@@ -115,8 +117,12 @@
   if ([_interiorModel dialogueFinished]) {
     [_interiorView setDialogueTextTo:[_interiorModel getNextLineOfDialogue]];
   } else {
-    // TODO not all houses should enter minigames, more logic here, probably
-    [self enterMinigame];
+    // The first house always contains the minigame
+    if (_currentInterior == 0) {
+      [self enterMinigame];
+    } else {
+      [self leaveInterior];
+    }
   }
 }
 
