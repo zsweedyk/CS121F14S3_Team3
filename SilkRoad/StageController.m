@@ -83,12 +83,20 @@
     if(stage == 0) {
         House* newHouse = [House alloc];
         newHouse.visited = NO;
-        newHouse.label = @"House 1";
+        newHouse.label = @"Village Elder";
         newHouse.xCord = 300;
         newHouse.yCord = 300;
         UIImage* house = [UIImage imageNamed:@"IndiaHouse_400"];
         newHouse.image = house;
         [_houses addObject:newHouse];
+        
+        House* nnewHouse = [House alloc];
+        nnewHouse.visited = NO;
+        nnewHouse.label = @"Cobbler";
+        nnewHouse.xCord = 500;
+        nnewHouse.yCord = 500;
+        nnewHouse.image = house;
+        [_houses addObject:nnewHouse];
     }
 }
 
@@ -136,8 +144,13 @@
     _interiorController = [[InteriorController alloc] init];
     // Configure InteriorController to report any changes to ViewController
     _interiorController.delegate = self;
+    UIButton* ourButton = (UIButton*)button;
+    if ([ourButton.titleLabel  isEqual:@"Village Elder"]) {
+        [self displayInteriorControllerForInterior:0];
+    } else {
+        [self displayInteriorControllerForInterior:1];
+    }
     
-    [self displayInteriorControllerForInterior:0];
 }
 
 
