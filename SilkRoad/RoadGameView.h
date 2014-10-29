@@ -12,9 +12,13 @@
 -(BOOL)checkConnectionValidBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
 @end
 
+@protocol CreateConnection
+-(NSInteger)createConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
+@end
+
 @interface RoadGameView : UIView
 
-@property (assign, nonatomic) id <CheckConnectionValid> delegate;
+@property (assign, nonatomic) id <CheckConnectionValid, CreateConnection> delegate;
 
 -(void)setNodeValueAtRow:(int)row AndColumn:(int)col toValue:(int) value;
 

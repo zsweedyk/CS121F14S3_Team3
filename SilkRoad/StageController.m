@@ -92,7 +92,7 @@
         newHouse.visited = NO;
         newHouse.label = @"Village Elder";
         newHouse.xCord = 200;
-        newHouse.yCord = 750;
+        newHouse.yCord = 350;
         UIImage* house = [UIImage imageNamed:@"IndiaHouse_400"];
         newHouse.image = house;
         newHouse.tag = 0;

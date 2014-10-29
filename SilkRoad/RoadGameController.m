@@ -59,6 +59,26 @@
 
 -(BOOL)checkConnectionValidBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {
-  return YES;
+  return [_gameModel connectionIsValidForRow:row1 Col:col1 AndRow:row2 Col:col2];
+          
+}
+
+-(NSInteger)createConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+{
+  NSInteger numConnectionsAfterUpdate = [_gameModel addConnectionBetweenRow:row1 Col:col1 AndRow:row2 Col:col2];
+  
+  int newNumConnectionsForNode1, newNumConnectionsForNode2;
+  
+  if (numConnectionsAfterUpdate != 0) {
+    newNumConnectionsForNode1 = [_gameModel addConnectionToNodeAtRow:row1 Col:col1];
+    newNumConnectionsForNode2 = [_gameModel addConnectionToNodeAtRow:row2 Col:col2];
+  } else {
+    newNumConnectionsForNode1 = [_gameModel resetNodeAtRow:row1 Col:col1];
+    newNumConnectionsForNode2 = [_gameModel resetNodeAtRow:row2 Col:col2];
+  }
+  
+  [_gameView setNodeValueAtRow:row1 AndColumn:col1 toValue:newNumConnectionsForNode1];
+  [_gameView setNodeValueAtRow:row2 AndColumn:col2 toValue:newNumConnectionsForNode2];
+  return numConnectionsAfterUpdate;
 }
 @end

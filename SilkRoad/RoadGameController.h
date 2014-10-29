@@ -13,7 +13,7 @@
 -(void)returnToInterior;
 @end
 
-@interface RoadGameController : UIViewController <ReturnToInterior, CheckConnectionValid>
+@interface RoadGameController : UIViewController <ReturnToInterior, CheckConnectionValid, CreateConnection>
 
 @property (assign, nonatomic) id <ReturnToInterior> delegate;
 

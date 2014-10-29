@@ -20,7 +20,7 @@
   
   // Available minigames should have their controllers included here
   MatchingGameController* _matchingGameController;
-  //RoadGameController* _roadGameController;
+  RoadGameController* _roadGameController;
 }
 @end
 
@@ -41,6 +41,9 @@
   // Initialize the minigame controllers
   _matchingGameController = [[MatchingGameController alloc] init];
   [_matchingGameController setLevelTo:_currentStage];
+  
+  _roadGameController = [[RoadGameController alloc] init];
+
   
   // Initialize the InteriorView
   [self initInteriorView];
