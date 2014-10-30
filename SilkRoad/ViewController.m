@@ -65,7 +65,7 @@
 
 // Initialize new stageController, set this to be the current stage
 -(void)progressToNextStage {
-  [self dismissViewControllerAnimated:YES completion:nil];
+  [self dismissViewControllerAnimated:NO completion:nil];
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:++_currentStage];
   
