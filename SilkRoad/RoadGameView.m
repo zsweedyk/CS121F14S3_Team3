@@ -78,11 +78,22 @@
     return self;
 }
 
+// Set the value of a node at a given row and column
+// Change the background color to green when it has been fully connected, otherwise make it black
+// Called on intialization, so changing background to black is needed then
+// Also if player undoes a connection of a green node
 -(void)setNodeValueAtRow:(int)row AndColumn:(int)col toValue:(int) value
 {
   UIButton* button = [[_buttonGrid objectAtIndex:row] objectAtIndex:col];
   [button setTitle:[NSString stringWithFormat:@"%d", value] forState:UIControlStateNormal];
-  [button setBackgroundColor:[UIColor blackColor]];
+  
+  NSLog(@"%d", value);
+  if (value == 0) {
+    [button setBackgroundColor:[UIColor greenColor]];
+  } else {
+    [button setBackgroundColor:[UIColor blackColor]];
+  }
+  
   [button addTarget:self action:@selector(complicatedAsAllHell:) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -104,9 +115,10 @@
     
     [_lastButtonPressed setBackgroundColor:[UIColor blackColor]];
     _waitingForPair = NO;
+    
     if ([self.delegate checkConnectionValidBetweenRow:oldRow Col:oldCol AndRow:row Col:col]) {
       
-      int tag1, tag2;
+      NSInteger tag1, tag2;
       if (_lastButtonPressed.tag < button.tag) {
         tag1 = _lastButtonPressed.tag;
         tag2 = button.tag;
@@ -115,7 +127,7 @@
         tag1 = button.tag;
       }
       NSInteger numConnections = [self.delegate createConnectionBetweenRow:oldRow Col:oldCol AndRow:row Col:col];
-      NSString* key = [NSString stringWithFormat:@"%i%i", tag1, tag2];
+      NSString* key = [NSString stringWithFormat:@"%li%li", (long)tag1, (long)tag2];
 
       if (numConnections == 1) {
         [button setBackgroundColor:[UIColor blackColor]];

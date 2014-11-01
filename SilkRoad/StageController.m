@@ -67,8 +67,6 @@
     // Stage 0 is hardcoded for now
     _stageModel = [[StageModel alloc] initForStage:_currentStage];
     
-    NSLog(@"%d", [_houses count]);
-    
     
     if (_currentStage == 0) {
         UIImage* india = [UIImage imageNamed:@"india2"];
@@ -121,7 +119,7 @@
     // Configure InteriorController to report any changes to ViewController
     _interiorController.delegate = self;
     UIButton* ourButton = (UIButton*)button;
-    NSInteger tag = ourButton.tag;
+    int tag = (int)ourButton.tag;
     
     [self displayInteriorControllerForInterior:tag];
     
