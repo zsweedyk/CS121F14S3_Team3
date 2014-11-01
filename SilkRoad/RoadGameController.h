@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RoadGameView.h"
-
-@protocol ReturnToInterior
--(void)returnToInterior;
-@end
+#import "MatchingGameController.h"
 
 @interface RoadGameController : UIViewController <ReturnToInterior, CheckConnectionValid, CreateConnection>
 

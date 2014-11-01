@@ -82,6 +82,11 @@
     isValid = NO;
   }
   
+  // Don't connect a node to itself
+  if (row1 == row2 && col1 == col2) {
+    isValid = NO;
+  }
+  
   // Nodes must be neighbors with no interrupting nodes between them
   // Check that there are no other nodes on the same row
   Node* possiblyIntersectingNode;
@@ -100,12 +105,12 @@
 
   // Check that there are no interrupting nodes between them column wise
   if (col1 == col2) {
+    
     int startingRow = row1 < row2 ? row1 : row2;
     int endingRow = row2 > row1 ? row2 : row1;
+    
     for (int i = startingRow + 1; i < endingRow; i++) {
-      NSLog(@"%i", i);
       possiblyIntersectingNode = [[_grid objectAtIndex:i] objectAtIndex:col1];
-      NSLog(@"%i", possiblyIntersectingNode.origNumConnections);
       if (possiblyIntersectingNode.origNumConnections != 0) {
         isValid = NO;
       }
@@ -113,6 +118,12 @@
   }
   
   return isValid;
+}
+
+- (int)getNumConnectionsToNodeAtRow:(int)row Col:(int)col
+{
+  Node* node = [[_grid objectAtIndex:row] objectAtIndex:col];
+  return node.numConnections;
 }
 
 - (int)addConnectionToNodeAtRow:(int)row Col:(int)col
