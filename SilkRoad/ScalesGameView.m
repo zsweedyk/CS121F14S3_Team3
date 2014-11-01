@@ -17,6 +17,10 @@
 }
 @end
 
+const int LEFT = 0;
+const int RIGHT = 2;
+const int BALANCED = 1;
+
 @implementation ScalesGameView
 
 - (id)initWithFrame:(CGRect)frame
