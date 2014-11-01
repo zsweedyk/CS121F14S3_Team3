@@ -16,4 +16,7 @@
 -(NSString*)getNextLineOfDialogue;
 -(void)setWinDialogueForStage:(int)stage;
 
+//The following methods exist just for testing and should not be considered part of the public interface
+-(int)remainingLinesOfDialogue;
+
 @end
