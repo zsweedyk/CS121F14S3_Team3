@@ -71,14 +71,14 @@
         UIImage* india1 = [UIImage imageNamed:@"india2"];
         _stageView = [[StageView alloc] initWithFrame:stageFrame background:india1];
     } else if (_currentStage == 1) {
-        UIImage* china1 = [UIImage imageNamed:@"china2"];
-        _stageView = [[StageView alloc] initWithFrame:stageFrame background:china1];
+      UIImage* india2 = [UIImage imageNamed:@"india1"];
+      _stageView = [[StageView alloc] initWithFrame:stageFrame background:india2];
+    } else if (_currentStage == 2) {
+      UIImage* china1 = [UIImage imageNamed:@"china2"];
+      _stageView = [[StageView alloc] initWithFrame:stageFrame background:china1];
     } else if (_currentStage == 3) {
       UIImage* china2 = [UIImage imageNamed:@"china1"];
       _stageView = [[StageView alloc] initWithFrame:stageFrame background:china2];
-    } else if (_currentStage == 4) {
-      UIImage* india2 = [UIImage imageNamed:@"india1"];
-      _stageView = [[StageView alloc] initWithFrame:stageFrame background:india2];
     }
   
     [_stageView loadNewStageWithHouses:_houses];
@@ -90,7 +90,7 @@
 - (void)initializeHousesForStage:(int)stage
 {
     _houses =  [[NSMutableArray alloc] init];
-    if(stage == 0 || stage == 2) {
+    if(stage == 0 || stage == 1) {
         House* newHouse = [House alloc];
         newHouse.visited = NO;
         newHouse.label = @"Village Elder";
@@ -129,7 +129,7 @@
         [_houses addObject:newHouse3];
     }
     
-    if(stage == 1 || stage == 3) {
+    if(stage == 2 || stage == 3) {
         House* newHouse = [House alloc];
         newHouse.visited = NO;
         newHouse.label = @"Village Elder";
