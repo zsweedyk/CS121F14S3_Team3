@@ -56,7 +56,6 @@ const CGFloat tempButtonSize = 100;
 -(void)loadNewStageWithHouses: (NSMutableArray*) houses
 {
     House* currHouse;
-    NSLog(@"%d", [houses count]);
     for (int i = 0; i < [houses count]; i++) {
         currHouse = [houses objectAtIndex:i];
         CGFloat xCord = currHouse.xCord;

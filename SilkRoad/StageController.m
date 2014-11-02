@@ -64,9 +64,7 @@
     CGRect stageFrame = CGRectMake(0, 0, frameWidth, frameHeight);
     
     // Stage 0 is hardcoded for now
-    [self initializeHousesForStage:_currentStage];
-    
-    NSLog(@"%d", [_houses count]);
+    _stageModel = [[StageModel alloc] initForStage:_currentStage];
     
     
     if (_currentStage == 0) {
@@ -209,7 +207,7 @@
     // Configure InteriorController to report any changes to ViewController
     _interiorController.delegate = self;
     UIButton* ourButton = (UIButton*)button;
-    NSInteger tag = ourButton.tag;
+    int tag = (int)ourButton.tag;
     
     [self displayInteriorControllerForInterior:tag];
     

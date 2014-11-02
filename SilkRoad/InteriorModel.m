@@ -36,13 +36,13 @@
 
   _allDialogue = [[NSMutableArray alloc] init];
   NSArray* separateStages =  [dialogueString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-  int numStages = [separateStages count];
+  NSInteger numStages = [separateStages count];
   for (int i = 0; i < numStages; i++) {
     
     NSArray* separateHouses = [[separateStages objectAtIndex:i] componentsSeparatedByString:@"/"];
     [_allDialogue addObject:[[NSMutableArray alloc] init]];
     
-    int numHousesInStage = [separateHouses count];
+    NSInteger numHousesInStage = [separateHouses count];
     for (int j = 0; j < numHousesInStage; j++) {
       NSArray* separateLines = [[separateHouses objectAtIndex:j] componentsSeparatedByString:@","];
       [[_allDialogue objectAtIndex:i] addObject:separateLines];
@@ -59,6 +59,13 @@
 -(BOOL)dialogueFinished
 {
   return _currentLine < [_dialogueForCurrentHouse count];
+}
+
+
+//Returns the number of remaining lines of dialogue
+-(int)remainingLinesOfDialogue
+{
+    return [_dialogueForCurrentHouse count] - _currentLine;
 }
 
 -(NSString*)getNextLineOfDialogue

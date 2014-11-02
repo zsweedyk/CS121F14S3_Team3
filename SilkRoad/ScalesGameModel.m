@@ -9,13 +9,21 @@
 #import "ScalesGameModel.h"
 #import "StageModel.h"
 
-@implementation ScalesGameModel {
+@interface ScalesGameModel()
+{
   NSMutableArray *_leftScaleCoins;
   NSMutableArray *_rightScaleCoins;
   NSMutableArray *_trayCoins;
   
   int _numWeighings;
-};
+}
+@end
+
+const int LEFT = 0;
+const int RIGHT = 2;
+const int BALANCED = 1;
+
+@implementation ScalesGameModel
 
 - (id)init {
   self = [super init];
@@ -109,8 +117,8 @@
     leftWeight += [coin weight];
   }
   
-  for (int i = 0; i < numLeftCoins; i++) {
-    ScalesGameCoin* coin = [_leftScaleCoins objectAtIndex:i];
+  for (int i = 0; i < numRightCoins; i++) {
+    ScalesGameCoin* coin = [_rightScaleCoins objectAtIndex:i];
     rightWeight += [coin weight];
   }
   
@@ -118,13 +126,13 @@
   // If they're balanced, return 1
   // If RIGHT is heavier, return 2
   if (leftWeight > rightWeight) {
-    return 0;
+    return LEFT;
   }
   else if (rightWeight > leftWeight){
-    return 2;
+    return RIGHT;
   }
   else {
-    return 1;
+    return BALANCED;
   }
 }
 

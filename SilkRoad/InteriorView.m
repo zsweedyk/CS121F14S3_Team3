@@ -91,7 +91,6 @@
     
     // Make character box 40% the height of the frame and 20% the width,
     //   with padding equal to 5% of the width on either side
-    int characterBoxPadding = frameWidth * 0.05;
     int characterBoxHeight = frameHeight * 0.60;
     int characterBoxWidth = frameWidth * 0.30;
     

@@ -1,19 +1,18 @@
 //
-//  SilkRoadTests.m
-//  SilkRoadTests
+//  StageTests.m
+//  SilkRoad
 //
-//  Created by CS121 on 10/9/14.
+//  Created by Melissa Galonsky on 11/1/14.
 //  Copyright (c) 2014 Kate Finlay, Melissa Galonsky, Rachel Macfarlane, and Sarah Trisorus. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
-#import "StageModel.h"
 
-@interface SilkRoadTests : XCTestCase
+@interface StageTests : XCTestCase
 
 @end
 
-@implementation SilkRoadTests
+@implementation StageTests
 
 - (void)setUp
 {

@@ -17,4 +17,6 @@
 
 -(void)visitedHouse: (int)house;
 
+-(id)initForStage:(int)stage;
+
 @end
