@@ -49,6 +49,7 @@
 		93CA8F691A00412E00B4B722 /* RoadGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F641A00412E00B4B722 /* RoadGameController.m */; };
 		93CA8F6A1A00412E00B4B722 /* RoadGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F661A00412E00B4B722 /* RoadGameModel.m */; };
 		93CA8F6B1A00412E00B4B722 /* RoadGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F681A00412E00B4B722 /* RoadGameView.m */; };
+		93CA8F751A06C21D00B4B722 /* RoadGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F741A06C21D00B4B722 /* RoadGameTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		93CA8F661A00412E00B4B722 /* RoadGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadGameModel.m; sourceTree = "<group>"; };
 		93CA8F671A00412E00B4B722 /* RoadGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadGameView.h; sourceTree = "<group>"; };
 		93CA8F681A00412E00B4B722 /* RoadGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadGameView.m; sourceTree = "<group>"; };
+		93CA8F741A06C21D00B4B722 /* RoadGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoadGameTests.m; path = SilkRoadTests/RoadGameTests.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 		937AE8C319E73A4500CEB0E7 /* SilkRoadTests */ = {
 			isa = PBXGroup;
 			children = (
+				93CA8F741A06C21D00B4B722 /* RoadGameTests.m */,
 				937AE8C919E73A4500CEB0E7 /* SilkRoadTests.m */,
 				7FDFDB6A1A05906400D7EEE3 /* StageTests.m */,
 				7F85AA141A0590FC00B687E8 /* InteriorTests.m */,
@@ -420,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FDFDB6B1A05906400D7EEE3 /* StageTests.m in Sources */,
+				93CA8F751A06C21D00B4B722 /* RoadGameTests.m in Sources */,
 				937AE8CA19E73A4500CEB0E7 /* SilkRoadTests.m in Sources */,
 				7F85AA151A0590FC00B687E8 /* InteriorTests.m in Sources */,
 			);
