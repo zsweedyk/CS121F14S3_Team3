@@ -21,7 +21,7 @@
 
 @property (assign, nonatomic) id <ExitMinigame, CheckCoin> delegate;
 
--(id)initWithFrame:(CGRect)frame andCoins:coins;
+-(id)initWithFrame:(CGRect)frame;
 -(void)foundFakeCoin:(BOOL)found;
 
 @end

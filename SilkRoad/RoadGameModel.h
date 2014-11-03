@@ -10,11 +10,11 @@
 
 @interface RoadGameModel : NSObject
 
-- (void)initGrid;
-- (int)getNodeValueAtRow:(int)row AndColumn:(int)col;
+- (void)initGridWithFile:(NSString*)filename;
 - (BOOL)connectionIsValidForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
 - (int)addConnectionToNodeAtRow:(int)row Col:(int)col;
 - (NSInteger)addConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
 - (int)resetNodeAtRow:(int)row Col:(int)col;
 - (int)getNumConnectionsToNodeAtRow:(int)row Col:(int)col;
+
 @end
