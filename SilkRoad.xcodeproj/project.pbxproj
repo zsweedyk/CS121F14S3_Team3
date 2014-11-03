@@ -24,6 +24,7 @@
 		2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37119E84E1300EE08F8 /* ProgressView.m */; };
 		2692B37819E995E300EE08F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37719E995E300EE08F8 /* ViewController.m */; };
 		51D9447A19F8CC6E00335978 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D9447919F8CC6E00335978 /* Character.m */; };
+		7F441F901A075AC7009613B3 /* stage1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F441F8F1A075AC7009613B3 /* stage1.txt */; };
 		7F85AA151A0590FC00B687E8 /* InteriorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F85AA141A0590FC00B687E8 /* InteriorTests.m */; };
 		7FDFDB6B1A05906400D7EEE3 /* StageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFDB6A1A05906400D7EEE3 /* StageTests.m */; };
 		7FEFF16E1A02B8D000231C13 /* stage0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7FEFF16D1A02B8D000231C13 /* stage0.txt */; };
@@ -95,6 +96,7 @@
 		2692B37719E995E300EE08F8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		51D9447819F8CC6E00335978 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		51D9447919F8CC6E00335978 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
+		7F441F8F1A075AC7009613B3 /* stage1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage1.txt; sourceTree = "<group>"; };
 		7F85AA141A0590FC00B687E8 /* InteriorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorTests.m; sourceTree = "<group>"; };
 		7FDFDB6A1A05906400D7EEE3 /* StageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageTests.m; sourceTree = "<group>"; };
 		7FEFF16D1A02B8D000231C13 /* stage0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage0.txt; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				937AE8AC19E73A4500CEB0E7 /* SilkRoad-Prefix.pch */,
 				937AE8E519F0505B00CEB0E7 /* Dialogue.txt */,
 				7FEFF16D1A02B8D000231C13 /* stage0.txt */,
+				7F441F8F1A075AC7009613B3 /* stage1.txt */,
 				2628DEF419EF2AD1003487ED /* Minigame Files */,
 			);
 			name = "Supporting Files";
@@ -371,6 +374,7 @@
 				937AE8F419F47A3B00CEB0E7 /* RoadPuzzle1.txt in Resources */,
 				7FEFF16E1A02B8D000231C13 /* stage0.txt in Resources */,
 				937AE8B719E73A4500CEB0E7 /* Images.xcassets in Resources */,
+				7F441F901A075AC7009613B3 /* stage1.txt in Resources */,
 				937AE8A919E73A4500CEB0E7 /* InfoPlist.strings in Resources */,
 				937AE8B219E73A4500CEB0E7 /* Main.storyboard in Resources */,
 			);
