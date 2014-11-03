@@ -140,30 +140,42 @@
     NSString *houseString = [[NSString alloc] initWithContentsOfFile:path
                                                                encoding:NSUTF8StringEncoding error:&error];
     
-    NSMutableArray* allHousesInTextArray = [[NSMutableArray alloc] init];
     NSArray* separateHouses =  [houseString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    int numHouses = [separateHouses count];
-    
-    
-    /*
-    for (int i = 0; i < numStages; i++) {
-        
-        NSArray* separateHouses = [[separateStages objectAtIndex:i] componentsSeparatedByString:@"/"];
-        [_allDialogue addObject:[[NSMutableArray alloc] init]];
-        
-        int numHousesInStage = [separateHouses count];
-        for (int j = 0; j < numHousesInStage; j++) {
-            NSArray* separateLines = [[separateHouses objectAtIndex:j] componentsSeparatedByString:@","];
-            [[_allDialogue objectAtIndex:i] addObject:separateLines];
-        }
-    }*/
-    
+    NSUInteger numHouses = [separateHouses count];
+    for (NSString* house in separateHouses) {
+        [self addHouse:house];
+    }
     return self;
 }
 
--(void)loadNewStage: (int)stage
+//A set of constants that specify the indices at which certain elements of a house are stored
+const int nameIndex = 0;
+const int xIndex = 1;
+const int yIndex = 2;
+const int imageIndex = 3;
+const int tagIndex = 4;
+
+//Adds a house described in the given string to the back of the houses array
+-(void)addHouse:(NSString*)nextHouse
 {
-  
+    NSLog(nextHouse);
+    NSArray* componentsOfHouse = [nextHouse componentsSeparatedByString:@", "];
+    House* newHouse =  [House alloc];
+    newHouse.visited = NO;
+    newHouse.label = [componentsOfHouse objectAtIndex:nameIndex];
+    CGFloat x = [[componentsOfHouse objectAtIndex:xIndex] floatValue]/2;
+    CGFloat y = [[componentsOfHouse objectAtIndex:yIndex] floatValue]/2;
+    newHouse.xCord = x;
+    newHouse.yCord = y;
+    UIImage* house = [UIImage imageNamed:[componentsOfHouse objectAtIndex:imageIndex]];
+    newHouse.image = house;
+    newHouse.tag = [[componentsOfHouse objectAtIndex:tagIndex] integerValue];
+    [_houses addObject:newHouse];
+}
+
+-(NSMutableArray*)getHouses
+{
+    return _houses;
 }
 
 -(BOOL)canVisitHouse: (int)house

@@ -16,7 +16,6 @@
     StageView* _stageView;
     StageModel* _stageModel;
     InteriorController* _interiorController;
-    NSMutableArray* _houses;
     
 }
 
@@ -75,7 +74,7 @@
         UIImage* china = [UIImage imageNamed:@"china2"];
         _stageView = [[StageView alloc] initWithFrame:stageFrame background:china];
     }
-    [_stageView loadNewStageWithHouses:_houses];
+    [_stageView loadNewStageWithHouses:[_stageModel getHouses]];
     
     _stageView.delegate = self;
     [self.view addSubview:_stageView];
