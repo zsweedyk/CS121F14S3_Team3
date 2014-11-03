@@ -35,17 +35,16 @@
 
 @implementation RoadGameModel
 
-- (void)initGrid
+- (void)initGridWithFile:(NSString*)filename
 {
   NSString *path;
   NSError *error;
   
-  path = [[NSBundle mainBundle] pathForResource:@"RoadPuzzle1" ofType:@"txt"];
+  path = [[NSBundle mainBundle] pathForResource:filename ofType:@"txt"];
   
   NSString* gridString = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
   NSArray* gridRows = [gridString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-  
-                          
+
   _grid = [[NSMutableArray alloc] initWithCapacity:9];
   _connections = [[NSMutableDictionary alloc] init];
   _connectionsLeftToMake = 0;
@@ -65,12 +64,6 @@
       [[_grid objectAtIndex:row] addObject:node];
     }
   }
-}
-
-- (int)getNodeValueAtRow:(int)row AndColumn:(int)col
-{
-  Node* node = [[_grid objectAtIndex:row] objectAtIndex:col];
-  return node.numConnections;
 }
 
 - (BOOL)connectionIsValidForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2

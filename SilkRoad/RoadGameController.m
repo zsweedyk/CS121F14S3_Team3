@@ -26,7 +26,7 @@
   if (self) {
     // Initialize gameModel
     _gameModel = [[RoadGameModel alloc] init];
-    [_gameModel initGrid];
+    [_gameModel initGridWithFile:@"RoadPuzzle1"];
     
     _gameView = [[RoadGameView alloc] initWithFrame:self.view.frame];
     _gameView.delegate = self;
@@ -34,7 +34,7 @@
     
     for (int row = 0; row < 9; row++) {
       for (int col = 0; col < 9; col++) {
-        int nodeValue = [_gameModel getNodeValueAtRow:row AndColumn:col];
+        int nodeValue = [_gameModel getNumConnectionsToNodeAtRow:row Col:col];
         if (nodeValue != 0) {
           [_gameView setNodeValueAtRow:row AndColumn:col toValue:nodeValue];
         }

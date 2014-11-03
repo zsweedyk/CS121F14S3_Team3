@@ -16,7 +16,11 @@
     StageView* _stageView;
     StageModel* _stageModel;
     InteriorController* _interiorController;
+<<<<<<< HEAD
     NSMutableArray* _houses;
+=======
+    
+>>>>>>> 919936babb501f4c9a5f46cc777292c5177978fe
 }
 
 @end
@@ -80,8 +84,12 @@
       UIImage* china2 = [UIImage imageNamed:@"china1"];
       _stageView = [[StageView alloc] initWithFrame:stageFrame background:china2];
     }
+<<<<<<< HEAD
   
     [_stageView loadNewStageWithHouses:_houses];
+=======
+    [_stageView loadNewStageWithHouses:[_stageModel getHouses]];
+>>>>>>> 919936babb501f4c9a5f46cc777292c5177978fe
     
     _stageView.delegate = self;
     [self.view addSubview:_stageView];
