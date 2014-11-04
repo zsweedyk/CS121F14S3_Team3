@@ -21,7 +21,10 @@
 -(void)removeFromLeftScale:(ScalesGameCoin*)coin;
 -(void)moveToRightScale:(ScalesGameCoin*)coin;
 -(void)removeFromRightScale:(ScalesGameCoin*)coin;
+-(void)moveFromLeftScaleToRightScale:(ScalesGameCoin*)coin;
+-(void)moveFromRightScaleToLeftScale:(ScalesGameCoin*)coin;
 
+-(int)checkScales;
 -(BOOL)checkIfCoinFake:(ScalesGameCoin*)coin;
 
 @end
