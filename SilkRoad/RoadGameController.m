@@ -70,13 +70,25 @@
   int newNumConnectionsForNode1, newNumConnectionsForNode2;
   
   if (numConnectionsAfterUpdate != 0) {
-    //int currentConnectionsNode1 = [_gameModel getNumConnectionsToNodeAtRow:row1 Col:col1];
-    //int currentConnectionsNode2 = [_gameModel getNumConnectionsToNodeAtRow:row2 Col:col2];
-    newNumConnectionsForNode1 = [_gameModel addConnectionToNodeAtRow:row1 Col:col1];
-    newNumConnectionsForNode2 = [_gameModel addConnectionToNodeAtRow:row2 Col:col2];
+    int currentConnectionsNode1 = [_gameModel getNumConnectionsToNodeAtRow:row1 Col:col1];
+    int currentConnectionsNode2 = [_gameModel getNumConnectionsToNodeAtRow:row2 Col:col2];
+    
+    if (currentConnectionsNode1 == 0 || currentConnectionsNode2 == 0) {
+      [_gameModel resetConnectionBetweenRow:row1 Col:col1 AndRow:row2 Col:col2];
+      newNumConnectionsForNode1 = currentConnectionsNode1;
+      newNumConnectionsForNode2 = currentConnectionsNode2;
+      numConnectionsAfterUpdate -= 1;
+    } else {
+      newNumConnectionsForNode1 = [_gameModel addConnectionToNodeAtRow:row1 Col:col1];
+      newNumConnectionsForNode2 = [_gameModel addConnectionToNodeAtRow:row2 Col:col2];
+    }
   } else {
     newNumConnectionsForNode1 = [_gameModel resetNodeAtRow:row1 Col:col1];
     newNumConnectionsForNode2 = [_gameModel resetNodeAtRow:row2 Col:col2];
+  }
+  
+  if ([_gameModel hasBeenWon]) {
+    [self returnToInterior];
   }
   
   [_gameView setNodeValueAtRow:row1 AndColumn:col1 toValue:newNumConnectionsForNode1];
@@ -86,6 +98,6 @@
 
 -(void)returnToInterior
 {
-  
+  [self.delegate returnToInterior];
 }
 @end

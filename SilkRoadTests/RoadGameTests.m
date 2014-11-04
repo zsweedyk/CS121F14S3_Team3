@@ -108,4 +108,11 @@
   XCTAssertEqual([_gameModel addConnectionBetweenRow:0 Col:0 AndRow:8 Col:0], 0);
 }
 
+-(void)testResettingConnectionMethod
+{
+  [_gameModel addConnectionBetweenRow:0 Col:0 AndRow:8 Col:0];
+  [_gameModel resetConnectionBetweenRow:0 Col:0 AndRow:8 Col:0];
+  XCTAssertEqual([_gameModel addConnectionBetweenRow:0 Col:0 AndRow:8 Col:0], 1);
+}
+
 @end

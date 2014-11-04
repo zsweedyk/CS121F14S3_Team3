@@ -86,13 +86,8 @@
 {
   UIButton* button = [[_buttonGrid objectAtIndex:row] objectAtIndex:col];
   [button setTitle:[NSString stringWithFormat:@"%d", value] forState:UIControlStateNormal];
-  
-  NSLog(@"%d", value);
-  if (value == 0) {
-    [button setBackgroundColor:[UIColor greenColor]];
-  } else {
-    [button setBackgroundColor:[UIColor blackColor]];
-  }
+ 
+  [button setBackgroundColor:[UIColor blackColor]];
   
   [button addTarget:self action:@selector(complicatedAsAllHell:) forControlEvents:UIControlEventTouchUpInside];
 }

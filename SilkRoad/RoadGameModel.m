@@ -135,7 +135,7 @@
   return node.numConnections;
 }
 
-- (NSInteger)addConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+- (NSString*)getKeyForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {
   int keyInt;
   if (row1 * 10 + col1 < row2 * 10 + col2) {
@@ -144,6 +144,12 @@
     keyInt = row2 * 1000 + col2 * 100 + row1 * 10 + col1;
   }
   NSString* key = [NSString stringWithFormat:@"%i", keyInt];
+  return key;
+}
+
+- (NSInteger)addConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+{
+  NSString* key = [self getKeyForRow:row1 Col:col1 AndRow:row2 Col:col2];
   NSInteger value = [[_connections valueForKey:key] integerValue];
   
   // If a player tries to connect two nodes that are already fully connected, reset
@@ -161,5 +167,17 @@
   [_connections setValue:[NSNumber numberWithInteger:result] forKey:key];
 
   return result;
+}
+
+- (void)resetConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+{
+  NSString* key = [self getKeyForRow:row1 Col:col1 AndRow:row2 Col:col2];
+  NSInteger value = [[_connections valueForKey:key] integerValue];
+  [_connections setValue:[NSNumber numberWithInteger:value - 1] forKey:key];
+}
+
+- (BOOL)hasBeenWon
+{
+  return _connectionsLeftToMake == 0;
 }
 @end
