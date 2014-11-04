@@ -17,6 +17,10 @@
   if (self) {
     // Set the background image
     [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"silkroadmenu"]]];
+//      
+//      UILabel* greeting = [UILabel init];
+//      [greeting setText:@"Welcome to the silk road! Play your way through India and China so that you can trade!"];
+//      [greeting ]
     
     // Set up the button
     CGRect buttonFrame = CGRectMake(0.38*self.frame.size.width, 0.61*self.frame.size.height, 0.256*self.frame.size.width, 0.116*self.frame.size.height);

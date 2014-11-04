@@ -129,7 +129,7 @@
 
 -(void)progressDialogue
 {
-    if (_currentStage == 0) {
+    if (_currentStage == 0 || _currentStage == 1) {
       [_interiorView setInteriorBGTo:@"mohenjodaro.jpg"];
       if (_currentInterior == 0) {
         [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndiaMan1"]];
@@ -140,7 +140,7 @@
       } else if (_currentInterior == 3) {
           [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"IndianMan2"]];
       }
-    } else if (_currentStage == 1) {
+    } else if (_currentStage == 2 || _currentStage == 3) {
       [_interiorView setInteriorBGTo:@"chinabg"];
       if (_currentInterior == 0) {
         [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"ChineseMan1"]];
