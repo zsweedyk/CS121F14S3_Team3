@@ -24,6 +24,8 @@
 		2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37119E84E1300EE08F8 /* ProgressView.m */; };
 		2692B37819E995E300EE08F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37719E995E300EE08F8 /* ViewController.m */; };
 		518BA56E1A0753ED0007F7C8 /* MatchingGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 518BA56D1A0753ED0007F7C8 /* MatchingGameTests.m */; };
+		518BA5711A08955E0007F7C8 /* stage2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 518BA56F1A08955E0007F7C8 /* stage2.txt */; };
+		518BA5721A08955E0007F7C8 /* stage3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 518BA5701A08955E0007F7C8 /* stage3.txt */; };
 		51D9447A19F8CC6E00335978 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D9447919F8CC6E00335978 /* Character.m */; };
 		7F441F901A075AC7009613B3 /* stage1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F441F8F1A075AC7009613B3 /* stage1.txt */; };
 		7F85AA151A0590FC00B687E8 /* InteriorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F85AA141A0590FC00B687E8 /* InteriorTests.m */; };
@@ -96,6 +98,8 @@
 		2692B37619E995E300EE08F8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2692B37719E995E300EE08F8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		518BA56D1A0753ED0007F7C8 /* MatchingGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchingGameTests.m; sourceTree = "<group>"; };
+		518BA56F1A08955E0007F7C8 /* stage2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage2.txt; sourceTree = "<group>"; };
+		518BA5701A08955E0007F7C8 /* stage3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage3.txt; sourceTree = "<group>"; };
 		51D9447819F8CC6E00335978 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		51D9447919F8CC6E00335978 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
 		7F441F8F1A075AC7009613B3 /* stage1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage1.txt; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 				937AE8E519F0505B00CEB0E7 /* Dialogue.txt */,
 				7FEFF16D1A02B8D000231C13 /* stage0.txt */,
 				7F441F8F1A075AC7009613B3 /* stage1.txt */,
+				518BA56F1A08955E0007F7C8 /* stage2.txt */,
+				518BA5701A08955E0007F7C8 /* stage3.txt */,
 				2628DEF419EF2AD1003487ED /* Minigame Files */,
 			);
 			name = "Supporting Files";
@@ -375,6 +381,8 @@
 				2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */,
 				2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */,
 				937AE8F419F47A3B00CEB0E7 /* RoadPuzzle1.txt in Resources */,
+				518BA5721A08955E0007F7C8 /* stage3.txt in Resources */,
+				518BA5711A08955E0007F7C8 /* stage2.txt in Resources */,
 				7FEFF16E1A02B8D000231C13 /* stage0.txt in Resources */,
 				937AE8B719E73A4500CEB0E7 /* Images.xcassets in Resources */,
 				7F441F901A075AC7009613B3 /* stage1.txt in Resources */,

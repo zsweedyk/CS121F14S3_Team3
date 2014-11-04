@@ -1,4 +1,4 @@
-Village Elder, 200, 350, IndiaHouse_400, 0
-Cobbler, 425, 765, IndiaHouse_400, 1
+Village Elder, 1200, 750, IndiaHouse_400, 0
+Cobbler, 600, 800, IndiaHouse_400, 1
 Butcher, 350, 600, IndiaHouse_400, 2
-Farmer, 600, 700, IndiaHouse_400, 3
+Farmer, 850, 620, IndiaHouse_400, 3

@@ -14,5 +14,7 @@
 -(NSMutableArray*)getLeftSidePhrases;
 -(NSMutableArray*)getRightSidePhrases;
 -(BOOL)checkMatchBetweenLeftPhrase:(NSString*)leftPhrase andRightPhrase:(NSString*)rightPhrase;
+-(void)generatePhrasesForLevel:(int)level;
+-(void)shuffleArray:(NSMutableArray*)array;
 
 @end
