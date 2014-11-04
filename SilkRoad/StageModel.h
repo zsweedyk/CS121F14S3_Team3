@@ -19,4 +19,6 @@
 
 -(id)initForStage:(int)stage;
 
+-(NSMutableArray*)getHouses;
+
 @end

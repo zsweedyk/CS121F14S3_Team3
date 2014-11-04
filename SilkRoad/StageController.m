@@ -17,7 +17,6 @@
     StageModel* _stageModel;
     InteriorController* _interiorController;
     NSMutableArray* _houses;
-    
 }
 
 @end
@@ -69,16 +68,104 @@
     
     
     if (_currentStage == 0) {
-        UIImage* india = [UIImage imageNamed:@"india2"];
-        _stageView = [[StageView alloc] initWithFrame:stageFrame background:india];
+        UIImage* india1 = [UIImage imageNamed:@"india2"];
+        _stageView = [[StageView alloc] initWithFrame:stageFrame background:india1];
     } else if (_currentStage == 1) {
-        UIImage* china = [UIImage imageNamed:@"china2"];
-        _stageView = [[StageView alloc] initWithFrame:stageFrame background:china];
+      UIImage* india2 = [UIImage imageNamed:@"india1"];
+      _stageView = [[StageView alloc] initWithFrame:stageFrame background:india2];
+    } else if (_currentStage == 2) {
+      UIImage* china1 = [UIImage imageNamed:@"china2"];
+      _stageView = [[StageView alloc] initWithFrame:stageFrame background:china1];
+    } else if (_currentStage == 3) {
+      UIImage* china2 = [UIImage imageNamed:@"china1"];
+      _stageView = [[StageView alloc] initWithFrame:stageFrame background:china2];
     }
-    [_stageView loadNewStageWithHouses:_houses];
+    [_stageView loadNewStageWithHouses:[_stageModel getHouses]];
     
     _stageView.delegate = self;
     [self.view addSubview:_stageView];
+}
+
+- (void)initializeHousesForStage:(int)stage
+{
+    _houses =  [[NSMutableArray alloc] init];
+    if(stage == 0 || stage == 1) {
+        House* newHouse = [House alloc];
+        newHouse.visited = NO;
+        newHouse.label = @"Village Elder";
+        newHouse.xCord = 300;
+        newHouse.yCord = 300;
+        UIImage* house = [UIImage imageNamed:@"IndiaHouse_400"];
+        newHouse.image = house;
+        newHouse.tag = 0;
+        [_houses addObject:newHouse];
+        
+        House* newHouse1 = [House alloc];
+        newHouse1.visited = NO;
+        newHouse1.label = @"Cobbler";
+        newHouse1.xCord = 500;
+        newHouse1.yCord = 500;
+        newHouse1.image = house;
+        newHouse1.tag = 1;
+        [_houses addObject:newHouse1];
+        
+        House* newHouse2 = [House alloc];
+        newHouse2.visited = NO;
+        newHouse2.label = @"Butcher";
+        newHouse2.xCord = 300;
+        newHouse2.yCord = 500;
+        newHouse2.image = house;
+        newHouse2.tag = 2;
+        [_houses addObject:newHouse2];
+        
+        House* newHouse3 = [House alloc];
+        newHouse3.visited = NO;
+        newHouse3.label = @"Farmer";
+        newHouse3.xCord = 500;
+        newHouse3.yCord = 300;
+        newHouse3.image = house;
+        newHouse3.tag = 3;
+        [_houses addObject:newHouse3];
+    }
+    
+    if(stage == 2 || stage == 3) {
+        House* newHouse = [House alloc];
+        newHouse.visited = NO;
+        newHouse.label = @"Village Elder";
+        newHouse.xCord = 300;
+        newHouse.yCord = 300;
+        UIImage* house = [UIImage imageNamed:@"ChinaHouse400_250"];
+        newHouse.image = house;
+        newHouse.tag = 0;
+        [_houses addObject:newHouse];
+        
+        House* newHouse1 = [House alloc];
+        newHouse1.visited = NO;
+        newHouse1.label = @"Cobbler";
+        newHouse1.xCord = 500;
+        newHouse1.yCord = 500;
+        newHouse1.image = house;
+        newHouse1.tag = 1;
+        [_houses addObject:newHouse1];
+        
+        House* newHouse2 = [House alloc];
+        newHouse2.visited = NO;
+        newHouse2.label = @"Butcher";
+        newHouse2.xCord = 300;
+        newHouse2.yCord = 500;
+        newHouse2.image = house;
+        newHouse2.tag = 2;
+        [_houses addObject:newHouse2];
+        
+        House* newHouse3 = [House alloc];
+        newHouse3.visited = NO;
+        newHouse3.label = @"Farmer";
+        newHouse3.xCord = 500;
+        newHouse3.yCord = 300;
+        newHouse3.image = house;
+        newHouse3.tag = 3;
+        [_houses addObject:newHouse3];
+    }
 }
 
 - (void)displayInteriorControllerForInterior:(int)interior
@@ -95,7 +182,7 @@
 
 - (void)returnToStage
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

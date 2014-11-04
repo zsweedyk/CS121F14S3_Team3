@@ -1,2 +1,4 @@
-(a,b,c,d)
-(e,f,g,h)
+Village Elder, 1200, 750, IndiaHouse_400, 0
+Cobbler, 600, 800, IndiaHouse_400, 1
+Butcher, 350, 600, IndiaHouse_400, 2
+Farmer, 850, 620, IndiaHouse_400, 3
