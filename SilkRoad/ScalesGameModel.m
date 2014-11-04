@@ -19,9 +19,9 @@
 }
 @end
 
-const int LEFT = 0;
+const int BALANCED = 0;
+const int LEFT = 1;
 const int RIGHT = 2;
-const int BALANCED = 1;
 
 @implementation ScalesGameModel
 
@@ -102,6 +102,16 @@ const int BALANCED = 1;
 -(void)removeFromRightScale:(ScalesGameCoin*)coin {
   [_rightScaleCoins removeObject:coin];
   [_trayCoins addObject:coin];
+}
+
+-(void)moveFromLeftScaleToRightScale:(ScalesGameCoin*)coin {
+  [_leftScaleCoins removeObject:coin];
+  [_rightScaleCoins addObject:coin];
+}
+
+-(void)moveFromRightScaleToLeftScale:(ScalesGameCoin*)coin {
+  [_rightScaleCoins removeObject:coin];
+  [_leftScaleCoins addObject:coin];
 }
 
 -(int)checkScales {

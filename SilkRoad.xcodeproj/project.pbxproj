@@ -14,6 +14,7 @@
 		26643E7D1A059FB400C50B72 /* ScalesGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E781A059FB400C50B72 /* ScalesGameController.m */; };
 		26643E7E1A059FB400C50B72 /* ScalesGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E7A1A059FB400C50B72 /* ScalesGameModel.m */; };
 		26643E7F1A059FB400C50B72 /* ScalesGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E7C1A059FB400C50B72 /* ScalesGameView.m */; };
+		26643E841A06CC1500C50B72 /* ScalesGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E831A06CC1500C50B72 /* ScalesGameTests.m */; };
 		2692B35D19E84D3200EE08F8 /* StageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35C19E84D3200EE08F8 /* StageController.m */; };
 		2692B36019E84D4700EE08F8 /* StageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35F19E84D4700EE08F8 /* StageView.m */; };
 		2692B36319E84D8200EE08F8 /* StageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36219E84D8200EE08F8 /* StageModel.m */; };
@@ -23,11 +24,7 @@
 		2692B36F19E84DF100EE08F8 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36E19E84DF100EE08F8 /* MapView.m */; };
 		2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37119E84E1300EE08F8 /* ProgressView.m */; };
 		2692B37819E995E300EE08F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37719E995E300EE08F8 /* ViewController.m */; };
-		518BA56E1A0753ED0007F7C8 /* MatchingGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 518BA56D1A0753ED0007F7C8 /* MatchingGameTests.m */; };
-		518BA5711A08955E0007F7C8 /* stage2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 518BA56F1A08955E0007F7C8 /* stage2.txt */; };
-		518BA5721A08955E0007F7C8 /* stage3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 518BA5701A08955E0007F7C8 /* stage3.txt */; };
 		51D9447A19F8CC6E00335978 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D9447919F8CC6E00335978 /* Character.m */; };
-		7F441F901A075AC7009613B3 /* stage1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F441F8F1A075AC7009613B3 /* stage1.txt */; };
 		7F85AA151A0590FC00B687E8 /* InteriorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F85AA141A0590FC00B687E8 /* InteriorTests.m */; };
 		7FDFDB6B1A05906400D7EEE3 /* StageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFDB6A1A05906400D7EEE3 /* StageTests.m */; };
 		7FEFF16E1A02B8D000231C13 /* stage0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7FEFF16D1A02B8D000231C13 /* stage0.txt */; };
@@ -53,7 +50,6 @@
 		93CA8F691A00412E00B4B722 /* RoadGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F641A00412E00B4B722 /* RoadGameController.m */; };
 		93CA8F6A1A00412E00B4B722 /* RoadGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F661A00412E00B4B722 /* RoadGameModel.m */; };
 		93CA8F6B1A00412E00B4B722 /* RoadGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F681A00412E00B4B722 /* RoadGameView.m */; };
-		93CA8F751A06C21D00B4B722 /* RoadGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F741A06C21D00B4B722 /* RoadGameTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +75,7 @@
 		26643E7A1A059FB400C50B72 /* ScalesGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalesGameModel.m; sourceTree = "<group>"; };
 		26643E7B1A059FB400C50B72 /* ScalesGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScalesGameView.h; sourceTree = "<group>"; };
 		26643E7C1A059FB400C50B72 /* ScalesGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalesGameView.m; sourceTree = "<group>"; };
+		26643E831A06CC1500C50B72 /* ScalesGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalesGameTests.m; sourceTree = "<group>"; };
 		2692B35B19E84D3200EE08F8 /* StageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageController.h; sourceTree = "<group>"; };
 		2692B35C19E84D3200EE08F8 /* StageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageController.m; sourceTree = "<group>"; };
 		2692B35E19E84D4700EE08F8 /* StageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageView.h; sourceTree = "<group>"; };
@@ -97,12 +94,8 @@
 		2692B37119E84E1300EE08F8 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		2692B37619E995E300EE08F8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2692B37719E995E300EE08F8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
-		518BA56D1A0753ED0007F7C8 /* MatchingGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchingGameTests.m; sourceTree = "<group>"; };
-		518BA56F1A08955E0007F7C8 /* stage2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage2.txt; sourceTree = "<group>"; };
-		518BA5701A08955E0007F7C8 /* stage3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage3.txt; sourceTree = "<group>"; };
 		51D9447819F8CC6E00335978 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		51D9447919F8CC6E00335978 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
-		7F441F8F1A075AC7009613B3 /* stage1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage1.txt; sourceTree = "<group>"; };
 		7F85AA141A0590FC00B687E8 /* InteriorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorTests.m; sourceTree = "<group>"; };
 		7FDFDB6A1A05906400D7EEE3 /* StageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageTests.m; sourceTree = "<group>"; };
 		7FEFF16D1A02B8D000231C13 /* stage0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage0.txt; sourceTree = "<group>"; };
@@ -139,7 +132,6 @@
 		93CA8F661A00412E00B4B722 /* RoadGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadGameModel.m; sourceTree = "<group>"; };
 		93CA8F671A00412E00B4B722 /* RoadGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadGameView.h; sourceTree = "<group>"; };
 		93CA8F681A00412E00B4B722 /* RoadGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadGameView.m; sourceTree = "<group>"; };
-		93CA8F741A06C21D00B4B722 /* RoadGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoadGameTests.m; path = SilkRoadTests/RoadGameTests.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,9 +263,6 @@
 				937AE8AC19E73A4500CEB0E7 /* SilkRoad-Prefix.pch */,
 				937AE8E519F0505B00CEB0E7 /* Dialogue.txt */,
 				7FEFF16D1A02B8D000231C13 /* stage0.txt */,
-				7F441F8F1A075AC7009613B3 /* stage1.txt */,
-				518BA56F1A08955E0007F7C8 /* stage2.txt */,
-				518BA5701A08955E0007F7C8 /* stage3.txt */,
 				2628DEF419EF2AD1003487ED /* Minigame Files */,
 			);
 			name = "Supporting Files";
@@ -282,10 +271,9 @@
 		937AE8C319E73A4500CEB0E7 /* SilkRoadTests */ = {
 			isa = PBXGroup;
 			children = (
-				93CA8F741A06C21D00B4B722 /* RoadGameTests.m */,
 				937AE8C919E73A4500CEB0E7 /* SilkRoadTests.m */,
+				26643E831A06CC1500C50B72 /* ScalesGameTests.m */,
 				7FDFDB6A1A05906400D7EEE3 /* StageTests.m */,
-				518BA56D1A0753ED0007F7C8 /* MatchingGameTests.m */,
 				7F85AA141A0590FC00B687E8 /* InteriorTests.m */,
 				937AE8C419E73A4500CEB0E7 /* Supporting Files */,
 			);
@@ -311,6 +299,7 @@
 				937AE89719E73A4500CEB0E7 /* Sources */,
 				937AE89819E73A4500CEB0E7 /* Frameworks */,
 				937AE89919E73A4500CEB0E7 /* Resources */,
+				261835F91A0809CD00E67F53 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -381,11 +370,8 @@
 				2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */,
 				2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */,
 				937AE8F419F47A3B00CEB0E7 /* RoadPuzzle1.txt in Resources */,
-				518BA5721A08955E0007F7C8 /* stage3.txt in Resources */,
-				518BA5711A08955E0007F7C8 /* stage2.txt in Resources */,
 				7FEFF16E1A02B8D000231C13 /* stage0.txt in Resources */,
 				937AE8B719E73A4500CEB0E7 /* Images.xcassets in Resources */,
-				7F441F901A075AC7009613B3 /* stage1.txt in Resources */,
 				937AE8A919E73A4500CEB0E7 /* InfoPlist.strings in Resources */,
 				937AE8B219E73A4500CEB0E7 /* Main.storyboard in Resources */,
 			);
@@ -400,6 +386,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		261835F91A0809CD00E67F53 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = XcodeCoverage/exportenv.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		937AE89719E73A4500CEB0E7 /* Sources */ = {
@@ -437,9 +439,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				518BA56E1A0753ED0007F7C8 /* MatchingGameTests.m in Sources */,
+				26643E841A06CC1500C50B72 /* ScalesGameTests.m in Sources */,
 				7FDFDB6B1A05906400D7EEE3 /* StageTests.m in Sources */,
-				93CA8F751A06C21D00B4B722 /* RoadGameTests.m in Sources */,
 				937AE8CA19E73A4500CEB0E7 /* SilkRoadTests.m in Sources */,
 				7F85AA151A0590FC00B687E8 /* InteriorTests.m in Sources */,
 			);
@@ -560,6 +561,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SilkRoad/SilkRoad-Prefix.pch";
 				INFOPLIST_FILE = "SilkRoad/SilkRoad-Info.plist";
