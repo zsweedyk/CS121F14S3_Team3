@@ -23,6 +23,7 @@
 		2692B36F19E84DF100EE08F8 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36E19E84DF100EE08F8 /* MapView.m */; };
 		2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37119E84E1300EE08F8 /* ProgressView.m */; };
 		2692B37819E995E300EE08F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37719E995E300EE08F8 /* ViewController.m */; };
+		518BA56E1A0753ED0007F7C8 /* MatchingGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 518BA56D1A0753ED0007F7C8 /* MatchingGameTests.m */; };
 		51D9447A19F8CC6E00335978 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D9447919F8CC6E00335978 /* Character.m */; };
 		7F85AA151A0590FC00B687E8 /* InteriorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F85AA141A0590FC00B687E8 /* InteriorTests.m */; };
 		7FDFDB6B1A05906400D7EEE3 /* StageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFDB6A1A05906400D7EEE3 /* StageTests.m */; };
@@ -93,6 +94,7 @@
 		2692B37119E84E1300EE08F8 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		2692B37619E995E300EE08F8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2692B37719E995E300EE08F8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		518BA56D1A0753ED0007F7C8 /* MatchingGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchingGameTests.m; sourceTree = "<group>"; };
 		51D9447819F8CC6E00335978 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		51D9447919F8CC6E00335978 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
 		7F85AA141A0590FC00B687E8 /* InteriorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorTests.m; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				93CA8F741A06C21D00B4B722 /* RoadGameTests.m */,
 				937AE8C919E73A4500CEB0E7 /* SilkRoadTests.m */,
 				7FDFDB6A1A05906400D7EEE3 /* StageTests.m */,
+				518BA56D1A0753ED0007F7C8 /* MatchingGameTests.m */,
 				7F85AA141A0590FC00B687E8 /* InteriorTests.m */,
 				937AE8C419E73A4500CEB0E7 /* Supporting Files */,
 			);
@@ -422,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				518BA56E1A0753ED0007F7C8 /* MatchingGameTests.m in Sources */,
 				7FDFDB6B1A05906400D7EEE3 /* StageTests.m in Sources */,
 				93CA8F751A06C21D00B4B722 /* RoadGameTests.m in Sources */,
 				937AE8CA19E73A4500CEB0E7 /* SilkRoadTests.m in Sources */,
