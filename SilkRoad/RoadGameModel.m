@@ -127,10 +127,10 @@
   return node.numConnections;
 }
 
-- (int)resetNodeAtRow:(int)row Col:(int)col ByValue:(int)value;
+- (int)resetNodeAtRow:(int)row Col:(int)col ByValue:(NSInteger)value;
 {
   Node* node = [[_grid objectAtIndex:row] objectAtIndex:col];
-  node.numConnections += value;
+  node.numConnections += (int)value;
   _connectionsLeftToMake += value;
   return node.numConnections;
 }
@@ -159,7 +159,7 @@
   // the number of connections to 0
   NSInteger result = (value1 + 1) % 3;
 
-  if ((node1.origNumConnections == 1 || node2.origNumConnections == 1) && value1 == 1) {
+  if ((node1.origNumConnections == 1 || node2.origNumConnections == 1) && result == 2) {
     result = 0;
   }
   
@@ -171,7 +171,7 @@
   return result;
 }
 
-- (void)setNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2 ToValue:(int)value
+- (void)setNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2 ToValue:(NSInteger)value
 {
   Node* node = [[_grid objectAtIndex:row1] objectAtIndex:col1];
   NSString* key = [NSString stringWithFormat:@"%i", row2 * 10 + col2];

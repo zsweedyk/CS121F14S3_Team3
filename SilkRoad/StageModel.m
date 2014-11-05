@@ -39,7 +39,6 @@
   currHouseVisited = YES;
 }
 
-
 // Parse the file for the appropriate stage
 - (id)initForStage:(int)stage
 {
@@ -55,7 +54,6 @@
                                                                encoding:NSUTF8StringEncoding error:&error];
     
     NSArray* separateHouses =  [houseString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    NSUInteger numHouses = [separateHouses count];
     for (NSString* house in separateHouses) {
         [self addHouse:house];
     }
@@ -72,7 +70,6 @@ const int tagIndex = 4;
 //Adds a house described in the given string to the back of the houses array
 -(void)addHouse:(NSString*)nextHouse
 {
-    NSLog(nextHouse);
     NSArray* componentsOfHouse = [nextHouse componentsSeparatedByString:@", "];
     House* newHouse =  [House alloc];
     newHouse.visited = NO;

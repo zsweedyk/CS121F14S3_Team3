@@ -20,7 +20,7 @@
 
 // Uncomment to test
 - (int)addConnectionToNodeAtRow:(int)row Col:(int)col;
-- (int)resetNodeAtRow:(int)row Col:(int)col ByValue:(int)value;
+- (int)resetNodeAtRow:(int)row Col:(int)col ByValue:(NSInteger)value;
 - (NSInteger)getNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
-- (void)setNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2 ToValue:(int)value;
+- (void)setNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2 ToValue:(NSInteger)value;
 @end
