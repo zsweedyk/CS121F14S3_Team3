@@ -170,8 +170,9 @@
 
 - (void)displayInteriorControllerForInterior:(int)interior
 {
+    
     // Set the correct interior
-    [_interiorController setStageTo:_currentStage andInteriorTo:interior];
+    [_interiorController setStageTo:_currentStage andInteriorTo:interior hasVisitedHouses:[_stageModel visitedAllHouses]];
     // Create the navigation controller and present it.
     UINavigationController *interiorNavController = [[UINavigationController alloc]
                                                   initWithRootViewController:_interiorController];

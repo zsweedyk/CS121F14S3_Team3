@@ -23,6 +23,6 @@
 
 @property (assign, nonatomic) id <ReturnToStage, NotifyStageComplete> delegate;
 
-- (void)setStageTo:(int)stage andInteriorTo:(int)interior;
+- (void)setStageTo:(int)stage andInteriorTo:(int)interior hasVisitedHouses:(BOOL)canEnterMinigame;
 
 @end

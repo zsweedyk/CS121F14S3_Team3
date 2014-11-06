@@ -28,7 +28,7 @@
 
 @implementation InteriorController
 
-- (void)setStageTo:(int)stage andInteriorTo:(int)interior
+- (void)setStageTo:(int)stage andInteriorTo:(int)interior hasVisitedHouses:(BOOL)canEnterMinigame
 {
   _currentStage = stage;
   _currentInterior = interior;
@@ -86,7 +86,7 @@
   switch (_currentStage) {
     case 0:
        _matchingGameController.delegate = self;
-      minigameViewController = _scalesGameController;
+      minigameViewController = _matchingGameController;
       break;
     case 1:
       _matchingGameController.delegate = self;
