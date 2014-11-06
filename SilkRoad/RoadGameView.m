@@ -26,22 +26,47 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-      // Set the minigame background
-      [self setBackgroundColor:[UIColor whiteColor]];
       
       // Get the dimensions of the frame
       CGFloat frameWidth = CGRectGetWidth(frame);
       CGFloat frameHeight = CGRectGetHeight(frame);
       
+      // Setup a new context with the correct size
+      UIImage* backgroundMap = [UIImage imageNamed:@"China_blank_map-1.png"];
+      UIGraphicsBeginImageContextWithOptions(CGSizeMake(frameWidth, frameHeight), YES, 0.0);
+      CGContextRef context = UIGraphicsGetCurrentContext();
+      UIGraphicsPushContext(context);
+      
+      // Draw map image so that it's centered on this context
+      CGPoint origin = CGPointMake((frameWidth - backgroundMap.size.width) / 2.0f,
+                                   (frameHeight - backgroundMap.size.height) / 2.0f);
+      [backgroundMap drawAtPoint:origin];
+      
+      // Clean up and get the new image.
+      UIGraphicsPopContext();
+      UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+      UIGraphicsEndImageContext();
+      
+      // Set the minigame background
+      [self setBackgroundColor:[UIColor colorWithPatternImage:newImage]];
+     
+      
+
+      NSLog(@"%f, %f", frameWidth, frameHeight);
       // The game frame will be 90% of the screen, the bottom 10% is for the game
       //    bottom bar
       CGFloat gameFrameWidth = frameWidth;
       CGFloat gameFrameHeight = frameHeight * 0.90;
       
+      CGFloat boxSize = MIN(frameWidth, frameHeight);
       // There are 9 grid cells to display, and 10 lines between them
       CGFloat horizontalPadding = gameFrameWidth / 19.0;
       CGFloat verticalPadding = gameFrameHeight / 19.0;
       
+      
+      CGFloat extraHorizontalSpace = frameWidth - boxSize;
+      CGFloat extraVerticalSpace = frameHeight - boxSize;
+      NSLog(@"%f, %f", extraHorizontalSpace, extraVerticalSpace);
       CGFloat yOffset = verticalPadding;
       _buttonSize = MIN(horizontalPadding, verticalPadding);
       
@@ -54,7 +79,7 @@
       // equal to the size of a button.
       for (int row = 0; row < 9; row++) {
         [_buttonGrid addObject:[[NSMutableArray alloc] initWithCapacity:9]];
-        CGFloat xOffset = horizontalPadding;
+        CGFloat xOffset = extraHorizontalSpace / 2.0;
         
         for (int col = 0; col < 9; col++) {
           CGRect buttonFrame = CGRectMake(xOffset, yOffset, _buttonSize, _buttonSize);

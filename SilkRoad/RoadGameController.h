@@ -14,4 +14,6 @@
 
 @property (assign, nonatomic) id <ReturnToInterior> delegate;
 
+- (BOOL)hasBeenWon;
+
 @end

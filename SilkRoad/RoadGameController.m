@@ -86,6 +86,10 @@
   return numConnectionsAfterUpdate;
 }
 
+- (BOOL)hasBeenWon
+{
+  return [_gameModel hasBeenWon];
+}
 -(void)returnToInterior
 {
   [self.delegate returnToInterior];
