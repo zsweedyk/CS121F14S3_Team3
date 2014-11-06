@@ -23,4 +23,7 @@
 
 -(BOOL)visitedAllHouses;
 
+//The following methods are made public strictly for testing purposes
+-(void)addHouse:(NSString*)nextHouse;
+
 @end
