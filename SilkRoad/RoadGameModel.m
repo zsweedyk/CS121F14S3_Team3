@@ -11,6 +11,7 @@
 @interface Node : NSObject
   @property int numConnections;
   @property int origNumConnections;
+  @property NSMutableDictionary* connections;
 @end
 
 @implementation Node
@@ -20,6 +21,7 @@
   Node* newNode = [[Node alloc] init];
   newNode.numConnections = numConnections;
   newNode.origNumConnections = numConnections;
+  newNode.connections = [[NSMutableDictionary alloc] init];
   return newNode;
 }
 
@@ -28,7 +30,6 @@
 @interface RoadGameModel()
 {
   NSMutableArray* _grid;
-  NSMutableDictionary* _connections;
   int _connectionsLeftToMake;
 }
 @end
@@ -46,7 +47,6 @@
   NSArray* gridRows = [gridString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 
   _grid = [[NSMutableArray alloc] initWithCapacity:9];
-  _connections = [[NSMutableDictionary alloc] init];
   _connectionsLeftToMake = 0;
   
   for (int row = 0; row < 9; row++) {
@@ -113,7 +113,7 @@
   return isValid;
 }
 
-- (int)getNumConnectionsToNodeAtRow:(int)row Col:(int)col
+- (int)getNumAvailableConnectionsToNodeAtRow:(int)row Col:(int)col
 {
   Node* node = [[_grid objectAtIndex:row] objectAtIndex:col];
   return node.numConnections;
@@ -127,53 +127,85 @@
   return node.numConnections;
 }
 
-- (int)resetNodeAtRow:(int)row Col:(int)col
+- (int)resetNodeAtRow:(int)row Col:(int)col ByValue:(NSInteger)value;
 {
   Node* node = [[_grid objectAtIndex:row] objectAtIndex:col];
-  node.numConnections = node.origNumConnections;
-  _connectionsLeftToMake += node.numConnections;
+  node.numConnections += (int)value;
+  _connectionsLeftToMake += value;
   return node.numConnections;
 }
 
-- (NSString*)getKeyForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+- (NSInteger)getNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {
-  int keyInt;
-  if (row1 * 10 + col1 < row2 * 10 + col2) {
-    keyInt = row1 * 1000 + col1 * 100 + row2 * 10 + col2;
-  } else {
-    keyInt = row2 * 1000 + col2 * 100 + row1 * 10 + col1;
-  }
-  NSString* key = [NSString stringWithFormat:@"%i", keyInt];
-  return key;
+  Node* node = [[_grid objectAtIndex:row1] objectAtIndex:col1];
+  NSString* key = [NSString stringWithFormat:@"%i", row2 * 10 + col2];
+  NSInteger value = [[node.connections valueForKey:key] integerValue];
+  return value;
 }
 
-- (NSInteger)addConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+- (NSInteger)numConnectionsAfterUpdateForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {
-  NSString* key = [self getKeyForRow:row1 Col:col1 AndRow:row2 Col:col2];
-  NSInteger value = [[_connections valueForKey:key] integerValue];
-  
-  // If a player tries to connect two nodes that are already fully connected, reset
-  // the number of connections to 0
-  NSInteger result = (value + 1) % 3;
-  
   // If one of the nodes can only have a maximum of 1 connection and a player tries
   // to add another, also reset the number of connections to 0
   Node* node1 = [[_grid objectAtIndex:row1] objectAtIndex:col1];
   Node* node2 = [[_grid objectAtIndex:row2] objectAtIndex:col2];
   
-  if ((node1.origNumConnections == 1 || node2.origNumConnections == 1) && value == 1) {
+  NSInteger value1 = [self getNumConnectionsBetweenRow:row1 Col:col1 AndRow:row2 Col:col2];
+  NSInteger value2 = [self getNumConnectionsBetweenRow:row2 Col:col2 AndRow:row1 Col:col1];
+  
+  assert(value1 == value2);
+  
+  // If a player tries to connect two nodes that are already fully connected, reset
+  // the number of connections to 0
+  NSInteger result = (value1 + 1) % 3;
+
+  if ((node1.origNumConnections == 1 || node2.origNumConnections == 1) && result == 2) {
     result = 0;
   }
-  [_connections setValue:[NSNumber numberWithInteger:result] forKey:key];
-
+  
+  // Reset the connection if either node has a zero value
+  if (node1.numConnections == 0 || node2.numConnections == 0) {
+    result = 0;
+  }
+  
   return result;
+}
+
+- (void)setNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2 ToValue:(NSInteger)value
+{
+  Node* node = [[_grid objectAtIndex:row1] objectAtIndex:col1];
+  NSString* key = [NSString stringWithFormat:@"%i", row2 * 10 + col2];
+  [node.connections setValue:[NSNumber numberWithInteger:value] forKey:key];
+}
+
+- (void)addConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+{
+  NSInteger value1 = [self getNumConnectionsBetweenRow:row1 Col:col1 AndRow:row2 Col:col2];
+  NSInteger value2 = [self getNumConnectionsBetweenRow:row2 Col:col2 AndRow:row1 Col:col1];
+  
+  assert(value1 == value2);
+
+  NSInteger result = value1 + 1;
+  
+  [self setNumConnectionsBetweenRow:row1 Col:col1 AndRow:row2 Col:col2 ToValue:result];
+  [self setNumConnectionsBetweenRow:row2 Col:col2 AndRow:row1 Col:col1 ToValue:result];
+  
+  [self addConnectionToNodeAtRow:row1 Col:col1];
+  [self addConnectionToNodeAtRow:row2 Col:col2];
 }
 
 - (void)resetConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {
-  NSString* key = [self getKeyForRow:row1 Col:col1 AndRow:row2 Col:col2];
-  NSInteger value = [[_connections valueForKey:key] integerValue];
-  [_connections setValue:[NSNumber numberWithInteger:value - 1] forKey:key];
+  NSInteger value1 = [self getNumConnectionsBetweenRow:row1 Col:col1 AndRow:row2 Col:col2];
+  NSInteger value2 = [self getNumConnectionsBetweenRow:row2 Col:col2 AndRow:row1 Col:col1];
+  
+  assert(value1 == value2);
+
+  [self setNumConnectionsBetweenRow:row1 Col:col1 AndRow:row2 Col:col2 ToValue:0];
+  [self setNumConnectionsBetweenRow:row2 Col:col2 AndRow:row1 Col:col1 ToValue:0];
+  
+  [self resetNodeAtRow:row1 Col:col1 ByValue:value1];
+  [self resetNodeAtRow:row2 Col:col2 ByValue:value2];
 }
 
 - (BOOL)hasBeenWon

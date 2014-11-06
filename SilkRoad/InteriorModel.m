@@ -65,7 +65,7 @@
 //Returns the number of remaining lines of dialogue
 -(int)remainingLinesOfDialogue
 {
-    return [_dialogueForCurrentHouse count] - _currentLine;
+    return (int)[_dialogueForCurrentHouse count] - _currentLine;
 }
 
 -(NSString*)getNextLineOfDialogue

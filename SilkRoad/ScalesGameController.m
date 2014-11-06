@@ -25,7 +25,12 @@
   
   if (self) {
     _gameModel = [[ScalesGameModel alloc] init];
-    _gameView = [[ScalesGameView alloc] initWithFrame:self.view.frame];
+    int numCoins = [_gameModel newGame];
+
+    _gameView = [[ScalesGameView alloc] initWithFrame:self.view.frame andNumCoins:numCoins];
+    _gameView.delegate = self;
+    
+    [self.view addSubview:_gameView];
   }
   
   return self;
@@ -36,7 +41,7 @@
   [_gameView foundFakeCoin:fakeCoin];
 }
 
-- (void)exitMinigame {
+- (void)exitScalesGame {
   // Tell InteriorController that the interaction in the minigame is done
   [self.delegate returnToInterior];
 }

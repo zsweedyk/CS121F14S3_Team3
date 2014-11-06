@@ -113,10 +113,10 @@
 
 -(void)shuffleArray:(NSMutableArray*)array
 {
-  NSUInteger count = [array count];
-  for (NSUInteger i = 0; i < count; ++i) {
-    NSInteger remainingCount = count - i;
-    NSInteger exchangeIndex = i + arc4random_uniform(remainingCount);
+  int count = (int)[array count];
+  for (int i = 0; i < count; ++i) {
+    int remainingCount = count - i;
+    NSUInteger exchangeIndex = i + arc4random_uniform(remainingCount);
     [array exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
   }
 }

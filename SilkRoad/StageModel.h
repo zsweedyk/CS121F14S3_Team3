@@ -11,8 +11,6 @@
 
 @interface StageModel : NSObject
 
--(void)loadNewStage: (int)stage;
-
 -(NSMutableArray*)getHouseLabels;
 
 -(void)visitedHouse: (int)house;

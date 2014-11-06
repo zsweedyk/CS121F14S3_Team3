@@ -21,7 +21,7 @@
 - (void)setUp {
     [super setUp];
   _gameModel = [[RoadGameModel alloc] init];
-  [_gameModel initGridWithFile:@"RoadPuzzle1"];
+  [_gameModel initGridWithFile:@"RoadTestGrid"];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
@@ -30,89 +30,123 @@
     [super tearDown];
 }
 
-- (void)testConnectionValidBetweenNodesInSameRow
+- (void)testConnectionIsValid
 {
-  XCTAssertTrue([_gameModel connectionIsValidForRow:0 Col:7 AndRow:0 Col:8]);
-}
-
-- (void)testConnectionValidBetweenNodesInSameCol
-{
-  XCTAssertTrue([_gameModel connectionIsValidForRow:7 Col:0 AndRow:8 Col:0]);
-}
-
-- (void)testConnectionInvalidBetweenNodeAndItself
-{
+  // Nodes in same row
+  XCTAssertTrue([_gameModel connectionIsValidForRow:8 Col:0 AndRow:8 Col:2]);
+  // Nodes in same column
+  XCTAssertTrue([_gameModel connectionIsValidForRow:0 Col:0 AndRow:2 Col:0]);
+  // Node should not be able to connect to self
   XCTAssertFalse([_gameModel connectionIsValidForRow:0 Col:0 AndRow:0 Col:0]);
-}
-
-- (void)testConnectionInvalidBetweenNonadjacentNodes
-{
+  
   // Interrupting node located at 8, 2 - rowwise interruption
   XCTAssertFalse([_gameModel connectionIsValidForRow:8 Col:0 AndRow:8 Col:4]);
   
   // Interrupting node located at 2, 6 - columnwise
-  XCTAssertFalse([_gameModel connectionIsValidForRow:0 Col:6 AndRow:6 Col:6]);
+  XCTAssertFalse([_gameModel connectionIsValidForRow:0 Col:0 AndRow:4 Col:0]);
 }
 
-- (void)testGetNumConnections
+- (void)testGetNumAvailableConnections
 {
-  XCTAssertEqual([_gameModel getNumConnectionsToNodeAtRow:0 Col:1], 0);
-  XCTAssertEqual([_gameModel getNumConnectionsToNodeAtRow:0 Col:0], 1);
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:0 Col:1], 0);
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:0 Col:0], 1);
 }
 
-- (void)testIncreasingNumConnectionsOfNode
+- (void)testGetNumConnectionsBetweenNode
 {
-  // Number of connections of node 0,0 is 1 at beginning
-  XCTAssertEqual([_gameModel getNumConnectionsToNodeAtRow:0 Col:0], 1);
+  XCTAssertEqual([_gameModel getNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2], 0);
+}
+
+- (void)testAddConnectionBetweenNodes
+{
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 2);
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:2], 4);
+  XCTAssertEqual([_gameModel getNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2], 0);
   
-  // Number of available connections to make should be 0
-  XCTAssertEqual([_gameModel addConnectionToNodeAtRow:0 Col:0], 0);
-}
-
-- (void)testResetingNumConnectionsOfNode
-{
-  // Number of connections of node 0,0 is 1 at beginning
-  XCTAssertEqual([_gameModel getNumConnectionsToNodeAtRow:0 Col:0], 1);
-
-  XCTAssertEqual([_gameModel addConnectionToNodeAtRow:0 Col:0], 0);
+  [_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2];
   
-  // Reset back to 1
-  XCTAssertEqual([_gameModel resetNodeAtRow:0 Col:0], 1);
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 1);
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:2], 3);
+  XCTAssertEqual([_gameModel getNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2], 1);
+  
+  [_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2];
+  
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 0);
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:2], 2);
+  XCTAssertEqual([_gameModel getNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2], 2);
 }
 
-- (void)testAddingOneConnectionBetweenNodes
-{
-  XCTAssertEqual([_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2], 1);
-}
-
-- (void)testAddingTwoConnectionsBetweenNodes
+- (void)testResetConnectionBetweenNodes
 {
   [_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2];
-  XCTAssertEqual([_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2], 2);
-}
-
-// Node 8,0 and 8,2 both can have 4 connections between them.
-// If a player tries to connect them three times, should reset back to 0
--(void)testResettingConnectionBetweenNodes
-{
+  [_gameModel resetConnectionBetweenRow:8 Col:0 AndRow:8 Col:2];
+  
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 2);
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:2], 4);
+  XCTAssertEqual([_gameModel getNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2], 0);
+  
   [_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2];
   [_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2];
-  XCTAssertEqual([_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2], 0);
+  [_gameModel resetConnectionBetweenRow:8 Col:0 AndRow:8 Col:2];
+  
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 2);
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:2], 4);
+  XCTAssertEqual([_gameModel getNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2], 0);
 }
 
-// Node 0, 0 only has one connection, so trying to add another connection to
-// 8,0 after one has been established should reset it
--(void)testResettingConnectionBetweenNodesOfValueOne
+- (void)testHasBeenWon
 {
-  [_gameModel addConnectionBetweenRow:0 Col:0 AndRow:8 Col:0];
-  XCTAssertEqual([_gameModel addConnectionBetweenRow:0 Col:0 AndRow:8 Col:0], 0);
+  XCTAssertEqual([_gameModel hasBeenWon], NO);
+  [_gameModel addConnectionBetweenRow:0 Col:0 AndRow:2 Col:0];
+  [_gameModel addConnectionBetweenRow:2 Col:0 AndRow:4 Col:0];
+  [_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2];
+  [_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2];
+  [_gameModel addConnectionBetweenRow:8 Col:2 AndRow:8 Col:4];
+  [_gameModel addConnectionBetweenRow:8 Col:2 AndRow:8 Col:4];
+  XCTAssertEqual([_gameModel hasBeenWon], YES);
 }
 
--(void)testResettingConnectionMethod
+- (void)testNumConnectionsAfterUpdate
 {
-  [_gameModel addConnectionBetweenRow:0 Col:0 AndRow:8 Col:0];
-  [_gameModel resetConnectionBetweenRow:0 Col:0 AndRow:8 Col:0];
-  XCTAssertEqual([_gameModel addConnectionBetweenRow:0 Col:0 AndRow:8 Col:0], 1);
+  XCTAssertEqual([_gameModel numConnectionsAfterUpdateForRow:8 Col:0 AndRow:8 Col:2], 1);
+  [_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2];
+  XCTAssertEqual([_gameModel numConnectionsAfterUpdateForRow:8 Col:0 AndRow:8 Col:2], 2);
+  [_gameModel addConnectionBetweenRow:8 Col:0 AndRow:8 Col:2];
+  XCTAssertEqual([_gameModel numConnectionsAfterUpdateForRow:8 Col:0 AndRow:8 Col:2], 0);
+  
+  XCTAssertEqual([_gameModel numConnectionsAfterUpdateForRow:0 Col:0 AndRow:2 Col:0], 1);
+  [_gameModel addConnectionBetweenRow:0 Col:0 AndRow:2 Col:0];
+  XCTAssertEqual([_gameModel numConnectionsAfterUpdateForRow:0 Col:0 AndRow:2 Col:0], 0);
 }
 
+- (void)testAddConnectionToNode
+{
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:0 Col:0], 1);
+  [_gameModel addConnectionToNodeAtRow:0 Col:0];
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:0 Col:0], 0);
+  
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 2);
+  [_gameModel addConnectionToNodeAtRow:8 Col:0];
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 1);
+  [_gameModel addConnectionToNodeAtRow:8 Col:0];
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 0);
+}
+- (void)testResetNode
+{
+  [_gameModel addConnectionToNodeAtRow:0 Col:0];
+  [_gameModel resetNodeAtRow:0 Col:0 ByValue:1];
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:0 Col:0], 1);
+  
+  [_gameModel addConnectionToNodeAtRow:8 Col:0];
+  [_gameModel addConnectionToNodeAtRow:8 Col:0];
+  [_gameModel resetNodeAtRow:8 Col:0 ByValue:2];
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 2);
+}
+
+- (void)testSetNumConnectionsBetweenNodes
+{
+  XCTAssertEqual([_gameModel getNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2], 0);
+  [_gameModel setNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2 ToValue:2];
+  XCTAssertEqual([_gameModel getNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2], 2);
+}
 @end

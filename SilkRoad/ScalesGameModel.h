@@ -11,7 +11,7 @@
 
 @interface ScalesGameModel : NSObject
 
--(void)newGame;
+-(int)newGame;
 
 -(NSMutableArray*)getCoinsInLeftScale;
 -(NSMutableArray*)getCoinsInRightScale;
