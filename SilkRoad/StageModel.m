@@ -17,11 +17,6 @@
 
 @implementation StageModel
 
--(void)initWithStuffYetToBeDetermined
-{
-    _houses = [[NSMutableArray alloc] initWithCapacity:4];
-}
-
 -(NSMutableArray*)getHouseLabels
 {
     NSMutableArray* labels = [[NSMutableArray alloc] initWithCapacity:[_houses count]];
@@ -31,12 +26,6 @@
     }
     
     return labels;
-}
-
--(void)visitedHouse: (int)house
-{
-  BOOL currHouseVisited = ((House*)[_houses objectAtIndex:house]).visited;
-  currHouseVisited = YES;
 }
 
 // Parse the file for the appropriate stage

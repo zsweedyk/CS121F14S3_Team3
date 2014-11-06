@@ -13,8 +13,6 @@
 
 -(NSMutableArray*)getHouseLabels;
 
--(void)visitedHouse: (int)house;
-
 -(id)initForStage:(int)stage;
 
 -(NSMutableArray*)getHouses;

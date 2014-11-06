@@ -36,6 +36,13 @@
     [_stageModel visitHouse:0];
     BOOL hasVisitedHouses = [_stageModel visitedAllHouses];
     XCTAssertTrue(hasVisitedHouses == NO, @"hasVisitedHouses improperly returns true");
+    
+    for (int i = 0; i < 4; ++i) {
+        [_stageModel visitHouse:i];
+    }
+    
+    hasVisitedHouses = [_stageModel visitedAllHouses];
+    XCTAssertTrue(hasVisitedHouses == YES, @"hasVisitedHouses improperly returns false");
 }
 
 //Tests adding a house
