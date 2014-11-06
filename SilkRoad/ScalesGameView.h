@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ScalesGameCoin.h"
 
-@protocol ExitMinigame
--(void) exitMinigame;
+@protocol ExitScalesGame
+-(void) exitScalesGame;
 @end
 
 @protocol CheckCoin
@@ -19,9 +19,9 @@
 
 @interface ScalesGameView : UIView
 
-@property (assign, nonatomic) id <ExitMinigame, CheckCoin> delegate;
+@property (assign, nonatomic) id <ExitScalesGame, CheckCoin> delegate;
 
--(id)initWithFrame:(CGRect)frame;
+-(id)initWithFrame:(CGRect)frame andNumCoins:(int)numCoins;
 -(void)foundFakeCoin:(BOOL)found;
 
 @end

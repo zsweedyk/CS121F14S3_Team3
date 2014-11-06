@@ -38,7 +38,7 @@ const int RIGHT = 2;
   return self;
 }
 
--(void)newGame
+-(int)newGame
 {
   // Reset the number of weighings to 0
   _numWeighings = 0;
@@ -68,6 +68,8 @@ const int RIGHT = 2;
   else {
     [fakeCoin setWeight:0];
   }
+  
+  return numCoins;
 }
 
 // Methods to see which coins are in scales/tray

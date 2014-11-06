@@ -21,8 +21,4 @@
   return self;
 }
 
-- (NSString *)description {
-  return [NSString stringWithFormat: @"%@", [self name]];
-}
-
 @end

@@ -14,12 +14,14 @@
   UILabel *_leftScale;
   UILabel *_rightScale;
   UILabel *_tray;
+  
+  NSMutableArray *_coinArray;
 }
 @end
 
 @implementation ScalesGameView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame andNumCoins:(int)numCoins
 {
   self = [super initWithFrame:frame];
   
@@ -36,46 +38,101 @@
     //    bottom bar
     CGFloat gameFrameWidth = frameWidth;
     CGFloat gameFrameHeight = frameHeight * 0.90;
+    CGRect gameFrame = CGRectMake(0, 0, gameFrameWidth, gameFrameHeight);
     
-    // TODO: SCALE GRAPHICS
-    // For now, just have labels with coin names
-    
-    // Have 10% padding on all sides
-    CGFloat horizontalPadding = gameFrameWidth * 0.10;
-    CGFloat verticalPadding = gameFrameHeight * 0.10;
-    // Make the side scales 35% of the frame width and the tray 80%
-    // 80% of the screen height is left for the scales/tray; make the side scales
-    //    use 35% and the tray use 35%
-    CGFloat scaleWidth = gameFrameWidth * 0.35;
-    CGFloat scaleHeight = gameFrameHeight * 0.35;
-    CGFloat trayWidth = gameFrameWidth * 0.80;
-    CGFloat trayHeight = gameFrameHeight * 0.80;
-    // Set the x-offset accordingly
-    CGFloat xOffsetForLeftScale = horizontalPadding;
-    CGFloat xOffsetForRightScale = gameFrameWidth - (scaleWidth + horizontalPadding);
-    CGFloat xOffsetForTray = horizontalPadding;
-    // Set the y-offset accordingly
-    CGFloat yOffsetForScales = verticalPadding;
-    CGFloat yOffsetForTray = gameFrameHeight - (trayHeight + verticalPadding);
-    
-    // Create frames
-    CGRect leftScaleFrame = CGRectMake(xOffsetForLeftScale, yOffsetForScales, scaleWidth, scaleHeight);
-    CGRect rightScaleFrame = CGRectMake(xOffsetForRightScale, yOffsetForScales, scaleWidth, scaleHeight);
-    CGRect trayFrame = CGRectMake(xOffsetForTray, yOffsetForTray, trayWidth, trayHeight);
-    
-    // Create labels
-    _leftScale = [[UILabel alloc] initWithFrame:leftScaleFrame];
-    [_leftScale setBackgroundColor:[UIColor yellowColor]];
-    _rightScale = [[UILabel alloc] initWithFrame:rightScaleFrame];
-    [_rightScale setBackgroundColor:[UIColor yellowColor]];
-    _tray = [[UILabel alloc] initWithFrame:trayFrame];
-    [_tray setBackgroundColor:[UIColor blueColor]];
+    // Initialize the game graphics
+    [self initScalesWithFrame:gameFrame];
+    [self initTrayWithFrame:gameFrame andNumCoins:numCoins];
     
     // Initialize the return button
     [self initReturnButtonWithFrame:frame];
   }
   
   return self;
+}
+
+- (void)initScalesWithFrame:(CGRect)frame
+{
+  // Get the dimensions of the frame
+  CGFloat frameWidth = CGRectGetWidth(frame);
+  CGFloat frameHeight = CGRectGetHeight(frame);
+  
+  // Have 10% padding on all sides
+  CGFloat horizontalPadding = frameWidth * 0.10;
+  CGFloat verticalPadding = frameHeight * 0.10;
+  // Make the side scales 35% of the frame width and 35% of the frame height
+  CGFloat scaleWidth = frameWidth * 0.35;
+  CGFloat scaleHeight = frameHeight * 0.35;
+
+  // Set the x-offset accordingly
+  CGFloat xOffsetForLeftScale = horizontalPadding;
+  CGFloat xOffsetForRightScale = frameWidth - (scaleWidth + horizontalPadding);
+  // Set the y-offset accordingly
+  CGFloat yOffsetForScales = verticalPadding;
+  
+  // Create frames
+  CGRect leftScaleFrame = CGRectMake(xOffsetForLeftScale, yOffsetForScales, scaleWidth, scaleHeight);
+  CGRect rightScaleFrame = CGRectMake(xOffsetForRightScale, yOffsetForScales, scaleWidth, scaleHeight);
+  
+  // Create labels
+  _leftScale = [[UILabel alloc] initWithFrame:leftScaleFrame];
+  [_leftScale setBackgroundColor:[UIColor yellowColor]];
+  _rightScale = [[UILabel alloc] initWithFrame:rightScaleFrame];
+  [_rightScale setBackgroundColor:[UIColor yellowColor]];
+  
+  // Add to the frame
+  [self addSubview:_leftScale];
+  [self addSubview:_rightScale];
+}
+
+- (void)initTrayWithFrame:(CGRect)frame andNumCoins:(int)numCoins
+{
+  // Get the dimensions of the frame
+  CGFloat frameWidth = CGRectGetWidth(frame);
+  CGFloat frameHeight = CGRectGetHeight(frame);
+  
+  // Have 10% padding on all sides
+  CGFloat horizontalPadding = frameWidth * 0.10;
+  CGFloat verticalPadding = frameHeight * 0.10;
+  // Make the tray 80% of the screen height and 35% of the width
+  CGFloat trayWidth = frameWidth * 0.80;
+  CGFloat trayHeight = frameHeight * 0.35;
+  // Set the x- and y-offsets accordingly
+  CGFloat xOffsetForTray = horizontalPadding;
+  CGFloat yOffsetForTray = frameHeight - (trayHeight + verticalPadding);
+  
+  // Create frame
+  CGRect trayFrame = CGRectMake(xOffsetForTray, yOffsetForTray, trayWidth, trayHeight);
+  
+  // Create label
+  _tray = [[UILabel alloc] initWithFrame:trayFrame];
+  [_tray setBackgroundColor:[UIColor blueColor]];
+  
+  // Add to the frame
+  [self addSubview:_tray];
+  
+  // Add the coins
+  [self initCoinsWithFrame:trayFrame andNumCoins:numCoins];
+}
+
+- (void)initCoinsWithFrame:(CGRect)frame andNumCoins:(int)numCoins
+{
+  // Get the dimensions of the frame
+  CGFloat frameWidth = CGRectGetWidth(frame);
+  CGFloat frameHeight = CGRectGetHeight(frame);
+  
+  // There will be two rows of coins with 10% padding all around
+  CGFloat horizPadding = frameWidth * 0.10;
+  CGFloat vertPadding = frameHeight * 0.10;
+  // Set up the coin size
+  CGFloat coinSize = frameHeight * 0.40;
+  
+  int MAXCOINSINROW = 6;
+  
+  // Populate the first row -- it'll be full because there are always 8-12 coins
+  for (int i = 0; i < MAXCOINSINROW; i++) {
+    
+  }
 }
 
 - (void)initReturnButtonWithFrame:(CGRect)frame
@@ -142,13 +199,13 @@
 - (void)wonGame
 {
   // Tell game controller to leave the view
-  [self.delegate exitMinigame];
+  [self.delegate exitScalesGame];
 }
 
 - (void)exitGame
 {
   // Tell game controller to leave the view
-  [self.delegate exitMinigame];
+  [self.delegate exitScalesGame];
 }
 
 @end

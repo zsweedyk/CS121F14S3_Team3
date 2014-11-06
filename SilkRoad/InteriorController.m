@@ -10,6 +10,7 @@
 #import "InteriorModel.h"
 #import "MatchingGameController.h"
 #import "RoadGameController.h"
+#import "ScalesGameController.h"
 
 @interface InteriorController () {
   int _currentStage;
@@ -21,6 +22,7 @@
   // Available minigames should have their controllers included here
   MatchingGameController* _matchingGameController;
   RoadGameController* _roadGameController;
+  ScalesGameController* _scalesGameController;
 }
 @end
 
@@ -43,6 +45,7 @@
   [_matchingGameController setLevelTo:_currentStage];
   
   _roadGameController = [[RoadGameController alloc] init];
+  _scalesGameController = [[ScalesGameController alloc] init];
 
   
   // Initialize the InteriorView
@@ -83,7 +86,7 @@
   switch (_currentStage) {
     case 0:
        _matchingGameController.delegate = self;
-      minigameViewController = _matchingGameController;
+      minigameViewController = _scalesGameController;
       break;
     case 1:
       _matchingGameController.delegate = self;
