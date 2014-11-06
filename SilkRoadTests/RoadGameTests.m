@@ -36,6 +36,8 @@
   XCTAssertTrue([_gameModel connectionIsValidForRow:8 Col:0 AndRow:8 Col:2]);
   // Nodes in same column
   XCTAssertTrue([_gameModel connectionIsValidForRow:0 Col:0 AndRow:2 Col:0]);
+  // Nodes not in same row or column
+   XCTAssertFalse([_gameModel connectionIsValidForRow:8 Col:0 AndRow:7 Col:3]);
   // Node should not be able to connect to self
   XCTAssertFalse([_gameModel connectionIsValidForRow:0 Col:0 AndRow:0 Col:0]);
   
