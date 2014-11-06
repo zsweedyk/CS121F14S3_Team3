@@ -21,4 +21,8 @@
 
 -(NSMutableArray*)getHouses;
 
+-(void)visitHouse:(int)houseNum;
+
+-(BOOL)visitedAllHouses;
+
 @end

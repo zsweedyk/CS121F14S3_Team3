@@ -72,7 +72,6 @@ const int tagIndex = 4;
 //Adds a house described in the given string to the back of the houses array
 -(void)addHouse:(NSString*)nextHouse
 {
-    NSLog(nextHouse);
     NSArray* componentsOfHouse = [nextHouse componentsSeparatedByString:@", "];
     House* newHouse =  [House alloc];
     newHouse.visited = NO;
@@ -92,9 +91,21 @@ const int tagIndex = 4;
     return _houses;
 }
 
--(BOOL)canVisitHouse: (int)house
+//Tells the model that house n is being visited
+-(void)visitHouse:(int)houseNum
 {
-  return YES;
+    ((House*)[_houses objectAtIndex:houseNum]).visited = YES;
+}
+
+// Returns true if every house has been visted and otherwise returns false
+-(BOOL)visitedAllHouses
+{
+    for (House* house in _houses) {
+        if (house.visited == NO) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
