@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @protocol ExitMinigame
 -(void) exitMinigame:(BOOL)won;

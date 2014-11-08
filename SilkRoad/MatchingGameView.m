@@ -18,6 +18,8 @@
   int _rightSelected;
   int _numPhrases;
   int _countMatched;
+  AVAudioPlayer* _correctAudio;
+  AVAudioPlayer* _incorrectAudio;
 }
 @end
 
@@ -72,6 +74,26 @@
     CGFloat phrasePadding = phraseHeight * 0.10;
     // Set the initial y-offset
     CGFloat yOffset = verticalPadding;
+    
+    NSString *path_correct  = [[NSBundle mainBundle] pathForResource:@"correct_gong" ofType:@"wav"];
+    NSString *path_incorrect  = [[NSBundle mainBundle] pathForResource:@"incorrect_buzzer" ofType:@"wav"];
+    NSURL *pathURL_correct = [NSURL fileURLWithPath:path_correct];
+    NSURL *pathURL_incorrect = [NSURL fileURLWithPath:path_incorrect];
+    NSError *correct_error = nil;
+    _correctAudio = [[AVAudioPlayer alloc]
+                                   initWithContentsOfURL:pathURL_correct
+                                   error:&correct_error];
+    NSError *incorrect_error = nil;
+    _incorrectAudio = [[AVAudioPlayer alloc]
+                                     initWithContentsOfURL:pathURL_incorrect
+                                     error:&incorrect_error];
+    
+    if (correct_error) {
+      NSLog(@"Error, file not found: %@",path_correct);
+    }
+    if (incorrect_error) {
+      NSLog(@"Error, file not found: %@",path_incorrect);
+    }
     
     // Simultaenously create the buttons on the left and the right side
     for (int i = 0; i < _numPhrases; i++) {
@@ -229,6 +251,7 @@
   UIButton *rightButton = [_rightSidePhraseButtons objectAtIndex:_rightSelected - 1];
   
   if (match) {
+    [_correctAudio play];
     // Increment number of matches
     _countMatched++;
     // Mark down the match so that they will be unclickable
@@ -239,6 +262,7 @@
     [rightButton setBackgroundImage:[UIImage imageNamed:@"geodegrey"] forState:UIControlStateNormal];
   }
   else {
+    [_incorrectAudio play];
     // Reset the background color to original
     [leftButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
     [rightButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
