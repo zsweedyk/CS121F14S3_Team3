@@ -50,7 +50,6 @@
   }
 }
 
-// TODO this may change when houses are clickable
 -(void)initForStage:(int)stage andHouse:(int)house
 {
   _dialogueForCurrentHouse = [[_allDialogue objectAtIndex:stage]objectAtIndex:house];
