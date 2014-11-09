@@ -16,10 +16,15 @@
 -(NSInteger)createConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
 @end
 
+@protocol ExitMinigame
+-(void)returnToInterior;
+@end
+
 @interface RoadGameView : UIView
 
-@property (assign, nonatomic) id <CheckConnectionValid, CreateConnection> delegate;
+@property (assign, nonatomic) id <CheckConnectionValid, CreateConnection, ExitMinigame> delegate;
 
 -(void)setNodeValueAtRow:(int)row AndColumn:(int)col toValue:(int) value;
+-(void)setNodeBackgroundAtRow:(int)row AndColumn:(int)col;
 
 @end

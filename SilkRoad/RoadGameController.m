@@ -36,6 +36,7 @@
       for (int col = 0; col < 9; col++) {
         int nodeValue = [_gameModel getNumAvailableConnectionsToNodeAtRow:row Col:col];
         if (nodeValue != 0) {
+          [_gameView setNodeBackgroundAtRow:row AndColumn:col];
           [_gameView setNodeValueAtRow:row AndColumn:col toValue:nodeValue];
         }
       }
