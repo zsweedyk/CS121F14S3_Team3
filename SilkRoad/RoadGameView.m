@@ -26,22 +26,42 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-      // Set the minigame background
-      [self setBackgroundColor:[UIColor whiteColor]];
       
       // Get the dimensions of the frame
       CGFloat frameWidth = CGRectGetWidth(frame);
       CGFloat frameHeight = CGRectGetHeight(frame);
       
+      // Setup a new context with the correct size
+      UIImage* backgroundMap = [UIImage imageNamed:@"China_blank_map-1.png"];
+      UIGraphicsBeginImageContextWithOptions(CGSizeMake(frameWidth, frameHeight), YES, 0.0);
+      CGContextRef context = UIGraphicsGetCurrentContext();
+      UIGraphicsPushContext(context);
+      
+      // Draw map image so that it's centered on this context
+      CGPoint origin = CGPointMake((frameWidth - backgroundMap.size.width) / 2.0f,
+                                   (frameHeight - backgroundMap.size.height) / 2.0f);
+      [backgroundMap drawAtPoint:origin];
+      
+      // Clean up and get the new image.
+      UIGraphicsPopContext();
+      UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+      UIGraphicsEndImageContext();
+      
+      // Set the minigame background
+      [self setBackgroundColor:[UIColor colorWithPatternImage:newImage]];
+     
       // The game frame will be 90% of the screen, the bottom 10% is for the game
       //    bottom bar
       CGFloat gameFrameWidth = frameWidth;
       CGFloat gameFrameHeight = frameHeight * 0.90;
       
+      CGFloat boxSize = MIN(frameWidth, frameHeight);
       // There are 9 grid cells to display, and 10 lines between them
       CGFloat horizontalPadding = gameFrameWidth / 19.0;
       CGFloat verticalPadding = gameFrameHeight / 19.0;
       
+      
+      CGFloat extraHorizontalSpace = frameWidth - boxSize;
       CGFloat yOffset = verticalPadding;
       _buttonSize = MIN(horizontalPadding, verticalPadding);
       
@@ -54,11 +74,15 @@
       // equal to the size of a button.
       for (int row = 0; row < 9; row++) {
         [_buttonGrid addObject:[[NSMutableArray alloc] initWithCapacity:9]];
-        CGFloat xOffset = horizontalPadding;
+        CGFloat xOffset = extraHorizontalSpace / 2.0;
         
         for (int col = 0; col < 9; col++) {
           CGRect buttonFrame = CGRectMake(xOffset, yOffset, _buttonSize, _buttonSize);
           UIButton* button = [[UIButton alloc] initWithFrame:buttonFrame];
+          
+          
+          [button.titleLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:18]];
+          
           
           [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
           [button setTag: row * 10 + col];
@@ -74,25 +98,44 @@
       // Each click event needs to be paired with another, as the player is trying to
       // connect button nodes
       _waitingForPair = NO;
+      // Make the frame for the return button
+      CGRect returnFrame = CGRectMake(20 * _buttonSize, yOffset, 5 *_buttonSize, _buttonSize);
+      // Make the button and add it to the view
+      UIButton* returnButton = [[UIButton alloc] initWithFrame:returnFrame];
+      [returnButton setBackgroundColor:[UIColor blackColor]];
+      returnButton.layer.cornerRadius = 8;
+      [returnButton addTarget:self action:@selector(exitGame) forControlEvents:UIControlEventTouchUpInside];
+      [returnButton setTitle:@"Return to Village" forState:UIControlStateNormal];
+      [[returnButton layer] setBorderWidth:3.0f];
+      [[returnButton layer] setBorderColor:[UIColor whiteColor].CGColor];
+      [self addSubview:returnButton];
     }
     return self;
 }
 
+// Called on initalization to set nodes with actual values to be black and rounded
+-(void)setNodeBackgroundAtRow:(int)row AndColumn:(int)col
+{
+  UIButton* button = [[_buttonGrid objectAtIndex:row] objectAtIndex:col];
+  button.layer.cornerRadius = _buttonSize / 2.0;
+  [button setBackgroundColor:[UIColor blackColor]];
+}
+
 // Set the value of a node at a given row and column
-// Change the background color to green when it has been fully connected, otherwise make it black
-// Called on intialization, so changing background to black is needed then
-// Also if player undoes a connection of a green node
 -(void)setNodeValueAtRow:(int)row AndColumn:(int)col toValue:(int) value
 {
   UIButton* button = [[_buttonGrid objectAtIndex:row] objectAtIndex:col];
   [button setTitle:[NSString stringWithFormat:@"%d", value] forState:UIControlStateNormal];
- 
-  [button setBackgroundColor:[UIColor blackColor]];
   
-  [button addTarget:self action:@selector(complicatedAsAllHell:) forControlEvents:UIControlEventTouchUpInside];
+  [button addTarget:self action:@selector(drawLines:) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)complicatedAsAllHell:(id)sender
+-(void)exitGame
+{
+  [self.delegate returnToInterior];
+}
+
+-(void)drawLines:(id)sender
 {
   UIButton* button = (UIButton*)sender;
   // Has button been clicked previously to this?

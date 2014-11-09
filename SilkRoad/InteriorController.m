@@ -109,7 +109,19 @@
 
 - (void)returnToInterior
 {
-  BOOL winning = [_matchingGameController hasBeenWon];
+  BOOL winning;
+  switch (_currentStage) {
+    case 0:
+      winning = [_matchingGameController hasBeenWon];
+      break;
+    case 1:
+      winning = [_matchingGameController hasBeenWon];
+      break;
+    default:
+      winning = [_matchingGameController hasBeenWon];
+      break;
+  }
+  
   // Dismiss the minigame controller and return to the interior view
   if (winning) {
     [_interiorModel setWinDialogueForStage:_currentStage];
