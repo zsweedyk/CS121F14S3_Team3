@@ -164,12 +164,7 @@
     
     // Set the correct interior
     [_interiorController setStageTo:_currentStage andInteriorTo:interior hasVisitedHouses:[_stageModel visitedAllHouses]];
-    // Create the navigation controller and present it.
-    UINavigationController *interiorNavController = [[UINavigationController alloc]
-                                                  initWithRootViewController:_interiorController];
-    [self presentViewController:interiorNavController animated:YES completion: nil];
-    interiorNavController.navigationBar.hidden = YES;
-
+    [self presentViewController:_interiorController animated:YES completion: nil];
 }
 
 - (void)returnToStage

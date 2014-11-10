@@ -101,10 +101,7 @@
   }
 
   // Create the navigation controller and present it.
-  UINavigationController* matchingNavController = [[UINavigationController alloc] initWithRootViewController:minigameViewController];
-  [self presentViewController:matchingNavController animated:YES completion: nil];
-  matchingNavController.navigationBar.hidden = YES;
-
+  [self presentViewController:minigameViewController animated:YES completion: nil];
 }
 
 - (void)returnToInterior
@@ -176,7 +173,19 @@
     if (_currentInterior == 0) {
       // If the game has been won and there is no more dialogue, go to
       // the next stage
-      if ([_matchingGameController hasBeenWon]) {
+      BOOL won;
+      switch (_currentStage) {
+        case 0:
+          won = [_matchingGameController hasBeenWon];
+          break;
+        case 1:
+          won = [_matchingGameController hasBeenWon];
+          break;
+        default:
+          won = [_matchingGameController hasBeenWon];
+          break;
+      }
+      if (won) {
         [self.delegate notifyStageComplete];
       } else {
         // If the game has yet to be won, enter the game
