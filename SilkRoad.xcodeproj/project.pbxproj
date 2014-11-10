@@ -73,6 +73,18 @@
 		93CA8F6A1A00412E00B4B722 /* RoadGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F661A00412E00B4B722 /* RoadGameModel.m */; };
 		93CA8F6B1A00412E00B4B722 /* RoadGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F681A00412E00B4B722 /* RoadGameView.m */; };
 		93CA8F891A09C5AF00B4B722 /* RoadTestGrid.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8F881A09C5AF00B4B722 /* RoadTestGrid.txt */; };
+		93CA8F9E1A102F1100B4B722 /* RoadPuzzle2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8F9A1A102F1100B4B722 /* RoadPuzzle2.txt */; };
+		93CA8F9F1A102F1100B4B722 /* RoadPuzzle3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8F9B1A102F1100B4B722 /* RoadPuzzle3.txt */; };
+		93CA8FA01A102F1100B4B722 /* RoadPuzzle4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8F9C1A102F1100B4B722 /* RoadPuzzle4.txt */; };
+		93CA8FA11A102F1100B4B722 /* RoadPuzzle5.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8F9D1A102F1100B4B722 /* RoadPuzzle5.txt */; };
+		93CA8FAA1A10337B00B4B722 /* RoadPuzzle0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8FA21A10337B00B4B722 /* RoadPuzzle0.txt */; };
+		93CA8FAB1A10337B00B4B722 /* RoadPuzzle6.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8FA31A10337B00B4B722 /* RoadPuzzle6.txt */; };
+		93CA8FAC1A10337B00B4B722 /* RoadPuzzle7.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8FA41A10337B00B4B722 /* RoadPuzzle7.txt */; };
+		93CA8FAD1A10337B00B4B722 /* RoadPuzzle8.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8FA51A10337B00B4B722 /* RoadPuzzle8.txt */; };
+		93CA8FAE1A10337B00B4B722 /* RoadPuzzle9.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8FA61A10337B00B4B722 /* RoadPuzzle9.txt */; };
+		93CA8FAF1A10337B00B4B722 /* RoadPuzzle10.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8FA71A10337B00B4B722 /* RoadPuzzle10.txt */; };
+		93CA8FB01A10337B00B4B722 /* RoadPuzzle11.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8FA81A10337B00B4B722 /* RoadPuzzle11.txt */; };
+		93CA8FB11A10337B00B4B722 /* RoadPuzzle12.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8FA91A10337B00B4B722 /* RoadPuzzle12.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +176,18 @@
 		93CA8F671A00412E00B4B722 /* RoadGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadGameView.h; sourceTree = "<group>"; };
 		93CA8F681A00412E00B4B722 /* RoadGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadGameView.m; sourceTree = "<group>"; };
 		93CA8F881A09C5AF00B4B722 /* RoadTestGrid.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadTestGrid.txt; sourceTree = "<group>"; };
+		93CA8F9A1A102F1100B4B722 /* RoadPuzzle2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle2.txt; sourceTree = "<group>"; };
+		93CA8F9B1A102F1100B4B722 /* RoadPuzzle3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle3.txt; sourceTree = "<group>"; };
+		93CA8F9C1A102F1100B4B722 /* RoadPuzzle4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle4.txt; sourceTree = "<group>"; };
+		93CA8F9D1A102F1100B4B722 /* RoadPuzzle5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle5.txt; sourceTree = "<group>"; };
+		93CA8FA21A10337B00B4B722 /* RoadPuzzle0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle0.txt; sourceTree = "<group>"; };
+		93CA8FA31A10337B00B4B722 /* RoadPuzzle6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle6.txt; sourceTree = "<group>"; };
+		93CA8FA41A10337B00B4B722 /* RoadPuzzle7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle7.txt; sourceTree = "<group>"; };
+		93CA8FA51A10337B00B4B722 /* RoadPuzzle8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle8.txt; sourceTree = "<group>"; };
+		93CA8FA61A10337B00B4B722 /* RoadPuzzle9.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle9.txt; sourceTree = "<group>"; };
+		93CA8FA71A10337B00B4B722 /* RoadPuzzle10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle10.txt; sourceTree = "<group>"; };
+		93CA8FA81A10337B00B4B722 /* RoadPuzzle11.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle11.txt; sourceTree = "<group>"; };
+		93CA8FA91A10337B00B4B722 /* RoadPuzzle12.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle12.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,8 +218,20 @@
 		2628DEF419EF2AD1003487ED /* Minigame Files */ = {
 			isa = PBXGroup;
 			children = (
-				93CA8F881A09C5AF00B4B722 /* RoadTestGrid.txt */,
+				93CA8FA21A10337B00B4B722 /* RoadPuzzle0.txt */,
 				937AE8F319F47A3B00CEB0E7 /* RoadPuzzle1.txt */,
+				93CA8F9A1A102F1100B4B722 /* RoadPuzzle2.txt */,
+				93CA8F9B1A102F1100B4B722 /* RoadPuzzle3.txt */,
+				93CA8F9C1A102F1100B4B722 /* RoadPuzzle4.txt */,
+				93CA8F9D1A102F1100B4B722 /* RoadPuzzle5.txt */,
+				93CA8FA31A10337B00B4B722 /* RoadPuzzle6.txt */,
+				93CA8FA41A10337B00B4B722 /* RoadPuzzle7.txt */,
+				93CA8FA51A10337B00B4B722 /* RoadPuzzle8.txt */,
+				93CA8FA61A10337B00B4B722 /* RoadPuzzle9.txt */,
+				93CA8FA71A10337B00B4B722 /* RoadPuzzle10.txt */,
+				93CA8FA81A10337B00B4B722 /* RoadPuzzle11.txt */,
+				93CA8FA91A10337B00B4B722 /* RoadPuzzle12.txt */,
+				93CA8F881A09C5AF00B4B722 /* RoadTestGrid.txt */,
 				2628DEF519EF2DD8003487ED /* MatchingGamePhrases.txt */,
 			);
 			name = "Minigame Files";
@@ -412,20 +448,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93CA8F9F1A102F1100B4B722 /* RoadPuzzle3.txt in Resources */,
+				93CA8FA01A102F1100B4B722 /* RoadPuzzle4.txt in Resources */,
 				937AE8E619F0505B00CEB0E7 /* Dialogue.txt in Resources */,
+				93CA8F9E1A102F1100B4B722 /* RoadPuzzle2.txt in Resources */,
+				93CA8FAE1A10337B00B4B722 /* RoadPuzzle9.txt in Resources */,
 				2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */,
 				2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */,
 				937AE8F419F47A3B00CEB0E7 /* RoadPuzzle1.txt in Resources */,
+				93CA8FAB1A10337B00B4B722 /* RoadPuzzle6.txt in Resources */,
+				93CA8FAA1A10337B00B4B722 /* RoadPuzzle0.txt in Resources */,
 				5156A2601A0D544000263DF2 /* incorrect_buzzer.wav in Resources */,
 				7FEFF16E1A02B8D000231C13 /* stage0.txt in Resources */,
 				937AE8B719E73A4500CEB0E7 /* Images.xcassets in Resources */,
+				93CA8FA11A102F1100B4B722 /* RoadPuzzle5.txt in Resources */,
+				93CA8FAC1A10337B00B4B722 /* RoadPuzzle7.txt in Resources */,
 				93CA8F891A09C5AF00B4B722 /* RoadTestGrid.txt in Resources */,
 				937AE8A919E73A4500CEB0E7 /* InfoPlist.strings in Resources */,
 				51948EE71A0987100075DD82 /* stage3.txt in Resources */,
+				93CA8FAD1A10337B00B4B722 /* RoadPuzzle8.txt in Resources */,
 				5156A25F1A0D544000263DF2 /* correct_gong.wav in Resources */,
 				937AE8B219E73A4500CEB0E7 /* Main.storyboard in Resources */,
+				93CA8FB01A10337B00B4B722 /* RoadPuzzle11.txt in Resources */,
 				51948EE91A0987100075DD82 /* stage2.txt in Resources */,
+				93CA8FB11A10337B00B4B722 /* RoadPuzzle12.txt in Resources */,
 				51948EE81A0987100075DD82 /* stage1.txt in Resources */,
+				93CA8FAF1A10337B00B4B722 /* RoadPuzzle10.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
