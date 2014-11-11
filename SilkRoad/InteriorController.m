@@ -31,6 +31,30 @@
 {
   _currentStage = stage;
   _currentInterior = interior;
+  if (_currentStage == 0 || _currentStage == 1) {
+    [_interiorView setInteriorBGTo:@"mohenjodaro.jpg"];
+    if (_currentInterior == 0) {
+      [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndianMan1"]];
+    } else if (_currentInterior == 1) {
+      [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"IndiaWoman1"]];
+    } else if (_currentInterior == 2) {
+      [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"IndianWoman2"]];
+    } else if (_currentInterior == 3) {
+      [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"IndianMan2"]];
+    }
+  } else if (_currentStage == 2 || _currentStage == 3) {
+    [_interiorView setInteriorBGTo:@"chinabg"];
+    if (_currentInterior == 0) {
+      [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"ChineseMan1"]];
+    } else if (_currentInterior == 1) {
+      [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"ChineseWoman1"]];
+    } else if (_currentInterior == 2) {
+      [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"ChineseWoman2"]];
+    } else if (_currentInterior == 3) {
+      [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"ChineseMan2"]];
+    }
+  }
+  
   
   [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
 }
@@ -93,6 +117,10 @@
       minigameViewController = _scalesGameController;
       [_scalesGameController setCurrencyTo:CHINA];
       break;
+    case 2:
+      _roadGameController.delegate = self;
+      minigameViewController = _roadGameController;
+      break;
     case 3:
       minigameViewController = _scalesGameController;
       [_scalesGameController setCurrencyTo:INDIA];
@@ -120,6 +148,9 @@
       break;
     case 1:
       winning = [_scalesGameController hasBeenWon];
+      break;
+    case 2:
+      winning = [_roadGameController hasBeenWon];
       break;
     case 3:
       winning = [_scalesGameController hasBeenWon];
@@ -151,30 +182,6 @@
 
 -(void)progressDialogue
 {
-    if (_currentStage == 0 || _currentStage == 1) {
-      [_interiorView setInteriorBGTo:@"mohenjodaro.jpg"];
-      if (_currentInterior == 0) {
-        [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndianMan1"]];
-      } else if (_currentInterior == 1) {
-        [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"IndiaWoman1"]];
-      } else if (_currentInterior == 2) {
-        [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"IndianWoman2"]];
-      } else if (_currentInterior == 3) {
-          [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"IndianMan2"]];
-      }
-    } else if (_currentStage == 2 || _currentStage == 3) {
-      [_interiorView setInteriorBGTo:@"chinabg"];
-      if (_currentInterior == 0) {
-        [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"ChineseMan1"]];
-      } else if (_currentInterior == 1) {
-        [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"ChineseWoman1"]];
-      } else if (_currentInterior == 2) {
-        [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"ChineseWoman2"]];
-      } else if (_currentInterior == 3) {
-          [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"ChineseMan2"]];
-      }
-    }
-    
   // Check to see if there are still available dialogue lines to display
   if ([_interiorModel dialogueFinished]) {
     [_interiorView setDialogueTextTo:[_interiorModel getNextLineOfDialogue]];
@@ -183,7 +190,7 @@
     if (_currentInterior == 0) {
       // If the game has been won and there is no more dialogue, go to
       // the next stage
-      if ([_matchingGameController hasBeenWon] || [_scalesGameController hasBeenWon]) {
+      if ([_matchingGameController hasBeenWon] || [_scalesGameController hasBeenWon] || [_roadGameController hasBeenWon]) {
         [self.delegate notifyStageComplete];
       } else {
         // If the game has yet to be won, enter the game

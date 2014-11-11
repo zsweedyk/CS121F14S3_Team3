@@ -26,4 +26,6 @@
 
 - (void)setStageTo:(int)stage andInteriorTo:(int)interior hasVisitedHouses:(BOOL)canEnterMinigame;
 
+- (void)initInteriorView;
+
 @end
