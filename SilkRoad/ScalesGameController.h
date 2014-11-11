@@ -13,8 +13,11 @@
 -(void)returnToInterior;
 @end
 
-@interface ScalesGameController : UIViewController <ExitScalesGame, CheckCoin>
+@interface ScalesGameController : UIViewController <ScalesGameDelegate>
 
 @property (assign, nonatomic) id <ReturnToInteriorFromScales> delegate;
+
+-(void)setCurrencyTo:(int)civ;
+-(BOOL)hasBeenWon;
 
 @end
