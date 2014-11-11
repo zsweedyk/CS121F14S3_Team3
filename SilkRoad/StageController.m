@@ -202,15 +202,21 @@
 
 - (void)buttonPressed:(id)button
 {
+  NSLog(@"In buttonPressed");
+  UIButton* ourButton = (UIButton*)button;
+  int tag = (int)ourButton.tag;
+  if (tag == 100) {
+    NSLog(@"In the if statement");
+    [self.delegate showMap];
+  } else {
     // Initialize the InteriorController
     _interiorController = [[InteriorController alloc] init];
     [_interiorController initInteriorView];
     // Configure InteriorController to report any changes to ViewController
     _interiorController.delegate = self;
-    UIButton* ourButton = (UIButton*)button;
-    int tag = (int)ourButton.tag;
     
     [self displayInteriorControllerForInterior:tag];
+  }
     
 }
 
