@@ -122,6 +122,7 @@
       minigameViewController = _roadGameController;
       break;
     case 3:
+      _scalesGameController.delegate = self;
       minigameViewController = _scalesGameController;
       [_scalesGameController setCurrencyTo:INDIA];
       break;
