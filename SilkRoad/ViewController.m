@@ -54,7 +54,12 @@
 - (void)displayStageController {
   // Configure StageController to report any changes to ViewController
   _stageController.delegate = self;
-  [self presentViewController:_stageController animated:YES completion: nil];
+  
+  // Create the navigation controller and present it.
+  UINavigationController *navigationController = [[UINavigationController alloc]
+                                                  initWithRootViewController:_stageController];
+  [self presentViewController:navigationController animated:YES completion: nil];
+  navigationController.navigationBar.hidden = YES;
 }
 
 

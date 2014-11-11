@@ -46,21 +46,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+
+// Display the stage view
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    [super viewDidAppear:NO];
+
     // Get stage frame dimensions
     CGRect frame = self.view.frame;
     CGFloat frameWidth = CGRectGetWidth(frame);
     CGFloat frameHeight = CGRectGetHeight(frame);
-  
+
     // The stage view will take up the same space
     CGRect stageFrame = CGRectMake(0, 0, frameWidth, frameHeight);
-  
+    
     // Stage 0 is hardcoded for now
     _stageModel = [[StageModel alloc] initForStage:_currentStage];
-  
-  
+    
+    
     if (_currentStage == 0) {
-      UIImage* india1 = [UIImage imageNamed:@"india2"];
-      _stageView = [[StageView alloc] initWithFrame:stageFrame background:india1];
+        UIImage* india1 = [UIImage imageNamed:@"india2"];
+        _stageView = [[StageView alloc] initWithFrame:stageFrame background:india1];
     } else if (_currentStage == 1) {
       UIImage* india2 = [UIImage imageNamed:@"india1"];
       _stageView = [[StageView alloc] initWithFrame:stageFrame background:india2];
@@ -72,7 +81,7 @@
       _stageView = [[StageView alloc] initWithFrame:stageFrame background:china2];
     }
     [_stageView loadNewStageWithHouses:[_stageModel getHouses]];
-  
+    
     _stageView.delegate = self;
     [self.view addSubview:_stageView];
 }
@@ -164,7 +173,12 @@
     
     // Set the correct interior
     [_interiorController setStageTo:_currentStage andInteriorTo:interior hasVisitedHouses:[_stageModel visitedAllHouses]];
-    [self presentViewController:_interiorController animated:YES completion: nil];
+    // Create the navigation controller and present it.
+    UINavigationController *interiorNavController = [[UINavigationController alloc]
+                                                  initWithRootViewController:_interiorController];
+    [self presentViewController:interiorNavController animated:YES completion: nil];
+    interiorNavController.navigationBar.hidden = YES;
+
 }
 
 - (void)returnToStage
@@ -194,7 +208,7 @@
     _interiorController.delegate = self;
     UIButton* ourButton = (UIButton*)button;
     int tag = (int)ourButton.tag;
-  
+    
     [self displayInteriorControllerForInterior:tag];
     
 }
