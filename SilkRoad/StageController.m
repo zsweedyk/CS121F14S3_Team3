@@ -211,6 +211,7 @@
   } else {
     // Initialize the InteriorController
     _interiorController = [[InteriorController alloc] init];
+    [_interiorController initInteriorView];
     // Configure InteriorController to report any changes to ViewController
     _interiorController.delegate = self;
     
