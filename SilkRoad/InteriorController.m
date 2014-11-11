@@ -154,7 +154,7 @@
     if (_currentStage == 0 || _currentStage == 1) {
       [_interiorView setInteriorBGTo:@"mohenjodaro.jpg"];
       if (_currentInterior == 0) {
-        [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndiaMan1"]];
+        [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndianMan1"]];
       } else if (_currentInterior == 1) {
         [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"IndiaWoman1"]];
       } else if (_currentInterior == 2) {
