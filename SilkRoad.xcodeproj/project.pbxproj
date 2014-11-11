@@ -41,6 +41,8 @@
 		5156A25F1A0D544000263DF2 /* correct_gong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5156A25D1A0D544000263DF2 /* correct_gong.wav */; };
 		5156A2601A0D544000263DF2 /* incorrect_buzzer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5156A25E1A0D544000263DF2 /* incorrect_buzzer.wav */; };
 		5156A2621A0E8B7C00263DF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5156A2611A0E8B7C00263DF2 /* AVFoundation.framework */; };
+		5156A2651A102F5100263DF2 /* buttonUnvisited.png in Resources */ = {isa = PBXBuildFile; fileRef = 5156A2631A102F5100263DF2 /* buttonUnvisited.png */; };
+		5156A2661A102F5100263DF2 /* buttonVisited.png in Resources */ = {isa = PBXBuildFile; fileRef = 5156A2641A102F5100263DF2 /* buttonVisited.png */; };
 		51948EE71A0987100075DD82 /* stage3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE41A0987100075DD82 /* stage3.txt */; };
 		51948EE81A0987100075DD82 /* stage1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE51A0987100075DD82 /* stage1.txt */; };
 		51948EE91A0987100075DD82 /* stage2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE61A0987100075DD82 /* stage2.txt */; };
@@ -120,6 +122,8 @@
 		5156A25D1A0D544000263DF2 /* correct_gong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correct_gong.wav; sourceTree = "<group>"; };
 		5156A25E1A0D544000263DF2 /* incorrect_buzzer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = incorrect_buzzer.wav; sourceTree = "<group>"; };
 		5156A2611A0E8B7C00263DF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5156A2631A102F5100263DF2 /* buttonUnvisited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonUnvisited.png; path = SilkRoad/buttonUnvisited.png; sourceTree = "<group>"; };
+		5156A2641A102F5100263DF2 /* buttonVisited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonVisited.png; path = SilkRoad/buttonVisited.png; sourceTree = "<group>"; };
 		51948EE41A0987100075DD82 /* stage3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage3.txt; sourceTree = "<group>"; };
 		51948EE51A0987100075DD82 /* stage1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage1.txt; sourceTree = "<group>"; };
 		51948EE61A0987100075DD82 /* stage2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage2.txt; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 		937AE89219E73A4500CEB0E7 = {
 			isa = PBXGroup;
 			children = (
+				5156A2631A102F5100263DF2 /* buttonUnvisited.png */,
+				5156A2641A102F5100263DF2 /* buttonVisited.png */,
 				937AE8A419E73A4500CEB0E7 /* SilkRoad */,
 				937AE8C319E73A4500CEB0E7 /* SilkRoadTests */,
 				937AE89D19E73A4500CEB0E7 /* Frameworks */,
@@ -412,6 +418,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5156A2651A102F5100263DF2 /* buttonUnvisited.png in Resources */,
 				937AE8E619F0505B00CEB0E7 /* Dialogue.txt in Resources */,
 				2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */,
 				2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */,
@@ -419,6 +426,7 @@
 				5156A2601A0D544000263DF2 /* incorrect_buzzer.wav in Resources */,
 				7FEFF16E1A02B8D000231C13 /* stage0.txt in Resources */,
 				937AE8B719E73A4500CEB0E7 /* Images.xcassets in Resources */,
+				5156A2661A102F5100263DF2 /* buttonVisited.png in Resources */,
 				93CA8F891A09C5AF00B4B722 /* RoadTestGrid.txt in Resources */,
 				937AE8A919E73A4500CEB0E7 /* InfoPlist.strings in Resources */,
 				51948EE71A0987100075DD82 /* stage3.txt in Resources */,

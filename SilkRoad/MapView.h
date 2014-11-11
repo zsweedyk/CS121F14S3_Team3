@@ -8,7 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HideMap
+-(void)hideMap;
+@end
+
+@protocol JumpToStage
+-(void)jumpToStage:(int)stage;
+@end
+
 @interface MapView : UIView
+
+@property (assign, nonatomic) id <HideMap, JumpToStage> delegate;
+
+-(id)initWithFrame:(CGRect)frame;
 
 -(void)moveToNextStage;
 

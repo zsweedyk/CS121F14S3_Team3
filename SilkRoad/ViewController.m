@@ -17,6 +17,7 @@
   MapView* _mapView;
   ProgressView* _progressView;
   StageController* _stageController;
+  //UINavigationController* _navigationController;
 }
 
 @end
@@ -33,6 +34,8 @@
   // Initialize the controllers
   _menuView = [[MainMenuView alloc] initWithFrame:self.view.frame];
   _menuView.delegate = self;
+  _mapView = [[MapView alloc] initWithFrame:self.view.frame];
+  _mapView.delegate = self;
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:_currentStage];
   
@@ -40,9 +43,34 @@
   [self.view addSubview:_menuView];
 }
 
-- (void)showStage {
+- (void)showStage
+{
   [_menuView removeFromSuperview];
   [self displayStageController];
+}
+
+-(void)showMap
+{
+  NSLog(@"In showMap");
+  [self dismissViewControllerAnimated:NO completion:nil];
+  [self.view addSubview:_mapView];
+}
+
+- (void) hideMap
+{
+  NSLog(@"Got to hide map VC");
+  [_mapView removeFromSuperview];
+  [self displayStageController];
+}
+
+- (void) jumpToStage:(int)stage
+{
+  NSLog(@"inButtonPressed MV");
+  if (stage != _currentStage) {
+    _stageController = [[StageController alloc] init];
+    [_stageController setStageTo:stage];
+  }
+  [self hideMap];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,23 +79,23 @@
   // Dispose of any resources that can be recreated.
 }
 
-- (void)displayStageController {
+- (void)displayStageController
+{
   // Configure StageController to report any changes to ViewController
   _stageController.delegate = self;
-  
   // Create the navigation controller and present it.
-  UINavigationController *navigationController = [[UINavigationController alloc]
-                                                  initWithRootViewController:_stageController];
-  [self presentViewController:navigationController animated:YES completion: nil];
-  navigationController.navigationBar.hidden = YES;
+  [self presentViewController:_stageController animated:YES completion: nil];
+  //navigationController.navigationBar.hidden = YES;
 }
 
 
 // Initialize new stageController, set this to be the current stage
--(void)progressToNextStage {
+-(void)progressToNextStage
+{
   [self dismissViewControllerAnimated:NO completion:nil];
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:++_currentStage];
+  [_mapView moveToNextStage];
   
   [self displayStageController];
 }
