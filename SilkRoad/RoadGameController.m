@@ -26,9 +26,7 @@
   if (self) {
     // Initialize gameModel
     _gameModel = [[RoadGameModel alloc] init];
-    int puzzleNumber = arc4random_uniform(12);
-    NSLog(@"%i",puzzleNumber);
-    [_gameModel initGridWithFile:[NSString stringWithFormat:@"RoadPuzzle%i", puzzleNumber]];
+    [_gameModel initGridWithFile:@"RoadPuzzle1"];
     
     _gameView = [[RoadGameView alloc] initWithFrame:self.view.frame];
     _gameView.delegate = self;
