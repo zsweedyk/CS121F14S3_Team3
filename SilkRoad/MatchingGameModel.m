@@ -134,6 +134,7 @@
 -(BOOL)checkMatchBetweenLeftPhrase:(NSString*)leftPhrase andRightPhrase:(NSString*)rightPhrase
 {
   NSString *correctRightPhrase = [_matches objectForKey:leftPhrase];
+  NSLog(@"The correct match for %@ is %@, the user put %@", leftPhrase, correctRightPhrase, rightPhrase);
   return [rightPhrase isEqualToString:correctRightPhrase];
 }
 

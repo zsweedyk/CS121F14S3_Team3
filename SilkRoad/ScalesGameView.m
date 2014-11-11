@@ -8,48 +8,27 @@
 
 #import "ScalesGameView.h"
 #import "ScalesGameCoin.h"
-#import "Constants.h"
 
 @interface ScalesGameView()
 {
-  CGRect _gameFrame;
-  
-  UILabel *_gameInfo;
-  
-  UIView *_leftScaleView;
-  UIView *_rightScaleView;
-  UIButton *_leftScale;
-  UIButton *_rightScale;
-  
-  UIImage *_coinImage;
-  UIImage *_coinHighlightImage;
-  int _coinSize;
-  
-  NSMutableArray *_trayCells;
-  NSMutableArray *_leftCells;
-  NSMutableArray *_rightCells;
+  UILabel *_leftScale;
+  UILabel *_rightScale;
+  UILabel *_tray;
   
   NSMutableArray *_coinArray;
-  NSMutableArray *_coinImgArray;
-  
-  ScalesGameCoin* _currentCoin;
-  int _currentCoinNum;
-  
-  int _numWeighings;
-
-  BOOL _identifyingFake;
 }
 @end
 
 @implementation ScalesGameView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame andNumCoins:(int)numCoins
 {
   self = [super initWithFrame:frame];
   
   if (self) {
+    
     // Set the minigame background
-    [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"woodbg.jpg"]]];
+    [self setBackgroundColor:[UIColor whiteColor]];
     
     // Get the dimensions of the frame
     CGFloat frameWidth = CGRectGetWidth(frame);
@@ -59,93 +38,17 @@
     //    bottom bar
     CGFloat gameFrameWidth = frameWidth;
     CGFloat gameFrameHeight = frameHeight * 0.90;
-    _gameFrame = CGRectMake(0, 0, gameFrameWidth, gameFrameHeight);
-    
-    _coinSize = (gameFrameWidth * 0.50) / 6;
-    
-    // Initialize the arrays
-    _trayCells = [[NSMutableArray alloc] initWithCapacity:SCALES_MAXNUMCOINS];
-    _leftCells = [[NSMutableArray alloc] initWithCapacity:SCALES_MAXNUMCOINS];
-    _rightCells = [[NSMutableArray alloc] initWithCapacity:SCALES_MAXNUMCOINS];
+    CGRect gameFrame = CGRectMake(0, 0, gameFrameWidth, gameFrameHeight);
     
     // Initialize the game graphics
-    [self initScalesWithFrame:_gameFrame];
-    [self initTrayWithFrame:_gameFrame];
-    [self initWeighButtonWithFrame:_gameFrame];
+    [self initScalesWithFrame:gameFrame];
+    [self initTrayWithFrame:gameFrame andNumCoins:numCoins];
     
     // Initialize the return button
     [self initReturnButtonWithFrame:frame];
-    
-    // TODO: Info label
-    CGFloat cellSize = _coinSize + (_coinSize * 0.10);
-    CGFloat labelWidth = cellSize * 6;
-    CGFloat labelHeight = cellSize / 2;
-    CGFloat horizontalPadding = (frameWidth - (cellSize * 6)) / 2;
-    CGFloat verticalPadding = frameHeight * 0.05;
-    // Set the x- and y-offsets accordingly
-    CGFloat xOffset = horizontalPadding;
-    CGFloat yOffset = frameHeight - (labelHeight + verticalPadding);
-    
-    CGRect infoFrame = CGRectMake(xOffset, yOffset, labelWidth, labelHeight);
-    _gameInfo = [[UILabel alloc] initWithFrame:infoFrame];
-    [_gameInfo setBackgroundColor:[UIColor whiteColor]];
-    [self addSubview:_gameInfo];
-  
   }
   
   return self;
-}
-
-- (void)setCurrencyForCiv:(int)civ
-{
-  // Set the coin image according to the civ
-  if (civ == INDIA) {
-    _coinImage = [UIImage imageNamed:@"indiacurr"];
-    _coinHighlightImage = [UIImage imageNamed:@"indiacurrselect"];
-  }
-  else if (civ == CHINA) {
-    _coinImage = [UIImage imageNamed:@"chinacurr"];
-    _coinHighlightImage = [UIImage imageNamed:@"chinacurrselect"];
-  }
-  else {
-    _coinImage = [UIImage imageNamed:@"indiacurr"];
-    _coinHighlightImage = [UIImage imageNamed:@"indiacurrselect"];
-  }
-}
-
-- (void)newGameWithCoins:(NSMutableArray*)coins
-{
-  // Reset all instance variables
-  _identifyingFake = NO;
-  _currentCoin = NULL;
-  _currentCoinNum = (int)[coins count];
-  _numWeighings = 3;
-  
-  // Clear the arrays
-  [_coinArray removeAllObjects];
-  for (UIButton* coin in _coinImgArray) {
-    [coin removeFromSuperview];
-  }
-  [_coinImgArray removeAllObjects];
-  
-  // Now initialize them for the new array
-  _coinArray = [[NSMutableArray alloc] initWithCapacity:[coins count]];
-  _coinImgArray = [[NSMutableArray alloc] initWithCapacity:[coins count]];
-  
-  // Put the coins into the coin array
-  _coinArray = [coins mutableCopy];
-  
-  // Add the coins to the game graphics
-  [self makeScalesBalanced];
-  [self initCoins];
-  
-  NSString *info = [[NSString alloc] initWithFormat:@"    Number of weighings left: %d", _numWeighings];
-  [self updateGameInfo:info];
-}
-
-- (void)updateGameInfo:(NSString*)info
-{
-  _gameInfo.text = info;
 }
 
 - (void)initScalesWithFrame:(CGRect)frame
@@ -157,201 +60,79 @@
   // Have 10% padding on all sides
   CGFloat horizontalPadding = frameWidth * 0.10;
   CGFloat verticalPadding = frameHeight * 0.10;
+  // Make the side scales 35% of the frame width and 35% of the frame height
+  CGFloat scaleWidth = frameWidth * 0.35;
+  CGFloat scaleHeight = frameHeight * 0.35;
 
-  // Make each cell in the tray the size of a button with 5% padding on all sides
-  CGFloat cellSize = _coinSize + (_coinSize * 0.10);
+  // Set the x-offset accordingly
+  CGFloat xOffsetForLeftScale = horizontalPadding;
+  CGFloat xOffsetForRightScale = frameWidth - (scaleWidth + horizontalPadding);
+  // Set the y-offset accordingly
+  CGFloat yOffsetForScales = verticalPadding;
   
-  CGFloat scaleWidth = cellSize * 4;
-  CGFloat scaleHeight = cellSize * 3;
+  // Create frames
+  CGRect leftScaleFrame = CGRectMake(xOffsetForLeftScale, yOffsetForScales, scaleWidth, scaleHeight);
+  CGRect rightScaleFrame = CGRectMake(xOffsetForRightScale, yOffsetForScales, scaleWidth, scaleHeight);
   
-  // START WITH THE LEFT SCALE
-  // Set the x- and y-offsets accordingly
-  CGFloat xOffsetLeft = horizontalPadding;
-  CGFloat yOffsetLeft = verticalPadding;
-  CGRect leftScaleFrame = CGRectMake(xOffsetLeft, yOffsetLeft, scaleWidth, scaleHeight);
-  _leftScaleView = [[UIView alloc] initWithFrame:leftScaleFrame];
-  [self addSubview:_leftScaleView];
+  // Create labels
+  _leftScale = [[UILabel alloc] initWithFrame:leftScaleFrame];
+  [_leftScale setBackgroundColor:[UIColor yellowColor]];
+  _rightScale = [[UILabel alloc] initWithFrame:rightScaleFrame];
+  [_rightScale setBackgroundColor:[UIColor yellowColor]];
   
-  CGFloat xOffset = 0;
-  CGFloat yOffset = 0;
-  
-  // Create 3 rows of 4 cells
-  for (int row = 0; row < 3; row++) {
-    for (int col = 0; col < 4; col++) {
-      CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
-      UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
-      cell.tag = 100 + (row * 4) + col;
-      [cell addTarget:self action:@selector(moveCoinTo:) forControlEvents:UIControlEventTouchUpInside];
-      
-      [cell setBackgroundColor:[UIColor yellowColor]];
-      
-      [_leftCells insertObject:cell atIndex:(cell.tag - 100)];
-      [_leftScaleView addSubview:cell];
-      
-      xOffset += cellSize;
-    }
-    
-    xOffset = 0;
-    yOffset += cellSize;
-  }
-  
-  // NOW MAKE THE RIGHT SCALE
-  // Set the x- and y-offsets accordingly
-  CGFloat xOffsetRight = frameWidth - (cellSize * 4) - horizontalPadding;
-  CGFloat yOffsetRight = verticalPadding;
-  
-  CGRect rightScaleFrame = CGRectMake(xOffsetRight, yOffsetRight, scaleWidth, scaleHeight);
-  _rightScaleView = [[UIView alloc] initWithFrame:rightScaleFrame];
-  [self addSubview:_rightScaleView];
-  
-  xOffset = 0;
-  yOffset = 0;
-  
-  // Create 3 rows of 4 cells
-  for (int row = 0; row < 3; row++) {
-    for (int col = 0; col < 4; col++) {
-      CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
-      UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
-      cell.tag = 200 + (row * 4) + col;
-      [cell addTarget:self action:@selector(moveCoinTo:) forControlEvents:UIControlEventTouchUpInside];
-      
-      [cell setBackgroundColor:[UIColor yellowColor]];
-      
-      [_rightCells insertObject:cell atIndex:(cell.tag - 200)];
-      [_rightScaleView addSubview:cell];
-      
-      xOffset += cellSize;
-    }
-    
-    xOffset = 0;
-    yOffset += cellSize;
-  }
-  
-  // Draw the support rods
-  CGFloat rodWidth = 0.05 * scaleWidth;
-  CGFloat rodHeight = scaleHeight * 0.75;
-  CGFloat yOffsetRod = yOffsetLeft + (scaleHeight / 2);
-  CGFloat xOffsetLeftRod = xOffsetLeft + (scaleWidth / 2) - (0.025 * scaleWidth);
-  CGFloat xOffsetRightRod = xOffsetRight + (scaleWidth / 2) - (0.025 * scaleWidth);
-  
-  CGRect leftVertRodFrame = CGRectMake(xOffsetLeftRod, yOffsetRod, rodWidth, rodHeight);
-  CGRect rightVertRodFrame = CGRectMake(xOffsetRightRod, yOffsetRod, rodWidth, rodHeight);
-  
-  UILabel* leftVertRod = [[UILabel alloc] initWithFrame:leftVertRodFrame];
-  UILabel* rightVertRod = [[UILabel alloc] initWithFrame:rightVertRodFrame];
-  [leftVertRod setBackgroundColor:[UIColor yellowColor]];
-  [rightVertRod setBackgroundColor:[UIColor yellowColor]];
-  [self addSubview:leftVertRod];
-  [self addSubview:rightVertRod];
-  [self sendSubviewToBack:leftVertRod];
-  [self sendSubviewToBack:rightVertRod];
-  
-  // Draw the connecting horizontal bar
-  CGFloat horizRodWidth = xOffsetRightRod - xOffsetLeftRod + (0.05 * scaleWidth);
-  CGFloat horizRodHeight = rodWidth;
-  CGFloat yOffsetHorizRod = yOffsetRod + rodHeight;
-  CGFloat xOffsetHorizRod = xOffsetLeftRod;
-
-  CGRect horizRodFrame = CGRectMake(xOffsetHorizRod, yOffsetHorizRod, horizRodWidth, horizRodHeight);
-  
-  UILabel* horizRod = [[UILabel alloc] initWithFrame:horizRodFrame];
-  [horizRod setBackgroundColor:[UIColor yellowColor]];
-  [self addSubview:horizRod];
-  
-  // Draw the middle vertical bar
-  CGFloat vertRodWidth = (xOffsetRight - (xOffsetLeftRod + scaleWidth)) / 2;
-  CGFloat vertRodHeight = rodHeight / 2;
-  CGFloat yOffsetVertRod = yOffsetHorizRod;
-  CGFloat xOffsetVertRod = xOffsetHorizRod + (horizRodWidth / 2) - (vertRodWidth / 2);
-  
-  CGRect vertRodFrame = CGRectMake(xOffsetVertRod, yOffsetVertRod, vertRodWidth, vertRodHeight);
-  
-  UILabel* vertRod = [[UILabel alloc] initWithFrame:vertRodFrame];
-  [vertRod setBackgroundColor:[UIColor yellowColor]];
-  [self addSubview:vertRod];
-  [self sendSubviewToBack:vertRod];
-  
+  // Add to the frame
+  [self addSubview:_leftScale];
+  [self addSubview:_rightScale];
 }
 
-- (void)initTrayWithFrame:(CGRect)frame
+- (void)initTrayWithFrame:(CGRect)frame andNumCoins:(int)numCoins
 {
   // Get the dimensions of the frame
   CGFloat frameWidth = CGRectGetWidth(frame);
   CGFloat frameHeight = CGRectGetHeight(frame);
   
-  // Make each cell in the tray the size of a button with 5% padding on all sides
-  CGFloat cellSize = _coinSize + (_coinSize * 0.10);
-  CGFloat horizontalPadding = (frameWidth - (cellSize * 6)) / 2;
-  CGFloat verticalPadding = frameHeight * 0.05;
-  
+  // Have 10% padding on all sides
+  CGFloat horizontalPadding = frameWidth * 0.10;
+  CGFloat verticalPadding = frameHeight * 0.10;
+  // Make the tray 80% of the screen height and 35% of the width
+  CGFloat trayWidth = frameWidth * 0.80;
+  CGFloat trayHeight = frameHeight * 0.35;
   // Set the x- and y-offsets accordingly
-  CGFloat xOffset = horizontalPadding;
-  CGFloat yOffset = frameHeight - ((2 * cellSize) + verticalPadding);
+  CGFloat xOffsetForTray = horizontalPadding;
+  CGFloat yOffsetForTray = frameHeight - (trayHeight + verticalPadding);
   
-  // Create 2 rows of 6 cells
-  for (int row = 0; row < 2; row++) {
-    for (int col = 0; col < 6; col++) {
-      CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
-      UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
-      cell.tag = (row * 6) + col;
-      [cell addTarget:self action:@selector(moveCoinTo:) forControlEvents:UIControlEventTouchUpInside];
-      
-      [cell setBackgroundColor:[UIColor yellowColor]];
-      
-      [_trayCells insertObject:cell atIndex:cell.tag];
-      [self addSubview:cell];
-      
-      xOffset += cellSize;
-    }
-    
-    xOffset = horizontalPadding;
-    yOffset += cellSize;
-  }
+  // Create frame
+  CGRect trayFrame = CGRectMake(xOffsetForTray, yOffsetForTray, trayWidth, trayHeight);
+  
+  // Create label
+  _tray = [[UILabel alloc] initWithFrame:trayFrame];
+  [_tray setBackgroundColor:[UIColor blueColor]];
+  
+  // Add to the frame
+  [self addSubview:_tray];
+  
+  // Add the coins
+  [self initCoinsWithFrame:trayFrame andNumCoins:numCoins];
 }
 
-- (void)initCoins
-{
-  int numCoins = (int)[_coinArray count];
-  CGFloat coinPadding = _coinSize * 0.05;
-  
-  // Fill the tray cells with coins
-  for (int i = 0; i < numCoins; i++) {
-    CGRect coinFrame = CGRectMake(coinPadding, coinPadding, _coinSize, _coinSize);
-    UIButton *coin = [[UIButton alloc] initWithFrame:coinFrame];
-    coin.tag = i;
-    [coin addTarget:self action:@selector(coinSelected:) forControlEvents:UIControlEventTouchUpInside];
-    [coin setBackgroundImage:_coinImage forState:UIControlStateNormal];
-    [_coinImgArray insertObject:coin atIndex:coin.tag];
-    
-    UIButton* currentCell = [_trayCells objectAtIndex:i];
-    [currentCell addSubview:coin];
-  }
-}
-
-- (void)initWeighButtonWithFrame:(CGRect)frame
+- (void)initCoinsWithFrame:(CGRect)frame andNumCoins:(int)numCoins
 {
   // Get the dimensions of the frame
   CGFloat frameWidth = CGRectGetWidth(frame);
   CGFloat frameHeight = CGRectGetHeight(frame);
   
-  // The button will be 10% of the screen height and 15% of the width, with
-  //   padding equal to 10% of button width all around
-  CGFloat weighFrameWidth = frameWidth * 0.15;
-  CGFloat weighFrameHeight = frameHeight * 0.10;
+  // There will be two rows of coins with 10% padding all around
+  CGFloat horizPadding = frameWidth * 0.10;
+  CGFloat vertPadding = frameHeight * 0.10;
+  // Set up the coin size
+  CGFloat coinSize = frameHeight * 0.40;
   
-  CGFloat verticalOffset = frameHeight * 0.55;
-  CGFloat horizontalOffset = (frameWidth * 0.5) - (weighFrameWidth / 2);
+  int MAXCOINSINROW = 6;
   
-  // Make the frame for the return button
-  CGRect weighFrame = CGRectMake(horizontalOffset, verticalOffset, weighFrameWidth, weighFrameHeight);
-  // Make the button and add it to the view
-  UIButton* weighButton = [[UIButton alloc] initWithFrame:weighFrame];
-  [weighButton setTitle:@"Weigh Coins" forState:UIControlStateNormal];
-  // TODO: set background color to red for visibility
-  [weighButton setBackgroundColor:[UIColor redColor]];
-  [weighButton addTarget:self action:@selector(weighCoins) forControlEvents:UIControlEventTouchUpInside];
-  weighButton.highlighted = YES;
-  [self addSubview:weighButton];
+  // Populate the first row -- it'll be full because there are always 8-12 coins
+  for (int i = 0; i < MAXCOINSINROW; i++) {
+    
+  }
 }
 
 - (void)initReturnButtonWithFrame:(CGRect)frame
@@ -373,135 +154,25 @@
   CGRect returnFrame = CGRectMake(horizontalOffset, verticalOffset, returnFrameWidth, returnFrameHeight);
   // Make the button and add it to the view
   UIButton* returnButton = [[UIButton alloc] initWithFrame:returnFrame];
-  [returnButton setTitle:@"Return to Village" forState:UIControlStateNormal];
+  [returnButton setTitle:@"Return to Hut" forState:UIControlStateNormal];
   // TODO: set background color to green for visibility
   [returnButton setBackgroundColor:[UIColor greenColor]];
   [returnButton addTarget:self action:@selector(exitGame) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:returnButton];
 }
 
-- (void)coinSelected:(id)sender
+- (void)updateCoinsInLeftScale:(NSMutableArray*)leftScaleCoins RightScale:(NSMutableArray*)rightScaleCoins andTray:(NSMutableArray*)trayCoins
 {
-  // Get the coin number
-  UIButton* coin = (UIButton*) sender;
-  int coinNum = (int)coin.tag;
+  NSString* leftScale = [leftScaleCoins componentsJoinedByString:@" "];
+  NSString* rightScale = [rightScaleCoins componentsJoinedByString:@" "];
+  NSString* tray = [trayCoins componentsJoinedByString:@" "];
   
-  if (coinNum == _currentCoinNum) {
-    _currentCoinNum = (int)[_coinArray count];
-    _currentCoin = NULL;
-    [coin setBackgroundImage:_coinImage forState:UIControlStateNormal];
-  }
-  else {
-    if (_currentCoin != NULL) {
-      [coin setBackgroundImage:_coinImage forState:UIControlStateNormal];
-    }
-    
-    _currentCoinNum = coinNum;
-    _currentCoin = [_coinArray objectAtIndex:coinNum];
-    [coin setBackgroundImage:_coinHighlightImage forState:UIControlStateNormal];
-  }
-  
-  // If it's the identifying fake stage, check the selected coin to see if it's
-  // fake or not
-  if (_identifyingFake) {
-    [self checkFakeCoin:_currentCoin];
-  }
+  [_leftScale setText:leftScale];
+  [_rightScale setText:rightScale];
+  [_tray setText:tray];
 }
 
-- (void)moveCoinTo:(id)sender
-{
-  // Don't do anything if there's no coin selected
-  if (_currentCoin == NULL) {
-    return;
-  }
-  
-  UIButton* placeSelected = (UIButton*) sender;
-  int placeToMove = (int)placeSelected.tag / 100;
-
-  UIButton* currentCoin = [_coinImgArray objectAtIndex:_currentCoinNum];
-  
-  // Remove the coin form where it was
-  [currentCoin removeFromSuperview];
-  
-  // Put it in the new cell
-  [placeSelected addSubview:currentCoin];
-
-  // Tell the controller the coin has been moved
-  [self.delegate moveCoin:_currentCoin toPlace:placeToMove];
-  
-  // Reset the selected coin
-  _currentCoinNum = (int)[_coinArray count];
-  _currentCoin = NULL;
-  [currentCoin setBackgroundImage:_coinImage forState:UIControlStateNormal];
-}
-
-
-- (void) weighCoins
-{
-  --_numWeighings;
-  
-  if (_numWeighings == 0) {
-    NSString *info = [[NSString alloc] initWithFormat:@"    Click on the fake coin!"];
-    [self updateGameInfo:info];
-  }
-  else {
-    NSString *info = [[NSString alloc] initWithFormat:@"    Number of weighings left: %d", _numWeighings];
-    [self updateGameInfo:info];
-  }
-  
-  [self.delegate weighCoinsInScale];
-}
-
--(void)makeLeftScaleHeavier
-{
-  CGFloat frameHeight = CGRectGetHeight(_gameFrame);
-  
-  // Move the left scale down
-  CGRect leftFrame = _leftScaleView.frame;
-  leftFrame.origin.y = frameHeight * 0.15;
-  _leftScaleView.frame = leftFrame;
-  
-  // Move the right scale up
-  CGRect rightFrame = _rightScaleView.frame;
-  rightFrame.origin.y = frameHeight * 0.05;
-  _rightScaleView.frame = rightFrame;
-}
-
--(void)makeRightScaleHeavier
-{
-  CGFloat frameHeight = CGRectGetHeight(_gameFrame);
-  
-  // Move the right scale down
-  CGRect rightFrame = _rightScaleView.frame;
-  rightFrame.origin.y = frameHeight * 0.15;
-  _rightScaleView.frame = rightFrame;
-  
-  // Move the left scale up
-  CGRect leftFrame = _leftScaleView.frame;
-  leftFrame.origin.y = frameHeight * 0.05;
-  _leftScaleView.frame = leftFrame;
-}
-
--(void)makeScalesBalanced
-{
-  CGFloat frameHeight = CGRectGetHeight(_gameFrame);
-  
-  // Return both scales to middle position
-  CGRect leftFrame = _leftScaleView.frame;
-  leftFrame.origin.y = frameHeight * 0.10;
-  _leftScaleView.frame = leftFrame;
-  
-  CGRect rightFrame = _rightScaleView.frame;
-  rightFrame.origin.y = frameHeight * 0.10;
-  _rightScaleView.frame = rightFrame;
-}
-
-- (void)identifyFakeCoin
-{
-  _identifyingFake = YES;
-}
-
-- (void)checkFakeCoin:(id)sender
+- (void)identifyFakeCoin:(id)sender
 {
   // Delegate this to the game controller
   [self.delegate checkIfCoinFake:sender];
@@ -516,25 +187,25 @@
   }
   else {
     NSLog(@"Sorry, try again...");
-    [self lostGame];
+    [self newGame];
   }
 }
 
-- (void)lostGame
+- (void)newGame
 {
-  [self.delegate startNewGame];
+  // Wait
 }
 
 - (void)wonGame
 {
   // Tell game controller to leave the view
-  [self.delegate exitScalesGame:YES];
+  [self.delegate exitScalesGame];
 }
 
 - (void)exitGame
 {
   // Tell game controller to leave the view
-  [self.delegate exitScalesGame:NO];
+  [self.delegate exitScalesGame];
 }
 
 @end

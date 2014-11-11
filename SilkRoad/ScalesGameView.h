@@ -9,25 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "ScalesGameCoin.h"
 
-@protocol ScalesGameDelegate
--(void)startNewGame;
--(void)exitScalesGame:(BOOL)won;
--(void)weighCoinsInScale;
--(void)checkIfCoinFake:(ScalesGameCoin*)coin;
--(void)moveCoin:(ScalesGameCoin*)coin toPlace:(int)placeToMove;
+@protocol ExitScalesGame
+-(void) exitScalesGame;
+@end
+
+@protocol CheckCoin
+-(void) checkIfCoinFake:(ScalesGameCoin*)coin;
 @end
 
 @interface ScalesGameView : UIView
 
-@property (assign, nonatomic) id <ScalesGameDelegate> delegate;
+@property (assign, nonatomic) id <ExitScalesGame, CheckCoin> delegate;
 
--(id)initWithFrame:(CGRect)frame;
--(void)setCurrencyForCiv:(int)civ;
--(void)newGameWithCoins:(NSMutableArray*)coins;
--(void)makeLeftScaleHeavier;
--(void)makeRightScaleHeavier;
--(void)makeScalesBalanced;
--(void)identifyFakeCoin;
+-(id)initWithFrame:(CGRect)frame andNumCoins:(int)numCoins;
 -(void)foundFakeCoin:(BOOL)found;
 
 @end
