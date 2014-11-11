@@ -8,6 +8,7 @@
 
 #import "ScalesGameModel.h"
 #import "StageModel.h"
+#import "Constants.h"
 
 @interface ScalesGameModel()
 {
@@ -18,10 +19,6 @@
   int _numWeighings;
 }
 @end
-
-const int BALANCED = 0;
-const int LEFT = 1;
-const int RIGHT = 2;
 
 @implementation ScalesGameModel
 
@@ -38,10 +35,15 @@ const int RIGHT = 2;
   return self;
 }
 
--(int)newGame
+-(void)newGame
 {
-  // Reset the number of weighings to 0
-  _numWeighings = 0;
+  // Reset the trays
+  [_leftScaleCoins removeAllObjects];
+  [_rightScaleCoins removeAllObjects];
+  [_trayCoins removeAllObjects];
+  
+  // Reset the number of weighings to 3
+  _numWeighings = 3;
   
   // The player will have between 8-12 coins to weigh
   // Choose the number of coins and create them
@@ -68,8 +70,6 @@ const int RIGHT = 2;
   else {
     [fakeCoin setWeight:0];
   }
-  
-  return numCoins;
 }
 
 // Methods to see which coins are in scales/tray
@@ -83,6 +83,66 @@ const int RIGHT = 2;
 
 -(NSMutableArray*)getCoinsInTray {
   return _trayCoins;
+}
+
+-(void)moveCoin:(ScalesGameCoin*)coin toPlace:(int)to {
+  BOOL foundCoin = NO;
+  int from = 0;
+  
+  // Find where the coin is coming from by checking each tray
+  for (ScalesGameCoin* checkCoin in _trayCoins) {
+    if (checkCoin == coin) {
+      from = SCALES_TRAY;
+      foundCoin = YES;
+      break;
+    }
+  }
+  
+  if (!foundCoin) {
+    for (ScalesGameCoin* checkCoin in _leftScaleCoins) {
+      if (checkCoin == coin) {
+        from = SCALES_LEFT;
+        foundCoin = YES;
+        break;
+      }
+    }
+  }
+  
+  if (!foundCoin) {
+    for (ScalesGameCoin* checkCoin in _rightScaleCoins) {
+      if (checkCoin == coin) {
+        from = SCALES_RIGHT;
+        foundCoin = YES;
+        break;
+      }
+    }
+  }
+  
+  // Now move the coin according to the to and the from
+  if (from == SCALES_TRAY) {
+    if (to == SCALES_LEFT) {
+      [self moveToLeftScale:coin];
+    }
+    else if (to == SCALES_RIGHT) {
+      [self moveToRightScale:coin];
+    }
+  }
+  else if (from == SCALES_LEFT) {
+    if (to == SCALES_TRAY) {
+      [self removeFromLeftScale:coin];
+    }
+    else if (to == SCALES_RIGHT) {
+      [self moveFromLeftScaleToRightScale:coin];
+    }
+  }
+  else if (from == SCALES_RIGHT) {
+    if (to == SCALES_TRAY) {
+      [self removeFromRightScale:coin];
+    }
+    else if (to == SCALES_LEFT) {
+      [self moveFromRightScaleToLeftScale:coin];
+    }
+  }
 }
 
 // Methods to move coins between scales/tray
@@ -117,6 +177,9 @@ const int RIGHT = 2;
 }
 
 -(int)checkScales {
+  // That's one less weighing
+  --_numWeighings;
+  
   int leftWeight = 0;
   int rightWeight = 0;
   
@@ -138,14 +201,19 @@ const int RIGHT = 2;
   // If they're balanced, return 1
   // If RIGHT is heavier, return 2
   if (leftWeight > rightWeight) {
-    return LEFT;
+    return SCALES_LEFT;
   }
   else if (rightWeight > leftWeight){
-    return RIGHT;
+    return SCALES_RIGHT;
   }
   else {
-    return BALANCED;
+    return SCALES_BALANCED;
   }
+}
+
+-(BOOL)canStillWeigh
+{
+  return _numWeighings > 0;
 }
 
 -(BOOL)checkIfCoinFake:(ScalesGameCoin*)coin

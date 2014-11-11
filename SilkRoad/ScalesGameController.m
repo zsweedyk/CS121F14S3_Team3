@@ -8,9 +8,11 @@
 
 #import "ScalesGameController.h"
 #import "ScalesGameModel.h"
+#import "Constants.h"
 
 @interface ScalesGameController ()
 {
+  BOOL _hasBeenWon;
   ScalesGameView *_gameView;
   ScalesGameModel *_gameModel;
 }
@@ -25,9 +27,8 @@
   
   if (self) {
     _gameModel = [[ScalesGameModel alloc] init];
-    int numCoins = [_gameModel newGame];
 
-    _gameView = [[ScalesGameView alloc] initWithFrame:self.view.frame andNumCoins:numCoins];
+    _gameView = [[ScalesGameView alloc] initWithFrame:self.view.frame];
     _gameView.delegate = self;
     
     [self.view addSubview:_gameView];
@@ -36,14 +37,61 @@
   return self;
 }
 
+- (void)setCurrencyTo:(int)civ
+{
+  [_gameView setCurrencyForCiv:civ];
+  [self startNewGame];
+}
+
+- (void)startNewGame
+{
+  _hasBeenWon = NO;
+  
+  [_gameModel newGame];
+  [_gameView newGameWithCoins:[_gameModel getCoinsInTray]];
+}
+
+- (void)moveCoin:(ScalesGameCoin*)coin toPlace:(int)placeToMove
+{
+  [_gameModel moveCoin:coin toPlace:placeToMove];
+}
+
+- (void)weighCoinsInScale {
+  int weighResult = [_gameModel checkScales];
+  
+  // Make the view represent the result of the weighing
+  if (weighResult == SCALES_LEFT) {
+    [_gameView makeLeftScaleHeavier];
+  }
+  else if (weighResult == SCALES_RIGHT) {
+    [_gameView makeRightScaleHeavier];
+  }
+  else {
+    [_gameView makeScalesBalanced];
+  }
+  
+  // Check to see if there are more weighings
+  BOOL canWeigh = [_gameModel canStillWeigh];
+  
+  // If not, time to identify the fake coin!
+  if (!canWeigh) {
+    [_gameView identifyFakeCoin];
+  }
+}
+
 - (void)checkIfCoinFake:(ScalesGameCoin*)coin {
   BOOL fakeCoin = [_gameModel checkIfCoinFake:coin];
   [_gameView foundFakeCoin:fakeCoin];
 }
 
-- (void)exitScalesGame {
+- (void)exitScalesGame:(BOOL)won {
   // Tell InteriorController that the interaction in the minigame is done
+  _hasBeenWon = won;
   [self.delegate returnToInterior];
+}
+
+- (BOOL)hasBeenWon {
+  return _hasBeenWon;
 }
 
 - (void)didReceiveMemoryWarning {

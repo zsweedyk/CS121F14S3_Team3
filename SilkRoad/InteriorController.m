@@ -8,9 +8,8 @@
 
 #import "InteriorController.h"
 #import "InteriorModel.h"
-#import "MatchingGameController.h"
 #import "RoadGameController.h"
-#import "ScalesGameController.h"
+#import "Constants.h"
 
 @interface InteriorController () {
   int _currentStage;
@@ -87,11 +86,16 @@
     case 0:
        _matchingGameController.delegate = self;
       minigameViewController = _matchingGameController;
+      [_matchingGameController setLevelTo:_currentStage];
       break;
     case 1:
-      _matchingGameController.delegate = self;
-      minigameViewController = _matchingGameController;
-      [_matchingGameController setLevelTo:_currentStage];
+      _scalesGameController.delegate = self;
+      minigameViewController = _scalesGameController;
+      [_scalesGameController setCurrencyTo:CHINA];
+      break;
+    case 3:
+      minigameViewController = _scalesGameController;
+      [_scalesGameController setCurrencyTo:INDIA];
       break;
     default:
       _matchingGameController.delegate = self;
@@ -115,7 +119,10 @@
       winning = [_matchingGameController hasBeenWon];
       break;
     case 1:
-      winning = [_matchingGameController hasBeenWon];
+      winning = [_scalesGameController hasBeenWon];
+      break;
+    case 3:
+      winning = [_scalesGameController hasBeenWon];
       break;
     default:
       winning = [_matchingGameController hasBeenWon];
@@ -176,7 +183,7 @@
     if (_currentInterior == 0) {
       // If the game has been won and there is no more dialogue, go to
       // the next stage
-      if ([_matchingGameController hasBeenWon]) {
+      if ([_matchingGameController hasBeenWon] || [_scalesGameController hasBeenWon]) {
         [self.delegate notifyStageComplete];
       } else {
         // If the game has yet to be won, enter the game
