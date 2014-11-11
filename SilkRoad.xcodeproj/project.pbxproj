@@ -29,6 +29,7 @@
 		26643E7E1A059FB400C50B72 /* ScalesGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E7A1A059FB400C50B72 /* ScalesGameModel.m */; };
 		26643E7F1A059FB400C50B72 /* ScalesGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E7C1A059FB400C50B72 /* ScalesGameView.m */; };
 		26643E841A06CC1500C50B72 /* ScalesGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E831A06CC1500C50B72 /* ScalesGameTests.m */; };
+		2679E8241A12A8A700C9BD51 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2679E8231A12A8A700C9BD51 /* Constants.m */; };
 		2692B35D19E84D3200EE08F8 /* StageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35C19E84D3200EE08F8 /* StageController.m */; };
 		2692B36019E84D4700EE08F8 /* StageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35F19E84D4700EE08F8 /* StageView.m */; };
 		2692B36319E84D8200EE08F8 /* StageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36219E84D8200EE08F8 /* StageModel.m */; };
@@ -111,6 +112,8 @@
 		26643E7B1A059FB400C50B72 /* ScalesGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScalesGameView.h; sourceTree = "<group>"; };
 		26643E7C1A059FB400C50B72 /* ScalesGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalesGameView.m; sourceTree = "<group>"; };
 		26643E831A06CC1500C50B72 /* ScalesGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalesGameTests.m; sourceTree = "<group>"; };
+		2679E8221A12A8A700C9BD51 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = SilkRoad/Constants.h; sourceTree = "<group>"; };
+		2679E8231A12A8A700C9BD51 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = SilkRoad/Constants.m; sourceTree = "<group>"; };
 		2692B35B19E84D3200EE08F8 /* StageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageController.h; sourceTree = "<group>"; };
 		2692B35C19E84D3200EE08F8 /* StageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageController.m; sourceTree = "<group>"; };
 		2692B35E19E84D4700EE08F8 /* StageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageView.h; sourceTree = "<group>"; };
@@ -240,6 +243,8 @@
 		937AE89219E73A4500CEB0E7 = {
 			isa = PBXGroup;
 			children = (
+				2679E8221A12A8A700C9BD51 /* Constants.h */,
+				2679E8231A12A8A700C9BD51 /* Constants.m */,
 				937AE8A419E73A4500CEB0E7 /* SilkRoad */,
 				937AE8C319E73A4500CEB0E7 /* SilkRoadTests */,
 				937AE89D19E73A4500CEB0E7 /* Frameworks */,
@@ -526,6 +531,7 @@
 				2692B36019E84D4700EE08F8 /* StageView.m in Sources */,
 				26643E7F1A059FB400C50B72 /* ScalesGameView.m in Sources */,
 				93CA8F6A1A00412E00B4B722 /* RoadGameModel.m in Sources */,
+				2679E8241A12A8A700C9BD51 /* Constants.m in Sources */,
 				26643E7D1A059FB400C50B72 /* ScalesGameController.m in Sources */,
 				93CA8F691A00412E00B4B722 /* RoadGameController.m in Sources */,
 				7FF6C79519F6F58B00CA4D19 /* House.m in Sources */,
