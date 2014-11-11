@@ -157,6 +157,7 @@
   
   CGFloat verticalOffset = frameHeight - (returnFrameHeight + padding);
   CGFloat horizontalOffset = frameWidth - (returnFrameWidth + padding);
+  NSLog(@"Return: width x height: %f x %f", returnFrameWidth, returnFrameHeight);
 
   // Make the frame for the return button
   CGRect returnFrame = CGRectMake(horizontalOffset, verticalOffset, returnFrameWidth, returnFrameHeight);

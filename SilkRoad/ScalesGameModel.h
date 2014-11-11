@@ -11,16 +11,20 @@
 
 @interface ScalesGameModel : NSObject
 
--(void)newGame;
+-(int)newGame;
 
 -(NSMutableArray*)getCoinsInLeftScale;
 -(NSMutableArray*)getCoinsInRightScale;
 -(NSMutableArray*)getCoinsInTray;
 
--(void)moveCoin:(ScalesGameCoin*)coin toPlace:(int)to;
+-(void)moveToLeftScale:(ScalesGameCoin*)coin;
+-(void)removeFromLeftScale:(ScalesGameCoin*)coin;
+-(void)moveToRightScale:(ScalesGameCoin*)coin;
+-(void)removeFromRightScale:(ScalesGameCoin*)coin;
+-(void)moveFromLeftScaleToRightScale:(ScalesGameCoin*)coin;
+-(void)moveFromRightScaleToLeftScale:(ScalesGameCoin*)coin;
 
 -(int)checkScales;
--(BOOL)canStillWeigh;
 -(BOOL)checkIfCoinFake:(ScalesGameCoin*)coin;
 
 @end
