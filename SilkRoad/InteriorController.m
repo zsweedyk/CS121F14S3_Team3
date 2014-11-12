@@ -133,11 +133,7 @@
       break;
   }
 
-  // Create the navigation controller and present it.
-  UINavigationController* matchingNavController = [[UINavigationController alloc] initWithRootViewController:minigameViewController];
-  [self presentViewController:matchingNavController animated:YES completion: nil];
-  matchingNavController.navigationBar.hidden = YES;
-
+  [self presentViewController:minigameViewController animated:YES completion: nil];
 }
 
 - (void)returnToInterior
