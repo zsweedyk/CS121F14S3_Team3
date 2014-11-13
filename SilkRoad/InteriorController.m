@@ -30,53 +30,52 @@
 
 - (void)setStageTo:(int)stage andInteriorTo:(int)interior hasVisitedHouses:(BOOL)canEnterMinigame
 {
-  _currentStage = stage;
-  _currentInterior = interior;
-  
-  [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
+    _currentStage = stage;
+    _currentInterior = interior;
+
+    [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
 }
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  
-  // Initialize the minigame controllers
-  _matchingGameController = [[MatchingGameController alloc] init];
-  [_matchingGameController setLevelTo:_currentStage];
-  
-  _roadGameController = [[RoadGameController alloc] init];
-  _scalesGameController = [[ScalesGameController alloc] init];
+    [super viewDidLoad];
 
-  
-  // Initialize the InteriorView
-  [self initInteriorView];
+    // Initialize the minigame controllers
+    _matchingGameController = [[MatchingGameController alloc] init];
+    [_matchingGameController setLevelTo:_currentStage];
+
+    _roadGameController = [[RoadGameController alloc] init];
+    _scalesGameController = [[ScalesGameController alloc] init];
+
+
+    // Initialize the InteriorView
+    [self initInteriorView];
 }
 
 - (void)initInteriorView
 {
-  // Get stage frame dimensions
-  CGRect frame = self.view.frame;
-  CGFloat frameWidth = CGRectGetWidth(frame);
-  CGFloat frameHeight = CGRectGetHeight(frame);
-  
-  // The interior view will take up the same space
-  CGRect interiorFrame = CGRectMake(0, 0, frameWidth, frameHeight);
-  
-  // Create interior view
-  _interiorView = [[InteriorView alloc] initWithFrame:interiorFrame];
-  
-  // Set up model to read in all dialogue
-  _interiorModel = [[InteriorModel alloc] init];
-  [_interiorModel initializeAllDialogue];
-  
-  [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
-  
-  [self progressDialogue];
-  
-  // Set up the delegate to know when to leave
-  _interiorView.delegate = self;
-  
-  [self.view addSubview:_interiorView];
+    // Get stage frame dimensions
+    CGRect frame = self.view.frame;
+    CGFloat frameWidth = CGRectGetWidth(frame);
+    CGFloat frameHeight = CGRectGetHeight(frame);
+
+    // The interior view will take up the same space
+    CGRect interiorFrame = CGRectMake(0, 0, frameWidth, frameHeight);
+
+    // Create interior view
+    _interiorView = [[InteriorView alloc] initWithFrame:interiorFrame];
+
+    // Set up model to read in the dialogue
+    _interiorModel = [[InteriorModel alloc] init];
+    [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
+
+    [self setupInteriorBackground];
+    [self progressDialogue];
+
+    // Set up the delegate to know when to leave
+    _interiorView.delegate = self;
+
+    [self.view addSubview:_interiorView];
 }
 
 - (void)enterMinigame
@@ -142,51 +141,54 @@
   [self.delegate returnToStage];
 }
 
--(void)progressDialogue
+-(void)setupInteriorBackground
 {
     if (_currentStage == 0 || _currentStage == 1) {
-      [_interiorView setInteriorBGTo:@"mohenjodaro.jpg"];
-      if (_currentInterior == 0) {
-        [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndiaMan1"]];
-      } else if (_currentInterior == 1) {
-        [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"IndiaWoman1"]];
-      } else if (_currentInterior == 2) {
-        [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"IndianWoman2"]];
-      } else if (_currentInterior == 3) {
-          [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"IndianMan2"]];
-      }
+        [_interiorView setInteriorBGTo:@"mohenjodaro.jpg"];
+        if (_currentInterior == 0 || _currentInterior == 4) {
+            [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndiaMan1"]];
+        } else if (_currentInterior == 1) {
+            [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"IndiaWoman1"]];
+        } else if (_currentInterior == 2) {
+            [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"IndianWoman2"]];
+        } else if (_currentInterior == 3) {
+            [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"IndianMan2"]];
+        }
     } else if (_currentStage == 2 || _currentStage == 3) {
-      [_interiorView setInteriorBGTo:@"chinabg"];
-      if (_currentInterior == 0) {
-        [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"ChineseMan1"]];
-      } else if (_currentInterior == 1) {
-        [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"ChineseWoman1"]];
-      } else if (_currentInterior == 2) {
-        [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"ChineseWoman2"]];
-      } else if (_currentInterior == 3) {
-          [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"ChineseMan2"]];
-      }
+        [_interiorView setInteriorBGTo:@"chinabg"];
+        if (_currentInterior == 0 || _currentInterior == 4) {
+            [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"ChineseMan1"]];
+        } else if (_currentInterior == 1) {
+            [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"ChineseWoman1"]];
+        } else if (_currentInterior == 2) {
+            [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"ChineseWoman2"]];
+        } else if (_currentInterior == 3) {
+            [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"ChineseMan2"]];
+        }
     }
-    
-  // Check to see if there are still available dialogue lines to display
-  if ([_interiorModel dialogueFinished]) {
-    [_interiorView setDialogueTextTo:[_interiorModel getNextLineOfDialogue]];
-  } else {
-    // The first house always contains the minigame
-    if (_currentInterior == 0) {
-      // If the game has been won and there is no more dialogue, go to
-      // the next stage
-      if ([_matchingGameController hasBeenWon]) {
-        [self.delegate notifyStageComplete];
-      } else {
-        // If the game has yet to be won, enter the game
-        [self enterMinigame];
-      }
+}
+
+-(void)progressDialogue
+{
+    // Check to see if there are still available dialogue lines to display
+    if ([_interiorModel dialogueFinished]) {
+        [_interiorView setDialogueTextTo:[_interiorModel getNextLineOfDialogue]];
     } else {
-      // For any other house, simply leave when there is no more dialogue
-      [self leaveInterior];
+        // The first house always contains the minigame
+        if (_currentInterior == 0) {
+            // If the game has been won and there is no more dialogue, go to
+            // the next stage
+            if ([_matchingGameController hasBeenWon]) {
+                [self.delegate notifyStageComplete];
+            } else {
+            // If the game has yet to be won, enter the game
+                [self enterMinigame];
+            }
+        } else {
+            // For any other house, simply leave when there is no more dialogue
+            [self leaveInterior];
+        }
     }
-  }
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,9 +8,11 @@
 
 #import "InteriorModel.h"
 
+const int winDialogueLocation = 1;
+
 @interface InteriorModel()
 {
-    NSMutableArray* _allDialogue; // Very nested array: dialogue for house for stage
+    NSMutableArray* _allDialogues; // Necessary for storing the win dialogue
     NSMutableArray* _dialogueForCurrentHouse;
     int _currentLine;
 }
@@ -20,44 +22,65 @@
 @implementation InteriorModel
 
 /*
- * The entire dialogue of the game is stored in Dialogue.txt
- * Each line in this file is the dialogue for a given stage, which is '/' separated into houses
- * This is further comma separated into multiple lines of dialogue for a house
+ * Each house has its own dialogue file stored in Dialoguexy where x is the stage number and y is the house number.
+ * There is 1 dialogue if the house is not the village elder (house 0) or two seperated by a newline if the house is
+ * the village elder.  Lines of a dialogue are seperated by /
  */
 -(void)initializeAllDialogue
 {
-  NSString *path;
-  NSError *error;
-  
-  path = [[NSBundle mainBundle] pathForResource:@"Dialogue" ofType:@"txt"];
-  
-  NSString *dialogueString = [[NSString alloc] initWithContentsOfFile:path
+    NSString *path;
+    NSError *error;
+
+    path = [[NSBundle mainBundle] pathForResource:@"Dialogue" ofType:@"txt"];
+
+    NSString *dialogueString = [[NSString alloc] initWithContentsOfFile:path
                                                             encoding:NSUTF8StringEncoding error:&error];
 
-  _allDialogue = [[NSMutableArray alloc] init];
-  NSArray* separateStages =  [dialogueString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-  NSInteger numStages = [separateStages count];
-  for (int i = 0; i < numStages; i++) {
-    
+    _allDialogues = [[NSMutableArray alloc] init];
+    NSArray* separateStages =  [dialogueString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    NSInteger numStages = [separateStages count];
+    for (int i = 0; i < numStages; i++) {
+
     NSArray* separateHouses = [[separateStages objectAtIndex:i] componentsSeparatedByString:@"/"];
-    [_allDialogue addObject:[[NSMutableArray alloc] init]];
-    
+    [_allDialogues addObject:[[NSMutableArray alloc] init]];
+
     NSInteger numHousesInStage = [separateHouses count];
-    for (int j = 0; j < numHousesInStage; j++) {
-      NSArray* separateLines = [[separateHouses objectAtIndex:j] componentsSeparatedByString:@","];
-      [[_allDialogue objectAtIndex:i] addObject:separateLines];
+        for (int j = 0; j < numHousesInStage; j++) {
+            NSArray* separateLines = [[separateHouses objectAtIndex:j] componentsSeparatedByString:@","];
+            [[_allDialogues objectAtIndex:i] addObject:separateLines];
+        }
     }
-  }
 }
 
+
+// Start by putting the text into a string and then into an array of strings.
+// The array will have two objects if there is win dialogue otherwise it just has one object.
+// For each string in the array, we then split into seperate lines with a delimeter of /
 -(void)initForStage:(int)stage andHouse:(int)house
 {
-  _dialogueForCurrentHouse = [[_allDialogue objectAtIndex:stage]objectAtIndex:house];
+    NSString *path;
+    NSError *error;
+    
+    path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Dialogue%d%d", stage,house] ofType:@"txt"];
+    
+    NSString *dialogueString = [[NSString alloc] initWithContentsOfFile:path
+                                                               encoding:NSUTF8StringEncoding error:&error];
+    
+    _allDialogues = [[NSMutableArray alloc] init];
+    
+    //Put the dialogue into array and split into normal and win dialogue if applicable
+    NSArray* separateDialogues =  [dialogueString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    for (NSString* dialogue in separateDialogues) {
+        NSArray* separateLines = [dialogue componentsSeparatedByString:@"/"];
+        [_allDialogues addObject:separateLines];
+    }
+    
+    _dialogueForCurrentHouse = [_allDialogues objectAtIndex:0];
 }
 
 -(BOOL)dialogueFinished
 {
-  return _currentLine < [_dialogueForCurrentHouse count];
+    return _currentLine < [_dialogueForCurrentHouse count];
 }
 
 
@@ -74,8 +97,7 @@
 
 -(void)setWinDialogueForStage:(int)stage
 {
-  NSMutableArray* allStageDialogue = [_allDialogue objectAtIndex:stage];
-  _dialogueForCurrentHouse = [allStageDialogue objectAtIndex:[allStageDialogue count] - 1];
+  _dialogueForCurrentHouse = [_allDialogues objectAtIndex:winDialogueLocation];
   _currentLine = 0;
 }
 @end
