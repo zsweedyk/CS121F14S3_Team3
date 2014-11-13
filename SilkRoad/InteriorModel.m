@@ -25,7 +25,7 @@ const int winDialogueLocation = 1;
  * Each house has its own dialogue file stored in Dialoguexy where x is the stage number and y is the house number.
  * There is 1 dialogue if the house is not the village elder (house 0) or two seperated by a newline if the house is
  * the village elder.  Lines of a dialogue are seperated by /
- */
+ *
 -(void)initializeAllDialogue
 {
     NSString *path;
@@ -50,7 +50,7 @@ const int winDialogueLocation = 1;
             [[_allDialogues objectAtIndex:i] addObject:separateLines];
         }
     }
-}
+}*/
 
 
 // Start by putting the text into a string and then into an array of strings.
