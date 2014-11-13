@@ -10,8 +10,12 @@
 #import "StageView.h"
 #import "StageModel.h"
 
+int const NUM_HOUSES = 4;
+
 @interface StageController () {
     int _currentStage;
+    BOOL _isIndia;
+    BOOL _isChina;
 
     StageView* _stageView;
     StageModel* _stageModel;
@@ -41,19 +45,13 @@
 - (void)setStageTo:(int)stage
 {
     _currentStage = stage;
+    _isIndia = stage == 0 || stage == 1;
+    _isChina = stage == 2 || stage == 3;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
-
-// Display the stage view
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:YES];
-    [super viewDidAppear:NO];
 
     // Get stage frame dimensions
     CGRect frame = self.view.frame;
@@ -62,8 +60,7 @@
 
     // The stage view will take up the same space
     CGRect stageFrame = CGRectMake(0, 0, frameWidth, frameHeight);
-    
-    // Stage 0 is hardcoded for now
+  
     _stageModel = [[StageModel alloc] initForStage:_currentStage];
     
     
@@ -89,96 +86,37 @@
 - (void)initializeHousesForStage:(int)stage
 {
     _houses =  [[NSMutableArray alloc] init];
-    if(stage == 0 || stage == 1) {
-        House* newHouse = [House alloc];
-        newHouse.visited = NO;
-        newHouse.label = @"Village Elder";
-        newHouse.xCord = 300;
-        newHouse.yCord = 300;
-        UIImage* house = [UIImage imageNamed:@"IndiaHouse_400"];
-        newHouse.image = house;
-        newHouse.tag = 0;
-        [_houses addObject:newHouse];
+  
+    NSArray* houseXCords = @[@300, @500, @300, @500];
+    NSArray* houseYCords = @[@300, @500, @300, @500];
+    NSArray* houseLabels = @[@"Village Elder", @"Cobbler", @"Butcher", @"Farmer"];
+  
+
+    for (int i = 0; i < NUM_HOUSES; i++) {
+      House* newHouse = [House alloc];
+      newHouse.visited = NO;
+      newHouse.label = [houseLabels objectAtIndex:i];
+      newHouse.xCord = (int)[houseXCords objectAtIndex:i];
+      newHouse.yCord = (int)[houseYCords objectAtIndex:i];
+      newHouse.tag = i;
         
-        House* newHouse1 = [House alloc];
-        newHouse1.visited = NO;
-        newHouse1.label = @"Cobbler";
-        newHouse1.xCord = 500;
-        newHouse1.yCord = 500;
-        newHouse1.image = house;
-        newHouse1.tag = 1;
-        [_houses addObject:newHouse1];
-        
-        House* newHouse2 = [House alloc];
-        newHouse2.visited = NO;
-        newHouse2.label = @"Butcher";
-        newHouse2.xCord = 300;
-        newHouse2.yCord = 500;
-        newHouse2.image = house;
-        newHouse2.tag = 2;
-        [_houses addObject:newHouse2];
-        
-        House* newHouse3 = [House alloc];
-        newHouse3.visited = NO;
-        newHouse3.label = @"Farmer";
-        newHouse3.xCord = 500;
-        newHouse3.yCord = 300;
-        newHouse3.image = house;
-        newHouse3.tag = 3;
-        [_houses addObject:newHouse3];
-    }
-    
-    if(stage == 2 || stage == 3) {
-        House* newHouse = [House alloc];
-        newHouse.visited = NO;
-        newHouse.label = @"Village Elder";
-        newHouse.xCord = 300;
-        newHouse.yCord = 300;
-        UIImage* house = [UIImage imageNamed:@"ChinaHouse400_250"];
-        newHouse.image = house;
-        newHouse.tag = 0;
-        [_houses addObject:newHouse];
-        
-        House* newHouse1 = [House alloc];
-        newHouse1.visited = NO;
-        newHouse1.label = @"Cobbler";
-        newHouse1.xCord = 500;
-        newHouse1.yCord = 500;
-        newHouse1.image = house;
-        newHouse1.tag = 1;
-        [_houses addObject:newHouse1];
-        
-        House* newHouse2 = [House alloc];
-        newHouse2.visited = NO;
-        newHouse2.label = @"Butcher";
-        newHouse2.xCord = 300;
-        newHouse2.yCord = 500;
-        newHouse2.image = house;
-        newHouse2.tag = 2;
-        [_houses addObject:newHouse2];
-        
-        House* newHouse3 = [House alloc];
-        newHouse3.visited = NO;
-        newHouse3.label = @"Farmer";
-        newHouse3.xCord = 500;
-        newHouse3.yCord = 300;
-        newHouse3.image = house;
-        newHouse3.tag = 3;
-        [_houses addObject:newHouse3];
-    }
+      UIImage* house;
+      if (_isIndia) {
+        house = [UIImage imageNamed:@"IndiaHouse_400"];
+      }
+      if (_isChina) {
+        house = [UIImage imageNamed:@"ChinaHouse400_250"];
+      }
+      newHouse.image = house;
+      [_houses addObject:newHouse];
+  }
 }
 
 - (void)displayInteriorControllerForInterior:(int)interior
 {
-    
     // Set the correct interior
     [_interiorController setStageTo:_currentStage andInteriorTo:interior hasVisitedHouses:[_stageModel visitedAllHouses]];
-    // Create the navigation controller and present it.
-    UINavigationController *interiorNavController = [[UINavigationController alloc]
-                                                  initWithRootViewController:_interiorController];
-    [self presentViewController:interiorNavController animated:YES completion: nil];
-    interiorNavController.navigationBar.hidden = YES;
-
+    [self presentViewController:_interiorController animated:YES completion: nil];
 }
 
 - (void)returnToStage
@@ -202,14 +140,29 @@
 
 - (void)buttonPressed:(id)button
 {
+  UIButton* ourButton = (UIButton*)button;
+  int tag = (int)ourButton.tag;
+  
+  // Map has tag 100, other tags are interior number and will be below 4
+  if (tag == 100) {
+    [self.delegate showMap];
+  } else {
     // Initialize the InteriorController
     _interiorController = [[InteriorController alloc] init];
+    [_interiorController initInteriorView];
     // Configure InteriorController to report any changes to ViewController
     _interiorController.delegate = self;
-    UIButton* ourButton = (UIButton*)button;
-    int tag = (int)ourButton.tag;
+    
+    // Change the house to grayscale to indicate it has been visited
+    if (_isIndia) {
+      [ourButton setBackgroundImage:[UIImage imageNamed:@"IndiaHouse_Desaturated"] forState:UIControlStateNormal];
+    }
+    if (_isChina) {
+      [ourButton setBackgroundImage:[UIImage imageNamed:@"ChinaHouse_Desaturated"] forState:UIControlStateNormal];
+    }
     
     [self displayInteriorControllerForInterior:tag];
+  }
     
 }
 

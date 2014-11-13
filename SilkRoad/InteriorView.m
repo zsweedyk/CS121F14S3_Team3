@@ -77,6 +77,20 @@
   [self addSubview:_dialogueBox];
   
   [_dialogueBox addTarget:self action:@selector(progressDialogue) forControlEvents:UIControlEventTouchUpInside];
+  
+  // Make the dialogue arrow
+  CGFloat arrowX = dialogueBoxWidth * 0.85;
+  CGFloat arrowY = dialogueBoxHeight * 0.70;
+  CGFloat arrowWidth = 58;
+  CGFloat arrowHeight = 20;
+  CGRect arrowFrame = CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight);
+  
+  UIImage* arrowImg = [UIImage imageNamed:@"dialoguearrow"];
+  UIImageView* arrowView = [[UIImageView alloc] initWithImage:arrowImg];
+  [arrowView setFrame:arrowFrame];
+  
+  [_dialogueBox addSubview:arrowView];
+
 }
 
 -(void)initCharacter

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "InteriorView.h"
 #import "MatchingGameController.h"
+#import "ScalesGameController.h"
 
 @protocol ReturnToStage
 -(void)returnToStage;
@@ -19,10 +20,12 @@
 @end
 
 
-@interface InteriorController : UIViewController <LeaveInterior, ReturnToInterior, EnterMinigame, ProgressDialogue>
+@interface InteriorController : UIViewController <LeaveInterior, ReturnToInterior, ReturnToInteriorFromScales, EnterMinigame, ProgressDialogue>
 
 @property (assign, nonatomic) id <ReturnToStage, NotifyStageComplete> delegate;
 
 - (void)setStageTo:(int)stage andInteriorTo:(int)interior hasVisitedHouses:(BOOL)canEnterMinigame;
+
+- (void)initInteriorView;
 
 @end

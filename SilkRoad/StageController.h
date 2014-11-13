@@ -15,10 +15,14 @@
 -(void)progressToNextStage;
 @end
 
+@protocol ShowMap
+-(void)showMap;
+@end;
+
 
 @interface StageController : UIViewController <ReturnToStage, ButtonPressed, NotifyStageComplete>
 
-@property (assign, nonatomic) id <ProgressToNextStage> delegate;
+@property (assign, nonatomic) id <ProgressToNextStage, ShowMap> delegate;
 
 - (void)setStageTo:(int)currentStage;
 

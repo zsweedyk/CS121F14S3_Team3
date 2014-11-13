@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "ScalesGameModel.h"
+#import "Constants.h"
 
 @interface ScalesGameTests : XCTestCase
 
@@ -78,7 +79,7 @@
   ScalesGameCoin* coin = [testTray objectAtIndex:4];
   
   // Move this coin into the left tray
-  [testModel moveToLeftScale:coin];
+  [testModel moveCoin:coin toPlace:SCALES_LEFT];
   
   // Check that it was moved
   testTray = [testModel getCoinsInTray];
@@ -87,7 +88,7 @@
   XCTAssertEqual([testLeft count], 1);
   
   // Move this coin into the right scale
-  [testModel moveFromLeftScaleToRightScale:coin];
+  [testModel moveCoin:coin toPlace:SCALES_RIGHT];
   
   // Check that it was moved
   testLeft = [testModel getCoinsInLeftScale];
@@ -96,7 +97,7 @@
   XCTAssertEqual([testRight count], 1);
   
   // Move the coin back into the tray
-  [testModel removeFromRightScale:coin];
+  [testModel moveCoin:coin toPlace:SCALES_TRAY];
   
   // Check that it was moved
   testTray = [testModel getCoinsInTray];
@@ -120,8 +121,8 @@
   // tray to start, so picking anything less than 8 should be safe
   ScalesGameCoin* coin = [testTray objectAtIndex:4];
   
-  // Move this coin into the left tray
-  [testModel moveToRightScale:coin];
+  // Move this coin into the right tray
+  [testModel moveCoin:coin toPlace:SCALES_RIGHT];
   
   // Check that it was moved
   testTray = [testModel getCoinsInTray];
@@ -129,8 +130,8 @@
   XCTAssertEqual([testTray count], numCoins - 1);
   XCTAssertEqual([testRight count], 1);
   
-  // Move this coin into the right scale
-  [testModel moveFromRightScaleToLeftScale:coin];
+  // Move this coin into the left scale
+  [testModel moveCoin:coin toPlace:SCALES_LEFT];
   
   // Check that it was moved
   testRight = [testModel getCoinsInRightScale];
@@ -139,7 +140,7 @@
   XCTAssertEqual([testLeft count], 1);
   
   // Move the coin back into the tray
-  [testModel removeFromLeftScale:coin];
+  [testModel moveCoin:coin toPlace:SCALES_TRAY];
   
   // Check that it was moved
   testTray = [testModel getCoinsInTray];
@@ -182,7 +183,7 @@
       XCTAssertFalse([testModel checkIfCoinFake:coin]);
     }
     
-    [testModel moveToLeftScale:coin];
+    [testModel moveCoin:coin toPlace:SCALES_LEFT];
   }
   
   // At this point, the left scale should be heavier
@@ -204,7 +205,7 @@
       XCTAssertFalse([testModel checkIfCoinFake:coin]);
     }
     
-    [testModel moveToRightScale:coin];
+    [testModel moveCoin:coin toPlace:SCALES_RIGHT];
   }
   
   // Depending on the weight of the coin and which scale it is in, we
@@ -222,19 +223,17 @@
   
   // If we take out the fake coin and one coin from the other side, the scales
   // should be balanced again
+  [testModel moveCoin:fakeCoin toPlace:SCALES_TRAY];
+  
   if (fakeLocation == 1) {
-    [testModel removeFromLeftScale:fakeCoin];
-    
     NSMutableArray* testRight = [testModel getCoinsInRightScale];
     ScalesGameCoin* coin = [testRight objectAtIndex:0];
-    [testModel removeFromRightScale:coin];
+    [testModel moveCoin:coin toPlace:SCALES_TRAY];
   }
   else {
-    [testModel removeFromRightScale:fakeCoin];
-    
     NSMutableArray* testLeft = [testModel getCoinsInLeftScale];
     ScalesGameCoin* coin = [testLeft objectAtIndex:0];
-    [testModel removeFromLeftScale:coin];
+    [testModel moveCoin:coin toPlace:SCALES_TRAY];
   }
   
 }

@@ -12,4 +12,6 @@
 
 @interface ViewController : UIViewController <ShowStage, ProgressToNextStage>
 
+- (void) hideMap;
+
 @end
