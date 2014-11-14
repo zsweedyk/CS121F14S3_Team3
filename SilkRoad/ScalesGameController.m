@@ -54,6 +54,11 @@
 - (void)moveCoin:(ScalesGameCoin*)coin toPlace:(int)placeToMove
 {
   [_gameModel moveCoin:coin toPlace:placeToMove];
+  
+  // If the coin is in the fake coin bucket, check it
+  if (placeToMove == SCALES_FAKECOINBUCKET) {
+    [self checkIfCoinFake:coin];
+  }
 }
 
 - (void)weighCoinsInScale {
@@ -68,14 +73,6 @@
   }
   else {
     [_gameView makeScalesBalanced];
-  }
-  
-  // Check to see if there are more weighings
-  BOOL canWeigh = [_gameModel canStillWeigh];
-  
-  // If not, time to identify the fake coin!
-  if (!canWeigh) {
-    [_gameView identifyFakeCoin];
   }
 }
 

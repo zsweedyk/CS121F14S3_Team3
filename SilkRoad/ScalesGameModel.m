@@ -15,8 +15,7 @@
   NSMutableArray *_leftScaleCoins;
   NSMutableArray *_rightScaleCoins;
   NSMutableArray *_trayCoins;
-  
-  int _numWeighings;
+  ScalesGameCoin *_fakeCoinGuess;
 }
 @end
 
@@ -42,13 +41,9 @@
   [_rightScaleCoins removeAllObjects];
   [_trayCoins removeAllObjects];
   
-  // Reset the number of weighings to 3
-  _numWeighings = 3;
-  
-  // The player will have between 8-12 coins to weigh
   // Choose the number of coins and create them
-  int minNumOfCoins = 8;
-  int maxNumOfCoins = 12;
+  int minNumOfCoins = SCALES_MINNUMCOINS;
+  int maxNumOfCoins = SCALES_MAXNUMCOINS;
   int numCoins = minNumOfCoins + arc4random() % (maxNumOfCoins - minNumOfCoins);
   
   for (int i = 0; i < numCoins; i++) {
@@ -89,12 +84,20 @@
   BOOL foundCoin = NO;
   int from = 0;
   
-  // Find where the coin is coming from by checking each tray
-  for (ScalesGameCoin* checkCoin in _trayCoins) {
-    if (checkCoin == coin) {
-      from = SCALES_TRAY;
-      foundCoin = YES;
-      break;
+  // Find where the coin is coming from by checking the fake coin bucket and
+  // each tray
+  if (_fakeCoinGuess == coin) {
+    from = SCALES_FAKECOINBUCKET;
+    foundCoin = YES;
+  }
+  
+  if (!foundCoin) {
+    for (ScalesGameCoin* checkCoin in _trayCoins) {
+      if (checkCoin == coin) {
+        from = SCALES_TRAY;
+        foundCoin = YES;
+        break;
+      }
     }
   }
   
@@ -119,67 +122,34 @@
   }
   
   // Now move the coin according to the to and the from
-  if (from == SCALES_TRAY) {
-    if (to == SCALES_LEFT) {
-      [self moveToLeftScale:coin];
-    }
-    else if (to == SCALES_RIGHT) {
-      [self moveToRightScale:coin];
-    }
+  if (from == SCALES_FAKECOINBUCKET) {
+    _fakeCoinGuess = NULL;
   }
   else if (from == SCALES_LEFT) {
-    if (to == SCALES_TRAY) {
-      [self removeFromLeftScale:coin];
-    }
-    else if (to == SCALES_RIGHT) {
-      [self moveFromLeftScaleToRightScale:coin];
-    }
+    [_leftScaleCoins removeObject:coin];
   }
   else if (from == SCALES_RIGHT) {
-    if (to == SCALES_TRAY) {
-      [self removeFromRightScale:coin];
-    }
-    else if (to == SCALES_LEFT) {
-      [self moveFromRightScaleToLeftScale:coin];
-    }
+    [_rightScaleCoins removeObject:coin];
   }
-}
-
-// Methods to move coins between scales/tray
--(void)moveToLeftScale:(ScalesGameCoin*)coin {
-  [_trayCoins removeObject:coin];
-  [_leftScaleCoins addObject:coin];
-}
-
--(void)removeFromLeftScale:(ScalesGameCoin*)coin {
-  [_leftScaleCoins removeObject:coin];
-  [_trayCoins addObject:coin];
-}
-
--(void)moveToRightScale:(ScalesGameCoin*)coin {
-  [_trayCoins removeObject:coin];
-  [_rightScaleCoins addObject:coin];
-}
-
--(void)removeFromRightScale:(ScalesGameCoin*)coin {
-  [_rightScaleCoins removeObject:coin];
-  [_trayCoins addObject:coin];
-}
-
--(void)moveFromLeftScaleToRightScale:(ScalesGameCoin*)coin {
-  [_leftScaleCoins removeObject:coin];
-  [_rightScaleCoins addObject:coin];
-}
-
--(void)moveFromRightScaleToLeftScale:(ScalesGameCoin*)coin {
-  [_rightScaleCoins removeObject:coin];
-  [_leftScaleCoins addObject:coin];
+  else if (from == SCALES_TRAY) {
+    [_trayCoins removeObject:coin];
+  }
+  
+  if (to == SCALES_FAKECOINBUCKET) {
+    _fakeCoinGuess = coin;
+  }
+  else if (to == SCALES_LEFT) {
+    [_leftScaleCoins addObject:coin];
+  }
+  else if (to == SCALES_RIGHT) {
+    [_rightScaleCoins addObject:coin];
+  }
+  else if (to == SCALES_TRAY) {
+    [_trayCoins addObject:coin];
+  }
 }
 
 -(int)checkScales {
-  // That's one less weighing
-  --_numWeighings;
-  
   int leftWeight = 0;
   int rightWeight = 0;
   
@@ -209,11 +179,6 @@
   else {
     return SCALES_BALANCED;
   }
-}
-
--(BOOL)canStillWeigh
-{
-  return _numWeighings > 0;
 }
 
 -(BOOL)checkIfCoinFake:(ScalesGameCoin*)coin
