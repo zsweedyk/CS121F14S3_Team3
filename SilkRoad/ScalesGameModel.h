@@ -20,7 +20,7 @@
 -(void)moveCoin:(ScalesGameCoin*)coin toPlace:(int)to;
 
 -(int)checkScales;
--(BOOL)canStillWeigh;
 -(BOOL)checkIfCoinFake:(ScalesGameCoin*)coin;
+-(BOOL)canStillGuess;
 
 @end

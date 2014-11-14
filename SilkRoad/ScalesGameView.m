@@ -14,12 +14,11 @@
 {
   CGRect _gameFrame;
   
-  UILabel *_gameInfo;
-  
   UIView *_leftScaleView;
   UIView *_rightScaleView;
   UIButton *_leftScale;
   UIButton *_rightScale;
+  UIButton *_fakeCoinBucket;
   
   UIImage *_coinImage;
   UIImage *_coinHighlightImage;
@@ -34,10 +33,6 @@
   
   ScalesGameCoin* _currentCoin;
   int _currentCoinNum;
-  
-  int _numWeighings;
-
-  BOOL _identifyingFake;
 }
 @end
 
@@ -76,20 +71,24 @@
     // Initialize the return button
     [self initReturnButtonWithFrame:frame];
     
-    // TODO: Info label
+    // Fake coin bucket
+    // Each cell in the tray is the size of a button with 5% padding on each side
+    // The bucket should be double that size
     CGFloat cellSize = _coinSize + (_coinSize * 0.10);
-    CGFloat labelWidth = cellSize * 6;
-    CGFloat labelHeight = cellSize / 2;
-    CGFloat horizontalPadding = (frameWidth - (cellSize * 6)) / 2;
-    CGFloat verticalPadding = frameHeight * 0.05;
-    // Set the x- and y-offsets accordingly
-    CGFloat xOffset = horizontalPadding;
-    CGFloat yOffset = frameHeight - (labelHeight + verticalPadding);
+    CGFloat bucketSize = 2 * cellSize;
+    CGFloat xOffsetTray = (CGRectGetHeight(_gameFrame) - (cellSize * 6)) / 2;
+    CGFloat verticalPadding = CGRectGetHeight(_gameFrame) * 0.05;
     
-    CGRect infoFrame = CGRectMake(xOffset, yOffset, labelWidth, labelHeight);
-    _gameInfo = [[UILabel alloc] initWithFrame:infoFrame];
-    [_gameInfo setBackgroundColor:[UIColor whiteColor]];
-    [self addSubview:_gameInfo];
+    // Set the x- and y-offsets accordingly
+    CGFloat xOffset = cellSize / 4;
+    CGFloat yOffset = CGRectGetHeight(_gameFrame) - ((2 * cellSize) + verticalPadding);
+    
+    CGRect bucketFrame = CGRectMake(xOffset, yOffset, bucketSize, bucketSize);
+    _fakeCoinBucket = [[UIButton alloc] initWithFrame:bucketFrame];
+    [_fakeCoinBucket setBackgroundColor:[UIColor blueColor]];
+    _fakeCoinBucket.tag = 500;
+    [_fakeCoinBucket addTarget:self action:@selector(moveCoinTo:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_fakeCoinBucket];
   
   }
   
@@ -116,10 +115,8 @@
 - (void)newGameWithCoins:(NSMutableArray*)coins
 {
   // Reset all instance variables
-  _identifyingFake = NO;
   _currentCoin = NULL;
   _currentCoinNum = (int)[coins count];
-  _numWeighings = 3;
   
   // Clear the arrays
   [_coinArray removeAllObjects];
@@ -138,14 +135,6 @@
   // Add the coins to the game graphics
   [self makeScalesBalanced];
   [self initCoins];
-  
-  NSString *info = [[NSString alloc] initWithFormat:@"    Number of weighings left: %d", _numWeighings];
-  [self updateGameInfo:info];
-}
-
-- (void)updateGameInfo:(NSString*)info
-{
-  _gameInfo.text = info;
 }
 
 - (void)initScalesWithFrame:(CGRect)frame
@@ -393,18 +382,13 @@
   }
   else {
     if (_currentCoin != NULL) {
-      [coin setBackgroundImage:_coinImage forState:UIControlStateNormal];
+      UIButton* oldCoin = [_coinImgArray objectAtIndex:_currentCoinNum];
+      [oldCoin setBackgroundImage:_coinImage forState:UIControlStateNormal];
     }
     
     _currentCoinNum = coinNum;
     _currentCoin = [_coinArray objectAtIndex:coinNum];
     [coin setBackgroundImage:_coinHighlightImage forState:UIControlStateNormal];
-  }
-  
-  // If it's the identifying fake stage, check the selected coin to see if it's
-  // fake or not
-  if (_identifyingFake) {
-    [self checkFakeCoin:_currentCoin];
   }
 }
 
@@ -416,16 +400,25 @@
   }
   
   UIButton* placeSelected = (UIButton*) sender;
+  
   int placeToMove = (int)placeSelected.tag / 100;
-
+  
   UIButton* currentCoin = [_coinImgArray objectAtIndex:_currentCoinNum];
-  
-  // Remove the coin form where it was
+  // Remove the coin from where it was
   [currentCoin removeFromSuperview];
-  
   // Put it in the new cell
   [placeSelected addSubview:currentCoin];
-
+  
+  // Reposition it to be centered
+  CGRect placeFrame = placeSelected.frame;
+  CGFloat frameHeight = CGRectGetHeight(placeFrame);
+  CGFloat frameWidth = CGRectGetWidth(placeFrame);
+  CGRect coinFrame = currentCoin.frame;
+  CGFloat coinSize = CGRectGetWidth(coinFrame);
+  coinFrame.origin.x = (frameWidth - coinSize) / 2;
+  coinFrame.origin.y = (frameHeight - coinSize) / 2;
+  currentCoin.frame = coinFrame;
+  
   // Tell the controller the coin has been moved
   [self.delegate moveCoin:_currentCoin toPlace:placeToMove];
   
@@ -435,20 +428,8 @@
   [currentCoin setBackgroundImage:_coinImage forState:UIControlStateNormal];
 }
 
-
 - (void) weighCoins
 {
-  --_numWeighings;
-  
-  if (_numWeighings == 0) {
-    NSString *info = [[NSString alloc] initWithFormat:@"    Click on the fake coin!"];
-    [self updateGameInfo:info];
-  }
-  else {
-    NSString *info = [[NSString alloc] initWithFormat:@"    Number of weighings left: %d", _numWeighings];
-    [self updateGameInfo:info];
-  }
-  
   [self.delegate weighCoinsInScale];
 }
 
@@ -496,18 +477,7 @@
   _rightScaleView.frame = rightFrame;
 }
 
-- (void)identifyFakeCoin
-{
-  _identifyingFake = YES;
-}
-
-- (void)checkFakeCoin:(id)sender
-{
-  // Delegate this to the game controller
-  [self.delegate checkIfCoinFake:sender];
-}
-
-- (void)foundFakeCoin:(BOOL)found
+- (void)foundFakeCoin:(BOOL)found andCanGuess:(BOOL)guess
 {
   // If we found the coin, the game is won
   if (found) {
@@ -515,14 +485,39 @@
     [self wonGame];
   }
   else {
-    NSLog(@"Sorry, try again...");
-    [self lostGame];
+    // If you can still guess, try again
+    // Otherwise, new set of coins
+    if (guess) {
+      [self alertWrongGuess];
+    }
+    else {
+      [self lostGame];
+    }
   }
+}
+
+- (void)alertWrongGuess
+{
+  NSString *message = [NSString stringWithFormat:@"That coin wasn't fake!"];
+  UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Wrong coin!"
+                                                     message:message
+                                                    delegate:self
+                                           cancelButtonTitle:@"Try Again"
+                                           otherButtonTitles: nil];
+  wrongAlert.tag = 1;
+  [wrongAlert show];
 }
 
 - (void)lostGame
 {
-  [self.delegate startNewGame];
+  NSString *message = [NSString stringWithFormat:@"That coin wasn't fake! It's okay, I'm giving you a new set of coins to try."];
+  UIAlertView *lostAlert = [[UIAlertView alloc] initWithTitle:@"Wrong coin!"
+                                                       message:message
+                                                      delegate:self
+                                             cancelButtonTitle:@"Okay"
+                                             otherButtonTitles: nil];
+  lostAlert.tag = 2;
+  [lostAlert show];
 }
 
 - (void)wonGame
@@ -535,6 +530,13 @@
 {
   // Tell game controller to leave the view
   [self.delegate exitScalesGame:NO];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+  if (alertView.tag == 2) {
+    [self.delegate startNewGame];
+  }
 }
 
 @end
