@@ -16,6 +16,8 @@
   NSMutableArray *_rightScaleCoins;
   NSMutableArray *_trayCoins;
   ScalesGameCoin *_fakeCoinGuess;
+  
+  int _numGuesses;
 }
 @end
 
@@ -36,6 +38,9 @@
 
 -(void)newGame
 {
+  // Reset the number of guesses
+  _numGuesses = 2;
+  
   // Reset the trays
   [_leftScaleCoins removeAllObjects];
   [_rightScaleCoins removeAllObjects];
@@ -183,12 +188,20 @@
 
 -(BOOL)checkIfCoinFake:(ScalesGameCoin*)coin
 {
+  // That's minus one guess
+  --_numGuesses;
+  
   if ([coin weight] != 1) {
     return YES;
   }
   else {
     return NO;
   }
+}
+
+-(BOOL)canStillGuess
+{
+  return _numGuesses > 0;
 }
 
 @end

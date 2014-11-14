@@ -78,7 +78,8 @@
 
 - (void)checkIfCoinFake:(ScalesGameCoin*)coin {
   BOOL fakeCoin = [_gameModel checkIfCoinFake:coin];
-  [_gameView foundFakeCoin:fakeCoin];
+  BOOL canStillGuess = [_gameModel canStillGuess];
+  [_gameView foundFakeCoin:fakeCoin andCanGuess:canStillGuess];
 }
 
 - (void)exitScalesGame:(BOOL)won {

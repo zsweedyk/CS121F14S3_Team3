@@ -26,6 +26,6 @@
 -(void)makeLeftScaleHeavier;
 -(void)makeRightScaleHeavier;
 -(void)makeScalesBalanced;
--(void)foundFakeCoin:(BOOL)found;
+-(void)foundFakeCoin:(BOOL)found andCanGuess:(BOOL)guess;
 
 @end

@@ -409,6 +409,16 @@
   // Put it in the new cell
   [placeSelected addSubview:currentCoin];
   
+  // Reposition it to be centered
+  CGRect placeFrame = placeSelected.frame;
+  CGFloat frameHeight = CGRectGetHeight(placeFrame);
+  CGFloat frameWidth = CGRectGetWidth(placeFrame);
+  CGRect coinFrame = currentCoin.frame;
+  CGFloat coinSize = CGRectGetWidth(coinFrame);
+  coinFrame.origin.x = (frameWidth - coinSize) / 2;
+  coinFrame.origin.y = (frameHeight - coinSize) / 2;
+  currentCoin.frame = coinFrame;
+  
   // Tell the controller the coin has been moved
   [self.delegate moveCoin:_currentCoin toPlace:placeToMove];
   
@@ -467,7 +477,7 @@
   _rightScaleView.frame = rightFrame;
 }
 
-- (void)foundFakeCoin:(BOOL)found
+- (void)foundFakeCoin:(BOOL)found andCanGuess:(BOOL)guess
 {
   // If we found the coin, the game is won
   if (found) {
@@ -475,12 +485,18 @@
     [self wonGame];
   }
   else {
-    NSLog(@"Sorry, try again...");
-    [self lostGame];
+    // If you can still guess, try again
+    // Otherwise, new set of coins
+    if (guess) {
+      [self alertWrongGuess];
+    }
+    else {
+      [self lostGame];
+    }
   }
 }
 
-- (void)lostGame
+- (void)alertWrongGuess
 {
   NSString *message = [NSString stringWithFormat:@"That coin wasn't fake!"];
   UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Wrong coin!"
@@ -488,7 +504,20 @@
                                                     delegate:self
                                            cancelButtonTitle:@"Try Again"
                                            otherButtonTitles: nil];
+  wrongAlert.tag = 1;
   [wrongAlert show];
+}
+
+- (void)lostGame
+{
+  NSString *message = [NSString stringWithFormat:@"That coin wasn't fake! It's okay, I'm giving you a new set of coins to try."];
+  UIAlertView *lostAlert = [[UIAlertView alloc] initWithTitle:@"Wrong coin!"
+                                                       message:message
+                                                      delegate:self
+                                             cancelButtonTitle:@"Okay"
+                                             otherButtonTitles: nil];
+  lostAlert.tag = 2;
+  [lostAlert show];
 }
 
 - (void)wonGame
@@ -501,6 +530,13 @@
 {
   // Tell game controller to leave the view
   [self.delegate exitScalesGame:NO];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+  if (alertView.tag == 2) {
+    [self.delegate startNewGame];
+  }
 }
 
 @end

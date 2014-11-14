@@ -21,5 +21,6 @@
 
 -(int)checkScales;
 -(BOOL)checkIfCoinFake:(ScalesGameCoin*)coin;
+-(BOOL)canStillGuess;
 
 @end
