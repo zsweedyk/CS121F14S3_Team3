@@ -16,6 +16,7 @@ int const NUM_HOUSES = 4;
     int _currentStage;
     BOOL _isIndia;
     BOOL _isChina;
+    BOOL _hasBeenLoaded;
 
     StageView* _stageView;
     StageModel* _stageModel;
@@ -81,6 +82,18 @@ int const NUM_HOUSES = 4;
     
     _stageView.delegate = self;
     [self.view addSubview:_stageView];
+    
+    //Initiate has been loaded
+    _hasBeenLoaded = NO;
+}
+
+//We need the following hack since we can present another view controller in view did load
+- (void)viewDidAppear:(BOOL)animated
+{
+    if (_hasBeenLoaded == NO) {
+        [self displayInteriorControllerForInterior:4];
+        _hasBeenLoaded = YES;
+    }
 }
 
 - (void)initializeHousesForStage:(int)stage
@@ -114,6 +127,11 @@ int const NUM_HOUSES = 4;
 
 - (void)displayInteriorControllerForInterior:(int)interior
 {
+    // Initialize the InteriorController
+    _interiorController = [[InteriorController alloc] init];
+    [_interiorController initInteriorView];
+    // Configure InteriorController to report any changes to ViewController
+    _interiorController.delegate = self;
     // Set the correct interior
     [_interiorController setStageTo:_currentStage andInteriorTo:interior hasVisitedHouses:[_stageModel visitedAllHouses]];
     [self presentViewController:_interiorController animated:YES completion: nil];
@@ -147,11 +165,6 @@ int const NUM_HOUSES = 4;
   if (tag == 100) {
     [self.delegate showMap];
   } else {
-    // Initialize the InteriorController
-    _interiorController = [[InteriorController alloc] init];
-    [_interiorController initInteriorView];
-    // Configure InteriorController to report any changes to ViewController
-    _interiorController.delegate = self;
     
     // Change the house to grayscale to indicate it has been visited
     if (_isIndia) {
