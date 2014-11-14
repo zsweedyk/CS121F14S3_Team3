@@ -33,7 +33,7 @@
   _currentInterior = interior;
   if (_currentStage == 0 || _currentStage == 1) {
     [_interiorView setInteriorBGTo:@"mohenjodaro.jpg"];
-    if (_currentInterior == 0) {
+    if (_currentInterior == 0 || _currentInterior == 4) {
       [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndianMan1"]];
     } else if (_currentInterior == 1) {
       [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"IndiaWoman1"]];
@@ -44,7 +44,7 @@
     }
   } else if (_currentStage == 2 || _currentStage == 3) {
     [_interiorView setInteriorBGTo:@"chinabg"];
-    if (_currentInterior == 0) {
+    if (_currentInterior == 0 || _currentInterior == 4) {
       [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"ChineseMan1"]];
     } else if (_currentInterior == 1) {
       [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"ChineseWoman1"]];
@@ -90,7 +90,6 @@
   
   // Set up model to read in all dialogue
   _interiorModel = [[InteriorModel alloc] init];
-  [_interiorModel initializeAllDialogue];
   
   [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
   

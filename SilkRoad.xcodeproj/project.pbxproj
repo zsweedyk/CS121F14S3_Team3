@@ -33,7 +33,6 @@
 		2692B35D19E84D3200EE08F8 /* StageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35C19E84D3200EE08F8 /* StageController.m */; };
 		2692B36019E84D4700EE08F8 /* StageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35F19E84D4700EE08F8 /* StageView.m */; };
 		2692B36319E84D8200EE08F8 /* StageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36219E84D8200EE08F8 /* StageModel.m */; };
-		2692B36619E84DAE00EE08F8 /* InteriorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36519E84DAE00EE08F8 /* InteriorModel.m */; };
 		2692B36919E84DD000EE08F8 /* InteriorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36819E84DD000EE08F8 /* InteriorController.m */; };
 		2692B36C19E84DE200EE08F8 /* InteriorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36B19E84DE200EE08F8 /* InteriorView.m */; };
 		2692B36F19E84DF100EE08F8 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36E19E84DF100EE08F8 /* MapView.m */; };
@@ -50,6 +49,27 @@
 		51948EEC1A0987380075DD82 /* MatchingGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51948EEA1A0987380075DD82 /* MatchingGameTests.m */; };
 		51948EED1A0987380075DD82 /* RoadGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51948EEB1A0987380075DD82 /* RoadGameTests.m */; };
 		51D9447A19F8CC6E00335978 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D9447919F8CC6E00335978 /* Character.m */; };
+		7F3BF4EE1A169005006E82DD /* InteriorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BF4ED1A169005006E82DD /* InteriorModel.m */; };
+		7F3BF5031A169038006E82DD /* Dialogue00.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4EF1A169038006E82DD /* Dialogue00.txt */; };
+		7F3BF5041A169038006E82DD /* Dialogue01.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F01A169038006E82DD /* Dialogue01.txt */; };
+		7F3BF5051A169038006E82DD /* Dialogue02.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F11A169038006E82DD /* Dialogue02.txt */; };
+		7F3BF5061A169038006E82DD /* Dialogue03.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F21A169038006E82DD /* Dialogue03.txt */; };
+		7F3BF5071A169038006E82DD /* Dialogue04.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F31A169038006E82DD /* Dialogue04.txt */; };
+		7F3BF5081A169038006E82DD /* Dialogue10.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F41A169038006E82DD /* Dialogue10.txt */; };
+		7F3BF5091A169038006E82DD /* Dialogue11.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F51A169038006E82DD /* Dialogue11.txt */; };
+		7F3BF50A1A169038006E82DD /* Dialogue12.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F61A169038006E82DD /* Dialogue12.txt */; };
+		7F3BF50B1A169038006E82DD /* Dialogue13.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F71A169038006E82DD /* Dialogue13.txt */; };
+		7F3BF50C1A169038006E82DD /* Dialogue14.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F81A169038006E82DD /* Dialogue14.txt */; };
+		7F3BF50D1A169038006E82DD /* Dialogue20.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F91A169038006E82DD /* Dialogue20.txt */; };
+		7F3BF50E1A169038006E82DD /* Dialogue21.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FA1A169038006E82DD /* Dialogue21.txt */; };
+		7F3BF50F1A169038006E82DD /* Dialogue22.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FB1A169038006E82DD /* Dialogue22.txt */; };
+		7F3BF5101A169038006E82DD /* Dialogue23.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FC1A169038006E82DD /* Dialogue23.txt */; };
+		7F3BF5111A169038006E82DD /* Dialogue24.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FD1A169038006E82DD /* Dialogue24.txt */; };
+		7F3BF5121A169038006E82DD /* Dialogue30.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FE1A169038006E82DD /* Dialogue30.txt */; };
+		7F3BF5131A169038006E82DD /* Dialogue31.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FF1A169038006E82DD /* Dialogue31.txt */; };
+		7F3BF5141A169038006E82DD /* Dialogue32.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF5001A169038006E82DD /* Dialogue32.txt */; };
+		7F3BF5151A169038006E82DD /* Dialogue33.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF5011A169038006E82DD /* Dialogue33.txt */; };
+		7F3BF5161A169038006E82DD /* Dialogue34.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF5021A169038006E82DD /* Dialogue34.txt */; };
 		7F85AA151A0590FC00B687E8 /* InteriorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F85AA141A0590FC00B687E8 /* InteriorTests.m */; };
 		7FDFDB6B1A05906400D7EEE3 /* StageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFDB6A1A05906400D7EEE3 /* StageTests.m */; };
 		7FEFF16E1A02B8D000231C13 /* stage0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7FEFF16D1A02B8D000231C13 /* stage0.txt */; };
@@ -122,8 +142,6 @@
 		2692B35F19E84D4700EE08F8 /* StageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageView.m; sourceTree = "<group>"; };
 		2692B36119E84D8200EE08F8 /* StageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageModel.h; sourceTree = "<group>"; };
 		2692B36219E84D8200EE08F8 /* StageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageModel.m; sourceTree = "<group>"; };
-		2692B36419E84DAE00EE08F8 /* InteriorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteriorModel.h; sourceTree = "<group>"; };
-		2692B36519E84DAE00EE08F8 /* InteriorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorModel.m; sourceTree = "<group>"; };
 		2692B36719E84DCF00EE08F8 /* InteriorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteriorController.h; sourceTree = "<group>"; };
 		2692B36819E84DD000EE08F8 /* InteriorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorController.m; sourceTree = "<group>"; };
 		2692B36A19E84DE200EE08F8 /* InteriorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteriorView.h; sourceTree = "<group>"; };
@@ -146,6 +164,28 @@
 		51948EEB1A0987380075DD82 /* RoadGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadGameTests.m; sourceTree = "<group>"; };
 		51D9447819F8CC6E00335978 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		51D9447919F8CC6E00335978 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
+		7F3BF4EC1A169005006E82DD /* InteriorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteriorModel.h; sourceTree = "<group>"; };
+		7F3BF4ED1A169005006E82DD /* InteriorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorModel.m; sourceTree = "<group>"; };
+		7F3BF4EF1A169038006E82DD /* Dialogue00.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue00.txt; sourceTree = "<group>"; };
+		7F3BF4F01A169038006E82DD /* Dialogue01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue01.txt; sourceTree = "<group>"; };
+		7F3BF4F11A169038006E82DD /* Dialogue02.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue02.txt; sourceTree = "<group>"; };
+		7F3BF4F21A169038006E82DD /* Dialogue03.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue03.txt; sourceTree = "<group>"; };
+		7F3BF4F31A169038006E82DD /* Dialogue04.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue04.txt; sourceTree = "<group>"; };
+		7F3BF4F41A169038006E82DD /* Dialogue10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue10.txt; sourceTree = "<group>"; };
+		7F3BF4F51A169038006E82DD /* Dialogue11.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue11.txt; sourceTree = "<group>"; };
+		7F3BF4F61A169038006E82DD /* Dialogue12.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue12.txt; sourceTree = "<group>"; };
+		7F3BF4F71A169038006E82DD /* Dialogue13.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue13.txt; sourceTree = "<group>"; };
+		7F3BF4F81A169038006E82DD /* Dialogue14.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue14.txt; sourceTree = "<group>"; };
+		7F3BF4F91A169038006E82DD /* Dialogue20.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue20.txt; sourceTree = "<group>"; };
+		7F3BF4FA1A169038006E82DD /* Dialogue21.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue21.txt; sourceTree = "<group>"; };
+		7F3BF4FB1A169038006E82DD /* Dialogue22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue22.txt; sourceTree = "<group>"; };
+		7F3BF4FC1A169038006E82DD /* Dialogue23.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue23.txt; sourceTree = "<group>"; };
+		7F3BF4FD1A169038006E82DD /* Dialogue24.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue24.txt; sourceTree = "<group>"; };
+		7F3BF4FE1A169038006E82DD /* Dialogue30.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue30.txt; sourceTree = "<group>"; };
+		7F3BF4FF1A169038006E82DD /* Dialogue31.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue31.txt; sourceTree = "<group>"; };
+		7F3BF5001A169038006E82DD /* Dialogue32.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue32.txt; sourceTree = "<group>"; };
+		7F3BF5011A169038006E82DD /* Dialogue33.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue33.txt; sourceTree = "<group>"; };
+		7F3BF5021A169038006E82DD /* Dialogue34.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue34.txt; sourceTree = "<group>"; };
 		7F85AA141A0590FC00B687E8 /* InteriorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorTests.m; sourceTree = "<group>"; };
 		7FDFDB6A1A05906400D7EEE3 /* StageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageTests.m; sourceTree = "<group>"; };
 		7FEFF16D1A02B8D000231C13 /* stage0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage0.txt; sourceTree = "<group>"; };
@@ -244,6 +284,33 @@
 			name = "Minigame Files";
 			sourceTree = "<group>";
 		};
+		7F3BF4C31A168EFF006E82DD /* Dialogue Files */ = {
+			isa = PBXGroup;
+			children = (
+				7F3BF4EF1A169038006E82DD /* Dialogue00.txt */,
+				7F3BF4F01A169038006E82DD /* Dialogue01.txt */,
+				7F3BF4F11A169038006E82DD /* Dialogue02.txt */,
+				7F3BF4F21A169038006E82DD /* Dialogue03.txt */,
+				7F3BF4F31A169038006E82DD /* Dialogue04.txt */,
+				7F3BF4F41A169038006E82DD /* Dialogue10.txt */,
+				7F3BF4F51A169038006E82DD /* Dialogue11.txt */,
+				7F3BF4F61A169038006E82DD /* Dialogue12.txt */,
+				7F3BF4F71A169038006E82DD /* Dialogue13.txt */,
+				7F3BF4F81A169038006E82DD /* Dialogue14.txt */,
+				7F3BF4F91A169038006E82DD /* Dialogue20.txt */,
+				7F3BF4FA1A169038006E82DD /* Dialogue21.txt */,
+				7F3BF4FB1A169038006E82DD /* Dialogue22.txt */,
+				7F3BF4FC1A169038006E82DD /* Dialogue23.txt */,
+				7F3BF4FD1A169038006E82DD /* Dialogue24.txt */,
+				7F3BF4FE1A169038006E82DD /* Dialogue30.txt */,
+				7F3BF4FF1A169038006E82DD /* Dialogue31.txt */,
+				7F3BF5001A169038006E82DD /* Dialogue32.txt */,
+				7F3BF5011A169038006E82DD /* Dialogue33.txt */,
+				7F3BF5021A169038006E82DD /* Dialogue34.txt */,
+			);
+			name = "Dialogue Files";
+			sourceTree = "<group>";
+		};
 		937AE89219E73A4500CEB0E7 = {
 			isa = PBXGroup;
 			children = (
@@ -301,8 +368,8 @@
 				2692B36219E84D8200EE08F8 /* StageModel.m */,
 				261E658119F978B200D12027 /* MainMenuView.h */,
 				261E658219F978B200D12027 /* MainMenuView.m */,
-				2692B36419E84DAE00EE08F8 /* InteriorModel.h */,
-				2692B36519E84DAE00EE08F8 /* InteriorModel.m */,
+				7F3BF4EC1A169005006E82DD /* InteriorModel.h */,
+				7F3BF4ED1A169005006E82DD /* InteriorModel.m */,
 				2692B36719E84DCF00EE08F8 /* InteriorController.h */,
 				2692B36819E84DD000EE08F8 /* InteriorController.m */,
 				2692B36A19E84DE200EE08F8 /* InteriorView.h */,
@@ -339,6 +406,7 @@
 		937AE8A519E73A4500CEB0E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7F3BF4C31A168EFF006E82DD /* Dialogue Files */,
 				5156A25D1A0D544000263DF2 /* correct_gong.wav */,
 				5156A25E1A0D544000263DF2 /* incorrect_buzzer.wav */,
 				937AE8A619E73A4500CEB0E7 /* SilkRoad-Info.plist */,
@@ -464,29 +532,49 @@
 				93CA8FA01A102F1100B4B722 /* RoadPuzzle4.txt in Resources */,
 				937AE8E619F0505B00CEB0E7 /* Dialogue.txt in Resources */,
 				93CA8F9E1A102F1100B4B722 /* RoadPuzzle2.txt in Resources */,
+				7F3BF5101A169038006E82DD /* Dialogue23.txt in Resources */,
+				7F3BF50B1A169038006E82DD /* Dialogue13.txt in Resources */,
+				7F3BF5111A169038006E82DD /* Dialogue24.txt in Resources */,
+				7F3BF50F1A169038006E82DD /* Dialogue22.txt in Resources */,
+				7F3BF50A1A169038006E82DD /* Dialogue12.txt in Resources */,
 				93CA8FAE1A10337B00B4B722 /* RoadPuzzle9.txt in Resources */,
 				2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */,
+				7F3BF50E1A169038006E82DD /* Dialogue21.txt in Resources */,
+				7F3BF5081A169038006E82DD /* Dialogue10.txt in Resources */,
+				7F3BF5131A169038006E82DD /* Dialogue31.txt in Resources */,
 				2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */,
 				937AE8F419F47A3B00CEB0E7 /* RoadPuzzle1.txt in Resources */,
+				7F3BF5061A169038006E82DD /* Dialogue03.txt in Resources */,
 				93CA8FAB1A10337B00B4B722 /* RoadPuzzle6.txt in Resources */,
 				93CA8FAA1A10337B00B4B722 /* RoadPuzzle0.txt in Resources */,
 				5156A2601A0D544000263DF2 /* incorrect_buzzer.wav in Resources */,
 				7FEFF16E1A02B8D000231C13 /* stage0.txt in Resources */,
 				937AE8B719E73A4500CEB0E7 /* Images.xcassets in Resources */,
+				7F3BF5141A169038006E82DD /* Dialogue32.txt in Resources */,
 				5156A2661A102F5100263DF2 /* buttonVisited.png in Resources */,
 				93CA8FA11A102F1100B4B722 /* RoadPuzzle5.txt in Resources */,
 				93CA8FAC1A10337B00B4B722 /* RoadPuzzle7.txt in Resources */,
+				7F3BF5091A169038006E82DD /* Dialogue11.txt in Resources */,
 				93CA8F891A09C5AF00B4B722 /* RoadTestGrid.txt in Resources */,
+				7F3BF5161A169038006E82DD /* Dialogue34.txt in Resources */,
+				7F3BF50C1A169038006E82DD /* Dialogue14.txt in Resources */,
+				7F3BF5051A169038006E82DD /* Dialogue02.txt in Resources */,
 				937AE8A919E73A4500CEB0E7 /* InfoPlist.strings in Resources */,
 				51948EE71A0987100075DD82 /* stage3.txt in Resources */,
 				93CA8FAD1A10337B00B4B722 /* RoadPuzzle8.txt in Resources */,
 				5156A25F1A0D544000263DF2 /* correct_gong.wav in Resources */,
+				7F3BF5121A169038006E82DD /* Dialogue30.txt in Resources */,
 				937AE8B219E73A4500CEB0E7 /* Main.storyboard in Resources */,
 				93CA8FB01A10337B00B4B722 /* RoadPuzzle11.txt in Resources */,
 				51948EE91A0987100075DD82 /* stage2.txt in Resources */,
 				93CA8FB11A10337B00B4B722 /* RoadPuzzle12.txt in Resources */,
+				7F3BF5031A169038006E82DD /* Dialogue00.txt in Resources */,
 				51948EE81A0987100075DD82 /* stage1.txt in Resources */,
+				7F3BF50D1A169038006E82DD /* Dialogue20.txt in Resources */,
 				93CA8FAF1A10337B00B4B722 /* RoadPuzzle10.txt in Resources */,
+				7F3BF5041A169038006E82DD /* Dialogue01.txt in Resources */,
+				7F3BF5071A169038006E82DD /* Dialogue04.txt in Resources */,
+				7F3BF5151A169038006E82DD /* Dialogue33.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,8 +633,8 @@
 				7FF6C79519F6F58B00CA4D19 /* House.m in Sources */,
 				2692B36C19E84DE200EE08F8 /* InteriorView.m in Sources */,
 				937AE8E219E9A8C300CEB0E7 /* MatchingGameController.m in Sources */,
-				2692B36619E84DAE00EE08F8 /* InteriorModel.m in Sources */,
 				2692B37819E995E300EE08F8 /* ViewController.m in Sources */,
+				7F3BF4EE1A169005006E82DD /* InteriorModel.m in Sources */,
 				51D9447A19F8CC6E00335978 /* Character.m in Sources */,
 				261E658319F978B200D12027 /* MainMenuView.m in Sources */,
 				937AE8E419E9A8C300CEB0E7 /* MatchingGameView.m in Sources */,
