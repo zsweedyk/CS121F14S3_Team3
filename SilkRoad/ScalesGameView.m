@@ -32,6 +32,7 @@
   NSMutableArray *_coinImgArray;
   
   ScalesGameCoin* _currentCoin;
+  ScalesGameCoin* _guessCoin;
   int _currentCoinNum;
 }
 @end
@@ -116,6 +117,7 @@
 {
   // Reset all instance variables
   _currentCoin = NULL;
+  _guessCoin = NULL;
   _currentCoinNum = (int)[coins count];
   
   // Clear the arrays
@@ -422,6 +424,11 @@
   // Tell the controller the coin has been moved
   [self.delegate moveCoin:_currentCoin toPlace:placeToMove];
   
+  // If it's in the fake coin bucket, save it as a guess
+  if (placeToMove == SCALES_FAKECOINBUCKET) {
+    _guessCoin = _currentCoin;
+  }
+  
   // Reset the selected coin
   _currentCoinNum = (int)[_coinArray count];
   _currentCoin = NULL;
@@ -479,24 +486,35 @@
 
 - (void)foundFakeCoin:(BOOL)found andCanGuess:(BOOL)guess
 {
-  // If we found the coin, the game is won
+  // If we found the coin, move to guessing the weight
   if (found) {
-    NSLog(@"Congrats, you won!");
-    [self wonGame];
+    [self alertRightCoin];
   }
   else {
     // If you can still guess, try again
     // Otherwise, new set of coins
     if (guess) {
-      [self alertWrongGuess];
+      [self alertWrongCoin];
     }
     else {
-      [self lostGame];
+      [self lostGameWithWeight:NO];
     }
   }
 }
 
-- (void)alertWrongGuess
+- (void)alertRightCoin
+{
+  NSString *message = [NSString stringWithFormat:@"That looks like a fake coin! Tell me, is that coin heavier or lighter than the others?"];
+  UIAlertView *rightAlert = [[UIAlertView alloc] initWithTitle:@"Good job!"
+                                                       message:message
+                                                      delegate:self
+                                             cancelButtonTitle:@"Heavier"
+                                             otherButtonTitles:@"Lighter", nil];
+  rightAlert.tag = 1;
+  [rightAlert show];
+}
+
+- (void)alertWrongCoin
 {
   NSString *message = [NSString stringWithFormat:@"That coin wasn't fake!"];
   UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Wrong coin!"
@@ -504,19 +522,27 @@
                                                     delegate:self
                                            cancelButtonTitle:@"Try Again"
                                            otherButtonTitles: nil];
-  wrongAlert.tag = 1;
+  wrongAlert.tag = 2;
   [wrongAlert show];
 }
 
-- (void)lostGame
+- (void)lostGameWithWeight:(BOOL)guessingWeight
 {
-  NSString *message = [NSString stringWithFormat:@"That coin wasn't fake! It's okay, I'm giving you a new set of coins to try."];
-  UIAlertView *lostAlert = [[UIAlertView alloc] initWithTitle:@"Wrong coin!"
+  NSString* message;
+  
+  if (guessingWeight) {
+    message = [NSString stringWithFormat:@"Sorry, that doesn't seem right. Don't worry, I'll give you a new set of coins to try."];
+  }
+  else {
+    message = [NSString stringWithFormat:@"Sorry, that coin wasn't fake either! It's okay, I'll give you a new set of coins to try."];
+  }
+  
+  UIAlertView *lostAlert = [[UIAlertView alloc] initWithTitle:@"Oh no!"
                                                        message:message
                                                       delegate:self
                                              cancelButtonTitle:@"Okay"
                                              otherButtonTitles: nil];
-  lostAlert.tag = 2;
+  lostAlert.tag = 3;
   [lostAlert show];
 }
 
@@ -534,7 +560,18 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-  if (alertView.tag == 2) {
+  if (alertView.tag == 1) {
+    BOOL coinIsHeavier = [_guessCoin weight] > 1;
+    BOOL coinIsLighter = [_guessCoin weight] < 1;
+    
+    if (((buttonIndex == 0) & coinIsHeavier) || ((buttonIndex == 1) & coinIsLighter)) {
+      [self wonGame];
+    }
+    else {
+      [self lostGameWithWeight:YES];
+    }
+  }
+  else if (alertView.tag == 3) {
     [self.delegate startNewGame];
   }
 }
