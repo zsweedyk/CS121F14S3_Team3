@@ -151,4 +151,16 @@
   [_gameModel setNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2 ToValue:2];
   XCTAssertEqual([_gameModel getNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2], 2);
 }
+
+- (void)testResetGame
+{
+  XCTAssertEqual([_gameModel getNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2], 0);
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 2);
+  [_gameModel setNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2 ToValue:2];
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 2);
+  
+  [_gameModel resetGame];
+  XCTAssertEqual([_gameModel getNumConnectionsBetweenRow:8 Col:0 AndRow:8 Col:2], 0);
+  XCTAssertEqual([_gameModel getNumAvailableConnectionsToNodeAtRow:8 Col:0], 2);
+}
 @end

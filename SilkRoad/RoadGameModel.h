@@ -17,6 +17,7 @@
 - (void)resetConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
 - (BOOL)hasBeenWon;
 - (NSInteger)numConnectionsAfterUpdateForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
+- (void)resetGame;
 
 // Uncomment to test
 - (int)addConnectionToNodeAtRow:(int)row Col:(int)col;
