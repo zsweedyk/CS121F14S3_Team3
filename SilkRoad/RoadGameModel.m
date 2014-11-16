@@ -208,6 +208,17 @@
   [self resetNodeAtRow:row2 Col:col2 ByValue:value2];
 }
 
+- (void)resetGame
+{
+  for (int i = 0; i < 9; i++) {
+    for (int j = 0; j < 9; j++) {
+      Node* node = [[_grid objectAtIndex:i] objectAtIndex:j];
+      node.numConnections = node.origNumConnections;
+      node.connections = [[NSMutableDictionary alloc] init];
+    }
+  }
+}
+
 - (BOOL)hasBeenWon
 {
   return _connectionsLeftToMake == 0;

@@ -98,19 +98,49 @@
       // Each click event needs to be paired with another, as the player is trying to
       // connect button nodes
       _waitingForPair = NO;
+      
       // Make the frame for the return button
       CGRect returnFrame = CGRectMake(20 * _buttonSize, yOffset, 5 *_buttonSize, _buttonSize);
       // Make the button and add it to the view
       UIButton* returnButton = [[UIButton alloc] initWithFrame:returnFrame];
-      [returnButton setBackgroundColor:[UIColor blackColor]];
-      returnButton.layer.cornerRadius = 8;
+
       [returnButton addTarget:self action:@selector(exitGame) forControlEvents:UIControlEventTouchUpInside];
       [returnButton setTitle:@"Return to Village" forState:UIControlStateNormal];
-      [[returnButton layer] setBorderWidth:3.0f];
-      [[returnButton layer] setBorderColor:[UIColor whiteColor].CGColor];
+      [self styleButton:returnButton];
+
       [self addSubview:returnButton];
+      
+      // Make the frame for the return button
+      CGRect newGameFrame = CGRectMake(14 * _buttonSize, yOffset, 5 *_buttonSize, _buttonSize);
+      // Make the button and add it to the view
+      UIButton* newGameButton = [[UIButton alloc] initWithFrame:newGameFrame];
+     
+      [newGameButton addTarget:self action:@selector(newGame) forControlEvents:UIControlEventTouchUpInside];
+      [newGameButton setTitle:@"New Puzzle" forState:UIControlStateNormal];
+      [self styleButton:newGameButton];
+
+      [self addSubview:newGameButton];
+      
+      // Make the frame for the return button
+      CGRect resetFrame = CGRectMake(8 * _buttonSize, yOffset, 5 *_buttonSize, _buttonSize);
+      // Make the button and add it to the view
+      UIButton* resetButton = [[UIButton alloc] initWithFrame:resetFrame];
+
+      [resetButton addTarget:self action:@selector(resetGame) forControlEvents:UIControlEventTouchUpInside];
+      [resetButton setTitle:@"Reset Puzzle" forState:UIControlStateNormal];
+      [self styleButton:resetButton];
+
+      [self addSubview:resetButton];
     }
     return self;
+}
+
+-(void)styleButton:(UIButton*)button
+{
+  [button setBackgroundColor:[UIColor blackColor]];
+  button.layer.cornerRadius = 8;
+  [[button layer] setBorderWidth:3.0f];
+  [[button layer] setBorderColor:[UIColor whiteColor].CGColor];
 }
 
 // Called on initalization to set nodes with actual values to be black and rounded
@@ -133,6 +163,11 @@
 -(void)exitGame
 {
   [self.delegate returnToInterior];
+}
+
+-(void)newGame
+{
+  [self.delegate newGame];
 }
 
 -(void)drawLines:(id)sender
@@ -282,5 +317,21 @@
       }
     }
   }
+}
+
+-(void)resetLines
+{
+  for (id key in _connections) {
+    NSMutableArray* lines = [_connections objectForKey:key];
+    for (int i = 0; i < [lines count]; i++) {
+      [lines[i] removeFromSuperlayer];
+    }
+  }
+  _connections = [[NSMutableDictionary alloc] init];
+}
+
+-(void)resetGame
+{
+  [self.delegate resetGame];
 }
 @end

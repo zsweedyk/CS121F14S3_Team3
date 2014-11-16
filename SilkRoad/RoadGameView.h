@@ -20,11 +20,20 @@
 -(void)returnToInterior;
 @end
 
+@protocol NewGame
+-(void)newGame;
+@end
+
+@protocol ResetGame
+-(void)resetGame;
+@end
+
 @interface RoadGameView : UIView
 
-@property (assign, nonatomic) id <CheckConnectionValid, CreateConnection, ExitMinigame> delegate;
+@property (assign, nonatomic) id <CheckConnectionValid, CreateConnection, ExitMinigame, NewGame, ResetGame> delegate;
 
 -(void)setNodeValueAtRow:(int)row AndColumn:(int)col toValue:(int) value;
 -(void)setNodeBackgroundAtRow:(int)row AndColumn:(int)col;
+-(void)resetLines;
 
 @end
