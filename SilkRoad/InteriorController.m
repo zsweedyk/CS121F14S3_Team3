@@ -18,6 +18,8 @@
   InteriorModel* _interiorModel;
   InteriorView* _interiorView;
   
+  BOOL _canEnterMinigame;
+  
   // Available minigames should have their controllers included here
   MatchingGameController* _matchingGameController;
   RoadGameController* _roadGameController;
@@ -57,6 +59,7 @@
   
   
   [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
+  _canEnterMinigame = canEnterMinigame;
 }
 
 - (void)viewDidLoad
@@ -183,7 +186,7 @@
     [_interiorView setDialogueTextTo:[_interiorModel getNextLineOfDialogue]];
   } else {
     // The first house always contains the minigame
-    if (_currentInterior == 0) {
+    if (_currentInterior == 0 && _canEnterMinigame) {
       // If the game has been won and there is no more dialogue, go to
       // the next stage
       if ([_matchingGameController hasBeenWon] || [_scalesGameController hasBeenWon] || [_roadGameController hasBeenWon]) {

@@ -11,6 +11,7 @@
 #import "StageModel.h"
 
 int const NUM_HOUSES = 4;
+int const LAST_STAGE = 3;
 
 @interface StageController () {
     int _currentStage;
@@ -152,31 +153,36 @@ int const NUM_HOUSES = 4;
 - (void)notifyStageComplete
 {
     // Let ViewController know the stage has been finished
-  NSLog(@"Stage complete!");
-  [self.delegate progressToNextStage];
+    NSLog(@"Stage complete!");
+    if (_currentStage != LAST_STAGE) {
+        [self.delegate progressToNextStage];
+    } else {
+        [self.delegate showMap];
+    }
+    
 }
 
 - (void)buttonPressed:(id)button
 {
-  UIButton* ourButton = (UIButton*)button;
-  int tag = (int)ourButton.tag;
-  
-  // Map has tag 100, other tags are interior number and will be below 4
-  if (tag == 100) {
-    [self.delegate showMap];
-  } else {
+    UIButton* ourButton = (UIButton*)button;
+    int tag = (int)ourButton.tag;
+  [_stageModel visitHouse:tag];
+
+    // Map has tag 100, other tags are interior number and will be below 4
+    if (tag == 100) {
+        [self.delegate showMap];
+    } else {
     
-    // Change the house to grayscale to indicate it has been visited
-    if (_isIndia) {
-      [ourButton setBackgroundImage:[UIImage imageNamed:@"IndiaHouse_Desaturated"] forState:UIControlStateNormal];
+        // Change the house to grayscale to indicate it has been visited
+        if (_isIndia) {
+          [ourButton setBackgroundImage:[UIImage imageNamed:@"IndiaHouse_Desaturated"] forState:UIControlStateNormal];
+        }
+        if (_isChina) {
+          [ourButton setBackgroundImage:[UIImage imageNamed:@"ChinaHouse_Desaturated"] forState:UIControlStateNormal];
+        }
+
+        [self displayInteriorControllerForInterior:tag];
     }
-    if (_isChina) {
-      [ourButton setBackgroundImage:[UIImage imageNamed:@"ChinaHouse_Desaturated"] forState:UIControlStateNormal];
-    }
-    
-    [self displayInteriorControllerForInterior:tag];
-  }
-    
 }
 
 
