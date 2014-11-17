@@ -20,6 +20,8 @@
   InteriorModel* _interiorModel;
   InteriorView* _interiorView;
   
+  BOOL _canEnterMinigame;
+  
   // Available minigames should have their controllers included here
   MatchingGameController* _matchingGameController;
   RoadGameController* _roadGameController;
@@ -66,6 +68,7 @@
   }
   
   [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
+  _canEnterMinigame = canEnterMinigame;
 }
 
 - (void)viewDidLoad
@@ -115,7 +118,6 @@
 {
   // Configure MinigameController to report any changes to InteriorController
   UIViewController* minigameViewController;
-  NSLog(@"minigameswon: %i, funExists %i", _numMinigamesWon, _funExists);
   if (_numMinigamesWon == 1 && _funExists) {
     switch (_currentStage) {
       case 1:
@@ -133,7 +135,6 @@
         [_scalesGameController setCurrencyTo:INDIA];
     }
   } else {
-    NSLog(@"doing something?");
     _matchingGameController.delegate = self;
     minigameViewController = _matchingGameController;
     [_matchingGameController setLevelTo:_currentStage];
@@ -190,7 +191,7 @@
     [_interiorView setDialogueTextTo:[_interiorModel getNextLineOfDialogue]];
   } else {
     // The first house always contains the minigame
-    if (_currentInterior == 0) {
+    if (_currentInterior == 0 && _canEnterMinigame) {
       // If the matching game has been won, check to see if there is another fun minigame after it
       if ([_matchingGameController hasBeenWon]) {
         
@@ -208,10 +209,6 @@
         }
 
       // The matching game hasn't been won, go to it
-      } else {
-        [self enterMinigame];
-      }
-      
     } else {
       // For any other house, simply leave when there is no more dialogue
       [self leaveInterior];
