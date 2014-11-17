@@ -14,6 +14,8 @@
 @interface InteriorController () {
   int _currentStage;
   int _currentInterior;
+  int _numMinigamesWon;
+  BOOL _funExists;
   
   InteriorModel* _interiorModel;
   InteriorView* _interiorView;
@@ -57,6 +59,13 @@
     }
   }
   
+  _numMinigamesWon = 0;
+  
+  _funExists = NO;
+  // Only the first stage does not have an associated fun minigame after the matching game
+  if (_currentStage != 0) {
+    _funExists = YES;
+  }
   
   [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
   _canEnterMinigame = canEnterMinigame;
@@ -100,6 +109,7 @@
   
   // Set up the delegate to know when to leave
   _interiorView.delegate = self;
+
   
   [self.view addSubview:_interiorView];
 }
@@ -108,66 +118,61 @@
 {
   // Configure MinigameController to report any changes to InteriorController
   UIViewController* minigameViewController;
-  switch (_currentStage) {
-    case 0:
-       _matchingGameController.delegate = self;
-      minigameViewController = _matchingGameController;
-      [_matchingGameController setLevelTo:_currentStage];
-      break;
-    case 1:
-      _scalesGameController.delegate = self;
-      minigameViewController = _scalesGameController;
-      [_scalesGameController setCurrencyTo:CHINA];
-      break;
-    case 2:
-      _roadGameController.delegate = self;
-      minigameViewController = _roadGameController;
-      break;
-    case 3:
-      _scalesGameController.delegate = self;
-      minigameViewController = _scalesGameController;
-      [_scalesGameController setCurrencyTo:INDIA];
-      break;
-    default:
-      _matchingGameController.delegate = self;
-      minigameViewController = _matchingGameController;
-      [_matchingGameController setLevelTo:_currentStage];
-      break;
+  if (_numMinigamesWon == 1 && _funExists) {
+    switch (_currentStage) {
+      case 1:
+        _scalesGameController.delegate = self;
+        minigameViewController = _scalesGameController;
+        [_scalesGameController setCurrencyTo:CHINA];
+        break;
+      case 2:
+        _roadGameController.delegate = self;
+        minigameViewController = _roadGameController;
+        break;
+      case 3:
+        _scalesGameController.delegate = self;
+        minigameViewController = _scalesGameController;
+        [_scalesGameController setCurrencyTo:INDIA];
+    }
+  } else {
+    _matchingGameController.delegate = self;
+    minigameViewController = _matchingGameController;
+    [_matchingGameController setLevelTo:_currentStage];
   }
-
+  
   [self presentViewController:minigameViewController animated:YES completion: nil];
 }
 
 - (void)returnToInterior
 {
-  BOOL winning;
-  switch (_currentStage) {
-    case 0:
-      winning = [_matchingGameController hasBeenWon];
+  BOOL winning = NO;
+  if (_numMinigamesWon == 1 && _funExists) {
+    switch (_currentStage) {
+      case 1:
+        winning = [_scalesGameController hasBeenWon];
+        break;
+      case 2:
+        winning = [_roadGameController hasBeenWon];
       break;
-    case 1:
-      winning = [_scalesGameController hasBeenWon];
-      break;
-    case 2:
-      winning = [_roadGameController hasBeenWon];
-      break;
-    case 3:
-      winning = [_scalesGameController hasBeenWon];
-      break;
-    default:
-      winning = [_matchingGameController hasBeenWon];
-      break;
+      case 3:
+        winning = [_scalesGameController hasBeenWon];
+        break;
+    }
+  } else {
+    winning = [_matchingGameController hasBeenWon];
   }
   
-  // Dismiss the minigame controller and return to the interior view
+  // Display win dialogue
   if (winning) {
-    [_interiorModel setWinDialogueForStage:_currentStage];
+    [_interiorModel setWinDialogueForStage:_currentInterior numGamesWon:_numMinigamesWon funExists:_funExists];
+    _numMinigamesWon += 1;
     [self progressDialogue];
   }
   // When animated, causes timing issue and does not properly return
   // to stage if minigame has not been won
   [self dismissViewControllerAnimated:NO completion:nil];
   
+  // Dismiss the minigame controller and return to the interior view
   if (!winning) {
     [self.delegate returnToStage];
   }
@@ -187,14 +192,26 @@
   } else {
     // The first house always contains the minigame
     if (_currentInterior == 0 && _canEnterMinigame) {
-      // If the game has been won and there is no more dialogue, go to
-      // the next stage
-      if ([_matchingGameController hasBeenWon] || [_scalesGameController hasBeenWon] || [_roadGameController hasBeenWon]) {
-        [self.delegate notifyStageComplete];
+      // If the matching game has been won, check to see if there is another fun minigame after it
+      if ([_matchingGameController hasBeenWon]) {
+        
+        // If there is a fun minigame that hasn't been won, enter it, otherwise the stage is finished
+        if (_funExists) {
+          if ([_scalesGameController hasBeenWon] || [_roadGameController hasBeenWon]) {
+            [self.delegate notifyStageComplete];
+          } else {
+            [self enterMinigame];
+          }
+        }
+        // If there is no other fun minigame, return to the stage
+        else {
+          [self.delegate notifyStageComplete];
+        }
+        
       } else {
-        // If the game has yet to be won, enter the game
         [self enterMinigame];
       }
+      // The matching game hasn't been won, go to it
     } else {
       // For any other house, simply leave when there is no more dialogue
       [self leaveInterior];
