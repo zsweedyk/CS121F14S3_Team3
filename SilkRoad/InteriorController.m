@@ -207,7 +207,10 @@
         else {
           [self.delegate notifyStageComplete];
         }
-
+        
+      } else {
+        [self enterMinigame];
+      }
       // The matching game hasn't been won, go to it
     } else {
       // For any other house, simply leave when there is no more dialogue
