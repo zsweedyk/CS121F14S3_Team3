@@ -20,7 +20,7 @@
 @end
 
 
-@interface InteriorController : UIViewController <LeaveInterior, ReturnToInterior, ReturnToInteriorFromScales, EnterMinigame, ProgressDialogue>
+@interface InteriorController : UIViewController <LeaveInterior, ReturnToPrevious, ReturnToPreviousFromScales, EnterMinigame, ProgressDialogue>
 
 @property (assign, nonatomic) id <ReturnToStage, NotifyStageComplete> delegate;
 

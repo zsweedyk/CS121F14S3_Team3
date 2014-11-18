@@ -139,7 +139,7 @@
   [self presentViewController:minigameViewController animated:YES completion: nil];
 }
 
-- (void)returnToInterior
+- (void)returnToPrevious
 {
   BOOL winning = NO;
   if (_numMinigamesWon == 1 && _funExists) {

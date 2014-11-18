@@ -10,9 +10,9 @@
 #import "RoadGameView.h"
 #import "MatchingGameController.h"
 
-@interface RoadGameController : UIViewController <ReturnToInterior, CheckConnectionValid, CreateConnection, ExitMinigame>
+@interface RoadGameController : UIViewController <ReturnToPrevious, CheckConnectionValid, CreateConnection, ExitMinigame>
 
-@property (assign, nonatomic) id <ReturnToInterior> delegate;
+@property (assign, nonatomic) id <ReturnToPrevious> delegate;
 
 - (BOOL)hasBeenWon;
 

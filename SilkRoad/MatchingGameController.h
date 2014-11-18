@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "MatchingGameView.h"
 
-@protocol ReturnToInterior
--(void)returnToInterior;
+@protocol ReturnToPrevious
+-(void)returnToPrevious;
 @end
 
 @interface MatchingGameController : UIViewController <ExitMinigame, CheckForMatch>
 
-@property (assign, nonatomic) id <ReturnToInterior> delegate;
+@property (assign, nonatomic) id <ReturnToPrevious> delegate;
 
 - (void)setLevelTo:(int)level;
 - (BOOL)hasBeenWon;

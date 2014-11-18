@@ -79,7 +79,7 @@
 {
   // Tell InteriorController that the interaction in the minigame is done
   _won = won;
-  [self.delegate returnToInterior];
+  [self.delegate returnToPrevious];
 }
 
 - (BOOL)hasBeenWon

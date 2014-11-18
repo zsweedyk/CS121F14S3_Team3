@@ -45,7 +45,7 @@
   
   if (self) {
     // Set the minigame background
-    [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"woodbg.jpg"]]];
+    [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"scalesBackground.png"]]];
     
     // Get the dimensions of the frame
     CGFloat frameWidth = CGRectGetWidth(frame);
@@ -145,14 +145,14 @@
   CGFloat frameHeight = CGRectGetHeight(frame);
   
   // Have 10% padding on all sides
-  CGFloat horizontalPadding = frameWidth * 0.10;
-  CGFloat verticalPadding = frameHeight * 0.10;
+  CGFloat horizontalPadding = frameWidth * 0.1;
+  CGFloat verticalPadding = frameHeight * 0.1;
 
   // Make each cell in the tray the size of a button with 5% padding on all sides
-  CGFloat cellSize = _coinSize + (_coinSize * 0.10);
+  CGFloat cellSize = _coinSize + (_coinSize * 0.02);
   
-  CGFloat scaleWidth = cellSize * 4;
-  CGFloat scaleHeight = cellSize * 3;
+  CGFloat scaleWidth = cellSize * 4.2;
+  CGFloat scaleHeight = cellSize * 4;
   
   // START WITH THE LEFT SCALE
   // Set the x- and y-offsets accordingly
@@ -160,10 +160,18 @@
   CGFloat yOffsetLeft = verticalPadding;
   CGRect leftScaleFrame = CGRectMake(xOffsetLeft, yOffsetLeft, scaleWidth, scaleHeight);
   _leftScaleView = [[UIView alloc] initWithFrame:leftScaleFrame];
+  UIImage* origLeftArm = [UIImage imageNamed:@"leftArm"];
+  UIImage *scaledLeftArm = [UIImage imageWithCGImage:[origLeftArm CGImage]
+                      scale:(origLeftArm.scale * 1.1)
+                      orientation:(origLeftArm.imageOrientation)];
+  UIImageView* leftScale = [[UIImageView alloc] initWithImage:scaledLeftArm];
+  //[leftScale drawInRect:CGRectMake(0, 0, leftScaleFrame.size.width, leftScaleFrame.size.height)];
+  //[_leftScaleView setBackgroundColor:[UIColor colorWithPatternImage:leftScale]];
   [self addSubview:_leftScaleView];
+  [_leftScaleView addSubview:leftScale];
   
-  CGFloat xOffset = 0;
-  CGFloat yOffset = 0;
+  CGFloat xOffset = 20;
+  CGFloat yOffset = 5;
   
   // Create 3 rows of 4 cells
   for (int row = 0; row < 3; row++) {
@@ -173,7 +181,7 @@
       cell.tag = 100 + (row * 4) + col;
       [cell addTarget:self action:@selector(moveCoinTo:) forControlEvents:UIControlEventTouchUpInside];
       
-      [cell setBackgroundColor:[UIColor yellowColor]];
+      //[cell setBackgroundColor:[UIColor yellowColor]];
       
       [_leftCells insertObject:cell atIndex:(cell.tag - 100)];
       [_leftScaleView addSubview:cell];
@@ -181,21 +189,34 @@
       xOffset += cellSize;
     }
     
-    xOffset = 0;
-    yOffset += cellSize;
+    xOffset = 20;
+    yOffset += cellSize - (cellSize * .05);
   }
   
   // NOW MAKE THE RIGHT SCALE
   // Set the x- and y-offsets accordingly
-  CGFloat xOffsetRight = frameWidth - (cellSize * 4) - horizontalPadding;
+  CGFloat xOffsetRight = frameWidth - (cellSize * 4.75) - horizontalPadding;
   CGFloat yOffsetRight = verticalPadding;
   
   CGRect rightScaleFrame = CGRectMake(xOffsetRight, yOffsetRight, scaleWidth, scaleHeight);
   _rightScaleView = [[UIView alloc] initWithFrame:rightScaleFrame];
+  UIImage* origRightArm = [UIImage imageNamed:@"rightScale"];
+  UIImage *scaledRightArm = [UIImage imageWithCGImage:[origRightArm CGImage]
+                                               scale:(origRightArm.scale * 1.1)
+                                         orientation:(origRightArm.imageOrientation)];
+  UIImageView* rightScale = [[UIImageView alloc] initWithImage:scaledRightArm];
+  UIImageView* rightScaleBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightScale"]];
+  [_rightScaleView addSubview:rightScale];
+  //_rightScaleView.frame.origin.x = xOffsetRight;
+  CGRect rightFrame = _rightScaleView.frame;
+  rightFrame.origin.x = xOffsetRight;
+  rightFrame.origin.y = yOffsetRight;
+  
+  //[_rightScaleView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rightScale"]]];
   [self addSubview:_rightScaleView];
   
-  xOffset = 0;
-  yOffset = 0;
+  xOffset = 20;
+  yOffset = 5;
   
   // Create 3 rows of 4 cells
   for (int row = 0; row < 3; row++) {
@@ -205,16 +226,14 @@
       cell.tag = 200 + (row * 4) + col;
       [cell addTarget:self action:@selector(moveCoinTo:) forControlEvents:UIControlEventTouchUpInside];
       
-      [cell setBackgroundColor:[UIColor yellowColor]];
-      
       [_rightCells insertObject:cell atIndex:(cell.tag - 200)];
       [_rightScaleView addSubview:cell];
       
       xOffset += cellSize;
     }
     
-    xOffset = 0;
-    yOffset += cellSize;
+    xOffset = 20;
+    yOffset += cellSize - (cellSize * .05);
   }
   
   // Draw the support rods
@@ -229,8 +248,8 @@
   
   UILabel* leftVertRod = [[UILabel alloc] initWithFrame:leftVertRodFrame];
   UILabel* rightVertRod = [[UILabel alloc] initWithFrame:rightVertRodFrame];
-  [leftVertRod setBackgroundColor:[UIColor yellowColor]];
-  [rightVertRod setBackgroundColor:[UIColor yellowColor]];
+  //[leftVertRod setBackgroundColor:[UIColor yellowColor]];
+  //[rightVertRod setBackgroundColor:[UIColor yellowColor]];
   [self addSubview:leftVertRod];
   [self addSubview:rightVertRod];
   [self sendSubviewToBack:leftVertRod];
@@ -245,7 +264,7 @@
   CGRect horizRodFrame = CGRectMake(xOffsetHorizRod, yOffsetHorizRod, horizRodWidth, horizRodHeight);
   
   UILabel* horizRod = [[UILabel alloc] initWithFrame:horizRodFrame];
-  [horizRod setBackgroundColor:[UIColor yellowColor]];
+  //[horizRod setBackgroundColor:[UIColor yellowColor]];
   [self addSubview:horizRod];
   
   // Draw the middle vertical bar
@@ -257,7 +276,7 @@
   CGRect vertRodFrame = CGRectMake(xOffsetVertRod, yOffsetVertRod, vertRodWidth, vertRodHeight);
   
   UILabel* vertRod = [[UILabel alloc] initWithFrame:vertRodFrame];
-  [vertRod setBackgroundColor:[UIColor yellowColor]];
+  //[vertRod setBackgroundColor:[UIColor yellowColor]];
   [self addSubview:vertRod];
   [self sendSubviewToBack:vertRod];
   
@@ -285,8 +304,6 @@
       UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
       cell.tag = (row * 6) + col;
       [cell addTarget:self action:@selector(moveCoinTo:) forControlEvents:UIControlEventTouchUpInside];
-      
-      [cell setBackgroundColor:[UIColor yellowColor]];
       
       [_trayCells insertObject:cell atIndex:cell.tag];
       [self addSubview:cell];
@@ -363,7 +380,7 @@
   CGRect returnFrame = CGRectMake(horizontalOffset, verticalOffset, returnFrameWidth, returnFrameHeight);
   // Make the button and add it to the view
   UIButton* returnButton = [[UIButton alloc] initWithFrame:returnFrame];
-  [returnButton setTitle:@"Return to Village" forState:UIControlStateNormal];
+  [returnButton setTitle:@"Return" forState:UIControlStateNormal];
   // TODO: set background color to green for visibility
   [returnButton setBackgroundColor:[UIColor greenColor]];
   [returnButton addTarget:self action:@selector(exitGame) forControlEvents:UIControlEventTouchUpInside];
@@ -445,12 +462,12 @@
   
   // Move the left scale down
   CGRect leftFrame = _leftScaleView.frame;
-  leftFrame.origin.y = frameHeight * 0.15;
+  leftFrame.origin.y = frameHeight * 0.125;
   _leftScaleView.frame = leftFrame;
   
   // Move the right scale up
   CGRect rightFrame = _rightScaleView.frame;
-  rightFrame.origin.y = frameHeight * 0.05;
+  rightFrame.origin.y = frameHeight * 0.075;
   _rightScaleView.frame = rightFrame;
 }
 
@@ -460,12 +477,12 @@
   
   // Move the right scale down
   CGRect rightFrame = _rightScaleView.frame;
-  rightFrame.origin.y = frameHeight * 0.15;
+  rightFrame.origin.y = frameHeight * 0.125;
   _rightScaleView.frame = rightFrame;
   
   // Move the left scale up
   CGRect leftFrame = _leftScaleView.frame;
-  leftFrame.origin.y = frameHeight * 0.05;
+  leftFrame.origin.y = frameHeight * 0.075;
   _leftScaleView.frame = leftFrame;
 }
 
@@ -475,11 +492,11 @@
   
   // Return both scales to middle position
   CGRect leftFrame = _leftScaleView.frame;
-  leftFrame.origin.y = frameHeight * 0.10;
+  leftFrame.origin.y = frameHeight * 0.1;
   _leftScaleView.frame = leftFrame;
   
   CGRect rightFrame = _rightScaleView.frame;
-  rightFrame.origin.y = frameHeight * 0.10;
+  rightFrame.origin.y = frameHeight * 0.1;
   _rightScaleView.frame = rightFrame;
 }
 

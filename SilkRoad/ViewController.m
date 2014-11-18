@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "ProgressView.h"
+#import "RoadGameController.h"
+#import "ScalesGameController.h"
+#import "Constants.h"
 
 @interface ViewController () {
   int _currentStage;
@@ -15,7 +18,8 @@
   MainMenuView* _menuView;
   MapView* _mapView;
   StageController* _stageController;
-  //UINavigationController* _navigationController;
+  ScalesGameController* _scalesGameController;
+  RoadGameController* _roadGameController;
 }
 
 @end
@@ -34,8 +38,11 @@
   _menuView.delegate = self;
   _mapView = [[MapView alloc] initWithFrame:self.view.frame];
   _mapView.delegate = self;
+  _scalesGameController = [[ScalesGameController alloc] init];
+  _roadGameController = [[RoadGameController alloc] init];
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:_currentStage];
+  
   
   // Show Main Menu
   [self.view addSubview:_menuView];
@@ -51,7 +58,8 @@
 {
   NSLog(@"In showMap");
   [self dismissViewControllerAnimated:NO completion:nil];
-  [self.view addSubview:_mapView];
+  [self goToScalesGame];
+  //[self.view addSubview:_mapView];
 }
 
 - (void) hideMap
@@ -63,12 +71,28 @@
 
 - (void) jumpToStage:(int)stage
 {
-  NSLog(@"inButtonPressed MV");
-  if (stage != _currentStage) {
-    _stageController = [[StageController alloc] init];
-    [_stageController setStageTo:stage];
-  }
+  NSLog(@"inButtonPressed MV fo stage %d", stage);
+  _stageController = [[StageController alloc] init];
+  [_stageController setStageTo:stage];
   [self hideMap];
+}
+
+- (void)returnToPrevious
+{
+  [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (void)goToScalesGame
+{
+  _scalesGameController.delegate = self;
+  [_scalesGameController setCurrencyTo:CHINA];
+  [self presentViewController:_scalesGameController animated:YES completion: nil];
+}
+
+- (void)goToRoadGame
+{
+  _roadGameController.delegate = self;
+  [self presentViewController:_roadGameController animated:YES completion: nil];
 }
 
 - (void)didReceiveMemoryWarning

@@ -85,7 +85,7 @@
 - (void)exitScalesGame:(BOOL)won {
   // Tell InteriorController that the interaction in the minigame is done
   _hasBeenWon = won;
-  [self.delegate returnToInterior];
+  [self.delegate returnToPrevious];
 }
 
 - (BOOL)hasBeenWon {

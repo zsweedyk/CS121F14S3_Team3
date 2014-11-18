@@ -17,7 +17,7 @@
 @end
 
 @protocol ExitMinigame
--(void)returnToInterior;
+-(void)returnToPrevious;
 @end
 
 @protocol NewGame

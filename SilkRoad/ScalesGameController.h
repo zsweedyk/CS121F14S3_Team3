@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ScalesGameView.h"
 
-@protocol ReturnToInteriorFromScales
--(void)returnToInterior;
+@protocol ReturnToPreviousFromScales
+-(void)returnToPrevious;
 @end
 
 @interface ScalesGameController : UIViewController <ScalesGameDelegate>
 
-@property (assign, nonatomic) id <ReturnToInteriorFromScales> delegate;
+@property (assign, nonatomic) id <ReturnToPreviousFromScales> delegate;
 
 -(void)setCurrencyTo:(int)civ;
 -(BOOL)hasBeenWon;

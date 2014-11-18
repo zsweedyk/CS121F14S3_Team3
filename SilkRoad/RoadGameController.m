@@ -81,7 +81,7 @@
   }
   
   if ([_gameModel hasBeenWon]) {
-    [self returnToInterior];
+    [self returnToPrevious];
   }
   
   int newNumConnectionsForNode1 = [_gameModel getNumAvailableConnectionsToNodeAtRow:row1 Col:col1];
@@ -98,9 +98,9 @@
   return [_gameModel hasBeenWon];
 }
 
-- (void)returnToInterior
+-(void)returnToPrevious
 {
-  [self.delegate returnToInterior];
+  [self.delegate returnToPrevious];
 }
 
 - (void)newGame

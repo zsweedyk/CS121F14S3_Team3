@@ -105,9 +105,8 @@
       UIButton* returnButton = [[UIButton alloc] initWithFrame:returnFrame];
 
       [returnButton addTarget:self action:@selector(exitGame) forControlEvents:UIControlEventTouchUpInside];
-      [returnButton setTitle:@"Return to Village" forState:UIControlStateNormal];
+      [returnButton setTitle:@"Return" forState:UIControlStateNormal];
       [self styleButton:returnButton];
-
       [self addSubview:returnButton];
       
       // Make the frame for the return button
@@ -162,7 +161,7 @@
 
 -(void)exitGame
 {
-  [self.delegate returnToInterior];
+  [self.delegate returnToPrevious];
 }
 
 -(void)newGame
