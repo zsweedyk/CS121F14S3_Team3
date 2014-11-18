@@ -60,7 +60,8 @@
 {
   NSLog(@"In showMap");
   [self dismissViewControllerAnimated:NO completion:nil];
-  [self.view addSubview:_mapView];
+  [self goToScalesGame];
+  //[self.view addSubview:_mapView];
 }
 
 - (void) hideMap

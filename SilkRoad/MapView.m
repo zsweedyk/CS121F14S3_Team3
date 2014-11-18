@@ -93,11 +93,6 @@
   [self.delegate goToRoadGame];
 }
 
-- (void) makeCityButtonAtX:(int)x andY:(int)y andTag:(int)tag
-{
-  
-}
-
 - (void)buttonPressed:(id)button
 {
   UIButton* ourButton = (UIButton*)button;
