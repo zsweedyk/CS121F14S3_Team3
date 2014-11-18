@@ -140,7 +140,7 @@
 
 }
 
-- (void)returnToInterior
+- (void)returnToPrevious
 {
   BOOL winning;
   switch (_currentStage) {

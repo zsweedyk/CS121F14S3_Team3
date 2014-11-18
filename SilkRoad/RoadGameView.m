@@ -105,7 +105,7 @@
       [returnButton setBackgroundColor:[UIColor blackColor]];
       returnButton.layer.cornerRadius = 8;
       [returnButton addTarget:self action:@selector(exitGame) forControlEvents:UIControlEventTouchUpInside];
-      [returnButton setTitle:@"Return to Village" forState:UIControlStateNormal];
+      [returnButton setTitle:@"Return" forState:UIControlStateNormal];
       [[returnButton layer] setBorderWidth:3.0f];
       [[returnButton layer] setBorderColor:[UIColor whiteColor].CGColor];
       [self addSubview:returnButton];
@@ -132,7 +132,7 @@
 
 -(void)exitGame
 {
-  [self.delegate returnToInterior];
+  [self.delegate returnToPrevious];
 }
 
 -(void)drawLines:(id)sender

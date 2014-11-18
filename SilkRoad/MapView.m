@@ -7,12 +7,20 @@
 //
 
 #import "MapView.h"
+//#import "ScalesGameController.h"
+//#import "RoadGameController.h"
+#import "Constants.h"
+
 
 @interface MapView() {
   int _currentStage;
   UIImage* _map;
   NSMutableArray* _stageButtons;
+//  ScalesGameController* _scalesGameController;
+//  RoadGameController* _roadGameController;
   UIButton* _backButton;
+  UIButton* _roadGameButton;
+  UIButton* _scalesGameButton;
   UIButton* firstCity; //ujjain
   UIButton* secondCity; //pataliputra
   UIButton* thirdCity;
@@ -42,6 +50,10 @@
     fourthCity = [[UIButton alloc] initWithFrame:buttonFrame4];
     _backButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 125, 125)];
     [_backButton setBackgroundImage:[UIImage imageNamed:@"buttonVisited"] forState:UIControlStateNormal];
+    _roadGameButton = [[UIButton alloc] initWithFrame:CGRectMake(860, 600, 125, 125)];
+    [_roadGameButton setBackgroundImage:[UIImage imageNamed:@"roadGameButtonDesaturated"] forState:UIControlStateNormal];
+    _scalesGameButton = [[UIButton alloc] initWithFrame:CGRectMake(700, 600, 125, 125)];
+    [_scalesGameButton setBackgroundImage:[UIImage imageNamed:@"scalesGameButtonDesaturated"] forState:UIControlStateNormal];
     [_stageButtons insertObject:firstCity atIndex:0];
     [_stageButtons insertObject:secondCity atIndex:1];
     [_stageButtons insertObject:thirdCity atIndex:2];
@@ -51,8 +63,10 @@
     [self addSubview:thirdCity];
     [self addSubview:fourthCity];
     [self addSubview:_backButton];
+    [self addSubview:_roadGameButton];
+    [self addSubview:_scalesGameButton];
     [firstCity setBackgroundImage:[UIImage imageNamed:@"buttonVisited"] forState:UIControlStateNormal];
-    [firstCity addTarget:self action:@selector(hideMap) forControlEvents:UIControlEventTouchUpInside];
+    [firstCity addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [secondCity setBackgroundImage:[UIImage imageNamed:@"buttonUnvisited"] forState:UIControlStateNormal];
     [thirdCity setBackgroundImage:[UIImage imageNamed:@"buttonUnvisited"] forState:UIControlStateNormal];
     [fourthCity setBackgroundImage:[UIImage imageNamed:@"buttonUnvisited"] forState:UIControlStateNormal];
@@ -69,19 +83,31 @@
   
 }
 
+- (void) goToScalesGame
+{
+  [self.delegate goToScalesGame];
+}
+
+- (void) goToRoadGame
+{
+  [self.delegate goToRoadGame];
+}
+
 - (void) makeCityButtonAtX:(int)x andY:(int)y andTag:(int)tag
 {
   
 }
 
-- (void)buttonPressed:(id)button {
-  NSLog(@"inButtonPressed MV");
+- (void)buttonPressed:(id)button
+{
   UIButton* ourButton = (UIButton*)button;
   int tag = (int)ourButton.tag;
+  NSLog(@"inButtonPressed MV at tag %d", tag);
   [self.delegate jumpToStage:tag];
 }
 
--(void)hideMap {
+-(void)hideMap
+{
   [self.delegate hideMap];
 }
 
@@ -90,26 +116,26 @@
   _currentStage++;
   if (_currentStage == 1) {
     [firstCity setBackgroundImage:[UIImage imageNamed:@"buttonVisitedDesaturated"] forState:UIControlStateNormal];
-    [firstCity removeTarget:self action:@selector(hideMap) forControlEvents:UIControlEventTouchUpInside];
     [secondCity setBackgroundImage:[UIImage imageNamed:@"buttonVisited"] forState:UIControlStateNormal];
-    [secondCity addTarget:self action:@selector(hideMap) forControlEvents:UIControlEventTouchUpInside];
+    [secondCity addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
   }
   if (_currentStage == 2) {
     [secondCity setBackgroundImage:[UIImage imageNamed:@"buttonVisitedDesaturated"] forState:UIControlStateNormal];
-    [secondCity removeTarget:self action:@selector(hideMap) forControlEvents:UIControlEventTouchUpInside];
     [thirdCity setBackgroundImage:[UIImage imageNamed:@"buttonVisited"] forState:UIControlStateNormal];
-    [thirdCity addTarget:self action:@selector(hideMap) forControlEvents:UIControlEventTouchUpInside];
+    [thirdCity addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [_scalesGameButton setBackgroundImage:[UIImage imageNamed:@"scalesGameButton"] forState:UIControlStateNormal];
+    [_scalesGameButton addTarget:self action:@selector(goToScalesGame) forControlEvents:UIControlEventTouchUpInside];
   }
   if (_currentStage == 3) {
     [thirdCity setBackgroundImage:[UIImage imageNamed:@"buttonVisitedDesaturated"] forState:UIControlStateNormal];
-    [thirdCity removeTarget:self action:@selector(hideMap) forControlEvents:UIControlEventTouchUpInside];
     [fourthCity setBackgroundImage:[UIImage imageNamed:@"buttonVisited"] forState:UIControlStateNormal];
-    [fourthCity addTarget:self action:@selector(hideMap) forControlEvents:UIControlEventTouchUpInside];
+    [fourthCity addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [_roadGameButton setBackgroundImage:[UIImage imageNamed:@"roadGameButton"] forState:UIControlStateNormal];
+    [_roadGameButton addTarget:self action:@selector(goToRoadGame) forControlEvents:UIControlEventTouchUpInside];
   }
   
   UIButton* currentStageButton = [_stageButtons objectAtIndex:_currentStage];
   [currentStageButton setBackgroundImage:[UIImage imageNamed:@"buttonVisited"] forState:UIControlStateNormal];
-  [currentStageButton addTarget:self action:@selector(hideMap) forControlEvents:UIControlEventTouchUpInside];
 }
 
 @end
