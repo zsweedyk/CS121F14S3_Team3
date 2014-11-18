@@ -8,6 +8,7 @@
 
 #import "Constants.h"
 
+int const NUM_CITIES = 4;
 int const INDIA = 1;
 int const CHINA = 2;
 

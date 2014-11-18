@@ -11,7 +11,7 @@
 @implementation MainMenuView
 
 -(id)initWithFrame:(CGRect)frame
-{
+{  
   self = [super initWithFrame:frame];
   
   if (self) {
