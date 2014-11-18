@@ -143,6 +143,7 @@ int const LAST_STAGE = 3;
     _interiorController.delegate = self;
     // Set the correct interior
     [_interiorController setStageTo:_currentStage andInteriorTo:interior hasVisitedHouses:[_stageModel visitedAllHouses]];
+    [_interiorController progressDialogue];
     [self presentViewController:_interiorController animated:YES completion: nil];
 }
 
