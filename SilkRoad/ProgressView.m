@@ -129,17 +129,6 @@
   return self;
 }
 
-//-(void)moveToNextStage
-//{
-//    UIButton* oldStageButton = [_stageButtons objectAtIndex:_currentStage];
-//    [oldStageButton setBackgroundColor:[UIColor blackColor]];
-//    
-//    _currentStage++;
-//    
-//    UIButton* currentStageButton = [_stageButtons objectAtIndex:_currentStage];
-//    [currentStageButton setBackgroundColor:[UIColor greenColor]];
-//}
-
 -(void)toggleMap
 {
   [self.delegate showMap];
