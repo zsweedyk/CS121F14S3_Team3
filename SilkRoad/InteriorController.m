@@ -103,10 +103,6 @@
   // Set up model to read in all dialogue
   _interiorModel = [[InteriorModel alloc] init];
   
-  [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
-  
-  [self progressDialogue];
-  
   // Set up the delegate to know when to leave
   _interiorView.delegate = self;
 
