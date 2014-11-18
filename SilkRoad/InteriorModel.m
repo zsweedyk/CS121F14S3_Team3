@@ -9,6 +9,7 @@
 #import "InteriorModel.h"
 
 const int winDialogueLocation = 1;
+const int transitionDialogueLocation = 2;
 
 @interface InteriorModel()
 {
@@ -95,9 +96,22 @@ const int winDialogueLocation = 1;
   return _dialogueForCurrentHouse[_currentLine++];
 }
 
--(void)setWinDialogueForStage:(int)stage
+-(void)setWinDialogueForStage:(int)stage numGamesWon:(int)numMinigamesCompletedForStage funExists:(BOOL)funExists
 {
-  _dialogueForCurrentHouse = [_allDialogues objectAtIndex:winDialogueLocation];
+  // If this is the first minigame the player has finished for the stage and there is something after it,
+  // display transitional dialogue.
+  // Otherwise, display the win dialogue.
+  if (numMinigamesCompletedForStage == 0) {
+    if (funExists) {
+      _dialogueForCurrentHouse = [_allDialogues objectAtIndex:transitionDialogueLocation];
+    } else {
+      _dialogueForCurrentHouse = [_allDialogues objectAtIndex:winDialogueLocation];
+    }
+  }
+  // Display win dialogue after they finish the second game
+  else if (numMinigamesCompletedForStage == 1) {
+    _dialogueForCurrentHouse = [_allDialogues objectAtIndex:winDialogueLocation];
+  }
   _currentLine = 0;
 }
 @end

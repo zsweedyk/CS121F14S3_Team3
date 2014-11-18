@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ToggleMap
+-(void)showMap;
+@end;
+
 @interface ProgressView : UIView
 
--(void)moveToNextStage;
+@property (assign, nonatomic) id <ToggleMap> delegate;
+
+-(id)initWithFrame:(CGRect)frame andCurrentStage:(int)stage;
 
 @end

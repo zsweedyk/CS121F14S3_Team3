@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "MapView.h"
 #import "ProgressView.h"
 
 @interface ViewController () {
@@ -15,7 +14,6 @@
   
   MainMenuView* _menuView;
   MapView* _mapView;
-  ProgressView* _progressView;
   StageController* _stageController;
   //UINavigationController* _navigationController;
 }

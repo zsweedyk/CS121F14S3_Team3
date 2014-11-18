@@ -21,6 +21,7 @@ int const LAST_STAGE = 3;
 
     StageView* _stageView;
     StageModel* _stageModel;
+    ProgressView* _progressView;
     InteriorController* _interiorController;
     NSMutableArray* _houses;
 }
@@ -59,6 +60,12 @@ int const LAST_STAGE = 3;
     CGRect frame = self.view.frame;
     CGFloat frameWidth = CGRectGetWidth(frame);
     CGFloat frameHeight = CGRectGetHeight(frame);
+  
+    // Make the progress view
+    // Get the frame of the progress view (15% height, full width)
+    CGRect progressFrame = CGRectMake(0, 0, frameWidth, frameHeight * 0.15);
+    _progressView = [[ProgressView alloc] initWithFrame:progressFrame andCurrentStage:_currentStage];
+    _progressView.delegate = self;
 
     // The stage view will take up the same space
     CGRect stageFrame = CGRectMake(0, 0, frameWidth, frameHeight);
@@ -83,7 +90,8 @@ int const LAST_STAGE = 3;
     
     _stageView.delegate = self;
     [self.view addSubview:_stageView];
-    
+  [self.view addSubview:_progressView];
+  
     //Initiate has been loaded
     _hasBeenLoaded = NO;
 }
@@ -135,6 +143,7 @@ int const LAST_STAGE = 3;
     _interiorController.delegate = self;
     // Set the correct interior
     [_interiorController setStageTo:_currentStage andInteriorTo:interior hasVisitedHouses:[_stageModel visitedAllHouses]];
+    [_interiorController progressDialogue];
     [self presentViewController:_interiorController animated:YES completion: nil];
 }
 
@@ -153,36 +162,36 @@ int const LAST_STAGE = 3;
 - (void)notifyStageComplete
 {
     // Let ViewController know the stage has been finished
-    NSLog(@"Stage complete!");
-    if (_currentStage != LAST_STAGE) {
-        [self.delegate progressToNextStage];
-    } else {
-        [self.delegate showMap];
-    }
-    
+  NSLog(@"Stage complete!");
+  if (_currentStage != LAST_STAGE) {
+    [self.delegate progressToNextStage];
+  }
+  else {
+    [self showMap];
+  }
+}
+
+- (void)showMap
+{
+  [self.delegate showMap];
 }
 
 - (void)buttonPressed:(id)button
 {
-    UIButton* ourButton = (UIButton*)button;
-    int tag = (int)ourButton.tag;
+  UIButton* ourButton = (UIButton*)button;
+  int tag = (int)ourButton.tag;
+  
   [_stageModel visitHouse:tag];
-
-    // Map has tag 100, other tags are interior number and will be below 4
-    if (tag == 100) {
-        [self.delegate showMap];
-    } else {
     
-        // Change the house to grayscale to indicate it has been visited
-        if (_isIndia) {
-          [ourButton setBackgroundImage:[UIImage imageNamed:@"IndiaHouse_Desaturated"] forState:UIControlStateNormal];
-        }
-        if (_isChina) {
-          [ourButton setBackgroundImage:[UIImage imageNamed:@"ChinaHouse_Desaturated"] forState:UIControlStateNormal];
-        }
-
-        [self displayInteriorControllerForInterior:tag];
-    }
+  // Change the house to grayscale to indicate it has been visited
+  if (_isIndia) {
+    [ourButton setBackgroundImage:[UIImage imageNamed:@"IndiaHouse_Desaturated"] forState:UIControlStateNormal];
+  }
+  if (_isChina) {
+    [ourButton setBackgroundImage:[UIImage imageNamed:@"ChinaHouse_Desaturated"] forState:UIControlStateNormal];
+  }
+  
+  [self displayInteriorControllerForInterior:tag];
 }
 
 
