@@ -10,6 +10,7 @@
 #import "InteriorController.h"
 #import "House.h"
 #import "StageView.h"
+#import "ProgressView.h"
 
 @protocol ProgressToNextStage
 -(void)progressToNextStage;
@@ -17,10 +18,9 @@
 
 @protocol ShowMap
 -(void)showMap;
-@end;
+@end
 
-
-@interface StageController : UIViewController <ReturnToStage, ButtonPressed, NotifyStageComplete>
+@interface StageController : UIViewController <ReturnToStage, ButtonPressed, NotifyStageComplete, ToggleMap>
 
 @property (assign, nonatomic) id <ProgressToNextStage, ShowMap> delegate;
 

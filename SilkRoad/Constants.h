@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Kate Finlay, Melissa Galonsky, Rachel Macfarlane, and Sarah Trisorus. All rights reserved.
 //
 
-
+FOUNDATION_EXPORT int const NUM_CITIES;
 FOUNDATION_EXPORT int const INDIA;
 FOUNDATION_EXPORT int const CHINA;
 

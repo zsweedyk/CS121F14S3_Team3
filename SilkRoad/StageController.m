@@ -20,6 +20,7 @@ int const NUM_HOUSES = 4;
 
     StageView* _stageView;
     StageModel* _stageModel;
+    ProgressView* _progressView;
     InteriorController* _interiorController;
     NSMutableArray* _houses;
 }
@@ -58,6 +59,12 @@ int const NUM_HOUSES = 4;
     CGRect frame = self.view.frame;
     CGFloat frameWidth = CGRectGetWidth(frame);
     CGFloat frameHeight = CGRectGetHeight(frame);
+  
+    // Make the progress view
+    // Get the frame of the progress view (15% height, full width)
+    CGRect progressFrame = CGRectMake(0, 0, frameWidth, frameHeight * 0.15);
+    _progressView = [[ProgressView alloc] initWithFrame:progressFrame andCurrentStage:_currentStage];
+    _progressView.delegate = self;
 
     // The stage view will take up the same space
     CGRect stageFrame = CGRectMake(0, 0, frameWidth, frameHeight);
@@ -82,7 +89,8 @@ int const NUM_HOUSES = 4;
     
     _stageView.delegate = self;
     [self.view addSubview:_stageView];
-    
+  [self.view addSubview:_progressView];
+  
     //Initiate has been loaded
     _hasBeenLoaded = NO;
 }
@@ -156,27 +164,25 @@ int const NUM_HOUSES = 4;
   [self.delegate progressToNextStage];
 }
 
+- (void)showMap
+{
+  [self.delegate showMap];
+}
+
 - (void)buttonPressed:(id)button
 {
   UIButton* ourButton = (UIButton*)button;
   int tag = (int)ourButton.tag;
-  
-  // Map has tag 100, other tags are interior number and will be below 4
-  if (tag == 100) {
-    [self.delegate showMap];
-  } else {
     
-    // Change the house to grayscale to indicate it has been visited
-    if (_isIndia) {
-      [ourButton setBackgroundImage:[UIImage imageNamed:@"IndiaHouse_Desaturated"] forState:UIControlStateNormal];
-    }
-    if (_isChina) {
-      [ourButton setBackgroundImage:[UIImage imageNamed:@"ChinaHouse_Desaturated"] forState:UIControlStateNormal];
-    }
-    
-    [self displayInteriorControllerForInterior:tag];
+  // Change the house to grayscale to indicate it has been visited
+  if (_isIndia) {
+    [ourButton setBackgroundImage:[UIImage imageNamed:@"IndiaHouse_Desaturated"] forState:UIControlStateNormal];
   }
-    
+  if (_isChina) {
+    [ourButton setBackgroundImage:[UIImage imageNamed:@"ChinaHouse_Desaturated"] forState:UIControlStateNormal];
+  }
+  
+  [self displayInteriorControllerForInterior:tag];
 }
 
 
