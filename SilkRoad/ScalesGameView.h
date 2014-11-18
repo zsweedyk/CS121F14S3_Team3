@@ -13,7 +13,6 @@
 -(void)startNewGame;
 -(void)exitScalesGame:(BOOL)won;
 -(void)weighCoinsInScale;
--(void)checkIfCoinFake:(ScalesGameCoin*)coin;
 -(void)moveCoin:(ScalesGameCoin*)coin toPlace:(int)placeToMove;
 @end
 
@@ -27,7 +26,6 @@
 -(void)makeLeftScaleHeavier;
 -(void)makeRightScaleHeavier;
 -(void)makeScalesBalanced;
--(void)identifyFakeCoin;
--(void)foundFakeCoin:(BOOL)found;
+-(void)foundFakeCoin:(BOOL)found andCanGuess:(BOOL)guess;
 
 @end

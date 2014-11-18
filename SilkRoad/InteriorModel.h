@@ -10,11 +10,10 @@
 
 @interface InteriorModel : NSObject
 
--(void)initializeAllDialogue;
 -(void)initForStage:(int)stage andHouse:(int)house;
 -(BOOL)dialogueFinished;
 -(NSString*)getNextLineOfDialogue;
--(void)setWinDialogueForStage:(int)stage;
+-(void)setWinDialogueForStage:(int)stage numGamesWon:(int)numMinigamesCompletedForStage funExists:(BOOL)funExists;
 
 //The following methods exist just for testing and should not be considered part of the public interface
 -(int)remainingLinesOfDialogue;

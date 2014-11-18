@@ -95,9 +95,6 @@
 
 -(void)initCharacter
 {
-  // Get interior frame dimensions
-    // TODO: Change background color to GREEN for temporary visibility
-    //CGRect frame = _characterBox.frame;
     // Get interior frame dimensions
     CGRect frame = self.frame;
     CGFloat frameWidth = CGRectGetWidth(frame);
@@ -152,7 +149,6 @@
 
 -(void)endOfDialogue
 {
-  // TODO: Temporarily let clicking on the dialogue box go to the minigame
   [self.delegate enterMinigame];
 }
 

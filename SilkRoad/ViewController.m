@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "MapView.h"
 #import "ProgressView.h"
 #import "RoadGameController.h"
 #import "ScalesGameController.h"
@@ -18,7 +17,6 @@
   
   MainMenuView* _menuView;
   MapView* _mapView;
-  ProgressView* _progressView;
   StageController* _stageController;
   ScalesGameController* _scalesGameController;
   RoadGameController* _roadGameController;

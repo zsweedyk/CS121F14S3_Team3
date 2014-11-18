@@ -24,26 +24,32 @@
   self = [super init];
   
   if (self) {
-    // Initialize gameModel
-    _gameModel = [[RoadGameModel alloc] init];
-    [_gameModel initGridWithFile:@"RoadPuzzle1"];
-    
-    _gameView = [[RoadGameView alloc] initWithFrame:self.view.frame];
-    _gameView.delegate = self;
-    [self.view addSubview:_gameView];
-    
-    for (int row = 0; row < 9; row++) {
-      for (int col = 0; col < 9; col++) {
-        int nodeValue = [_gameModel getNumAvailableConnectionsToNodeAtRow:row Col:col];
-        if (nodeValue != 0) {
-          [_gameView setNodeBackgroundAtRow:row AndColumn:col];
-          [_gameView setNodeValueAtRow:row AndColumn:col toValue:nodeValue];
-        }
-      }
-    }
+    [self initGame];
   }
   
   return self;
+}
+
+- (void)initGame
+{
+  // Initialize gameModel
+  _gameModel = [[RoadGameModel alloc] init];
+  int puzzleNumber = arc4random_uniform(12);
+  [_gameModel initGridWithFile:[NSString stringWithFormat:@"RoadPuzzle%i", puzzleNumber]];
+  
+  _gameView = [[RoadGameView alloc] initWithFrame:self.view.frame];
+  _gameView.delegate = self;
+  [self.view addSubview:_gameView];
+  
+  for (int row = 0; row < 9; row++) {
+    for (int col = 0; col < 9; col++) {
+      int nodeValue = [_gameModel getNumAvailableConnectionsToNodeAtRow:row Col:col];
+      if (nodeValue != 0) {
+        [_gameView setNodeBackgroundAtRow:row AndColumn:col];
+        [_gameView setNodeValueAtRow:row AndColumn:col toValue:nodeValue];
+      }
+    }
+  }
 }
 
 - (void)viewDidLoad
@@ -91,8 +97,34 @@
 {
   return [_gameModel hasBeenWon];
 }
+
 -(void)returnToPrevious
 {
   [self.delegate returnToPrevious];
+}
+
+- (void)newGame
+{
+  [self initGame];
+}
+
+- (void)resetGame
+{
+  // Reset underlying values
+  [_gameModel resetGame];
+  
+  // Update values on nodes of view
+  for (int row = 0; row < 9; row++) {
+    for (int col = 0; col < 9; col++) {
+      int nodeValue = [_gameModel getNumAvailableConnectionsToNodeAtRow:row Col:col];
+      if (nodeValue != 0) {
+        [_gameView setNodeBackgroundAtRow:row AndColumn:col];
+        [_gameView setNodeValueAtRow:row AndColumn:col toValue:nodeValue];
+      }
+    }
+  }
+  
+  // Remove all drawn lines
+  [_gameView resetLines];
 }
 @end

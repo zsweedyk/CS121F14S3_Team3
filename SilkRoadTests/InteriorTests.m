@@ -25,7 +25,7 @@
 - (void)testInit;
 {
     InteriorModel* model = [[InteriorModel alloc] init];
-    [model initializeAllDialogue];
+    //[model initializeAllDialogue];
     [model initForStage:0 andHouse:0];
     NSString* firstLineOfDialogue = [model getNextLineOfDialogue];
     XCTAssertTrue([firstLineOfDialogue length] != 0, @"Doesn't return any dialogue for stage 0 house 0");
@@ -35,7 +35,7 @@
 - (void)testDialogueFinished
 {
     InteriorModel* model = [[InteriorModel alloc] init];
-    [model initializeAllDialogue];
+    //[model initializeAllDialogue];
     [model initForStage:0 andHouse:0];
     while ([model dialogueFinished]) {
         (void)[model getNextLineOfDialogue];

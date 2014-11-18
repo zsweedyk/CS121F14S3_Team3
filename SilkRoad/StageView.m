@@ -30,13 +30,6 @@ const CGFloat tempButtonSize = 100;
   backgroundView.frame = frame;
   [self addSubview:backgroundView];
   
-  UIButton* backButton = [[UIButton alloc] initWithFrame:CGRectMake(50, 20, 125, 94)];
-  [backButton setBackgroundImage:[UIImage imageNamed:@"mapButton"] forState:UIControlStateNormal];
-  [backButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-  
-  [backButton setTag:100];
-  [self addSubview:backButton];
-  
   return self;
 }
 
