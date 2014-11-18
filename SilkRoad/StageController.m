@@ -162,7 +162,6 @@ int const LAST_STAGE = 3;
 {
     // Let ViewController know the stage has been finished
   NSLog(@"Stage complete!");
-  [self.delegate progressToNextStage];
   if (_currentStage != LAST_STAGE) {
     [self.delegate progressToNextStage];
   }

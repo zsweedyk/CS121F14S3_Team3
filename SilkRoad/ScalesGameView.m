@@ -77,7 +77,6 @@
     // The bucket should be double that size
     CGFloat cellSize = _coinSize + (_coinSize * 0.10);
     CGFloat bucketSize = 2 * cellSize;
-    CGFloat xOffsetTray = (CGRectGetHeight(_gameFrame) - (cellSize * 6)) / 2;
     CGFloat verticalPadding = CGRectGetHeight(_gameFrame) * 0.05;
     
     // Set the x- and y-offsets accordingly
