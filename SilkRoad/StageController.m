@@ -11,6 +11,7 @@
 #import "StageModel.h"
 
 int const NUM_HOUSES = 4;
+int const LAST_STAGE = 3;
 
 @interface StageController () {
     int _currentStage;
@@ -162,6 +163,12 @@ int const NUM_HOUSES = 4;
     // Let ViewController know the stage has been finished
   NSLog(@"Stage complete!");
   [self.delegate progressToNextStage];
+  if (_currentStage != LAST_STAGE) {
+    [self.delegate progressToNextStage];
+  }
+  else {
+    [self showMap];
+  }
 }
 
 - (void)showMap
@@ -173,6 +180,8 @@ int const NUM_HOUSES = 4;
 {
   UIButton* ourButton = (UIButton*)button;
   int tag = (int)ourButton.tag;
+  
+  [_stageModel visitHouse:tag];
     
   // Change the house to grayscale to indicate it has been visited
   if (_isIndia) {
