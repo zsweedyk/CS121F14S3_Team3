@@ -61,7 +61,8 @@
   }
 }
 
-- (void)weighCoinsInScale {
+- (void)weighCoinsInScale
+{
   int weighResult = [_gameModel checkScales];
   
   // Make the view represent the result of the weighing
@@ -76,25 +77,29 @@
   }
 }
 
-- (void)checkIfCoinFake:(ScalesGameCoin*)coin {
+- (void)checkIfCoinFake:(ScalesGameCoin*)coin
+{
   BOOL fakeCoin = [_gameModel checkIfCoinFake:coin];
   BOOL canStillGuess = [_gameModel canStillGuess];
   [_gameView foundFakeCoin:fakeCoin andCanGuess:canStillGuess];
 }
 
-- (void)exitScalesGame:(BOOL)won {
+- (void)exitScalesGame:(BOOL)won
+{
   // Tell InteriorController that the interaction in the minigame is done
   _hasBeenWon = won;
   [self.delegate returnToPrevious];
 }
 
-- (BOOL)hasBeenWon {
+- (BOOL)hasBeenWon
+{
   return _hasBeenWon;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)didReceiveMemoryWarning
+{
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 @end

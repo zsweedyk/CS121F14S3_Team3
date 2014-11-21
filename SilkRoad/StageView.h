@@ -15,10 +15,10 @@
 
 @interface StageView : UIView
 
+@property (assign, nonatomic) id <ButtonPressed> delegate;
+
 -(id)initWithFrame:(CGRect)frame background:(UIImage*)background;
 
--(void)loadNewStageWithHouses: (NSMutableArray*) houses;
-
-@property (assign, nonatomic) id <ButtonPressed> delegate;
+-(void)loadNewStageWithHouses:(NSMutableArray*)houses;
 
 @end

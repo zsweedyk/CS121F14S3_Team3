@@ -23,7 +23,7 @@
 
 @implementation MatchingGameController
 
-- (void)setLevelTo:(int)level
+-(void)setLevelTo:(int)level
 {
   _currentLevel = level;
   
@@ -39,27 +39,25 @@
   [self.view addSubview:_gameView];
 }
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
   [super viewDidLoad];
-  
 }
 
-- (id)init
+-(id)init
 {
   self = [super init];
   
   if (self) {
     // Initialize gameModel
     _gameModel = [[MatchingGameModel alloc] init];
-//    [_gameModel initializeGameForLevel:_currentLevel];
     _won = NO;
   }
   
   return self;
 }
 
-- (void)checkForMatchWithLeftPhrase:(NSString*)leftPhrase andRightPhrase:(NSString*)rightPhrase;
+-(void)checkForMatchWithLeftPhrase:(NSString*)leftPhrase andRightPhrase:(NSString*)rightPhrase;
 {
   BOOL match = [_gameModel checkMatchBetweenLeftPhrase:leftPhrase andRightPhrase:rightPhrase];
   

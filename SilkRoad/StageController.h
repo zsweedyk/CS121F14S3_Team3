@@ -12,20 +12,17 @@
 #import "StageView.h"
 #import "ProgressView.h"
 
-@protocol ProgressToNextStage
+@protocol StageProtocol
 -(void)progressToNextStage;
-@end
-
-@protocol ShowMap
 -(void)showMap;
 @end
 
 @interface StageController : UIViewController <ReturnToStage, ButtonPressed, NotifyStageComplete, ToggleMap>
 
-@property (assign, nonatomic) id <ProgressToNextStage, ShowMap> delegate;
+@property (assign, nonatomic) id <StageProtocol> delegate;
 
-- (void)setStageTo:(int)currentStage;
+-(void)setStageTo:(int)currentStage;
 
-- (void)buttonPressed:(id)button;
+-(void)buttonPressed:(id)button;
 
 @end

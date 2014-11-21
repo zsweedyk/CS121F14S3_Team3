@@ -76,14 +76,12 @@
     [thirdCity setTag:2];
     [fourthCity setTag:3];
     
-    
     [_backButton addTarget:self action:@selector(hideMap) forControlEvents:UIControlEventTouchUpInside];
   }
   return self;
-  
 }
 
-- (void) goToScalesGame
+-(void)goToScalesGame
 {
   [self.delegate goToScalesGame];
 }

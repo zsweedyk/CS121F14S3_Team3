@@ -12,8 +12,8 @@
 #import "ProgressView.h"
 #import "MapView.h"
 
-@interface ViewController : UIViewController <ShowStage, ProgressToNextStage, ShowMap, JumpToStage, HideMap>
+@interface ViewController : UIViewController <ShowStage, StageProtocol, MapProtocol, ReturnToPreviousFromScales,ReturnToPreviousFromMatching>
 
-- (void) hideMap;
+-(void)hideMap;
 
 @end

@@ -14,7 +14,6 @@
   self = [super init];
   
   if (self) {
-    [self setName:@"Coin 0"];
     [self setWeight:1];
   }
   

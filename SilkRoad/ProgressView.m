@@ -17,7 +17,7 @@
 
 @implementation ProgressView
 
-- (id)initWithFrame:(CGRect)frame andCurrentStage:(int)stage
+-(id)initWithFrame:(CGRect)frame andCurrentStage:(int)stage
 {
   self = [super initWithFrame:frame];
   

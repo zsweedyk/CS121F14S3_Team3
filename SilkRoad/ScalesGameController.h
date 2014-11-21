@@ -13,7 +13,7 @@
 -(void)returnToPrevious;
 @end
 
-@interface ScalesGameController : UIViewController <ScalesGameDelegate>
+@interface ScalesGameController : UIViewController <ScalesGameProtocol>
 
 @property (assign, nonatomic) id <ReturnToPreviousFromScales> delegate;
 
