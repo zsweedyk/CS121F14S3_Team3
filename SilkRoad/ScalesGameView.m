@@ -83,9 +83,9 @@
     CGFloat xOffset = cellSize / 4;
     CGFloat yOffset = CGRectGetHeight(_gameFrame) - ((2 * cellSize) + verticalPadding);
     
-    CGRect bucketFrame = CGRectMake(xOffset, yOffset, bucketSize, bucketSize);
+    CGRect bucketFrame = CGRectMake(xOffset, yOffset, bucketSize, bucketSize+.1*bucketSize);
     _fakeCoinBucket = [[UIButton alloc] initWithFrame:bucketFrame];
-    [_fakeCoinBucket setBackgroundColor:[UIColor blueColor]];
+    [_fakeCoinBucket setBackgroundImage:[UIImage imageNamed:@"TreasureChest.png"] forState:UIControlStateNormal];
     _fakeCoinBucket.tag = 500;
     [_fakeCoinBucket addTarget:self action:@selector(moveCoinTo:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_fakeCoinBucket];
@@ -165,8 +165,6 @@
                       scale:(origLeftArm.scale * 1.1)
                       orientation:(origLeftArm.imageOrientation)];
   UIImageView* leftScale = [[UIImageView alloc] initWithImage:scaledLeftArm];
-  //[leftScale drawInRect:CGRectMake(0, 0, leftScaleFrame.size.width, leftScaleFrame.size.height)];
-  //[_leftScaleView setBackgroundColor:[UIColor colorWithPatternImage:leftScale]];
   [self addSubview:_leftScaleView];
   [_leftScaleView addSubview:leftScale];
   
@@ -180,8 +178,6 @@
       UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
       cell.tag = 100 + (row * 4) + col;
       [cell addTarget:self action:@selector(moveCoinTo:) forControlEvents:UIControlEventTouchUpInside];
-      
-      //[cell setBackgroundColor:[UIColor yellowColor]];
       
       [_leftCells insertObject:cell atIndex:(cell.tag - 100)];
       [_leftScaleView addSubview:cell];
@@ -205,14 +201,11 @@
                                                scale:(origRightArm.scale * 1.1)
                                          orientation:(origRightArm.imageOrientation)];
   UIImageView* rightScale = [[UIImageView alloc] initWithImage:scaledRightArm];
-  UIImageView* rightScaleBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightScale"]];
   [_rightScaleView addSubview:rightScale];
-  //_rightScaleView.frame.origin.x = xOffsetRight;
   CGRect rightFrame = _rightScaleView.frame;
   rightFrame.origin.x = xOffsetRight;
   rightFrame.origin.y = yOffsetRight;
   
-  //[_rightScaleView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"rightScale"]]];
   [self addSubview:_rightScaleView];
   
   xOffset = 20;
@@ -248,8 +241,6 @@
   
   UILabel* leftVertRod = [[UILabel alloc] initWithFrame:leftVertRodFrame];
   UILabel* rightVertRod = [[UILabel alloc] initWithFrame:rightVertRodFrame];
-  //[leftVertRod setBackgroundColor:[UIColor yellowColor]];
-  //[rightVertRod setBackgroundColor:[UIColor yellowColor]];
   [self addSubview:leftVertRod];
   [self addSubview:rightVertRod];
   [self sendSubviewToBack:leftVertRod];
@@ -264,7 +255,6 @@
   CGRect horizRodFrame = CGRectMake(xOffsetHorizRod, yOffsetHorizRod, horizRodWidth, horizRodHeight);
   
   UILabel* horizRod = [[UILabel alloc] initWithFrame:horizRodFrame];
-  //[horizRod setBackgroundColor:[UIColor yellowColor]];
   [self addSubview:horizRod];
   
   // Draw the middle vertical bar
@@ -276,7 +266,6 @@
   CGRect vertRodFrame = CGRectMake(xOffsetVertRod, yOffsetVertRod, vertRodWidth, vertRodHeight);
   
   UILabel* vertRod = [[UILabel alloc] initWithFrame:vertRodFrame];
-  //[vertRod setBackgroundColor:[UIColor yellowColor]];
   [self addSubview:vertRod];
   [self sendSubviewToBack:vertRod];
   
