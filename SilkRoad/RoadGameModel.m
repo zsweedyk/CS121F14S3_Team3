@@ -36,7 +36,7 @@
 
 @implementation RoadGameModel
 
-- (void)initGridWithFile:(NSString*)filename
+-(void)initGridWithFile:(NSString*)filename
 {
   NSString *path;
   NSError *error;
@@ -66,7 +66,7 @@
   }
 }
 
-- (BOOL)connectionIsValidForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+-(BOOL)connectionIsValidForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {
   BOOL isValid = YES;
   
@@ -98,7 +98,6 @@
 
   // Check that there are no interrupting nodes between them column wise
   if (col1 == col2) {
-    
     int startingRow = row1 < row2 ? row1 : row2;
     int endingRow = row2 > row1 ? row2 : row1;
     
@@ -113,13 +112,13 @@
   return isValid;
 }
 
-- (int)getNumAvailableConnectionsToNodeAtRow:(int)row Col:(int)col
+-(int)getNumAvailableConnectionsToNodeAtRow:(int)row Col:(int)col
 {
   Node* node = [[_grid objectAtIndex:row] objectAtIndex:col];
   return node.numConnections;
 }
 
-- (int)addConnectionToNodeAtRow:(int)row Col:(int)col
+-(int)addConnectionToNodeAtRow:(int)row Col:(int)col
 {
   Node* node = [[_grid objectAtIndex:row] objectAtIndex:col];
   node.numConnections--;
@@ -127,7 +126,7 @@
   return node.numConnections;
 }
 
-- (int)resetNodeAtRow:(int)row Col:(int)col ByValue:(NSInteger)value;
+-(int)resetNodeAtRow:(int)row Col:(int)col ByValue:(NSInteger)value;
 {
   Node* node = [[_grid objectAtIndex:row] objectAtIndex:col];
   node.numConnections += (int)value;
@@ -135,7 +134,7 @@
   return node.numConnections;
 }
 
-- (NSInteger)getNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+-(NSInteger)getNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {
   Node* node = [[_grid objectAtIndex:row1] objectAtIndex:col1];
   NSString* key = [NSString stringWithFormat:@"%i", row2 * 10 + col2];
@@ -143,7 +142,7 @@
   return value;
 }
 
-- (NSInteger)numConnectionsAfterUpdateForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+-(NSInteger)numConnectionsAfterUpdateForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {
   // If one of the nodes can only have a maximum of 1 connection and a player tries
   // to add another, also reset the number of connections to 0
@@ -171,14 +170,14 @@
   return result;
 }
 
-- (void)setNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2 ToValue:(NSInteger)value
+-(void)setNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2 ToValue:(NSInteger)value
 {
   Node* node = [[_grid objectAtIndex:row1] objectAtIndex:col1];
   NSString* key = [NSString stringWithFormat:@"%i", row2 * 10 + col2];
   [node.connections setValue:[NSNumber numberWithInteger:value] forKey:key];
 }
 
-- (void)addConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+-(void)addConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {
   NSInteger value1 = [self getNumConnectionsBetweenRow:row1 Col:col1 AndRow:row2 Col:col2];
   NSInteger value2 = [self getNumConnectionsBetweenRow:row2 Col:col2 AndRow:row1 Col:col1];
@@ -194,7 +193,7 @@
   [self addConnectionToNodeAtRow:row2 Col:col2];
 }
 
-- (void)resetConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
+-(void)resetConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {
   NSInteger value1 = [self getNumConnectionsBetweenRow:row1 Col:col1 AndRow:row2 Col:col2];
   NSInteger value2 = [self getNumConnectionsBetweenRow:row2 Col:col2 AndRow:row1 Col:col1];
@@ -208,9 +207,10 @@
   [self resetNodeAtRow:row2 Col:col2 ByValue:value2];
 }
 
-- (void)resetGame
+-(void)resetGame
 {
   _connectionsLeftToMake = 0;
+  
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
       Node* node = [[_grid objectAtIndex:i] objectAtIndex:j];
@@ -221,7 +221,7 @@
   }
 }
 
-- (BOOL)hasBeenWon
+-(BOOL)hasBeenWon
 {
   return _connectionsLeftToMake == 0;
 }

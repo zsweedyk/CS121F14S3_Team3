@@ -23,7 +23,8 @@
 
 @implementation ScalesGameModel
 
-- (id)init {
+- (id)init
+{
   self = [super init];
   
   if (self) {
@@ -73,19 +74,23 @@
 }
 
 // Methods to see which coins are in scales/tray
--(NSMutableArray*)getCoinsInLeftScale {
+-(NSMutableArray*)getCoinsInLeftScale
+{
   return _leftScaleCoins;
 }
 
--(NSMutableArray*)getCoinsInRightScale {
+-(NSMutableArray*)getCoinsInRightScale
+{
   return _rightScaleCoins;
 }
 
--(NSMutableArray*)getCoinsInTray {
+-(NSMutableArray*)getCoinsInTray
+{
   return _trayCoins;
 }
 
--(void)moveCoin:(ScalesGameCoin*)coin toPlace:(int)to {
+-(void)moveCoin:(ScalesGameCoin*)coin toPlace:(int)to
+{
   BOOL foundCoin = NO;
   int from = 0;
   
@@ -120,7 +125,6 @@
     for (ScalesGameCoin* checkCoin in _rightScaleCoins) {
       if (checkCoin == coin) {
         from = SCALES_RIGHT;
-        foundCoin = YES;
         break;
       }
     }
@@ -154,7 +158,8 @@
   }
 }
 
--(int)checkScales {
+-(int)checkScales
+{
   int leftWeight = 0;
   int rightWeight = 0;
   

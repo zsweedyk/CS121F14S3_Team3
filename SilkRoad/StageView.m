@@ -11,8 +11,6 @@
 @interface StageView()
 {
   NSMutableArray* _houseButtons;
-  
-  
 }
 @end
 
@@ -20,7 +18,6 @@
 @implementation StageView
 
 const CGFloat tempButtonSize = 100;
-
 
 //Creates the view and adds the background
 -(id)initWithFrame:(CGRect)frame background:(UIImage*)background
@@ -36,17 +33,17 @@ const CGFloat tempButtonSize = 100;
 // Convert the UIImage to a UIButton, set up target action, and add the button to the array of house buttons
 -(void)createHouseWithImage:(UIImage*)image atXCoord:(CGFloat)x andYCoord:(CGFloat)y withLabel:(NSString*)label tag:(NSInteger)tag
 {
-    CGFloat width = image.size.width;
-    CGFloat height = image.size.height;
-    CGRect buttonFrame = CGRectMake(x, y, width/2.3, height/2.3);
-    UIButton* house = [[UIButton alloc] initWithFrame:buttonFrame];
-    [house setBackgroundImage:image forState:UIControlStateNormal];
-    [house setTitle:label forState:UIControlStateNormal];
-    [house setTag:tag];
-    
-    [house addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:house];
-    [_houseButtons addObject:house];
+  CGFloat width = image.size.width;
+  CGFloat height = image.size.height;
+  CGRect buttonFrame = CGRectMake(x, y, width/2.3, height/2.3);
+  UIButton* house = [[UIButton alloc] initWithFrame:buttonFrame];
+  [house setBackgroundImage:image forState:UIControlStateNormal];
+  [house setTitle:label forState:UIControlStateNormal];
+  [house setTag:tag];
+  
+  [house addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  [self addSubview:house];
+  [_houseButtons addObject:house];
 }
 
 

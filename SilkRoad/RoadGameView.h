@@ -8,29 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol CheckConnectionValid
+@protocol RoadGameProtocol
 -(BOOL)checkConnectionValidBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
-@end
-
-@protocol CreateConnection
 -(NSInteger)createConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
-@end
-
-@protocol ExitMinigame
 -(void)returnToPrevious;
-@end
-
-@protocol NewGame
 -(void)newGame;
-@end
-
-@protocol ResetGame
 -(void)resetGame;
 @end
 
 @interface RoadGameView : UIView
 
-@property (assign, nonatomic) id <CheckConnectionValid, CreateConnection, ExitMinigame, NewGame, ResetGame> delegate;
+@property (assign, nonatomic) id <RoadGameProtocol> delegate;
 
 -(void)setNodeValueAtRow:(int)row AndColumn:(int)col toValue:(int) value;
 -(void)setNodeBackgroundAtRow:(int)row AndColumn:(int)col;

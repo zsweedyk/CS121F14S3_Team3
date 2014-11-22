@@ -25,7 +25,7 @@
 
 @implementation MatchingGameView
 
-- (id)initWithFrame:(CGRect)frame leftSidePhrases:(NSMutableArray*)leftSide andRightSidePhrases:(NSMutableArray*)rightSide
+-(id)initWithFrame:(CGRect)frame leftSidePhrases:(NSMutableArray*)leftSide andRightSidePhrases:(NSMutableArray*)rightSide
 {
   self = [super initWithFrame:frame];
   
@@ -143,7 +143,7 @@
   return self;
 }
 
-- (void)initReturnButtonWithFrame:(CGRect)frame
+-(void)initReturnButtonWithFrame:(CGRect)frame
 {
   // Get the dimensions of the frame
   CGFloat frameWidth = CGRectGetWidth(frame);
@@ -169,7 +169,7 @@
   [self addSubview:returnButton];
 }
 
-- (void)phraseSelected:(id)sender
+-(void)phraseSelected:(id)sender
 {
   UIButton *newButton = (UIButton*) sender;
   UIButton *oldButton;
@@ -232,7 +232,7 @@
   }
 }
 
-- (void)checkMatchWithLeft:(int)left andRight:(int)right
+-(void)checkMatchWithLeft:(int)left andRight:(int)right
 {
   // Get the associated phrases
   UIButton *button = [_leftSidePhraseButtons objectAtIndex:left - 1];
@@ -244,7 +244,7 @@
   [self.delegate checkForMatchWithLeftPhrase:leftPhrase andRightPhrase:rightPhrase];
 }
 
-- (void)matchFound:(BOOL)match
+-(void)matchFound:(BOOL)match
 {
   UIButton *leftButton = [_leftSidePhraseButtons objectAtIndex:_leftSelected - 1];
   UIButton *rightButton = [_rightSidePhraseButtons objectAtIndex:_rightSelected - 1];
@@ -277,13 +277,13 @@
   }
 }
 
-- (void)wonGame
+-(void)wonGame
 {
   // Tell game controller to leave the view
   [self.delegate exitMinigame:YES];
 }
 
-- (void)exitGame
+-(void)exitGame
 {
   // Clear any current selections
   UIButton *oldButton;
@@ -303,6 +303,5 @@
   // Tell game controller to leave the view
   [self.delegate exitMinigame:NO];
 }
-
 
 @end

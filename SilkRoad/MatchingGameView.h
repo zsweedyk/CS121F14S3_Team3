@@ -11,17 +11,14 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 
-@protocol ExitMinigame
+@protocol MatchingGameProtocol
 -(void) exitMinigame:(BOOL)won;
-@end
-
-@protocol CheckForMatch
 -(void) checkForMatchWithLeftPhrase:(NSString*)leftPhrase andRightPhrase:(NSString*)rightPhrase;
 @end
 
 @interface MatchingGameView : UIView
 
-@property (assign, nonatomic) id <ExitMinigame, CheckForMatch> delegate;
+@property (assign, nonatomic) id <MatchingGameProtocol> delegate;
 
 -(id)initWithFrame:(CGRect)frame leftSidePhrases:(NSMutableArray*)leftSide andRightSidePhrases:(NSMutableArray*)rightSide;
 -(void)matchFound:(BOOL)match;

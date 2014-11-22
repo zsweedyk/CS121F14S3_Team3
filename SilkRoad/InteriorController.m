@@ -35,26 +35,34 @@
 {
   _currentStage = stage;
   _currentInterior = interior;
+  
   if (_currentStage == 0 || _currentStage == 1) {
     [_interiorView setInteriorBGTo:@"mohenjodaro.jpg"];
     if (_currentInterior == 0 || _currentInterior == 4) {
       [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndianMan1"]];
-    } else if (_currentInterior == 1) {
+    }
+    else if (_currentInterior == 1) {
       [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"IndiaWoman1"]];
-    } else if (_currentInterior == 2) {
+    }
+    else if (_currentInterior == 2) {
       [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"IndianWoman2"]];
-    } else if (_currentInterior == 3) {
+    }
+    else if (_currentInterior == 3) {
       [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"IndianMan2"]];
     }
-  } else if (_currentStage == 2 || _currentStage == 3) {
+  }
+  else if (_currentStage == 2 || _currentStage == 3) {
     [_interiorView setInteriorBGTo:@"chinabg"];
     if (_currentInterior == 0 || _currentInterior == 4) {
       [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"ChineseMan1"]];
-    } else if (_currentInterior == 1) {
+    }
+    else if (_currentInterior == 1) {
       [_interiorView setCharacterTo:@"Cobbler" withImage:[UIImage imageNamed:@"ChineseWoman1"]];
-    } else if (_currentInterior == 2) {
+    }
+    else if (_currentInterior == 2) {
       [_interiorView setCharacterTo:@"Butcher" withImage:[UIImage imageNamed:@"ChineseWoman2"]];
-    } else if (_currentInterior == 3) {
+    }
+    else if (_currentInterior == 3) {
       [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"ChineseMan2"]];
     }
   }
@@ -81,7 +89,6 @@
   
   _roadGameController = [[RoadGameController alloc] init];
   _scalesGameController = [[ScalesGameController alloc] init];
-
   
   // Initialize the InteriorView
   [self initInteriorView];
@@ -105,7 +112,6 @@
   
   // Set up the delegate to know when to leave
   _interiorView.delegate = self;
-
   
   [self.view addSubview:_interiorView];
 }
@@ -130,7 +136,8 @@
         minigameViewController = _scalesGameController;
         [_scalesGameController setCurrencyTo:INDIA];
     }
-  } else {
+  }
+  else {
     _matchingGameController.delegate = self;
     minigameViewController = _matchingGameController;
     [_matchingGameController setLevelTo:_currentStage];
@@ -142,6 +149,7 @@
 - (void)returnToPrevious
 {
   BOOL winning = NO;
+  
   if (_numMinigamesWon == 1 && _funExists) {
     switch (_currentStage) {
       case 1:
@@ -154,7 +162,8 @@
         winning = [_scalesGameController hasBeenWon];
         break;
     }
-  } else {
+  }
+  else {
     winning = [_matchingGameController hasBeenWon];
   }
   
@@ -185,7 +194,8 @@
   // Check to see if there are still available dialogue lines to display
   if ([_interiorModel dialogueFinished]) {
     [_interiorView setDialogueTextTo:[_interiorModel getNextLineOfDialogue]];
-  } else {
+  }
+  else {
     // The first house always contains the minigame
     if (_currentInterior == 0 && _canEnterMinigame) {
       // If the matching game has been won, check to see if there is another fun minigame after it
@@ -195,20 +205,24 @@
         if (_funExists) {
           if ([_scalesGameController hasBeenWon] || [_roadGameController hasBeenWon]) {
             [self.delegate notifyStageComplete];
-          } else {
+          }
+          else {
             [self enterMinigame];
           }
         }
+        
         // If there is no other fun minigame, return to the stage
         else {
           [self.delegate notifyStageComplete];
         }
         
-      } else {
+      }
+      else {
         [self enterMinigame];
       }
       // The matching game hasn't been won, go to it
-    } else {
+    }
+    else {
       // For any other house, simply leave when there is no more dialogue
       [self leaveInterior];
     }
@@ -217,8 +231,8 @@
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 @end

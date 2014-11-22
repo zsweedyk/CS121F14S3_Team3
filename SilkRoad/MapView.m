@@ -53,10 +53,9 @@
     [[_stageButtons objectAtIndex:0] addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
   }
   return self;
-  
 }
 
-- (void) createGameButtons
+-(void) createGameButtons
 {
   _roadGameButton = [[UIButton alloc] initWithFrame:CGRectMake(860, 600, 125, 125)];
   [_roadGameButton setBackgroundImage:[UIImage imageNamed:@"roadGameButtonDesaturated"] forState:UIControlStateNormal];
@@ -66,7 +65,7 @@
   [self addSubview:_scalesGameButton];
 }
 
-- (void) addButtonNumber:(int)index WithFrame:(CGRect)buttonFrame
+-(void) addButtonNumber:(int)index WithFrame:(CGRect)buttonFrame
 {
   UIButton* city = [[UIButton alloc] initWithFrame:buttonFrame];
   [city setBackgroundImage:[UIImage imageNamed:@"buttonUnvisited"] forState:UIControlStateNormal];
@@ -75,11 +74,10 @@
   [_stageButtons insertObject:city atIndex:index];
 }
 
-- (void)buttonPressed:(id)button
+-(void)buttonPressed:(id)button
 {
   UIButton* ourButton = (UIButton*)button;
   int tag = (int)ourButton.tag;
-  NSLog(@"inButtonPressed MV at tag %d", tag);
   [self.delegate jumpToStage:tag];
 }
 
@@ -114,12 +112,12 @@
   [self.delegate hideMap];
 }
 
-- (void) goToScalesGame
+-(void) goToScalesGame
 {
   [self.delegate goToScalesGame];
 }
 
-- (void) goToRoadGame
+-(void) goToRoadGame
 {
   [self.delegate goToRoadGame];
 }

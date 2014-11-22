@@ -95,23 +95,23 @@
 
 -(void)initCharacter
 {
-    // Get interior frame dimensions
-    CGRect frame = self.frame;
-    CGFloat frameWidth = CGRectGetWidth(frame);
-    CGFloat frameHeight = CGRectGetHeight(frame);
-    
-    // Make character box 40% the height of the frame and 20% the width,
-    //   with padding equal to 5% of the width on either side
-    int characterBoxHeight = frameHeight * 0.60;
-    int characterBoxWidth = frameWidth * 0.30;
-    
-    // The x-offset is equal to the width of the frame, minus the width of the
-    //   character box (including padding)
-    // The y-offset is equal to the height of the interior frame, minus the
-    //   height of the character box
-    int characterBoxXOffset = frameWidth - characterBoxWidth;
-    int characterBoxYOffset = frameHeight - characterBoxHeight;
-    CGRect characterBoxFrame = CGRectMake(characterBoxXOffset, characterBoxYOffset, characterBoxWidth, characterBoxHeight);
+  // Get interior frame dimensions
+  CGRect frame = self.frame;
+  CGFloat frameWidth = CGRectGetWidth(frame);
+  CGFloat frameHeight = CGRectGetHeight(frame);
+  
+  // Make character box 40% the height of the frame and 20% the width,
+  //   with padding equal to 5% of the width on either side
+  int characterBoxHeight = frameHeight * 0.60;
+  int characterBoxWidth = frameWidth * 0.30;
+  
+  // The x-offset is equal to the width of the frame, minus the width of the
+  //   character box (including padding)
+  // The y-offset is equal to the height of the interior frame, minus the
+  //   height of the character box
+  int characterBoxXOffset = frameWidth - characterBoxWidth;
+  int characterBoxYOffset = frameHeight - characterBoxHeight;
+  CGRect characterBoxFrame = CGRectMake(characterBoxXOffset, characterBoxYOffset, characterBoxWidth, characterBoxHeight);
   
   // Add the box to the subview
   _character = [[UIButton alloc] initWithFrame:characterBoxFrame];
@@ -129,10 +129,10 @@
 
 -(void)setCharacterTo:(NSString*)characterName withImage:(UIImage*)image
 {
-    UIButton* character = [[UIButton alloc] initWithFrame:_character.frame];
-    [character setBackgroundImage:image forState:UIControlStateNormal];
-    
-    [self addSubview:character];
+  UIButton* character = [[UIButton alloc] initWithFrame:_character.frame];
+  [character setBackgroundImage:image forState:UIControlStateNormal];
+  
+  [self addSubview:character];
 }
 
 -(void)setDialogueTextTo:(NSString*)dialogueText

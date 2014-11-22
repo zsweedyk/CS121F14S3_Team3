@@ -26,7 +26,7 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
   [super viewDidLoad];
   
@@ -58,8 +58,7 @@
 {
   NSLog(@"In showMap");
   [self dismissViewControllerAnimated:NO completion:nil];
-  [self goToScalesGame];
-  //[self.view addSubview:_mapView];
+  [self.view addSubview:_mapView];
 }
 
 - (void) hideMap

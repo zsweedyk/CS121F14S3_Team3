@@ -10,18 +10,18 @@
 
 @interface RoadGameModel : NSObject
 
-- (void)initGridWithFile:(NSString*)filename;
-- (int)getNumAvailableConnectionsToNodeAtRow:(int)row Col:(int)col;
-- (BOOL)connectionIsValidForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
-- (void)addConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
-- (void)resetConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
-- (BOOL)hasBeenWon;
-- (NSInteger)numConnectionsAfterUpdateForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
-- (void)resetGame;
+-(void)initGridWithFile:(NSString*)filename;
+-(int)getNumAvailableConnectionsToNodeAtRow:(int)row Col:(int)col;
+-(BOOL)connectionIsValidForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
+-(void)addConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
+-(void)resetConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
+-(BOOL)hasBeenWon;
+-(NSInteger)numConnectionsAfterUpdateForRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
+-(void)resetGame;
 
 // Uncomment to test
-- (int)addConnectionToNodeAtRow:(int)row Col:(int)col;
-- (int)resetNodeAtRow:(int)row Col:(int)col ByValue:(NSInteger)value;
-- (NSInteger)getNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
-- (void)setNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2 ToValue:(NSInteger)value;
+-(int)addConnectionToNodeAtRow:(int)row Col:(int)col;
+-(int)resetNodeAtRow:(int)row Col:(int)col ByValue:(NSInteger)value;
+-(NSInteger)getNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2;
+-(void)setNumConnectionsBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2 ToValue:(NSInteger)value;
 @end

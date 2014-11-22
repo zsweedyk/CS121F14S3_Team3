@@ -10,7 +10,6 @@
 
 @interface ScalesGameCoin : NSObject
 
-@property (assign, nonatomic) NSString* name;
 @property (assign, nonatomic) int weight;
 
 @end

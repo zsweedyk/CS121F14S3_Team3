@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ScalesGameCoin.h"
 
-@protocol ScalesGameDelegate
+@protocol ScalesGameProtocol
 -(void)startNewGame;
 -(void)exitScalesGame:(BOOL)won;
 -(void)weighCoinsInScale;
@@ -18,7 +18,7 @@
 
 @interface ScalesGameView : UIView
 
-@property (assign, nonatomic) id <ScalesGameDelegate> delegate;
+@property (assign, nonatomic) id <ScalesGameProtocol> delegate;
 
 -(id)initWithFrame:(CGRect)frame;
 -(void)setCurrencyForCiv:(int)civ;

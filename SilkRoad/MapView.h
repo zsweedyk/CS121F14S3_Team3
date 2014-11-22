@@ -8,25 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol HideMap
+@protocol MapProtocol
 -(void)hideMap;
-@end
-
-@protocol JumpToStage
 -(void)jumpToStage:(int)stage;
-@end
-
-@protocol GoToScalesGame
 -(void)goToScalesGame;
-@end
-
-@protocol GoToRoadGame
 -(void)goToRoadGame;
 @end
 
 @interface MapView : UIView
 
-@property (assign, nonatomic) id <HideMap, JumpToStage, GoToScalesGame, GoToRoadGame> delegate;
+@property (assign, nonatomic) id <MapProtocol> delegate;
 
 -(id)initWithFrame:(CGRect)frame;
 

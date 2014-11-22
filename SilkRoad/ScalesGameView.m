@@ -39,7 +39,7 @@
 
 @implementation ScalesGameView
 
-- (id)initWithFrame:(CGRect)frame
+-(id)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];
   
@@ -95,7 +95,7 @@
   return self;
 }
 
-- (void)setCurrencyForCiv:(int)civ
+-(void)setCurrencyForCiv:(int)civ
 {
   // Set the coin image according to the civ
   if (civ == INDIA) {
@@ -112,7 +112,7 @@
   }
 }
 
-- (void)newGameWithCoins:(NSMutableArray*)coins
+-(void)newGameWithCoins:(NSMutableArray*)coins
 {
   // Reset all instance variables
   _currentCoin = NULL;
@@ -138,7 +138,7 @@
   [self initCoins];
 }
 
-- (void)initScalesWithFrame:(CGRect)frame
+-(void)initScalesWithFrame:(CGRect)frame
 {
   // Get the dimensions of the frame
   CGFloat frameWidth = CGRectGetWidth(frame);
@@ -165,6 +165,7 @@
                       scale:(origLeftArm.scale * 1.1)
                       orientation:(origLeftArm.imageOrientation)];
   UIImageView* leftScale = [[UIImageView alloc] initWithImage:scaledLeftArm];
+  
   [self addSubview:_leftScaleView];
   [_leftScaleView addSubview:leftScale];
   
@@ -241,6 +242,7 @@
   
   UILabel* leftVertRod = [[UILabel alloc] initWithFrame:leftVertRodFrame];
   UILabel* rightVertRod = [[UILabel alloc] initWithFrame:rightVertRodFrame];
+
   [self addSubview:leftVertRod];
   [self addSubview:rightVertRod];
   [self sendSubviewToBack:leftVertRod];
@@ -271,7 +273,7 @@
   
 }
 
-- (void)initTrayWithFrame:(CGRect)frame
+-(void)initTrayWithFrame:(CGRect)frame
 {
   // Get the dimensions of the frame
   CGFloat frameWidth = CGRectGetWidth(frame);
@@ -305,7 +307,7 @@
   }
 }
 
-- (void)initCoins
+-(void)initCoins
 {
   int numCoins = (int)[_coinArray count];
   CGFloat coinPadding = _coinSize * 0.05;
@@ -324,7 +326,7 @@
   }
 }
 
-- (void)initWeighButtonWithFrame:(CGRect)frame
+-(void)initWeighButtonWithFrame:(CGRect)frame
 {
   // Get the dimensions of the frame
   CGFloat frameWidth = CGRectGetWidth(frame);
@@ -350,7 +352,7 @@
   [self addSubview:weighButton];
 }
 
-- (void)initReturnButtonWithFrame:(CGRect)frame
+-(void)initReturnButtonWithFrame:(CGRect)frame
 {
   // Get the dimensions of the frame
   CGFloat frameWidth = CGRectGetWidth(frame);
@@ -376,7 +378,7 @@
   [self addSubview:returnButton];
 }
 
-- (void)coinSelected:(id)sender
+-(void)coinSelected:(id)sender
 {
   // Get the coin number
   UIButton* coin = (UIButton*) sender;
@@ -399,7 +401,7 @@
   }
 }
 
-- (void)moveCoinTo:(id)sender
+-(void)moveCoinTo:(id)sender
 {
   // Don't do anything if there's no coin selected
   if (_currentCoin == NULL) {
@@ -440,7 +442,7 @@
   [currentCoin setBackgroundImage:_coinImage forState:UIControlStateNormal];
 }
 
-- (void) weighCoins
+-(void)weighCoins
 {
   [self.delegate weighCoinsInScale];
 }
@@ -489,7 +491,7 @@
   _rightScaleView.frame = rightFrame;
 }
 
-- (void)foundFakeCoin:(BOOL)found andCanGuess:(BOOL)guess
+-(void)foundFakeCoin:(BOOL)found andCanGuess:(BOOL)guess
 {
   // If we found the coin, move to guessing the weight
   if (found) {
@@ -507,7 +509,7 @@
   }
 }
 
-- (void)alertRightCoin
+-(void)alertRightCoin
 {
   NSString *message = [NSString stringWithFormat:@"That looks like a fake coin! Tell me, is that coin heavier or lighter than the others?"];
   UIAlertView *rightAlert = [[UIAlertView alloc] initWithTitle:@"Good job!"
@@ -519,7 +521,7 @@
   [rightAlert show];
 }
 
-- (void)alertWrongCoin
+-(void)alertWrongCoin
 {
   NSString *message = [NSString stringWithFormat:@"That coin wasn't fake!"];
   UIAlertView *wrongAlert = [[UIAlertView alloc] initWithTitle:@"Wrong coin!"
@@ -531,7 +533,7 @@
   [wrongAlert show];
 }
 
-- (void)lostGameWithWeight:(BOOL)guessingWeight
+-(void)lostGameWithWeight:(BOOL)guessingWeight
 {
   NSString* message;
   
@@ -551,19 +553,19 @@
   [lostAlert show];
 }
 
-- (void)wonGame
+-(void)wonGame
 {
   // Tell game controller to leave the view
   [self.delegate exitScalesGame:YES];
 }
 
-- (void)exitGame
+-(void)exitGame
 {
   // Tell game controller to leave the view
   [self.delegate exitScalesGame:NO];
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
   if (alertView.tag == 1) {
     BOOL coinIsHeavier = [_guessCoin weight] > 1;

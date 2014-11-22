@@ -19,7 +19,7 @@
 
 @implementation RoadGameController
 
-- (id)init
+-(id)init
 {
   self = [super init];
   
@@ -30,7 +30,7 @@
   return self;
 }
 
-- (void)initGame
+-(void)initGame
 {
   // Initialize gameModel
   _gameModel = [[RoadGameModel alloc] init];
@@ -52,22 +52,10 @@
   }
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 -(BOOL)checkConnectionValidBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {
   return [_gameModel connectionIsValidForRow:row1 Col:col1 AndRow:row2 Col:col2];
-          
 }
 
 -(NSInteger)createConnectionBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
@@ -93,7 +81,7 @@
   return numConnectionsAfterUpdate;
 }
 
-- (BOOL)hasBeenWon
+-(BOOL)hasBeenWon
 {
   return [_gameModel hasBeenWon];
 }
@@ -103,12 +91,12 @@
   [self.delegate returnToPrevious];
 }
 
-- (void)newGame
+-(void)newGame
 {
   [self initGame];
 }
 
-- (void)resetGame
+-(void)resetGame
 {
   // Reset underlying values
   [_gameModel resetGame];
@@ -127,4 +115,11 @@
   // Remove all drawn lines
   [_gameView resetLines];
 }
+
+-(void)didReceiveMemoryWarning
+{
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
+}
+
 @end
