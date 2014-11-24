@@ -11,7 +11,6 @@
 #import "StageModel.h"
 
 int const NUM_HOUSES = 4;
-int const LAST_STAGE = 3;
 
 @interface StageController ()
 {

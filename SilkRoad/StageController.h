@@ -11,6 +11,7 @@
 #import "House.h"
 #import "StageView.h"
 #import "ProgressView.h"
+#import "Constants.h"
 
 @protocol StageProtocol
 -(void)progressToNextStage;
