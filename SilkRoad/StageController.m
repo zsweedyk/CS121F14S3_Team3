@@ -45,11 +45,17 @@ int const NUM_HOUSES = 4;
   return image;
 }
 
+
 -(void)setStageTo:(int)stage
 {
   _currentStage = stage;
-  _isIndia = stage == 0 || stage == 1;
-  _isChina = stage == 2 || stage == 3;
+  if (stage <= LAST_INDIA_STAGE) {
+    _isIndia = YES;
+    _isChina = NO;
+  } else {
+    _isIndia = NO;
+    _isChina = YES;
+  }
 }
 
 -(void)viewDidLoad
@@ -79,13 +85,20 @@ int const NUM_HOUSES = 4;
   } else if (_currentStage == 1) {
     UIImage* india2 = [UIImage imageNamed:@"india1"];
     _stageView = [[StageView alloc] initWithFrame:stageFrame background:india2];
-  } else if (_currentStage == 2) {
+  } else if (_currentStage == 2 || _currentStage == 3) {
+    UIImage* india3 = [UIImage imageNamed:@"india3"];
+    _stageView = [[StageView alloc] initWithFrame:stageFrame background:india3];
+  } else if (_currentStage == 4) {
     UIImage* china1 = [UIImage imageNamed:@"china2"];
     _stageView = [[StageView alloc] initWithFrame:stageFrame background:china1];
-  } else if (_currentStage == 3) {
+  } else if (_currentStage == 5) {
     UIImage* china2 = [UIImage imageNamed:@"china1"];
     _stageView = [[StageView alloc] initWithFrame:stageFrame background:china2];
+  } else if (_currentStage == 6 || _currentStage == 7) {
+    UIImage* china3 = [UIImage imageNamed:@"china3"];
+    _stageView = [[StageView alloc] initWithFrame:stageFrame background:china3];
   }
+
   [_stageView loadNewStageWithHouses:[_stageModel getHouses]];
   
   _stageView.delegate = self;
@@ -107,6 +120,7 @@ int const NUM_HOUSES = 4;
   }
 }
 
+/*
 - (void)initializeHousesForStage:(int)stage
 {
   _houses =  [[NSMutableArray alloc] init];
@@ -136,7 +150,7 @@ int const NUM_HOUSES = 4;
     newHouse.image = house;
     [_houses addObject:newHouse];
   }
-}
+}*/
 
 - (void)displayInteriorControllerForInterior:(int)interior
 {

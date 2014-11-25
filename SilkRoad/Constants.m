@@ -12,7 +12,7 @@ int const NUM_CITIES = 4;
 int const INDIA = 1;
 int const CHINA = 2;
 int const LAST_INDIA_STAGE = 3;
-int const LAST_STAGE = 3;
+int const LAST_STAGE = 7;
 
 // Constants for the scales game
 int const SCALES_MINNUMCOINS = 6;

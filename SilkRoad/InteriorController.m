@@ -36,7 +36,7 @@
   _currentStage = stage;
   _currentInterior = interior;
   
-  if (_currentStage == 0 || _currentStage == 1) {
+  if (_currentStage <= LAST_INDIA_STAGE) {
     [_interiorView setInteriorBGTo:@"mohenjodaro.jpg"];
     if (_currentInterior == 0 || _currentInterior == 4) {
       [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndianMan1"]];
@@ -50,8 +50,7 @@
     else if (_currentInterior == 3) {
       [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"IndianMan2"]];
     }
-  }
-  else if (_currentStage == 2 || _currentStage == 3) {
+  } else {
     [_interiorView setInteriorBGTo:@"chinabg"];
     if (_currentInterior == 0 || _currentInterior == 4) {
       [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"ChineseMan1"]];
