@@ -111,6 +111,8 @@
 		93EFCBD11A2142AC00A350D5 /* CharacterDescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EFCBD01A2142AC00A350D5 /* CharacterDescriptionView.m */; };
 		93EFCBD31A214CDC00A350D5 /* chinaDescription.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93EFCBD21A214CDC00A350D5 /* chinaDescription.txt */; };
 		93EFCBD51A214CFB00A350D5 /* indiaDescription.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93EFCBD41A214CFB00A350D5 /* indiaDescription.txt */; };
+		93EFCBDB1A22B7A400A350D5 /* bamboo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 93EFCBDA1A22B7A400A350D5 /* bamboo.wav */; };
+		93EFCBDD1A252D3C00A350D5 /* drums.wav in Resources */ = {isa = PBXBuildFile; fileRef = 93EFCBDC1A252D3C00A350D5 /* drums.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,6 +244,8 @@
 		93EFCBD01A2142AC00A350D5 /* CharacterDescriptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterDescriptionView.m; sourceTree = "<group>"; };
 		93EFCBD21A214CDC00A350D5 /* chinaDescription.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chinaDescription.txt; sourceTree = "<group>"; };
 		93EFCBD41A214CFB00A350D5 /* indiaDescription.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = indiaDescription.txt; sourceTree = "<group>"; };
+		93EFCBDA1A22B7A400A350D5 /* bamboo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bamboo.wav; path = ../../bamboo.wav; sourceTree = "<group>"; };
+		93EFCBDC1A252D3C00A350D5 /* drums.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drums.wav; path = ../../drums.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,6 +422,8 @@
 				7F3BF4C31A168EFF006E82DD /* Dialogue Files */,
 				5156A25D1A0D544000263DF2 /* correct_gong.wav */,
 				5156A25E1A0D544000263DF2 /* incorrect_buzzer.wav */,
+				93EFCBDA1A22B7A400A350D5 /* bamboo.wav */,
+				93EFCBDC1A252D3C00A350D5 /* drums.wav */,
 				937AE8A619E73A4500CEB0E7 /* SilkRoad-Info.plist */,
 				937AE8A719E73A4500CEB0E7 /* InfoPlist.strings */,
 				937AE8AA19E73A4500CEB0E7 /* main.m */,
@@ -538,6 +544,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93EFCBDD1A252D3C00A350D5 /* drums.wav in Resources */,
 				5156A2651A102F5100263DF2 /* buttonUnvisited.png in Resources */,
 				93CA8F9F1A102F1100B4B722 /* RoadPuzzle3.txt in Resources */,
 				93CA8FA01A102F1100B4B722 /* RoadPuzzle4.txt in Resources */,
@@ -588,6 +595,7 @@
 				7F3BF5041A169038006E82DD /* Dialogue01.txt in Resources */,
 				7F3BF5071A169038006E82DD /* Dialogue04.txt in Resources */,
 				7F3BF5151A169038006E82DD /* Dialogue33.txt in Resources */,
+				93EFCBDB1A22B7A400A350D5 /* bamboo.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

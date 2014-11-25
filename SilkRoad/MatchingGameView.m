@@ -88,6 +88,12 @@
                                      initWithContentsOfURL:pathURL_incorrect
                                      error:&incorrect_error];
     
+    [_correctAudio setVolume:0.0];
+    [_correctAudio play];
+    
+    [_incorrectAudio setVolume:0.0];
+    [_incorrectAudio play];
+    
     if (correct_error) {
       NSLog(@"Error, file not found: %@",path_correct);
     }
@@ -250,6 +256,7 @@
   UIButton *rightButton = [_rightSidePhraseButtons objectAtIndex:_rightSelected - 1];
   
   if (match) {
+    [_correctAudio setVolume:1.0];
     [_correctAudio play];
     // Increment number of matches
     _countMatched++;
@@ -261,6 +268,7 @@
     [rightButton setBackgroundImage:[UIImage imageNamed:@"geodegrey"] forState:UIControlStateNormal];
   }
   else {
+    [_incorrectAudio setVolume:0.5];
     [_incorrectAudio play];
     // Reset the background color to original
     [leftButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];

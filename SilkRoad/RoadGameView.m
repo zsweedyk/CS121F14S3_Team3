@@ -7,6 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import <AVFoundation/AVFoundation.h>
 #import "RoadGameView.h"
 
 @interface RoadGameView()
@@ -16,6 +17,7 @@
   BOOL _waitingForPair;
   NSMutableDictionary* _connections;
   CGFloat _buttonSize;
+  AVAudioPlayer* _roadSound;
 }
 
 @end
@@ -130,6 +132,13 @@
     [self styleButton:resetButton];
 
     [self addSubview:resetButton];
+    
+    NSString *path  = [[NSBundle mainBundle] pathForResource:@"bamboo" ofType:@"wav"];
+    NSURL *pathURL = [NSURL fileURLWithPath:path];
+    NSError *correct_error = nil;
+    _roadSound = [[AVAudioPlayer alloc]
+                  initWithContentsOfURL:pathURL
+                  error:&correct_error];
   }
   return self;
 }
@@ -180,6 +189,7 @@
     _waitingForPair = YES;
   }
   else {
+    [_roadSound play];
     // Otherwise, see if current button and last button can be connected
     int oldRow = floor(_lastButtonPressed.tag / 10);
     int oldCol = _lastButtonPressed.tag % 10;

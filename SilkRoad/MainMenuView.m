@@ -7,6 +7,12 @@
 //
 
 #import "MainMenuView.h"
+#import <AVFoundation/AVFoundation.h>
+@interface MainMenuView()
+{
+  AVAudioPlayer* _introMusic;
+}
+@end
 
 @implementation MainMenuView
 
@@ -24,12 +30,22 @@
     [startButton setBackgroundImage:[UIImage imageNamed:@"startgamebutton"] forState:UIControlStateNormal];
     [startButton addTarget:self action:@selector(startGame) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:startButton];
+    
+    NSString *path  = [[NSBundle mainBundle] pathForResource:@"drums" ofType:@"wav"];
+    NSURL *pathURL = [NSURL fileURLWithPath:path];
+    NSError *correct_error = nil;
+    _introMusic = [[AVAudioPlayer alloc]
+                   initWithContentsOfURL:pathURL
+                   error:&correct_error];
+    [_introMusic setNumberOfLoops:-1];
+    [_introMusic play];
   }
   
   return self;
 }
 
 -(void)startGame {
+  [_introMusic stop];
   [self.delegate showStage];
 }
 

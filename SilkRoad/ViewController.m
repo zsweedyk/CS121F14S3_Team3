@@ -46,10 +46,8 @@
   _roadGameController = [[RoadGameController alloc] init];
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:_currentStage];
-  
-  
+
   // Show Main Menu
-  //[self.view addSubview:_characterView];
   [self.view addSubview:_menuView];
 }
 
