@@ -40,14 +40,11 @@
   _menuView.delegate = self;
   _mapView = [[MapView alloc] initWithFrame:self.view.frame];
   _mapView.delegate = self;
-<<<<<<< HEAD
   _characterView = [[CharacterDescriptionView alloc] initWithFrame:self.view.frame];
   [_characterView setToCivilization:INDIA];
   _characterView.delegate = self;
-=======
   _creditsView = [[CreditsView alloc] initWithFrame:self.view.frame];
   _creditsView.delegate = self;
->>>>>>> Adding a credits page to the main menu
   _scalesGameController = [[ScalesGameController alloc] init];
   _roadGameController = [[RoadGameController alloc] init];
   _stageController = [[StageController alloc] init];
