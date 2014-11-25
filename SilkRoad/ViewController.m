@@ -17,6 +17,7 @@
   int _currentStage;
   
   MainMenuView* _menuView;
+  CreditsView* _creditsView;
   MapView* _mapView;
   CharacterDescriptionView* _characterView;
   StageController* _stageController;
@@ -39,9 +40,14 @@
   _menuView.delegate = self;
   _mapView = [[MapView alloc] initWithFrame:self.view.frame];
   _mapView.delegate = self;
+<<<<<<< HEAD
   _characterView = [[CharacterDescriptionView alloc] initWithFrame:self.view.frame];
   [_characterView setToCivilization:INDIA];
   _characterView.delegate = self;
+=======
+  _creditsView = [[CreditsView alloc] initWithFrame:self.view.frame];
+  _creditsView.delegate = self;
+>>>>>>> Adding a credits page to the main menu
   _scalesGameController = [[ScalesGameController alloc] init];
   _roadGameController = [[RoadGameController alloc] init];
   _stageController = [[StageController alloc] init];
@@ -70,6 +76,19 @@
   [self displayStageController];
 }
 
+-(void)showCredits
+{
+  NSLog(@"Clicked to show credits");
+  [_menuView removeFromSuperview];
+  [self.view addSubview:_creditsView];
+}
+
+-(void)hideCredits
+{
+  [_creditsView removeFromSuperview];
+  [self.view addSubview:_menuView];
+}
+
 -(void)showMap
 {
   NSLog(@"In showMap");
@@ -77,14 +96,14 @@
   [self.view addSubview:_mapView];
 }
 
-- (void) hideMap
+-(void)hideMap
 {
   NSLog(@"Got to hide map VC");
   [_mapView removeFromSuperview];
   [self displayStageController];
 }
 
-- (void) jumpToStage:(int)stage
+-(void)jumpToStage:(int)stage
 {
   NSLog(@"inButtonPressed MV fo stage %d", stage);
   _stageController = [[StageController alloc] init];
@@ -92,31 +111,31 @@
   [self hideMap];
 }
 
-- (void)returnToPrevious
+-(void)returnToPrevious
 {
   [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-- (void)goToScalesGame
+-(void)goToScalesGame
 {
   _scalesGameController.delegate = self;
   [_scalesGameController setCurrencyTo:CHINA];
   [self presentViewController:_scalesGameController animated:YES completion: nil];
 }
 
-- (void)goToRoadGame
+-(void)goToRoadGame
 {
   _roadGameController.delegate = self;
   [self presentViewController:_roadGameController animated:YES completion: nil];
 }
 
-- (void)didReceiveMemoryWarning
+-(void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
 
-- (void)displayStageController
+-(void)displayStageController
 {
   // Configure StageController to report any changes to ViewController
   _stageController.delegate = self;
