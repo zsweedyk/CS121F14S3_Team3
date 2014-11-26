@@ -16,6 +16,7 @@
   UIView* _password;
   NSMutableArray* _turnViewButtons;
   NSMutableArray* _turnViewFeedbackButtons;
+  NSMutableArray* _letterButtons;
   int _numTurns;
   int _charSize;
 }
@@ -28,14 +29,15 @@
   self = [super initWithFrame:frame];
   
   if (self) {
+    _turnViewButtons = [[NSMutableArray alloc] init];
+    _turnViewFeedbackButtons = [[NSMutableArray alloc] init];
+    _letterButtons = [[NSMutableArray alloc] init];
     _turnFeedbackView = [[UIView alloc] init];
     _password = [[UIView alloc] init];
     _charSize = 35;
-    CGFloat frameWidth = CGRectGetWidth(frame);
-    CGFloat frameHeight = CGRectGetHeight(frame);
-    //[self initTurnsViewWithFrame:CGRectMake(frameWidth*.2, frameHeight*.05, frameWidth-(frameWidth*.4), frameHeight-(frameHeight*.1))];
     [self initTurnsViewWithFrame:frame];
     [self initFeedbackViewWithFrame:frame];
+    [self initLettersWithFrame:frame];
     [self setBackgroundColor:[UIColor grayColor]];
   }
   
@@ -52,11 +54,11 @@
   // Make each cell in the tray the size of a button with 5% padding on all sides
   CGFloat cellSize = _charSize + (_charSize * 0.10);
   CGFloat horizontalPadding = (frameWidth - (cellSize * 5.5)) / 2;
-  CGFloat verticalPadding = frameHeight * 0.05;
+  CGFloat verticalPadding = (frameHeight - 19*cellSize)/2;
   
   // Set the x- and y-offsets accordingly
   CGFloat xOffset = horizontalPadding;
-  CGFloat yOffset = verticalPadding;//frameHeight - ((2 * cellSize) + verticalPadding);
+  CGFloat yOffset = verticalPadding;
   
   // Create 2 rows of 6 cells
   for (int row = 0; row < 10; row++) {
@@ -65,7 +67,7 @@
       UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
       cell.tag = (row * 4) + col;
       
-      [_turnViewButtons insertObject:cell atIndex:cell.tag];
+      [_turnViewButtons addObject:cell];
       [cell setBackgroundColor:[UIColor blueColor]];
       [self addSubview:cell];
       
@@ -80,7 +82,7 @@
 
 -(void)initFeedbackViewWithFrame:(CGRect)frame
 {
-  _turnView = [[UIView alloc] initWithFrame:frame];
+  _turnFeedbackView = [[UIView alloc] initWithFrame:frame];
   // Get the dimensions of the frame
   CGFloat frameWidth = CGRectGetWidth(frame);
   CGFloat frameHeight = CGRectGetHeight(frame);
@@ -88,7 +90,7 @@
   // Make each cell in the tray the size of a button with 5% padding on all sides
   CGFloat cellSize = _charSize/4;
   CGFloat horizontalPadding = (frameWidth - (cellSize * 5.5)) / 2 + 5.75*_charSize;
-  CGFloat verticalPadding = frameHeight * 0.05;
+  CGFloat verticalPadding = (frameHeight - 21*_charSize)/2;
   
   // Set the x- and y-offsets accordingly
   CGFloat xOffset = horizontalPadding;
@@ -101,7 +103,7 @@
         UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
         cell.tag = (row * 4) + col;
         
-        [_turnViewButtons insertObject:cell atIndex:cell.tag];
+        [_turnViewButtons addObject:cell];
         [cell setBackgroundColor:[UIColor blueColor]];
         [self addSubview:cell];
         
@@ -115,6 +117,36 @@
     xOffset = horizontalPadding;
   }
   
+}
+
+-(void)initLettersWithFrame:(CGRect)frame
+{
+  //_lett = [[UIView alloc] initWithFrame:frame];
+  // Get the dimensions of the frame
+  CGFloat frameWidth = CGRectGetWidth(frame);
+  CGFloat frameHeight = CGRectGetHeight(frame);
+  
+  // Make each cell in the tray the size of a button with 5% padding on all sides
+  CGFloat cellSize = _charSize*1.5;
+  CGFloat horizontalPadding = frameWidth/10 - cellSize;
+  CGFloat verticalPadding = frameHeight/2 - cellSize/2;
+  
+  // Set the x- and y-offsets accordingly
+  CGFloat xOffset = horizontalPadding;
+  CGFloat yOffset = verticalPadding;
+  
+  // Create 2 rows of 6 cells
+  for (int row = 0; row < 4; row++) {
+      CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
+      UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
+      cell.tag = (row * 4);
+      
+      [_letterButtons addObject:cell];
+      [cell setBackgroundColor:[UIColor blueColor]];
+      [self addSubview:cell];
+      
+      xOffset += 1.5*cellSize;
+  }
 }
 
 -(void)displayNewTurn:(int*) turn

@@ -52,8 +52,6 @@
   int exactMatches = 0;
   for (int i = 0; i < 4; ++i) {
     //put this attempt in the turns array
-    int currAttempt = attempt[i];
-    int currSolution = _currentSolution[i];
     NSNumber* numToInput = [NSNumber numberWithInt:attempt[i]];
     [_turns addObject:numToInput];
 
@@ -81,27 +79,20 @@
   
   NSAssert(halfMatches + exactMatches <= 4, @"Too many matches");
   
+  if (exactMatches == 4) {
+    _hasBeenWon = YES;
+  }
+  
   //exact matches in the 10s place and half matches in the 1s, such that
   // 1 exact match and 3 half matches would be represented as 13, etc.
   return exactMatches*10 + halfMatches;
 }
-
-//-(id)init
-//{
-//  _numTurns = 0;
-//  return self;
-//}
 
 -(void)resetGame
 {
   [self makeNewSolution];
   _numTurns = 0;
   [_turns removeAllObjects];
-}
-
--(void)winGame
-{
-  _hasBeenWon = YES;
 }
 
 -(BOOL)hasBeenWon

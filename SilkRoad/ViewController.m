@@ -12,6 +12,7 @@
 #import "ScalesGameController.h"
 #import "Constants.h"
 #import "CharacterDescriptionView.h"
+#import "MasterMindGameView.h"
 
 @interface ViewController () {
   int _currentStage;
@@ -22,6 +23,7 @@
   StageController* _stageController;
   ScalesGameController* _scalesGameController;
   RoadGameController* _roadGameController;
+  MasterMindGameView* _masterMindGameView;
 }
 
 @end
@@ -46,11 +48,12 @@
   _roadGameController = [[RoadGameController alloc] init];
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:_currentStage];
+  _masterMindGameView = [[MasterMindGameView alloc] initWithFrame:self.view.frame];
   
   
   // Show Main Menu
   //[self.view addSubview:_characterView];
-  [self.view addSubview:_menuView];
+  [self.view addSubview:_masterMindGameView];
 }
 
 -(void)showStage

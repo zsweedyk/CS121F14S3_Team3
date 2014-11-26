@@ -41,11 +41,15 @@
   int password1[4] = {0, 1, 1, 0};
   XCTAssertEqual([_gameModel getMatchesFromAttempt:password1], 30);
   int password2[4] = {0, 1, 0, 2};
-  XCTAssertEqual([_gameModel getMatchesFromAttempt:password2], 22);
+  XCTAssertEqual([_gameModel getMatchesFromAttempt:password2], 20);
 }
 
-//for testing
-//-(void)setPassword:(int*)mockPassword;
+-(void)testHasBeenWon
+{
+  int password1[4] = {0, 1, 1, 1};
+  XCTAssertEqual([_gameModel getMatchesFromAttempt:password1], 40);
+  XCTAssert([_gameModel hasBeenWon]);
+}
 
 
 @end
