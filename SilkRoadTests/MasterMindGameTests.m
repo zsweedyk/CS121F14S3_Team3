@@ -43,14 +43,6 @@
   int password2[4] = {0, 1, 0, 2};
   XCTAssertEqual([_gameModel getMatchesFromAttempt:password2], 22);
 }
-//-(BOOL)testHasBeenWon
-//{
-//  
-//}
-//-(void)testResetGame
-//{
-//  
-//}
 
 //for testing
 //-(void)setPassword:(int*)mockPassword;
