@@ -11,12 +11,14 @@
 #import "RoadGameController.h"
 #import "ScalesGameController.h"
 #import "Constants.h"
+#import "CharacterDescriptionView.h"
 
 @interface ViewController () {
   int _currentStage;
   
   MainMenuView* _menuView;
   MapView* _mapView;
+  CharacterDescriptionView* _characterView;
   StageController* _stageController;
   ScalesGameController* _scalesGameController;
   RoadGameController* _roadGameController;
@@ -30,7 +32,6 @@
 {
   [super viewDidLoad];
   
-  // TODO: Currently hardcoding the current stage to 0
   _currentStage = 0;
   
   // Initialize the controllers
@@ -38,6 +39,9 @@
   _menuView.delegate = self;
   _mapView = [[MapView alloc] initWithFrame:self.view.frame];
   _mapView.delegate = self;
+  _characterView = [[CharacterDescriptionView alloc] initWithFrame:self.view.frame];
+  [_characterView setToCivilization:INDIA];
+  _characterView.delegate = self;
   _scalesGameController = [[ScalesGameController alloc] init];
   _roadGameController = [[RoadGameController alloc] init];
   _stageController = [[StageController alloc] init];
@@ -45,12 +49,24 @@
   
   
   // Show Main Menu
+  //[self.view addSubview:_characterView];
   [self.view addSubview:_menuView];
 }
 
-- (void)showStage
+-(void)showStage
 {
   [_menuView removeFromSuperview];
+  [self showCharacterDescription];
+}
+
+-(void)showCharacterDescription
+{
+  [self.view addSubview:_characterView];
+}
+
+-(void)hideCharacterDescription
+{
+  [_characterView removeFromSuperview];
   [self displayStageController];
 }
 
@@ -118,7 +134,13 @@
   [_stageController setStageTo:++_currentStage];
   [_mapView moveToNextStage];
   
-  [self displayStageController];
+  // If we are at the midpoint, display a character description of the new character
+  if (_currentStage == NUM_CITIES / 2) {
+    [_characterView setToCivilization:CHINA];
+    [self showCharacterDescription];
+  } else {
+    [self displayStageController];
+  }
 }
 
 @end
