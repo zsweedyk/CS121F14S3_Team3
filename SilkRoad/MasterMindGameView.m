@@ -19,6 +19,7 @@
   NSMutableArray* _letterButtons;
   int _numTurns;
   int _charSize;
+  int _inputCharSelected;
 }
 @end
 
@@ -69,7 +70,9 @@
       
       [_turnViewButtons addObject:cell];
       [cell setBackgroundColor:[UIColor blueColor]];
+      cell.showsTouchWhenHighlighted = YES;
       [self addSubview:cell];
+      [cell addTarget:self action:@selector(charSelected:) forControlEvents:UIControlEventTouchUpInside];
       
       xOffset += 2*cellSize;
     }
@@ -99,15 +102,16 @@
   // Create 2 rows of 6 cells
   for (int row = 0; row < 20; row++) {
     for (int col = 0; col < 2; col++) {
-        CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
-        UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
-        cell.tag = (row * 4) + col;
-        
-        [_turnViewButtons addObject:cell];
-        [cell setBackgroundColor:[UIColor blueColor]];
-        [self addSubview:cell];
-        
-        xOffset += 2*cellSize;
+      CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
+      UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
+      cell.tag = (row * 4) + col;
+      
+      [_turnViewButtons addObject:cell];
+      [cell setBackgroundColor:[UIColor blueColor]];
+      cell.showsTouchWhenHighlighted = YES;
+      [self addSubview:cell];
+      
+      xOffset += 2*cellSize;
     }
     if (row%2 != 0) {
       yOffset += 1.5*_charSize + 1.05*cellSize;
@@ -134,20 +138,83 @@
   // Set the x- and y-offsets accordingly
   CGFloat xOffset = horizontalPadding;
   CGFloat yOffset = verticalPadding;
+  int numTurnButtons = (int) [_turnViewButtons count];
   
   // Create 2 rows of 6 cells
-  for (int row = 0; row < 4; row++) {
-      CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
-      UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
-      cell.tag = (row * 4);
-      
-      [_letterButtons addObject:cell];
-      [cell setBackgroundColor:[UIColor blueColor]];
-      [self addSubview:cell];
-      
-      xOffset += 1.5*cellSize;
+  for (int i = 0; i < 4; i++) {
+    CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
+    UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
+    cell.tag = numTurnButtons + i;
+    [cell addTarget:self action:@selector(charSelected:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //TODO: set images for letter bank
+    if (i == 0) {
+      //TODO: display first button as selected, darkened, desaturated, what have you
+      [cell setBackgroundColor:[UIColor blackColor]];
+    } else if (i == 1) {
+      [cell setBackgroundColor:[UIColor orangeColor]];
+    } else if (i == 2) {
+      [cell setBackgroundColor:[UIColor greenColor]];
+    } else {
+      [cell setBackgroundColor:[UIColor purpleColor]];
+    }
+    
+    [_letterButtons addObject:cell];
+    cell.showsTouchWhenHighlighted = YES;
+    [self addSubview:cell];
+    
+    xOffset += 1.5*cellSize;
+  }
+  
+  _inputCharSelected = 0;
+  
+  
+}
+
+-(void)displayButton:(UIButton*) button forChar: (int)character
+{
+  NSAssert(character <= 3, @"making sure letter button is displaying a char in change");
+  if (character == 0) {
+    [button setBackgroundColor:[UIColor redColor]];
+  } else if (character == 1) {
+    [button setBackgroundColor:[UIColor orangeColor]];
+  } else if (character == 2) {
+    [button setBackgroundColor:[UIColor greenColor]];
+  } else {
+    [button setBackgroundColor:[UIColor purpleColor]];
   }
 }
+
+
+-(void)charSelected:(id)sender
+{
+  UIButton *newButton = (UIButton*) sender;
+  
+  int tag = (int) [newButton tag];
+  int numTurnButtons = (int) [_turnViewButtons count];
+  
+  if (tag >= numTurnButtons) {
+    UIButton *oldButton = [_letterButtons objectAtIndex:_inputCharSelected];
+    int oldTag = (int) [oldButton tag];
+    [self displayButton:oldButton forChar:(oldTag-numTurnButtons)];
+    _inputCharSelected = tag - numTurnButtons;
+    //TODO: set graphic for highlighted letter bank character
+    [newButton setBackgroundColor:[UIColor blackColor]];
+  }
+  else {
+    UIButton* buttonSelected = [_turnViewFeedbackButtons objectAtIndex:tag];
+    //TODO: display turn view button as new char
+    [self displayButton:buttonSelected forChar:_inputCharSelected];
+    [buttonSelected setTag:_inputCharSelected];
+  }
+}
+
+-(void)checkSolution
+{
+  
+  //[self.delegate checkSolution];
+}
+
 
 -(void)displayNewTurn:(int*) turn
 {
