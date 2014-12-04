@@ -61,6 +61,8 @@
 		7F2D0FDE1A310A790030EE44 /* Dialogue74.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F2D0FDD1A310A790030EE44 /* Dialogue74.txt */; };
 		7F2D0FE01A310F790030EE44 /* stage6.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F2D0FDF1A310F790030EE44 /* stage6.txt */; };
 		7F2D0FE21A310FE00030EE44 /* stage7.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F2D0FE11A310FE00030EE44 /* stage7.txt */; };
+		7F2D0FE31A3113220030EE44 /* Dialogue44.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FD1A169038006E82DD /* Dialogue44.txt */; };
+		7F2D0FE41A3113220030EE44 /* Dialogue42.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FB1A169038006E82DD /* Dialogue42.txt */; };
 		7F3BF4EE1A169005006E82DD /* InteriorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BF4ED1A169005006E82DD /* InteriorModel.m */; };
 		7F3BF5031A169038006E82DD /* Dialogue00.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4EF1A169038006E82DD /* Dialogue00.txt */; };
 		7F3BF5041A169038006E82DD /* Dialogue01.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F01A169038006E82DD /* Dialogue01.txt */; };
@@ -74,9 +76,7 @@
 		7F3BF50C1A169038006E82DD /* Dialogue14.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F81A169038006E82DD /* Dialogue14.txt */; };
 		7F3BF50D1A169038006E82DD /* Dialogue40.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F91A169038006E82DD /* Dialogue40.txt */; };
 		7F3BF50E1A169038006E82DD /* Dialogue41.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FA1A169038006E82DD /* Dialogue41.txt */; };
-		7F3BF50F1A169038006E82DD /* Dialogue42.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FB1A169038006E82DD /* Dialogue42.txt */; };
 		7F3BF5101A169038006E82DD /* Dialogue43.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FC1A169038006E82DD /* Dialogue43.txt */; };
-		7F3BF5111A169038006E82DD /* Dialogue44.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FD1A169038006E82DD /* Dialogue44.txt */; };
 		7F3BF5121A169038006E82DD /* Dialogue50.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FE1A169038006E82DD /* Dialogue50.txt */; };
 		7F3BF5131A169038006E82DD /* Dialogue51.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FF1A169038006E82DD /* Dialogue51.txt */; };
 		7F3BF5141A169038006E82DD /* Dialogue52.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF5001A169038006E82DD /* Dialogue52.txt */; };
@@ -574,7 +574,7 @@
 		937AE89319E73A4500CEB0E7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Kate Finlay, Melissa Galonsky, Rachel Macfarlane, and Sarah Trisorus";
 				TargetAttributes = {
 					937AE8BB19E73A4500CEB0E7 = {
@@ -617,11 +617,9 @@
 				93CA8F9E1A102F1100B4B722 /* RoadPuzzle2.txt in Resources */,
 				7F3BF5101A169038006E82DD /* Dialogue43.txt in Resources */,
 				7F3BF50B1A169038006E82DD /* Dialogue13.txt in Resources */,
-				7F3BF5111A169038006E82DD /* Dialogue44.txt in Resources */,
-				7F3BF50F1A169038006E82DD /* Dialogue42.txt in Resources */,
+				7F2D0FE31A3113220030EE44 /* Dialogue44.txt in Resources */,
+				7F2D0FE41A3113220030EE44 /* Dialogue42.txt in Resources */,
 				93EFCBD51A214CFB00A350D5 /* indiaDescription.txt in Resources */,
-				7F3BF5111A169038006E82DD /* Dialogue24.txt in Resources */,
-				7F3BF50F1A169038006E82DD /* Dialogue22.txt in Resources */,
 				7F3BF50A1A169038006E82DD /* Dialogue12.txt in Resources */,
 				93CA8FAE1A10337B00B4B722 /* RoadPuzzle9.txt in Resources */,
 				2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */,

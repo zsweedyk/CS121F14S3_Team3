@@ -44,10 +44,14 @@
     [self createGameButtons];
 
     //Make city buttons
-    [self addButtonNumber:0 WithFrame:CGRectMake(375, 400, 35, 35)];
-    [self addButtonNumber:1 WithFrame:CGRectMake(415, 355, 35, 35)];
-    [self addButtonNumber:2 WithFrame:CGRectMake(650, 335, 35, 35)];
-    [self addButtonNumber:3 WithFrame:CGRectMake(550, 300, 35, 35)];
+    [self addButtonNumber:0 WithFrame:CGRectMake(365, 425, 35, 35)];
+    [self addButtonNumber:1 WithFrame:CGRectMake(375, 385, 35, 35)];
+    [self addButtonNumber:0 WithFrame:CGRectMake(380, 350, 35, 35)];
+    [self addButtonNumber:1 WithFrame:CGRectMake(415, 340, 35, 35)];
+    [self addButtonNumber:4 WithFrame:CGRectMake(650, 335, 35, 35)];
+    [self addButtonNumber:5 WithFrame:CGRectMake(600, 335, 35, 35)];
+    [self addButtonNumber:6 WithFrame:CGRectMake(590, 290, 35, 35)];
+    [self addButtonNumber:7 WithFrame:CGRectMake(550, 300, 35, 35)];
     
     //Set action for first city
     [[_stageButtons objectAtIndex:0] addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
