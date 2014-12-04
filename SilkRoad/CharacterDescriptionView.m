@@ -183,9 +183,9 @@
 {
   UIImage* background;
   if (civilization == INDIA) {
-    background = [UIImage imageNamed:@"india2"];
+    background = [UIImage imageNamed:@"india1"];
   } else {
-    background = [UIImage imageNamed:@"china2"];
+    background = [UIImage imageNamed:@"china1"];
   }
   //Set background image
   _background.image = background;

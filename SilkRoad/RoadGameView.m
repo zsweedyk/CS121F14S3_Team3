@@ -15,6 +15,9 @@
   UIButton* _lastButtonPressed;
   BOOL _waitingForPair;
   NSMutableDictionary* _connections;
+  
+  CGFloat _frameWidth;
+  CGFloat _frameHeight;
   CGFloat _buttonSize;
 }
 
@@ -26,112 +29,116 @@
 {
   self = [super initWithFrame:frame];
   if (self) {
-    
     // Get the dimensions of the frame
-    CGFloat frameWidth = CGRectGetWidth(frame);
-    CGFloat frameHeight = CGRectGetHeight(frame);
+    _frameWidth = CGRectGetWidth(frame);
+    _frameHeight = CGRectGetHeight(frame);
     
-    // Setup a new context with the correct size
-    UIImage* backgroundMap = [UIImage imageNamed:@"China_blank_map-1.png"];
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(frameWidth, frameHeight), YES, 0.0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    UIGraphicsPushContext(context);
+    // The game frame will be 90% of the screen, the bottom 10% is for buttons
+    // The grid is 9 x 9, so there are 10 spaces, dividing the frame into 19
+    _buttonSize = MIN(_frameWidth / 19.0, _frameHeight * 0.90 / 19.0);
     
-    // Draw map image so that it's centered on this context
-    CGPoint origin = CGPointMake((frameWidth - backgroundMap.size.width) / 2.0f,
-                                 (frameHeight - backgroundMap.size.height) / 2.0f);
-    [backgroundMap drawAtPoint:origin];
+    // Set the minigame background to be a map of China
+    [self setBackground];
     
-    // Clean up and get the new image.
-    UIGraphicsPopContext();
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    // Set the minigame background
-    [self setBackgroundColor:[UIColor colorWithPatternImage:newImage]];
-   
-    // The game frame will be 90% of the screen, the bottom 10% is for the game
-    //    bottom bar
-    CGFloat gameFrameWidth = frameWidth;
-    CGFloat gameFrameHeight = frameHeight * 0.90;
-    
-    CGFloat boxSize = MIN(frameWidth, frameHeight);
-    // There are 9 grid cells to display, and 10 lines between them
-    CGFloat horizontalPadding = gameFrameWidth / 19.0;
-    CGFloat verticalPadding = gameFrameHeight / 19.0;
-    
-    
-    CGFloat extraHorizontalSpace = frameWidth - boxSize;
-    CGFloat yOffset = verticalPadding;
-    _buttonSize = MIN(horizontalPadding, verticalPadding);
-    
-    // Initialize the button grid
-    _buttonGrid = [[NSMutableArray alloc] initWithCapacity:9];
-    _connections = [[NSMutableDictionary alloc] init];
-    
-    // Add buttons to the grid, tag is a two digit number with the first number
-    // representing row, and the second column. The space between buttons is
-    // equal to the size of a button.
-    for (int row = 0; row < 9; row++) {
-      [_buttonGrid addObject:[[NSMutableArray alloc] initWithCapacity:9]];
-      CGFloat xOffset = extraHorizontalSpace / 2.0;
-      
-      for (int col = 0; col < 9; col++) {
-        CGRect buttonFrame = CGRectMake(xOffset, yOffset, _buttonSize, _buttonSize);
-        UIButton* button = [[UIButton alloc] initWithFrame:buttonFrame];
-        
-        
-        [button.titleLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:18]];
-        
-        
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [button setTag: row * 10 + col];
-        
-        [[_buttonGrid objectAtIndex:row] addObject:button];
-        [self addSubview:button];
-        
-        xOffset += 2 * _buttonSize;
-      }
-      yOffset += 2 * _buttonSize;
-    }
+    [self initializeGridWithFrame:frame];
     
     // Each click event needs to be paired with another, as the player is trying to
     // connect button nodes
     _waitingForPair = NO;
     
-    // Make the frame for the return button
-    CGRect returnFrame = CGRectMake(20 * _buttonSize, yOffset, 5 *_buttonSize, _buttonSize);
-    // Make the button and add it to the view
-    UIButton* returnButton = [[UIButton alloc] initWithFrame:returnFrame];
-
-    [returnButton addTarget:self action:@selector(exitGame) forControlEvents:UIControlEventTouchUpInside];
-    [returnButton setTitle:@"Return" forState:UIControlStateNormal];
-    [self styleButton:returnButton];
-    [self addSubview:returnButton];
+    // Add the bottom buttons
+    NSArray* buttonLabels = @[@"Return", @"New Puzzle", @"Reset Puzzle"];
+    NSArray* buttonActions = @[@"exitGame", @"newGame", @"resetGame"];
     
-    // Make the frame for the return button
-    CGRect newGameFrame = CGRectMake(14 * _buttonSize, yOffset, 5 *_buttonSize, _buttonSize);
-    // Make the button and add it to the view
-    UIButton* newGameButton = [[UIButton alloc] initWithFrame:newGameFrame];
-   
-    [newGameButton addTarget:self action:@selector(newGame) forControlEvents:UIControlEventTouchUpInside];
-    [newGameButton setTitle:@"New Puzzle" forState:UIControlStateNormal];
-    [self styleButton:newGameButton];
-
-    [self addSubview:newGameButton];
-    
-    // Make the frame for the return button
-    CGRect resetFrame = CGRectMake(8 * _buttonSize, yOffset, 5 *_buttonSize, _buttonSize);
-    // Make the button and add it to the view
-    UIButton* resetButton = [[UIButton alloc] initWithFrame:resetFrame];
-
-    [resetButton addTarget:self action:@selector(resetGame) forControlEvents:UIControlEventTouchUpInside];
-    [resetButton setTitle:@"Reset Puzzle" forState:UIControlStateNormal];
-    [self styleButton:resetButton];
-
-    [self addSubview:resetButton];
+    CGFloat yOffset = _frameHeight * 0.90;
+    CGFloat xOffset = 20 * _buttonSize;
+    for (int i = 0; i < 3; i++) {
+      CGRect buttonFrame = CGRectMake(xOffset, yOffset, 5 * _buttonSize, _buttonSize);
+      [self createButtonWithFrame:buttonFrame Action:NSSelectorFromString(buttonActions[i]) AndLabel:buttonLabels[i]];
+      xOffset -= 6 * _buttonSize;
+    }
   }
   return self;
+}
+
+-(void)setBackground
+{
+  // Setup a new context with the correct size
+  UIImage* backgroundMap = [UIImage imageNamed:@"China_blank_map-1.png"];
+  UIGraphicsBeginImageContextWithOptions(CGSizeMake(_frameWidth, _frameHeight), YES, 0.0);
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  UIGraphicsPushContext(context);
+  
+  // Draw map image so that it's centered on this context
+  CGPoint origin = CGPointMake((_frameWidth - backgroundMap.size.width) / 2.0f,
+                               (_frameHeight - backgroundMap.size.height) / 2.0f);
+  [backgroundMap drawAtPoint:origin];
+  
+  // Clean up and get the new image.
+  UIGraphicsPopContext();
+  UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  
+  // Set the minigame background
+  [self setBackgroundColor:[UIColor colorWithPatternImage:newImage]];
+}
+
+-(void)initializeGridWithFrame:(CGRect)frame
+{
+  // The game frame will be 90% of the screen, the bottom 10% is for the game
+  //    bottom bar
+  CGFloat gameFrameWidth = _frameWidth;
+  CGFloat gameFrameHeight = _frameHeight * 0.90;
+  
+  CGFloat boxSize = MIN(_frameWidth, _frameHeight);
+  // There are 9 grid cells to display, and 10 lines between them
+  CGFloat horizontalPadding = gameFrameWidth / 19.0;
+  CGFloat verticalPadding = gameFrameHeight / 19.0;
+  
+  CGFloat extraHorizontalSpace = _frameWidth - boxSize;
+  CGFloat yOffset = verticalPadding;
+  _buttonSize = MIN(horizontalPadding, verticalPadding);
+  
+  // Initialize the button grid
+  _buttonGrid = [[NSMutableArray alloc] initWithCapacity:9];
+  _connections = [[NSMutableDictionary alloc] init];
+  
+  // Add buttons to the grid, tag is a two digit number with the first number
+  // representing row, and the second column. The space between buttons is
+  // equal to the size of a button.
+  for (int row = 0; row < 9; row++) {
+    [_buttonGrid addObject:[[NSMutableArray alloc] initWithCapacity:9]];
+    CGFloat xOffset = extraHorizontalSpace / 2.0;
+    
+    for (int col = 0; col < 9; col++) {
+      CGRect buttonFrame = CGRectMake(xOffset, yOffset, _buttonSize, _buttonSize);
+      UIButton* button = [[UIButton alloc] initWithFrame:buttonFrame];
+      
+      
+      [button.titleLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:18]];
+      
+      
+      [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+      [button setTag: row * 10 + col];
+      
+      [[_buttonGrid objectAtIndex:row] addObject:button];
+      [self addSubview:button];
+      
+      xOffset += 2 * _buttonSize;
+    }
+    yOffset += 2 * _buttonSize;
+  }
+}
+
+-(void)createButtonWithFrame:(CGRect)frame Action:(SEL)selector AndLabel:(NSString*)label
+{
+  UIButton* button = [[UIButton alloc] initWithFrame:frame];
+  
+  [button addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
+  [button setTitle:label forState:UIControlStateNormal];
+  [self styleButton:button];
+  
+  [self addSubview:button];
 }
 
 -(void)styleButton:(UIButton*)button
