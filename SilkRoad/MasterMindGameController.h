@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MasterMindGameView.h"
 
-@interface MasterMindGameController : UIViewController
+@interface MasterMindGameController : UIViewController <MasterMindCheckSolution>
 
 @end

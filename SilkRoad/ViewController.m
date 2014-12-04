@@ -12,7 +12,7 @@
 #import "ScalesGameController.h"
 #import "Constants.h"
 #import "CharacterDescriptionView.h"
-#import "MasterMindGameView.h"
+#import "MasterMindGameController.h"
 
 @interface ViewController () {
   int _currentStage;
@@ -23,7 +23,7 @@
   StageController* _stageController;
   ScalesGameController* _scalesGameController;
   RoadGameController* _roadGameController;
-  MasterMindGameView* _masterMindGameView;
+  MasterMindGameController* _masterMindGameController;
 }
 
 @end
@@ -48,12 +48,13 @@
   _roadGameController = [[RoadGameController alloc] init];
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:_currentStage];
-  _masterMindGameView = [[MasterMindGameView alloc] initWithFrame:self.view.frame];
+  _masterMindGameController = [[MasterMindGameController alloc] init];
   
+  //[self goToMasterMindGame];
   
   // Show Main Menu
-  //[self.view addSubview:_characterView];
-  [self.view addSubview:_masterMindGameView];
+  [self.view addSubview:_characterView];
+  //[self.view addSubview:_menuView];
 }
 
 -(void)showStage
@@ -84,7 +85,8 @@
 {
   NSLog(@"Got to hide map VC");
   [_mapView removeFromSuperview];
-  [self displayStageController];
+  [self goToMasterMindGame];
+  //[self displayStageController];
 }
 
 - (void) jumpToStage:(int)stage
@@ -111,6 +113,12 @@
 {
   _roadGameController.delegate = self;
   [self presentViewController:_roadGameController animated:YES completion: nil];
+}
+
+- (void)goToMasterMindGame
+{
+  //_masterMindGameController.delegate = self;
+  [self presentViewController:_masterMindGameController animated:YES completion: nil];
 }
 
 - (void)didReceiveMemoryWarning

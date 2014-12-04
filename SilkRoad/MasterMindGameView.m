@@ -17,9 +17,11 @@
   NSMutableArray* _turnViewButtons;
   NSMutableArray* _turnViewFeedbackButtons;
   NSMutableArray* _letterButtons;
+  int _currentTurn[4];
   int _numTurns;
   int _charSize;
   int _inputCharSelected;
+  UIButton* _checkSolutionButton;
 }
 @end
 
@@ -40,6 +42,15 @@
     [self initFeedbackViewWithFrame:frame];
     [self initLettersWithFrame:frame];
     [self setBackgroundColor:[UIColor grayColor]];
+    _checkSolutionButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(frame)*.8, CGRectGetHeight(frame)*.5, 200, 50)];
+    [self addSubview:_checkSolutionButton];
+    [_checkSolutionButton addTarget:self action:@selector(checkSolution) forControlEvents:UIControlEventTouchUpInside];
+    [_checkSolutionButton setBackgroundColor:[UIColor redColor]];
+    [_checkSolutionButton setTitle:@"Check Solution" forState:UIControlStateNormal];
+    _checkSolutionButton.showsTouchWhenHighlighted = YES;
+    for (int i = 0; i < 4; ++i) {
+      _currentTurn[i] = 100;
+    }
   }
   
   return self;
@@ -66,13 +77,14 @@
     for (int col = 0; col < 4; col++) {
       CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
       UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
-      cell.tag = (row * 4) + col;
+      //tags start at 50, then increase by 10's so that the color can be added in the 1's place
+      cell.tag = row*4+col;
       
       [_turnViewButtons addObject:cell];
       [cell setBackgroundColor:[UIColor blueColor]];
       cell.showsTouchWhenHighlighted = YES;
       [self addSubview:cell];
-      [cell addTarget:self action:@selector(charSelected:) forControlEvents:UIControlEventTouchUpInside];
+      [cell addTarget:self action:@selector(turnCharSelected:) forControlEvents:UIControlEventTouchUpInside];
       
       xOffset += 2*cellSize;
     }
@@ -106,7 +118,7 @@
       UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
       cell.tag = (row * 4) + col;
       
-      [_turnViewButtons addObject:cell];
+      [_turnViewFeedbackButtons addObject:cell];
       [cell setBackgroundColor:[UIColor blueColor]];
       cell.showsTouchWhenHighlighted = YES;
       [self addSubview:cell];
@@ -125,7 +137,6 @@
 
 -(void)initLettersWithFrame:(CGRect)frame
 {
-  //_lett = [[UIView alloc] initWithFrame:frame];
   // Get the dimensions of the frame
   CGFloat frameWidth = CGRectGetWidth(frame);
   CGFloat frameHeight = CGRectGetHeight(frame);
@@ -144,8 +155,8 @@
   for (int i = 0; i < 4; i++) {
     CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
     UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
-    cell.tag = numTurnButtons + i;
-    [cell addTarget:self action:@selector(charSelected:) forControlEvents:UIControlEventTouchUpInside];
+    cell.tag = i;
+    [cell addTarget:self action:@selector(letterSelected:) forControlEvents:UIControlEventTouchUpInside];
     
     //TODO: set images for letter bank
     if (i == 0) {
@@ -186,33 +197,48 @@
 }
 
 
--(void)charSelected:(id)sender
+-(void)letterSelected:(id)sender
+{
+  UIButton *newButton = (UIButton*) sender;
+  
+  int newTag = (int) [newButton tag];
+    UIButton *oldButton = [_letterButtons objectAtIndex:_inputCharSelected];
+    int oldTag = (int) [oldButton tag];
+    [self displayButton:oldButton forChar:oldTag];
+    _inputCharSelected = newTag;
+    //TODO: set graphic for highlighted letter bank character
+    [newButton setBackgroundColor:[UIColor blackColor]];
+  //if button selected is in the current playable row
+
+}
+
+-(void)turnCharSelected:(id)sender
 {
   UIButton *newButton = (UIButton*) sender;
   
   int tag = (int) [newButton tag];
-  int numTurnButtons = (int) [_turnViewButtons count];
-  
-  if (tag >= numTurnButtons) {
-    UIButton *oldButton = [_letterButtons objectAtIndex:_inputCharSelected];
-    int oldTag = (int) [oldButton tag];
-    [self displayButton:oldButton forChar:(oldTag-numTurnButtons)];
-    _inputCharSelected = tag - numTurnButtons;
-    //TODO: set graphic for highlighted letter bank character
-    [newButton setBackgroundColor:[UIColor blackColor]];
-  }
-  else {
-    UIButton* buttonSelected = [_turnViewFeedbackButtons objectAtIndex:tag];
-    //TODO: display turn view button as new char
-    [self displayButton:buttonSelected forChar:_inputCharSelected];
-    [buttonSelected setTag:_inputCharSelected];
+  UIButton* buttonSelected = [_turnViewButtons objectAtIndex:tag];
+  //TODO: display turn view button as new char
+  [self displayButton:buttonSelected forChar:_inputCharSelected];
+  if (_numTurns == 0) {
+    _currentTurn[tag] = _inputCharSelected;
+  } else {
+    _currentTurn[tag % (_numTurns*4)] = _inputCharSelected;
   }
 }
 
 -(void)checkSolution
 {
-  
-  //[self.delegate checkSolution];
+  for (int i = 0; i < 4; i++) {
+    if (_currentTurn[i] == 100) //not been set
+      return;
+  }
+  _numTurns++;
+  int matches = [self.delegate checkSolution:_currentTurn];
+  for (int i = 0; i < 4; i++) { //clear new turn solution
+    _currentTurn[i] = 100;
+  }
+  [self displayNewTurnFeedback:matches];
 }
 
 
@@ -240,14 +266,15 @@
   int i = 0;
   //First set exact matches to black
   while (i < 4 && exactMatches > 0) {
-    UIButton* currentButton = [_turnViewFeedbackButtons objectAtIndex:_numTurns+i];
+    int index = ((_numTurns-1)*4)+i;
+    UIButton* currentButton = [_turnViewFeedbackButtons objectAtIndex:index];
     [currentButton setBackgroundColor:[UIColor blackColor]];
     exactMatches--;
     i++;
   }
   //Then set half matches to white
   while (i < 4 && halfMatches > 0) {
-    UIButton* currentButton = [_turnViewFeedbackButtons objectAtIndex:_numTurns+i];
+    UIButton* currentButton = [_turnViewFeedbackButtons objectAtIndex:((_numTurns-1)*4)+i];
     [currentButton setBackgroundColor:[UIColor whiteColor]];
     halfMatches--;
     i++;

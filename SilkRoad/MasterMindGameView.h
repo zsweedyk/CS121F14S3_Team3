@@ -8,7 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol MasterMindCheckSolution
+-(int)checkSolution:(int*)solution;
+@end
+
+
 @interface MasterMindGameView : UIView
+
+@property (assign, nonatomic) id <MasterMindCheckSolution> delegate;
+
 
 -(id)initWithFrame:(CGRect)frame;
 -(void)displayNewTurn:(int*) turn;
