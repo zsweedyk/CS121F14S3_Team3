@@ -69,8 +69,8 @@
   _numMinigamesWon = 0;
   
   _funExists = NO;
-  // Only the first stage does not have an associated fun minigame after the matching game
-  if (_currentStage != 0) {
+  // The constants file has an array stating which stages have fun
+  if (STAGES_WITH_FUN[_currentStage] == 1) {
     _funExists = YES;
   }
   
@@ -126,11 +126,11 @@
         minigameViewController = _scalesGameController;
         [_scalesGameController setCurrencyTo:CHINA];
         break;
-      case 2:
+      case 4:
         _roadGameController.delegate = self;
         minigameViewController = _roadGameController;
         break;
-      case 3:
+      case 5:
         _scalesGameController.delegate = self;
         minigameViewController = _scalesGameController;
         [_scalesGameController setCurrencyTo:INDIA];
@@ -154,10 +154,10 @@
       case 1:
         winning = [_scalesGameController hasBeenWon];
         break;
-      case 2:
+      case 4:
         winning = [_roadGameController hasBeenWon];
       break;
-      case 3:
+      case 5:
         winning = [_scalesGameController hasBeenWon];
         break;
     }

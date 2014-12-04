@@ -13,6 +13,7 @@ int const INDIA = 1;
 int const CHINA = 2;
 int const LAST_INDIA_STAGE = 3;
 int const LAST_STAGE = 7;
+int const STAGES_WITH_FUN[] = {0, 1, 0, 0, 1, 1, 0, 0};
 
 // Constants for the scales game
 int const SCALES_MINNUMCOINS = 6;
