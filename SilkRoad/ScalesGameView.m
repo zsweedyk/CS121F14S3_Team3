@@ -83,9 +83,9 @@
     CGFloat xOffset = cellSize / 4;
     CGFloat yOffset = CGRectGetHeight(_gameFrame) - ((2 * cellSize) + verticalPadding);
     
-    CGRect bucketFrame = CGRectMake(xOffset, yOffset, bucketSize, bucketSize);
+    CGRect bucketFrame = CGRectMake(xOffset, yOffset, bucketSize, bucketSize+.1*bucketSize);
     _fakeCoinBucket = [[UIButton alloc] initWithFrame:bucketFrame];
-    [_fakeCoinBucket setBackgroundColor:[UIColor blueColor]];
+    [_fakeCoinBucket setBackgroundImage:[UIImage imageNamed:@"TreasureChest.png"] forState:UIControlStateNormal];
     _fakeCoinBucket.tag = 500;
     [_fakeCoinBucket addTarget:self action:@selector(moveCoinTo:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_fakeCoinBucket];

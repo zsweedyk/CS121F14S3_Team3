@@ -132,6 +132,9 @@
 		93CA8FAF1A10337B00B4B722 /* RoadPuzzle10.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8FA71A10337B00B4B722 /* RoadPuzzle10.txt */; };
 		93CA8FB01A10337B00B4B722 /* RoadPuzzle11.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8FA81A10337B00B4B722 /* RoadPuzzle11.txt */; };
 		93CA8FB11A10337B00B4B722 /* RoadPuzzle12.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93CA8FA91A10337B00B4B722 /* RoadPuzzle12.txt */; };
+		93EFCBD11A2142AC00A350D5 /* CharacterDescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EFCBD01A2142AC00A350D5 /* CharacterDescriptionView.m */; };
+		93EFCBD31A214CDC00A350D5 /* chinaDescription.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93EFCBD21A214CDC00A350D5 /* chinaDescription.txt */; };
+		93EFCBD51A214CFB00A350D5 /* indiaDescription.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93EFCBD41A214CFB00A350D5 /* indiaDescription.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,6 +286,10 @@
 		93CA8FA71A10337B00B4B722 /* RoadPuzzle10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle10.txt; sourceTree = "<group>"; };
 		93CA8FA81A10337B00B4B722 /* RoadPuzzle11.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle11.txt; sourceTree = "<group>"; };
 		93CA8FA91A10337B00B4B722 /* RoadPuzzle12.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle12.txt; sourceTree = "<group>"; };
+		93EFCBCF1A2142AC00A350D5 /* CharacterDescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterDescriptionView.h; sourceTree = "<group>"; };
+		93EFCBD01A2142AC00A350D5 /* CharacterDescriptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterDescriptionView.m; sourceTree = "<group>"; };
+		93EFCBD21A214CDC00A350D5 /* chinaDescription.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chinaDescription.txt; sourceTree = "<group>"; };
+		93EFCBD41A214CFB00A350D5 /* indiaDescription.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = indiaDescription.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -436,6 +443,8 @@
 				2692B36219E84D8200EE08F8 /* StageModel.m */,
 				261E658119F978B200D12027 /* MainMenuView.h */,
 				261E658219F978B200D12027 /* MainMenuView.m */,
+				93EFCBCF1A2142AC00A350D5 /* CharacterDescriptionView.h */,
+				93EFCBD01A2142AC00A350D5 /* CharacterDescriptionView.m */,
 				7F3BF4EC1A169005006E82DD /* InteriorModel.h */,
 				7F3BF4ED1A169005006E82DD /* InteriorModel.m */,
 				2692B36719E84DCF00EE08F8 /* InteriorController.h */,
@@ -482,6 +491,8 @@
 				937AE8AA19E73A4500CEB0E7 /* main.m */,
 				937AE8AC19E73A4500CEB0E7 /* SilkRoad-Prefix.pch */,
 				937AE8E519F0505B00CEB0E7 /* Dialogue.txt */,
+				93EFCBD21A214CDC00A350D5 /* chinaDescription.txt */,
+				93EFCBD41A214CFB00A350D5 /* indiaDescription.txt */,
 				7FEFF16D1A02B8D000231C13 /* stage0.txt */,
 				51948EE51A0987100075DD82 /* stage1.txt */,
 				7FD31E9D1A25304600024936 /* stage2.txt */,
@@ -608,6 +619,9 @@
 				7F3BF50B1A169038006E82DD /* Dialogue13.txt in Resources */,
 				7F3BF5111A169038006E82DD /* Dialogue44.txt in Resources */,
 				7F3BF50F1A169038006E82DD /* Dialogue42.txt in Resources */,
+				93EFCBD51A214CFB00A350D5 /* indiaDescription.txt in Resources */,
+				7F3BF5111A169038006E82DD /* Dialogue24.txt in Resources */,
+				7F3BF50F1A169038006E82DD /* Dialogue22.txt in Resources */,
 				7F3BF50A1A169038006E82DD /* Dialogue12.txt in Resources */,
 				93CA8FAE1A10337B00B4B722 /* RoadPuzzle9.txt in Resources */,
 				2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */,
@@ -650,6 +664,7 @@
 				51948EE71A0987100075DD82 /* stage5.txt in Resources */,
 				93CA8FAD1A10337B00B4B722 /* RoadPuzzle8.txt in Resources */,
 				7FD31EA41A25330600024936 /* Dialogue21.txt in Resources */,
+				93EFCBD31A214CDC00A350D5 /* chinaDescription.txt in Resources */,
 				5156A25F1A0D544000263DF2 /* correct_gong.wav in Resources */,
 				7F3BF5121A169038006E82DD /* Dialogue50.txt in Resources */,
 				937AE8B219E73A4500CEB0E7 /* Main.storyboard in Resources */,
@@ -727,6 +742,7 @@
 				26643E7D1A059FB400C50B72 /* ScalesGameController.m in Sources */,
 				93CA8F691A00412E00B4B722 /* RoadGameController.m in Sources */,
 				7FF6C79519F6F58B00CA4D19 /* House.m in Sources */,
+				93EFCBD11A2142AC00A350D5 /* CharacterDescriptionView.m in Sources */,
 				2692B36C19E84DE200EE08F8 /* InteriorView.m in Sources */,
 				937AE8E219E9A8C300CEB0E7 /* MatchingGameController.m in Sources */,
 				2692B37819E995E300EE08F8 /* ViewController.m in Sources */,
