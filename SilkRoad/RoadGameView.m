@@ -198,17 +198,12 @@
     
     if ([self.delegate checkConnectionValidBetweenRow:oldRow Col:oldCol AndRow:row Col:col]) {
       
-      NSInteger tag1, tag2;
-      if (_lastButtonPressed.tag < button.tag) {
-        tag1 = _lastButtonPressed.tag;
-        tag2 = button.tag;
-      }
-      else {
-        tag2 = _lastButtonPressed.tag;
-        tag1 = button.tag;
-      }
+      // Get the key to lookup the lines currently drawn between our nodes
+      NSString* key = [self getKeyForNodeOne:button.tag NodeTwo:_lastButtonPressed.tag];
+      
+      // The new number of connections after updating
       NSInteger numConnections = [self.delegate createConnectionBetweenRow:oldRow Col:oldCol AndRow:row Col:col];
-      NSString* key = [NSString stringWithFormat:@"%li%li", (long)tag1, (long)tag2];
+      
 
       if (numConnections == 1) {
         [button setBackgroundColor:[UIColor blackColor]];
@@ -235,30 +230,26 @@
             lineEnd.y -= _buttonSize / 2.0;
           }
         }
-        
-        UIBezierPath* path = [UIBezierPath bezierPath];
-        [path moveToPoint:lineStart];
-        [path addLineToPoint:lineEnd];
+        // Create a new line
+        CAShapeLayer* newLine = [self drawLineFromStart:lineStart ToEnd:lineEnd];
       
-        CAShapeLayer* shapeLayer = [CAShapeLayer layer];
-        shapeLayer.path = [path CGPath];
-        shapeLayer.strokeColor = [[UIColor grayColor] CGColor];
-        shapeLayer.lineWidth = 3.0;
-      
-        [self.viewForBaselineLayout.layer addSublayer:shapeLayer];
-        NSMutableArray* lines = [[NSMutableArray alloc] initWithObjects:shapeLayer, nil];
+        // Add it to the view and update our connections dictionary to keep track of it
+        [self.viewForBaselineLayout.layer addSublayer:newLine];
+        NSMutableArray* lines = [[NSMutableArray alloc] initWithObjects:newLine, nil];
         [_connections setValue:lines forKey:key];
         
       }
       if (numConnections == 2) {
         NSMutableArray* lines = [_connections valueForKey:key];
+        // Remove the first line, which is in the middle of the node
+        // so that two new lines can be added which are spaced further apart
         [lines[0] removeFromSuperlayer];
         
         CGPoint LineOneStart, LineOneEnd, LineTwoStart, LineTwoEnd;
         
         // Vertical line
         if (col == oldCol) {
-          // Set the lines to be at 1/4 and 3/4 along the button
+          // Set the lines to be at 1/4 and 3/4 along the node
           LineOneStart.x = [_lastButtonPressed center].x + _buttonSize / 4.0;
           LineOneEnd.x = [button center].x + _buttonSize / 4.0;
           LineTwoStart.x = LineOneStart.x - _buttonSize / 2.0;
@@ -296,50 +287,74 @@
           LineTwoEnd.x = LineOneEnd.x;
         }
 
-        UIBezierPath* path = [UIBezierPath bezierPath];
-        [path moveToPoint:LineOneStart];
-        [path addLineToPoint:LineOneEnd];
+        // Create and add the first line
+        CAShapeLayer* firstLine = [self drawLineFromStart:LineOneStart ToEnd:LineOneEnd];
+        [self.viewForBaselineLayout.layer addSublayer:firstLine];
+        [lines addObject:firstLine];
         
-        CAShapeLayer* shapeLayer1 = [CAShapeLayer layer];
-        shapeLayer1.path = [path CGPath];
-        shapeLayer1.strokeColor = [[UIColor grayColor] CGColor];
-        shapeLayer1.lineWidth = 3.0;
+        // Create and add the second line
+        CAShapeLayer* secondLine = [self drawLineFromStart:LineTwoStart ToEnd:LineTwoEnd];
+        [self.viewForBaselineLayout.layer addSublayer:secondLine];
+        [lines addObject:secondLine];
         
-        [self.viewForBaselineLayout.layer addSublayer:shapeLayer1];
-        [lines addObject:shapeLayer1];
-        
-        path = [UIBezierPath bezierPath];
-        [path moveToPoint:LineTwoStart];
-        [path addLineToPoint:LineTwoEnd];
-        
-        CAShapeLayer* shapeLayer2 = [CAShapeLayer layer];
-        shapeLayer2.path = [path CGPath];
-        shapeLayer2.strokeColor = [[UIColor grayColor] CGColor];
-        shapeLayer2.lineWidth = 3.0;
-        
-        [self.viewForBaselineLayout.layer addSublayer:shapeLayer2];
-        [lines addObject:shapeLayer2];
-        
-        lines = [[NSMutableArray alloc] initWithObjects:shapeLayer1, shapeLayer2, nil];
+        // Store both of these as our new array of lines associated with this pair of nodes
+        lines = [[NSMutableArray alloc] initWithObjects:firstLine, secondLine, nil];
         [_connections setValue:lines forKey:key];
       }
       if (numConnections == 0) {
-        NSMutableArray* lines = [_connections valueForKey:key];
-        for (int i = 0; i < [lines count]; i++) {
-          [lines[i] removeFromSuperlayer];
-        }
+        [self resetConnectionsForKey:key];
       }
     }
   }
 }
 
+-(CAShapeLayer*)drawLineFromStart:(CGPoint)start ToEnd:(CGPoint)end
+{
+  UIBezierPath* path = [UIBezierPath bezierPath];
+  [path moveToPoint:start];
+  [path addLineToPoint:end];
+  
+  CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+  shapeLayer.path = [path CGPath];
+  shapeLayer.strokeColor = [[UIColor grayColor] CGColor];
+  shapeLayer.lineWidth = 3.0;
+
+  return shapeLayer;
+}
+
+-(NSString*)getKeyForNodeOne:(int)nodeOneTag NodeTwo:(int)nodeTwoTag
+{
+  // Reorder the tags so that it doesn't matter if the connection is
+  // created by clicking from node one to node two or from node two to node one
+  NSInteger tag1, tag2;
+  if (nodeTwoTag < nodeOneTag) {
+    tag1 = nodeTwoTag;
+    tag2 = nodeOneTag;
+  }
+  else {
+    tag2 = nodeTwoTag;
+    tag1 = nodeOneTag;
+  }
+  
+  // Each tag is the digit of the row, then column of the first node
+  // followed by the row, col of the second node
+  return [NSString stringWithFormat:@"%li%li", (long)tag1, (long)tag2];
+}
+
+// Remove all lines between two nodes
+// key is string row, col, row, col of the nodes
+-(void)resetConnectionsForKey:(NSString*)key {
+  NSMutableArray* lines = [_connections valueForKey:key];
+  for (int i = 0; i < [lines count]; i++) {
+    [lines[i] removeFromSuperlayer];
+  }
+}
+
+// Remove all lines on the board
 -(void)resetLines
 {
   for (id key in _connections) {
-    NSMutableArray* lines = [_connections objectForKey:key];
-    for (int i = 0; i < [lines count]; i++) {
-      [lines[i] removeFromSuperlayer];
-    }
+    [self resetConnectionsForKey:key];
   }
   _connections = [[NSMutableDictionary alloc] init];
 }
