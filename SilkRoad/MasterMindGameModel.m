@@ -48,7 +48,6 @@
   const int NULL_CHAR = 100;
   _numTurns++;
   int passwordCopy[4];
-  //memcpy(passwordCopy, _currentSolution, 4*sizeof(int));
   int exactMatches = 0;
   for (int i = 0; i < 4; ++i) {
     //put this attempt in the turns array
@@ -105,7 +104,6 @@
   for (int i = 0; i < 4; i++) {
     _currentSolution[i] = mockPassword[i];
   }
-  //_currentSolution = mockPassword;
 }
 
 @end

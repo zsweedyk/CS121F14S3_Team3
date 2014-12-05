@@ -23,16 +23,6 @@
 
 @implementation MasterMindGameController
 
-//-(void)viewDidLoad
-//{
-//  [super viewDidLoad];
-////  _gameModel = [[MasterMindGameModel alloc] init];
-////  _gameView = [[MasterMindGameView alloc] initWithFrame:self.view.frame];
-////  _won = NO;
-////  _gameView.delegate = self;
-////  [self.view addSubview:_gameView];
-//}
-
 -(id)init
 {
   self = [super init];
@@ -52,6 +42,22 @@
 -(int)checkSolution:(int*)solution
 {
   return [_gameModel getMatchesFromAttempt:solution];
+}
+
+-(void)newGame
+{
+  [_gameModel makeNewSolution];
+  [_gameModel resetGame];
+}
+
+-(BOOL)hasBeenWon
+{
+  return [_gameModel hasBeenWon];
+}
+
+-(void)returnToPrevious
+{
+  [self.delegate returnToPrevious];
 }
 
 - (void)didReceiveMemoryWarning

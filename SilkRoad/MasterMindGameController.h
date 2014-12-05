@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "MasterMindGameView.h"
 
+@protocol ReturnToPreviousFromMasterMind
+-(void)returnToPrevious;
+@end
+
 @interface MasterMindGameController : UIViewController <MasterMindCheckSolution>
+
+@property (assign, nonatomic) id <ReturnToPreviousFromMasterMind> delegate;
+
+-(BOOL)hasBeenWon;
 
 @end

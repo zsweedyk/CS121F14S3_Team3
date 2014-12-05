@@ -10,6 +10,8 @@
 
 @protocol MasterMindCheckSolution
 -(int)checkSolution:(int*)solution;
+-(void)newGame;
+-(void)returnToPrevious;
 @end
 
 

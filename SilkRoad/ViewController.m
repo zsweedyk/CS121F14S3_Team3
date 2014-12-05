@@ -85,8 +85,7 @@
 {
   NSLog(@"Got to hide map VC");
   [_mapView removeFromSuperview];
-  [self goToMasterMindGame];
-  //[self displayStageController];
+  [self displayStageController];
 }
 
 - (void) jumpToStage:(int)stage
