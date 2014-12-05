@@ -38,6 +38,10 @@
 		2692B36F19E84DF100EE08F8 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36E19E84DF100EE08F8 /* MapView.m */; };
 		2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37119E84E1300EE08F8 /* ProgressView.m */; };
 		2692B37819E995E300EE08F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37719E995E300EE08F8 /* ViewController.m */; };
+		5104F3591A22A4B5008CA75C /* MasterMindGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F3571A22A4B5008CA75C /* MasterMindGameModel.m */; };
+		5104F35B1A22AAD5008CA75C /* MasterMindGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F35A1A22AAD5008CA75C /* MasterMindGameView.m */; };
+		5104F35F1A2532A7008CA75C /* MasterMindGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F35E1A2532A7008CA75C /* MasterMindGameController.m */; };
+		5104F3611A25430D008CA75C /* MasterMindGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F3601A25430D008CA75C /* MasterMindGameTests.m */; };
 		5156A25F1A0D544000263DF2 /* correct_gong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5156A25D1A0D544000263DF2 /* correct_gong.wav */; };
 		5156A2601A0D544000263DF2 /* incorrect_buzzer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5156A25E1A0D544000263DF2 /* incorrect_buzzer.wav */; };
 		5156A2621A0E8B7C00263DF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5156A2611A0E8B7C00263DF2 /* AVFoundation.framework */; };
@@ -155,6 +159,13 @@
 		2692B37119E84E1300EE08F8 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		2692B37619E995E300EE08F8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2692B37719E995E300EE08F8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		5104F3571A22A4B5008CA75C /* MasterMindGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterMindGameModel.m; sourceTree = "<group>"; };
+		5104F3581A22A4B5008CA75C /* MasterMindGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterMindGameModel.h; sourceTree = "<group>"; };
+		5104F35A1A22AAD5008CA75C /* MasterMindGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterMindGameView.m; sourceTree = "<group>"; };
+		5104F35C1A22AAEE008CA75C /* MasterMindGameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterMindGameView.h; sourceTree = "<group>"; };
+		5104F35D1A253272008CA75C /* MasterMindGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterMindGameController.h; sourceTree = "<group>"; };
+		5104F35E1A2532A7008CA75C /* MasterMindGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterMindGameController.m; sourceTree = "<group>"; };
+		5104F3601A25430D008CA75C /* MasterMindGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterMindGameTests.m; sourceTree = "<group>"; };
 		5156A25D1A0D544000263DF2 /* correct_gong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correct_gong.wav; sourceTree = "<group>"; };
 		5156A25E1A0D544000263DF2 /* incorrect_buzzer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = incorrect_buzzer.wav; sourceTree = "<group>"; };
 		5156A2611A0E8B7C00263DF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -356,6 +367,12 @@
 		937AE8A419E73A4500CEB0E7 /* SilkRoad */ = {
 			isa = PBXGroup;
 			children = (
+				5104F35C1A22AAEE008CA75C /* MasterMindGameView.h */,
+				5104F35A1A22AAD5008CA75C /* MasterMindGameView.m */,
+				5104F35D1A253272008CA75C /* MasterMindGameController.h */,
+				5104F35E1A2532A7008CA75C /* MasterMindGameController.m */,
+				5104F3581A22A4B5008CA75C /* MasterMindGameModel.h */,
+				5104F3571A22A4B5008CA75C /* MasterMindGameModel.m */,
 				937AE8AD19E73A4500CEB0E7 /* AppDelegate.h */,
 				51D9447819F8CC6E00335978 /* Character.h */,
 				51D9447919F8CC6E00335978 /* Character.m */,
@@ -438,6 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				51948EEA1A0987380075DD82 /* MatchingGameTests.m */,
+				5104F3601A25430D008CA75C /* MasterMindGameTests.m */,
 				51948EEB1A0987380075DD82 /* RoadGameTests.m */,
 				937AE8C919E73A4500CEB0E7 /* SilkRoadTests.m */,
 				26643E831A06CC1500C50B72 /* ScalesGameTests.m */,
@@ -657,10 +675,13 @@
 				937AE8AF19E73A4500CEB0E7 /* AppDelegate.m in Sources */,
 				261E658019F89ADB00D12027 /* ScalesGameCoin.m in Sources */,
 				26643E7E1A059FB400C50B72 /* ScalesGameModel.m in Sources */,
+				5104F3591A22A4B5008CA75C /* MasterMindGameModel.m in Sources */,
 				937AE8AB19E73A4500CEB0E7 /* main.m in Sources */,
 				2692B36919E84DD000EE08F8 /* InteriorController.m in Sources */,
 				2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */,
 				2692B36F19E84DF100EE08F8 /* MapView.m in Sources */,
+				5104F35B1A22AAD5008CA75C /* MasterMindGameView.m in Sources */,
+				5104F35F1A2532A7008CA75C /* MasterMindGameController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +694,7 @@
 				26643E841A06CC1500C50B72 /* ScalesGameTests.m in Sources */,
 				7FDFDB6B1A05906400D7EEE3 /* StageTests.m in Sources */,
 				937AE8CA19E73A4500CEB0E7 /* SilkRoadTests.m in Sources */,
+				5104F3611A25430D008CA75C /* MasterMindGameTests.m in Sources */,
 				7F85AA151A0590FC00B687E8 /* InteriorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

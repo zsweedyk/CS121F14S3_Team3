@@ -26,6 +26,7 @@
   MatchingGameController* _matchingGameController;
   RoadGameController* _roadGameController;
   ScalesGameController* _scalesGameController;
+  MasterMindGameController* _masterMindGameController;
 }
 @end
 
@@ -69,11 +70,11 @@
   
   _numMinigamesWon = 0;
   
-  _funExists = NO;
-  // Only the first stage does not have an associated fun minigame after the matching game
-  if (_currentStage != 0) {
-    _funExists = YES;
-  }
+  _funExists = YES;
+//  // Only the first stage does not have an associated fun minigame after the matching game
+//  if (_currentStage != 0) {
+//    _funExists = YES;
+//  }
   
   [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
   _canEnterMinigame = canEnterMinigame;
@@ -89,6 +90,7 @@
   
   _roadGameController = [[RoadGameController alloc] init];
   _scalesGameController = [[ScalesGameController alloc] init];
+  _masterMindGameController = [[MasterMindGameController alloc] init];
   
   // Initialize the InteriorView
   [self initInteriorView];
@@ -122,14 +124,18 @@
   UIViewController* minigameViewController;
   if (_numMinigamesWon == 1 && _funExists) {
     switch (_currentStage) {
+      case 0:
+        _roadGameController.delegate = self;
+        minigameViewController = _roadGameController;
+        break;
       case 1:
         _scalesGameController.delegate = self;
         minigameViewController = _scalesGameController;
         [_scalesGameController setCurrencyTo:CHINA];
         break;
       case 2:
-        _roadGameController.delegate = self;
-        minigameViewController = _roadGameController;
+        _masterMindGameController.delegate = self;
+        minigameViewController = _masterMindGameController;
         break;
       case 3:
         _scalesGameController.delegate = self;
@@ -152,11 +158,14 @@
   
   if (_numMinigamesWon == 1 && _funExists) {
     switch (_currentStage) {
+      case 0:
+        winning = [_roadGameController hasBeenWon];
+        break;
       case 1:
         winning = [_scalesGameController hasBeenWon];
         break;
       case 2:
-        winning = [_roadGameController hasBeenWon];
+        winning = [_masterMindGameController hasBeenWon];
       break;
       case 3:
         winning = [_scalesGameController hasBeenWon];
@@ -203,7 +212,7 @@
         
         // If there is a fun minigame that hasn't been won, enter it, otherwise the stage is finished
         if (_funExists) {
-          if ([_scalesGameController hasBeenWon] || [_roadGameController hasBeenWon]) {
+          if ([_scalesGameController hasBeenWon] || [_roadGameController hasBeenWon] || [_masterMindGameController hasBeenWon]) {
             [self.delegate notifyStageComplete];
           }
           else {
