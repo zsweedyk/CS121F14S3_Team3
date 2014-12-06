@@ -7,6 +7,7 @@
 //
 
 #import "MatchingGameView.h"
+#import "DataClass.h"
 
 @interface MatchingGameView()
 {
@@ -93,7 +94,7 @@
     
     [_incorrectAudio setVolume:0.0];
     [_incorrectAudio play];
-    
+
     if (correct_error) {
       NSLog(@"Error, file not found: %@",path_correct);
     }
@@ -252,12 +253,17 @@
 
 -(void)matchFound:(BOOL)match
 {
+  DataClass* gameData = [DataClass getInstance];
+  
   UIButton *leftButton = [_leftSidePhraseButtons objectAtIndex:_leftSelected - 1];
   UIButton *rightButton = [_rightSidePhraseButtons objectAtIndex:_rightSelected - 1];
   
   if (match) {
-    [_correctAudio setVolume:1.0];
-    [_correctAudio play];
+    if ([gameData soundOn]) {
+      [_correctAudio setVolume:1.0];
+      [_correctAudio play];
+    }
+    
     // Increment number of matches
     _countMatched++;
     // Mark down the match so that they will be unclickable
@@ -268,8 +274,11 @@
     [rightButton setBackgroundImage:[UIImage imageNamed:@"geodegrey"] forState:UIControlStateNormal];
   }
   else {
-    [_incorrectAudio setVolume:0.5];
-    [_incorrectAudio play];
+    if ([gameData soundOn]) {
+      [_incorrectAudio setVolume:0.5]; 
+      [_incorrectAudio play];
+    }
+
     // Reset the background color to original
     [leftButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];
     [rightButton setBackgroundImage:[UIImage imageNamed:@"geodenormal"] forState:UIControlStateNormal];

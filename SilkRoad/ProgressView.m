@@ -8,10 +8,12 @@
 
 #import "ProgressView.h"
 #import "Constants.h"
+#import "DataClass.h"
 
 @interface ProgressView()
 {
-    int _currentStage;
+  int _currentStage;
+  UIButton* _soundButton;
 }
 @end
 
@@ -40,11 +42,18 @@
     [mapButton setBackgroundImage:[UIImage imageNamed:@"mapButton"] forState:UIControlStateNormal];
     [mapButton addTarget:self action:@selector(toggleMap) forControlEvents:UIControlEventTouchUpInside];
     
+    // Add the sound button
+    CGFloat xPaddingSound = frameWidth - (frameWidth * 0.05) - 70;
+    CGFloat yPaddingSound = (frameHeight - 60) / 2;
+    _soundButton = [[UIButton alloc] initWithFrame:CGRectMake(xPaddingSound, yPaddingSound, 70, 60)];
+    [_soundButton setBackgroundImage:[UIImage imageNamed:@"menubutton_unmute"] forState:UIControlStateNormal];
+    [_soundButton addTarget:self action:@selector(toggleSound) forControlEvents:UIControlEventTouchUpInside];
+    
     // Add the node progress line
     CGFloat lineThickness = frameHeight * 0.01;
     CGFloat xPaddingLine = (2 * xPaddingMap) + 125;
     CGFloat yPaddingLine = (frameHeight - lineThickness) / 2;
-    CGFloat lineWidth = frameWidth - xPaddingLine - xPaddingMap;
+    CGFloat lineWidth = frameWidth - xPaddingLine - 70 - (2 * xPaddingMap);
     UILabel* progressLine = [[UILabel alloc] initWithFrame:CGRectMake(xPaddingLine, yPaddingLine, lineWidth, lineThickness)];
     [progressLine setBackgroundColor:[UIColor whiteColor]];
     
@@ -57,7 +66,7 @@
     CGFloat nodeYPadding = (frameHeight - nodeSize) / 2;
     
     CGFloat nodeXOffset = xPaddingLine + nodeXPadding;
-    NSLog(@"line width: %f",lineWidth);
+    NSLog(@"x padding button: %f", xPaddingSound);
     NSLog(@"space taken up by nodes: %f",numNodes*nodeSize);
     
     int citiesPerCiv = NUM_CITIES / 2;
@@ -76,6 +85,7 @@
     [self addSubview:progressBar];
     [self addSubview:progressLine];
     [self addSubview:mapButton];
+    [self addSubview:_soundButton];
     
     // Add all the nodes
     for (int i = 0; i < numNodes; i++) {
@@ -132,6 +142,21 @@
 -(void)toggleMap
 {
   [self.delegate showMap];
+}
+
+
+-(void)toggleSound
+{
+  DataClass *gameData = [DataClass getInstance];
+  
+  if ([gameData soundOn]) {
+    [_soundButton setBackgroundImage:[UIImage imageNamed:@"menubutton_mute"] forState:UIControlStateNormal];
+  }
+  else {
+    [_soundButton setBackgroundImage:[UIImage imageNamed:@"menubutton_unmute"] forState:UIControlStateNormal];
+  }
+  
+  [self.delegate switchSound];
 }
 
 @end

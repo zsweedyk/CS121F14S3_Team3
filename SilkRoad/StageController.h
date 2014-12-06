@@ -15,9 +15,10 @@
 @protocol StageProtocol
 -(void)progressToNextStage;
 -(void)showMap;
+-(void)switchSound;
 @end
 
-@interface StageController : UIViewController <ReturnToStage, ButtonPressed, NotifyStageComplete, ToggleMap>
+@interface StageController : UIViewController <ReturnToStage, ButtonPressed, NotifyStageComplete, ProgressProtocol>
 
 @property (assign, nonatomic) id <StageProtocol> delegate;
 

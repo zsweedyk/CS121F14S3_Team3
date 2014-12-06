@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "StageController.h"
 #import "MainMenuView.h"
-#import "ProgressView.h"
 #import "MapView.h"
 
 @interface ViewController : UIViewController <ShowStage, StageProtocol, MapProtocol, ReturnToPreviousFromScales,ReturnToPreviousFromMatching>

@@ -183,6 +183,11 @@ int const LAST_STAGE = 3;
   [self.delegate showMap];
 }
 
+-(void)switchSound
+{
+  [self.delegate switchSound];
+}
+
 - (void)buttonPressed:(id)button
 {
   UIButton* ourButton = (UIButton*)button;

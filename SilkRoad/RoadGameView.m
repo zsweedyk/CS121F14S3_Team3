@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
 #import "RoadGameView.h"
+#import "DataClass.h"
 
 @interface RoadGameView()
 {
@@ -180,6 +181,7 @@
 
 -(void)drawLines:(id)sender
 {
+  DataClass *gameData = [DataClass getInstance];
   UIButton* button = (UIButton*)sender;
   // Has button been clicked previously to this?
   // If not, set button to be highlighted, wait
@@ -189,7 +191,9 @@
     _waitingForPair = YES;
   }
   else {
-    [_roadSound play];
+    if ([gameData soundOn]) {
+      [_roadSound play];
+    }
     // Otherwise, see if current button and last button can be connected
     int oldRow = floor(_lastButtonPressed.tag / 10);
     int oldCol = _lastButtonPressed.tag % 10;

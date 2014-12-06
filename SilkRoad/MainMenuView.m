@@ -7,6 +7,8 @@
 //
 
 #import "MainMenuView.h"
+#import "DataClass.h"
+
 #import <AVFoundation/AVFoundation.h>
 @interface MainMenuView()
 {
@@ -38,14 +40,20 @@
                    initWithContentsOfURL:pathURL
                    error:&correct_error];
     [_introMusic setNumberOfLoops:-1];
-    [_introMusic play];
+    
+    DataClass *gameData = [DataClass getInstance];
+    if ([gameData soundOn]) {
+      [_introMusic play];
+    }
   }
   
   return self;
 }
 
 -(void)startGame {
-  [_introMusic stop];
+  if ([_introMusic isPlaying]) {
+    [_introMusic stop];
+  }
   [self.delegate showStage];
 }
 

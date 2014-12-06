@@ -12,6 +12,7 @@
 #import "ScalesGameController.h"
 #import "Constants.h"
 #import "CharacterDescriptionView.h"
+#import "DataClass.h"
 
 @interface ViewController () {
   int _currentStage;
@@ -22,6 +23,11 @@
   StageController* _stageController;
   ScalesGameController* _scalesGameController;
   RoadGameController* _roadGameController;
+  
+  AVAudioPlayer* _chinaBGMPlayer;
+  AVAudioPlayer* _indiaBGMPlayer;
+  BOOL _playingChinaBGM;
+  BOOL _playingIndiaBGM;
 }
 
 @end
@@ -46,6 +52,22 @@
   _roadGameController = [[RoadGameController alloc] init];
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:_currentStage];
+  
+  // Initialize the music
+  NSString *cpath  = [[NSBundle mainBundle] pathForResource:@"ChinaMusic" ofType:@"mp3"];
+  NSString *ipath  = [[NSBundle mainBundle] pathForResource:@"IndiaMusic" ofType:@"mp3"];
+  NSURL *cpathURL = [NSURL fileURLWithPath:cpath];
+  NSURL *ipathURL = [NSURL fileURLWithPath:ipath];
+  NSError *cerror = nil;
+  NSError *ierror = nil;
+  
+  _chinaBGMPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:cpathURL error:&cerror];
+  _indiaBGMPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:ipathURL error:&ierror];
+  [_chinaBGMPlayer setNumberOfLoops:-1];
+  [_indiaBGMPlayer setNumberOfLoops:-1];
+  
+  _playingChinaBGM = NO;
+  _playingIndiaBGM = NO;
 
   // Show Main Menu
   [self.view addSubview:_menuView];
@@ -57,8 +79,69 @@
   [self showCharacterDescription];
 }
 
+-(void)playBGMForStage:(int)stage
+{
+  // If the wrong music is playing, change it
+  // If no music is playing, play the correct one
+  // If the correct music is already playing, do nothing
+  if (stage >= NUM_CITIES / 2) {
+    if (_playingIndiaBGM) {
+      [_indiaBGMPlayer stop];
+      [_chinaBGMPlayer play];
+      
+      _playingIndiaBGM = NO;
+      _playingChinaBGM = YES;
+    }
+    else if (!(_playingChinaBGM)) {
+      [_chinaBGMPlayer play];
+      _playingChinaBGM = YES;
+    }
+  }
+  else {
+    if (_playingChinaBGM) {
+      [_chinaBGMPlayer stop];
+      [_indiaBGMPlayer play];
+  
+      _playingChinaBGM = NO;
+      _playingIndiaBGM = YES;
+    }
+    else if (!(_playingIndiaBGM)) {
+      [_indiaBGMPlayer play];
+      _playingIndiaBGM = YES;
+    }
+  }
+}
+
+-(void)switchSound
+{
+  DataClass *gameData = [DataClass getInstance];
+  
+  // Switch the sound settings
+  [gameData setSoundOn:(![gameData soundOn])];
+  
+  // Update the game to match the new settings
+  if ([gameData soundOn]) {
+    if (_playingChinaBGM) {
+      [_chinaBGMPlayer play];
+    }
+    else if (_playingIndiaBGM) {
+      [_indiaBGMPlayer play];
+    }
+  }
+  else {
+    if (_playingChinaBGM) {
+      [_chinaBGMPlayer stop];
+    }
+    else if (_playingIndiaBGM) {
+      [_indiaBGMPlayer stop];
+    }
+  }
+}
+
 -(void)showCharacterDescription
 {
+  [self playBGMForStage:_currentStage];
+  
   [self.view addSubview:_characterView];
 }
 
@@ -87,6 +170,7 @@
   NSLog(@"inButtonPressed MV fo stage %d", stage);
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:stage];
+  [self playBGMForStage:stage];
   [self hideMap];
 }
 
@@ -133,12 +217,15 @@
   [_mapView moveToNextStage];
   
   // If we are at the midpoint, display a character description of the new character
+  //    and switch the music
   if (_currentStage == NUM_CITIES / 2) {
     [_characterView setToCivilization:CHINA];
     [self showCharacterDescription];
   } else {
     [self displayStageController];
   }
+  
+  [self playBGMForStage:_currentStage];
 }
 
 @end
