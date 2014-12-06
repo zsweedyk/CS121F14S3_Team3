@@ -122,7 +122,7 @@ int const LAST_STAGE = 3;
   // Set the correct interior
   [_interiorController setStageTo:_currentStage andInteriorTo:interior hasVisitedHouses:[_stageModel visitedAllHouses]];
   [_interiorController progressDialogue];
-  [self presentViewController:_interiorController animated:YES completion: nil];
+  [self presentViewController:_interiorController animated:NO completion: nil];
 }
 
 -(void)returnToStage

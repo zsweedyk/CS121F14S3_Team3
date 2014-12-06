@@ -12,6 +12,7 @@
 #import "ScalesGameController.h"
 #import "Constants.h"
 #import "CharacterDescriptionView.h"
+#import "MasterMindGameController.h"
 
 @interface ViewController () {
   int _currentStage;
@@ -22,6 +23,7 @@
   StageController* _stageController;
   ScalesGameController* _scalesGameController;
   RoadGameController* _roadGameController;
+  MasterMindGameController* _masterMindGameController;
 }
 
 @end
@@ -46,6 +48,7 @@
   _roadGameController = [[RoadGameController alloc] init];
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:_currentStage];
+  _masterMindGameController = [[MasterMindGameController alloc] init];
   
   // Show Main Menu
   [self.view addSubview:_menuView];
@@ -108,7 +111,13 @@
   [self presentViewController:_roadGameController animated:YES completion: nil];
 }
 
--(void)didReceiveMemoryWarning
+-(void)goToMasterMindGame
+{
+  //_masterMindGameController.delegate = self;
+  [self presentViewController:_masterMindGameController animated:YES completion: nil];
+}
+
+- (void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
