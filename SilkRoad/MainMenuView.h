@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ShowStage
--(void)showStage;
+@protocol ExitMenu
+-(void)exitMenu;
 @end
 
 @interface MainMenuView : UIView
 
-@property (assign, nonatomic) id <ShowStage> delegate;
+@property (assign, nonatomic) id <ExitMenu> delegate;
 
 @end

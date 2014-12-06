@@ -9,6 +9,7 @@
 #import "StageController.h"
 #import "StageView.h"
 #import "StageModel.h"
+#import "Constants.h"
 
 int const NUM_HOUSES = 4;
 int const LAST_STAGE = 3;
@@ -49,8 +50,9 @@ int const LAST_STAGE = 3;
 -(void)setStageTo:(int)stage
 {
   _currentStage = stage;
-  _isIndia = stage == 0 || stage == 1;
-  _isChina = stage == 2 || stage == 3;
+  // The switch between civilizations is at the midpoint of the stages
+  _isIndia = stage < NUM_CITIES / 2;
+  _isChina = !_isIndia;
 }
 
 -(void)viewDidLoad
@@ -68,25 +70,24 @@ int const LAST_STAGE = 3;
   _progressView = [[ProgressView alloc] initWithFrame:progressFrame andCurrentStage:_currentStage];
   _progressView.delegate = self;
 
-  // The stage view will take up the same space
-  CGRect stageFrame = CGRectMake(0, 0, frameWidth, frameHeight);
-
+  // Create the stage model
   _stageModel = [[StageModel alloc] initForStage:_currentStage];
   
+  // The stage view will take up the same space
+  CGRect stageFrame = CGRectMake(0, 0, frameWidth, frameHeight);
   
-  if (_currentStage == 0) {
-      UIImage* india1 = [UIImage imageNamed:@"india2"];
-      _stageView = [[StageView alloc] initWithFrame:stageFrame background:india1];
-  } else if (_currentStage == 1) {
-    UIImage* india2 = [UIImage imageNamed:@"india1"];
-    _stageView = [[StageView alloc] initWithFrame:stageFrame background:india2];
-  } else if (_currentStage == 2) {
-    UIImage* china1 = [UIImage imageNamed:@"china2"];
-    _stageView = [[StageView alloc] initWithFrame:stageFrame background:china1];
-  } else if (_currentStage == 3) {
-    UIImage* china2 = [UIImage imageNamed:@"china1"];
-    _stageView = [[StageView alloc] initWithFrame:stageFrame background:china2];
+  // Background images index from 1, are in the format india1 or china1
+  UIImage* stageBackground;
+  if (_isIndia) {
+    stageBackground = [UIImage imageNamed:[NSString stringWithFormat:@"india%i", _currentStage + 1]];
+  } else {
+    // The current stage is 2 when you first reach China. Subtract off the midpoint to get china1, china2, etc.
+    stageBackground = [UIImage imageNamed:[NSString stringWithFormat:@"china%i", (_currentStage - NUM_CITIES / 2) + 1]];
   }
+  
+  // Create the stage view
+  _stageView = [[StageView alloc] initWithFrame:stageFrame background:stageBackground];
+  
   [_stageView loadNewStageWithHouses:[_stageModel getHouses]];
   
   _stageView.delegate = self;
@@ -97,8 +98,9 @@ int const LAST_STAGE = 3;
   _hasBeenLoaded = NO;
 }
 
-//We need the following hack since we can present another view controller in view did load
-- (void)viewDidAppear:(BOOL)animated
+// Display the village elder with information about the stage when it is first visited
+// Set _hasBeenLoaded so this doesn't appear when the user returns from an interior
+-(void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
   
@@ -108,38 +110,7 @@ int const LAST_STAGE = 3;
   }
 }
 
-- (void)initializeHousesForStage:(int)stage
-{
-  _houses =  [[NSMutableArray alloc] init];
-
-  NSArray* houseXCords = @[@300, @500, @300, @500];
-  NSArray* houseYCords = @[@300, @500, @300, @500];
-  NSArray* houseLabels = @[@"Village Elder", @"Cobbler", @"Butcher", @"Farmer"];
-
-
-  for (int i = 0; i < NUM_HOUSES; i++) {
-    House* newHouse = [House alloc];
-    newHouse.visited = NO;
-    newHouse.label = [houseLabels objectAtIndex:i];
-    newHouse.xCord = (int)[houseXCords objectAtIndex:i];
-    newHouse.yCord = (int)[houseYCords objectAtIndex:i];
-    newHouse.tag = i;
-      
-    UIImage* house;
-    
-    if (_isIndia) {
-      house = [UIImage imageNamed:@"IndiaHouse_400"];
-    }
-    else if (_isChina) {
-      house = [UIImage imageNamed:@"ChinaHouse400_250"];
-    }
-    
-    newHouse.image = house;
-    [_houses addObject:newHouse];
-  }
-}
-
-- (void)displayInteriorControllerForInterior:(int)interior
+-(void)displayInteriorControllerForInterior:(int)interior
 {
   // Initialize the InteriorController
   _interiorController = [[InteriorController alloc] init];
@@ -154,22 +125,21 @@ int const LAST_STAGE = 3;
   [self presentViewController:_interiorController animated:NO completion: nil];
 }
 
-- (void)returnToStage
+-(void)returnToStage
 {
   [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-- (void)didReceiveMemoryWarning
+-(void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
 
 
-- (void)notifyStageComplete
+-(void)notifyStageComplete
 {
   // Let ViewController know the stage has been finished
-  NSLog(@"Stage complete!");
   if (_currentStage != LAST_STAGE) {
     [self.delegate progressToNextStage];
   }
@@ -178,12 +148,12 @@ int const LAST_STAGE = 3;
   }
 }
 
-- (void)showMap
+-(void)showMap
 {
   [self.delegate showMap];
 }
 
-- (void)buttonPressed:(id)button
+-(void)buttonPressed:(id)button
 {
   UIButton* ourButton = (UIButton*)button;
   int tag = (int)ourButton.tag;

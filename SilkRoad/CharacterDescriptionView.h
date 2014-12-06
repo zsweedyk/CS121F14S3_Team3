@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol Continue
+@protocol HideCharacterDescription
 -(void)hideCharacterDescription;
 @end
 
 @interface CharacterDescriptionView : UIView
 
-@property (assign, nonatomic) id <Continue> delegate;
+@property (assign, nonatomic) id <HideCharacterDescription> delegate;
 
 
 -(id)initWithFrame:(CGRect)frame;

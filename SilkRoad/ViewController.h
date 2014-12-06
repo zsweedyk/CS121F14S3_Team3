@@ -11,8 +11,9 @@
 #import "MainMenuView.h"
 #import "ProgressView.h"
 #import "MapView.h"
+#import "CharacterDescriptionView.h"
 
-@interface ViewController : UIViewController <ShowStage, StageProtocol, MapProtocol, ReturnToPreviousFromScales,ReturnToPreviousFromMatching>
+@interface ViewController : UIViewController <ExitMenu, StageProtocol, MapProtocol, ReturnToPreviousFromScales, ReturnToPreviousFromMatching, HideCharacterDescription>
 
 -(void)hideMap;
 

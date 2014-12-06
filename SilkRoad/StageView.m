@@ -17,8 +17,6 @@
 
 @implementation StageView
 
-const CGFloat tempButtonSize = 100;
-
 //Creates the view and adds the background
 -(id)initWithFrame:(CGRect)frame background:(UIImage*)background
 {

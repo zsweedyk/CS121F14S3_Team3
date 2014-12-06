@@ -115,6 +115,7 @@
 		93EFCBD11A2142AC00A350D5 /* CharacterDescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EFCBD01A2142AC00A350D5 /* CharacterDescriptionView.m */; };
 		93EFCBD31A214CDC00A350D5 /* chinaDescription.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93EFCBD21A214CDC00A350D5 /* chinaDescription.txt */; };
 		93EFCBD51A214CFB00A350D5 /* indiaDescription.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93EFCBD41A214CFB00A350D5 /* indiaDescription.txt */; };
+		93EFCBE61A3004DB00A350D5 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EFCBE51A3004DB00A350D5 /* Node.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,6 +254,8 @@
 		93EFCBD01A2142AC00A350D5 /* CharacterDescriptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterDescriptionView.m; sourceTree = "<group>"; };
 		93EFCBD21A214CDC00A350D5 /* chinaDescription.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chinaDescription.txt; sourceTree = "<group>"; };
 		93EFCBD41A214CFB00A350D5 /* indiaDescription.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = indiaDescription.txt; sourceTree = "<group>"; };
+		93EFCBE41A3004DB00A350D5 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		93EFCBE51A3004DB00A350D5 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,6 +423,8 @@
 				937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */,
 				93CA8F631A00412E00B4B722 /* RoadGameController.h */,
 				93CA8F641A00412E00B4B722 /* RoadGameController.m */,
+				93EFCBE41A3004DB00A350D5 /* Node.h */,
+				93EFCBE51A3004DB00A350D5 /* Node.m */,
 				93CA8F651A00412E00B4B722 /* RoadGameModel.h */,
 				93CA8F661A00412E00B4B722 /* RoadGameModel.m */,
 				93CA8F671A00412E00B4B722 /* RoadGameView.h */,
@@ -677,6 +682,7 @@
 				26643E7E1A059FB400C50B72 /* ScalesGameModel.m in Sources */,
 				5104F3591A22A4B5008CA75C /* MasterMindGameModel.m in Sources */,
 				937AE8AB19E73A4500CEB0E7 /* main.m in Sources */,
+				93EFCBE61A3004DB00A350D5 /* Node.m in Sources */,
 				2692B36919E84DD000EE08F8 /* InteriorController.m in Sources */,
 				2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */,
 				2692B36F19E84DF100EE08F8 /* MapView.m in Sources */,

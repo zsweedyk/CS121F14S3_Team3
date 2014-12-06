@@ -32,7 +32,7 @@
 
 @implementation InteriorController
 
-- (void)setStageTo:(int)stage andInteriorTo:(int)interior hasVisitedHouses:(BOOL)canEnterMinigame
+-(void)setStageTo:(int)stage andInteriorTo:(int)interior hasVisitedHouses:(BOOL)canEnterMinigame
 {
   _currentStage = stage;
   _currentInterior = interior;
@@ -80,7 +80,7 @@
   _canEnterMinigame = canEnterMinigame;
 }
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
   [super viewDidLoad];
   
@@ -96,7 +96,7 @@
   [self initInteriorView];
 }
 
-- (void)initInteriorView
+-(void)initInteriorView
 {
   // Get stage frame dimensions
   CGRect frame = self.view.frame;
@@ -118,7 +118,7 @@
   [self.view addSubview:_interiorView];
 }
 
-- (void)enterMinigame
+-(void)enterMinigame
 {
   // Configure MinigameController to report any changes to InteriorController
   UIViewController* minigameViewController;
@@ -152,7 +152,7 @@
   [self presentViewController:minigameViewController animated:YES completion: nil];
 }
 
-- (void)returnToPrevious
+-(void)returnToPrevious
 {
   BOOL winning = NO;
   
@@ -192,7 +192,7 @@
   }
 }
 
-- (void)leaveInterior
+-(void)leaveInterior
 {
   // Tell StageController that the interaction in the interior is done
   [self.delegate returnToStage];
@@ -238,10 +238,9 @@
   }
 }
 
-- (void)didReceiveMemoryWarning
+-(void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
 }
 
 @end

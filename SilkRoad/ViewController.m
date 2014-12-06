@@ -50,24 +50,24 @@
   [_stageController setStageTo:_currentStage];
   _masterMindGameController = [[MasterMindGameController alloc] init];
   
-  //[self goToMasterMindGame];
-  
   // Show Main Menu
-  [self.view addSubview:_characterView];
-  //[self.view addSubview:_menuView];
+  [self.view addSubview:_menuView];
 }
 
--(void)showStage
+// When start game is clicked, remove the main menu screen and show character description
+-(void)exitMenu
 {
   [_menuView removeFromSuperview];
   [self showCharacterDescription];
 }
 
+// Called either after main menu or at mid point of stages
 -(void)showCharacterDescription
 {
   [self.view addSubview:_characterView];
 }
 
+// Remove character description and display the stage
 -(void)hideCharacterDescription
 {
   [_characterView removeFromSuperview];
@@ -76,45 +76,42 @@
 
 -(void)showMap
 {
-  NSLog(@"In showMap");
   [self dismissViewControllerAnimated:NO completion:nil];
   [self.view addSubview:_mapView];
 }
 
-- (void) hideMap
+-(void)hideMap
 {
-  NSLog(@"Got to hide map VC");
   [_mapView removeFromSuperview];
   [self displayStageController];
 }
 
-- (void) jumpToStage:(int)stage
+-(void)jumpToStage:(int)stage
 {
-  NSLog(@"inButtonPressed MV fo stage %d", stage);
   _stageController = [[StageController alloc] init];
   [_stageController setStageTo:stage];
   [self hideMap];
 }
 
-- (void)returnToPrevious
+-(void)returnToPrevious
 {
   [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-- (void)goToScalesGame
+-(void)goToScalesGame
 {
   _scalesGameController.delegate = self;
   [_scalesGameController setCurrencyTo:CHINA];
   [self presentViewController:_scalesGameController animated:YES completion: nil];
 }
 
-- (void)goToRoadGame
+-(void)goToRoadGame
 {
   _roadGameController.delegate = self;
   [self presentViewController:_roadGameController animated:YES completion: nil];
 }
 
-- (void)goToMasterMindGame
+-(void)goToMasterMindGame
 {
   //_masterMindGameController.delegate = self;
   [self presentViewController:_masterMindGameController animated:YES completion: nil];
@@ -126,13 +123,11 @@
   // Dispose of any resources that can be recreated.
 }
 
-- (void)displayStageController
+-(void)displayStageController
 {
   // Configure StageController to report any changes to ViewController
   _stageController.delegate = self;
-  // Create the navigation controller and present it.
   [self presentViewController:_stageController animated:YES completion: nil];
-  //navigationController.navigationBar.hidden = YES;
 }
 
 

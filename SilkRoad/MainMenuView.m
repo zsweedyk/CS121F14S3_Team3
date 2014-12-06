@@ -30,7 +30,7 @@
 }
 
 -(void)startGame {
-  [self.delegate showStage];
+  [self.delegate exitMenu];
 }
 
 @end

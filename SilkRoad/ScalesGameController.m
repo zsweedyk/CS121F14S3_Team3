@@ -21,7 +21,7 @@
 
 @implementation ScalesGameController
 
-- (id)init
+-(id)init
 {
   self = [super init];
   
@@ -37,13 +37,13 @@
   return self;
 }
 
-- (void)setCurrencyTo:(int)civ
+-(void)setCurrencyTo:(int)civ
 {
   [_gameView setCurrencyForCiv:civ];
   [self startNewGame];
 }
 
-- (void)startNewGame
+-(void)startNewGame
 {
   _hasBeenWon = NO;
   
@@ -51,7 +51,7 @@
   [_gameView newGameWithCoins:[_gameModel getCoinsInTray]];
 }
 
-- (void)moveCoin:(ScalesGameCoin*)coin toPlace:(int)placeToMove
+-(void)moveCoin:(ScalesGameCoin*)coin toPlace:(int)placeToMove
 {
   [_gameModel moveCoin:coin toPlace:placeToMove];
   
@@ -61,7 +61,7 @@
   }
 }
 
-- (void)weighCoinsInScale
+-(void)weighCoinsInScale
 {
   int weighResult = [_gameModel checkScales];
   
@@ -77,29 +77,28 @@
   }
 }
 
-- (void)checkIfCoinFake:(ScalesGameCoin*)coin
+-(void)checkIfCoinFake:(ScalesGameCoin*)coin
 {
   BOOL fakeCoin = [_gameModel checkIfCoinFake:coin];
   BOOL canStillGuess = [_gameModel canStillGuess];
   [_gameView foundFakeCoin:fakeCoin andCanGuess:canStillGuess];
 }
 
-- (void)exitScalesGame:(BOOL)won
+-(void)exitScalesGame:(BOOL)won
 {
   // Tell InteriorController that the interaction in the minigame is done
   _hasBeenWon = won;
   [self.delegate returnToPrevious];
 }
 
-- (BOOL)hasBeenWon
+-(BOOL)hasBeenWon
 {
   return _hasBeenWon;
 }
 
-- (void)didReceiveMemoryWarning
+-(void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
 }
 
 @end
