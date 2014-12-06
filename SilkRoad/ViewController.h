@@ -10,9 +10,11 @@
 #import "StageController.h"
 #import "MainMenuView.h"
 #import "ProgressView.h"
+#import "CreditsView.h"
 #import "MapView.h"
+#import "CharacterDescriptionView.h"
 
-@interface ViewController : UIViewController <ShowStage, StageProtocol, MapProtocol, ReturnToPreviousFromScales,ReturnToPreviousFromMatching>
+@interface ViewController : UIViewController <MainMenuProtocol, CreditsProtocol, StageProtocol, MapProtocol, ReturnToPreviousFromScales,ReturnToPreviousFromMatching, HideCharacterDescription>
 
 -(void)hideMap;
 

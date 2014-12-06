@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ShowStage
--(void)showStage;
+@protocol MainMenuProtocol
+-(void)showCredits;
+-(void)exitMenu;
 @end
 
 @interface MainMenuView : UIView
 
-@property (assign, nonatomic) id <ShowStage> delegate;
+@property (assign, nonatomic) id <MainMenuProtocol> delegate;
 
 @end

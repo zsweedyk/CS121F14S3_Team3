@@ -26,12 +26,13 @@
   MatchingGameController* _matchingGameController;
   RoadGameController* _roadGameController;
   ScalesGameController* _scalesGameController;
+  MasterMindGameController* _masterMindGameController;
 }
 @end
 
 @implementation InteriorController
 
-- (void)setStageTo:(int)stage andInteriorTo:(int)interior hasVisitedHouses:(BOOL)canEnterMinigame
+-(void)setStageTo:(int)stage andInteriorTo:(int)interior hasVisitedHouses:(BOOL)canEnterMinigame
 {
   _currentStage = stage;
   _currentInterior = interior;
@@ -78,7 +79,7 @@
   _canEnterMinigame = canEnterMinigame;
 }
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
   [super viewDidLoad];
   
@@ -88,12 +89,13 @@
   
   _roadGameController = [[RoadGameController alloc] init];
   _scalesGameController = [[ScalesGameController alloc] init];
+  _masterMindGameController = [[MasterMindGameController alloc] init];
   
   // Initialize the InteriorView
   [self initInteriorView];
 }
 
-- (void)initInteriorView
+-(void)initInteriorView
 {
   // Get stage frame dimensions
   CGRect frame = self.view.frame;
@@ -115,12 +117,16 @@
   [self.view addSubview:_interiorView];
 }
 
-- (void)enterMinigame
+-(void)enterMinigame
 {
   // Configure MinigameController to report any changes to InteriorController
   UIViewController* minigameViewController;
   if (_numMinigamesWon == 1 && _funExists) {
     switch (_currentStage) {
+      case 0:
+        _roadGameController.delegate = self;
+        minigameViewController = _roadGameController;
+        break;
       case 1:
         _scalesGameController.delegate = self;
         minigameViewController = _scalesGameController;
@@ -145,12 +151,15 @@
   [self presentViewController:minigameViewController animated:YES completion: nil];
 }
 
-- (void)returnToPrevious
+-(void)returnToPrevious
 {
   BOOL winning = NO;
   
   if (_numMinigamesWon == 1 && _funExists) {
     switch (_currentStage) {
+      case 0:
+        winning = [_roadGameController hasBeenWon];
+        break;
       case 1:
         winning = [_scalesGameController hasBeenWon];
         break;
@@ -182,7 +191,7 @@
   }
 }
 
-- (void)leaveInterior
+-(void)leaveInterior
 {
   // Tell StageController that the interaction in the interior is done
   [self.delegate returnToStage];
@@ -202,7 +211,7 @@
         
         // If there is a fun minigame that hasn't been won, enter it, otherwise the stage is finished
         if (_funExists) {
-          if ([_scalesGameController hasBeenWon] || [_roadGameController hasBeenWon]) {
+          if ([_scalesGameController hasBeenWon] || [_roadGameController hasBeenWon] || [_masterMindGameController hasBeenWon]) {
             [self.delegate notifyStageComplete];
           }
           else {
@@ -228,10 +237,9 @@
   }
 }
 
-- (void)didReceiveMemoryWarning
+-(void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
 }
 
 @end
