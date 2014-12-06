@@ -1,4 +1,4 @@
-Village Elder, 900, 700, ChinaHouse400_250, 0
-Cobbler, 500, 550, ChinaHouse400_250, 1
-Butcher, 150, 800, ChinaHouse400_250, 2
-Farmer, 1000, 900, ChinaHouse400_250, 3
+Village Elder, 200, 450, IndiaHouse_400, 0
+Cobbler, 1025, 765, IndiaHouse_400, 1
+Butcher, 550, 600, IndiaHouse_400, 2
+Farmer, 85, 865, IndiaHouse_400, 3

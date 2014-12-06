@@ -37,7 +37,7 @@
   _currentStage = stage;
   _currentInterior = interior;
   
-  if (_currentStage == 0 || _currentStage == 1) {
+  if (_currentStage <= LAST_INDIA_STAGE) {
     [_interiorView setInteriorBGTo:@"mohenjodaro.jpg"];
     if (_currentInterior == 0 || _currentInterior == 4) {
       [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"IndianMan1"]];
@@ -51,8 +51,7 @@
     else if (_currentInterior == 3) {
       [_interiorView setCharacterTo:@"Farmer" withImage:[UIImage imageNamed:@"IndianMan2"]];
     }
-  }
-  else if (_currentStage == 2 || _currentStage == 3) {
+  } else {
     [_interiorView setInteriorBGTo:@"chinabg"];
     if (_currentInterior == 0 || _currentInterior == 4) {
       [_interiorView setCharacterTo:@"Village Elder" withImage:[UIImage imageNamed:@"ChineseMan1"]];
@@ -70,11 +69,11 @@
   
   _numMinigamesWon = 0;
   
-  _funExists = YES;
-//  // Only the first stage does not have an associated fun minigame after the matching game
-//  if (_currentStage != 0) {
-//    _funExists = YES;
-//  }
+  _funExists = NO;
+  // The constants file has an array stating which stages have fun
+  if (STAGES_WITH_FUN[_currentStage] == 1) {
+    _funExists = YES;
+  }
   
   [_interiorModel initForStage:_currentStage andHouse:_currentInterior];
   _canEnterMinigame = canEnterMinigame;
@@ -133,11 +132,11 @@
         minigameViewController = _scalesGameController;
         [_scalesGameController setCurrencyTo:CHINA];
         break;
-      case 2:
-        _masterMindGameController.delegate = self;
-        minigameViewController = _masterMindGameController;
+      case 4:
+        _roadGameController.delegate = self;
+        minigameViewController = _roadGameController;
         break;
-      case 3:
+      case 5:
         _scalesGameController.delegate = self;
         minigameViewController = _scalesGameController;
         [_scalesGameController setCurrencyTo:INDIA];
@@ -164,10 +163,10 @@
       case 1:
         winning = [_scalesGameController hasBeenWon];
         break;
-      case 2:
-        winning = [_masterMindGameController hasBeenWon];
+      case 4:
+        winning = [_roadGameController hasBeenWon];
       break;
-      case 3:
+      case 5:
         winning = [_scalesGameController hasBeenWon];
         break;
     }

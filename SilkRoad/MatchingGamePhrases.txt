@@ -1,4 +1,8 @@
 ("Number of characters", ">100"), ("Number of tones", "4"), ("Number of pronouns", "3")
 ("Most common coin in China", "Wushu"), ("Most valuable currency", "Gold"), ("Number of coins made in 100 years", "28 billion")
+("Right to rule given by the gods", "Mandate of Heaven"), ("Ruler of China with final say over all decisions", "Emperor"), ("Test to enter government employment", "Civil Service Exam"), ("Geographical Division with some autonomy", "Province")
+("Trading Route between China and the West", "Silk Road"), ("Silty area giving the Yellow River its name", "Loess Plateau"), ("Farming on the side of a mountain or hill", "Terrace Farming")
 ("Sanskrit", "Language of the well-educated"), ("Vedas", "Religious text of Hinduism"), ("Panini", "Indian grammarian who standardized the language"), ("Prakrit", "Any language dialect in India")
 ("Metals used", "Gold and Silver"), ("Common names of coins", "Dinara & Suvarna"), ("Trading without coins", "Bartering")
+("God worshipped by the ruling elite", "Vishnu"), ("Secondary Religion of India", "Buddhism"), ("Letting go of pleasure and suffering", "Nirvana"), ("System where you are born into a certain level of society", "Caste system")
+("Large body of land seperated from the rest of Asia", "Subcontinent"), ("Large amount of rain in the summer", "Monsoon"), ("Large Mountain range between China and India", "Himalayas")

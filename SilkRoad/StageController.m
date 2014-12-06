@@ -12,7 +12,6 @@
 #import "Constants.h"
 
 int const NUM_HOUSES = 4;
-int const LAST_STAGE = 3;
 
 @interface StageController ()
 {
@@ -47,12 +46,17 @@ int const LAST_STAGE = 3;
   return image;
 }
 
+
 -(void)setStageTo:(int)stage
 {
   _currentStage = stage;
-  // The switch between civilizations is at the midpoint of the stages
-  _isIndia = stage < NUM_CITIES / 2;
-  _isChina = !_isIndia;
+  if (stage <= LAST_INDIA_STAGE) {
+    _isIndia = YES;
+    _isChina = NO;
+  } else {
+    _isIndia = NO;
+    _isChina = YES;
+  }
 }
 
 -(void)viewDidLoad
@@ -75,14 +79,14 @@ int const LAST_STAGE = 3;
   
   // The stage view will take up the same space
   CGRect stageFrame = CGRectMake(0, 0, frameWidth, frameHeight);
-  
+
   // Background images index from 1, are in the format india1 or china1
   UIImage* stageBackground;
   if (_isIndia) {
-    stageBackground = [UIImage imageNamed:[NSString stringWithFormat:@"india%i", _currentStage + 1]];
+    stageBackground = [UIImage imageNamed:[NSString stringWithFormat:@"india%i", (_currentStage % 3) + 1]];
   } else {
     // The current stage is 2 when you first reach China. Subtract off the midpoint to get china1, china2, etc.
-    stageBackground = [UIImage imageNamed:[NSString stringWithFormat:@"china%i", (_currentStage - NUM_CITIES / 2) + 1]];
+    stageBackground = [UIImage imageNamed:[NSString stringWithFormat:@"china%i", ((_currentStage - NUM_CITIES / 2) % 3) + 1]];
   }
   
   // Create the stage view
