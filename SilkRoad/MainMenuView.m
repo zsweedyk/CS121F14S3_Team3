@@ -37,7 +37,7 @@
 }
 
 -(void)startGame {
-  [self.delegate showStage];
+  [self.delegate exitMenu];
 }
 
 -(void)showCredits {

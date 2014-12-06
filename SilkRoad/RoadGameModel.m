@@ -7,25 +7,7 @@
 //
 
 #import "RoadGameModel.h"
-
-@interface Node : NSObject
-  @property int numConnections;
-  @property int origNumConnections;
-  @property NSMutableDictionary* connections;
-@end
-
-@implementation Node
-
-- (Node*)initWithNumConnections:(int)numConnections;
-{
-  Node* newNode = [[Node alloc] init];
-  newNode.numConnections = numConnections;
-  newNode.origNumConnections = numConnections;
-  newNode.connections = [[NSMutableDictionary alloc] init];
-  return newNode;
-}
-
-@end
+#import "Node.h"
 
 @interface RoadGameModel()
 {

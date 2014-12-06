@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @protocol MainMenuProtocol
--(void)showStage;
 -(void)showCredits;
+-(void)exitMenu;
 @end
 
 @interface MainMenuView : UIView

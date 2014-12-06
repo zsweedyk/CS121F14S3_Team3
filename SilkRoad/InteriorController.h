@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "InteriorView.h"
 #import "MatchingGameController.h"
+#import "MasterMindGameController.h"
 #import "ScalesGameController.h"
 
 @protocol ReturnToStage
@@ -19,7 +20,7 @@
 -(void)notifyStageComplete;
 @end
 
-@interface InteriorController : UIViewController <LeaveInterior, ReturnToPreviousFromMatching, ReturnToPreviousFromScales, EnterMinigame, ProgressDialogue>
+@interface InteriorController : UIViewController <LeaveInterior, ReturnToPreviousFromMatching, ReturnToPreviousFromScales, ReturnToPreviousFromMasterMind, EnterMinigame, ProgressDialogue>
 
 @property (assign, nonatomic) id <ReturnToStage, NotifyStageComplete> delegate;
 

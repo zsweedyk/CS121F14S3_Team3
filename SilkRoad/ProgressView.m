@@ -11,7 +11,7 @@
 
 @interface ProgressView()
 {
-    int _currentStage;
+  int _currentStage;
 }
 @end
 
@@ -89,7 +89,7 @@
           [node setImage:[UIImage imageNamed:@"starflow"]];
         }
         else {
-          [node setImage:[UIImage imageNamed:@"starnormal"]];          
+          [node setImage:[UIImage imageNamed:@"starnormal"]];
         }
       }
       // If it's the index of current, it's currently visited
