@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ExitMenu
+@protocol MainMenuProtocol
+-(void)showCredits;
 -(void)exitMenu;
 @end
 
 @interface MainMenuView : UIView
 
-@property (assign, nonatomic) id <ExitMenu> delegate;
+@property (assign, nonatomic) id <MainMenuProtocol> delegate;
 
 @end
