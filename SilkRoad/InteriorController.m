@@ -124,22 +124,31 @@
   if (_numMinigamesWon == 1 && _funExists) {
     switch (_currentStage) {
       case 0:
-        _roadGameController.delegate = self;
-        minigameViewController = _roadGameController;
+        _masterMindGameController.delegate = self;
+        minigameViewController = _masterMindGameController;
         break;
       case 1:
         _scalesGameController.delegate = self;
         minigameViewController = _scalesGameController;
         [_scalesGameController setCurrencyTo:CHINA];
         break;
-      case 4:
+      case 3:
         _roadGameController.delegate = self;
         minigameViewController = _roadGameController;
+        break;
+      case 4:
+        _masterMindGameController.delegate = self;
+        minigameViewController = _masterMindGameController;
         break;
       case 5:
         _scalesGameController.delegate = self;
         minigameViewController = _scalesGameController;
         [_scalesGameController setCurrencyTo:INDIA];
+        break;
+      case 7:
+        _roadGameController.delegate = self;
+        minigameViewController = _roadGameController;
+        break;
     }
   }
   else {
@@ -158,16 +167,22 @@
   if (_numMinigamesWon == 1 && _funExists) {
     switch (_currentStage) {
       case 0:
-        winning = [_roadGameController hasBeenWon];
+        winning = [_masterMindGameController hasBeenWon];
         break;
       case 1:
         winning = [_scalesGameController hasBeenWon];
         break;
-      case 4:
+      case 3:
         winning = [_roadGameController hasBeenWon];
-      break;
+        break;
+      case 4:
+        winning = [_masterMindGameController hasBeenWon];
+        break;
       case 5:
         winning = [_scalesGameController hasBeenWon];
+        break;
+      case 7:
+        winning = [_roadGameController hasBeenWon];
         break;
     }
   }
