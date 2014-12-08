@@ -52,6 +52,10 @@
   }
 }
 
+-(void)setMapBackgroundForCivilization:(int)civilization
+{
+  [_gameView setBackgroundForCivilization:civilization];
+}
 
 -(BOOL)checkConnectionValidBetweenRow:(int)row1 Col:(int)col1 AndRow:(int)row2 Col:(int)col2
 {

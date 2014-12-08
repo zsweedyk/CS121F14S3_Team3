@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "RoadGameView.h"
+#import "Constants.h"
 
 @interface RoadGameView()
 {
@@ -37,9 +38,6 @@
     // The grid is 9 x 9, so there are 10 spaces, dividing the frame into 19
     _buttonSize = MIN(_frameWidth / 19.0, _frameHeight * 0.90 / 19.0);
     
-    // Set the minigame background to be a map of China
-    [self setBackground];
-    
     [self initializeGridWithFrame:frame];
     
     // Each click event needs to be paired with another, as the player is trying to
@@ -61,10 +59,15 @@
   return self;
 }
 
--(void)setBackground
+-(void)setBackgroundForCivilization:(int)civilization
 {
   // Setup a new context with the correct size
-  UIImage* backgroundMap = [UIImage imageNamed:@"China_blank_map-1.png"];
+  UIImage* backgroundMap;
+  if (civilization == INDIA) {
+    backgroundMap = [UIImage imageNamed:@"AsiaMapBlank.png"];
+  } else {
+    backgroundMap = [UIImage imageNamed:@"ChinaBlankMap.png"];
+  }
   UIGraphicsBeginImageContextWithOptions(CGSizeMake(_frameWidth, _frameHeight), YES, 0.0);
   CGContextRef context = UIGraphicsGetCurrentContext();
   UIGraphicsPushContext(context);

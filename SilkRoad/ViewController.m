@@ -124,6 +124,7 @@
 -(void)goToRoadGame
 {
   _roadGameController.delegate = self;
+  [_roadGameController setMapBackgroundForCivilization:CHINA];
   [self presentViewController:_roadGameController animated:YES completion: nil];
 }
 
