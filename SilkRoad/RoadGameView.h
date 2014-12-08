@@ -23,5 +23,6 @@
 -(void)setNodeValueAtRow:(int)row AndColumn:(int)col toValue:(int) value;
 -(void)setNodeBackgroundAtRow:(int)row AndColumn:(int)col;
 -(void)resetLines;
+-(void)setBackgroundForCivilization:(int)civilization;
 
 @end

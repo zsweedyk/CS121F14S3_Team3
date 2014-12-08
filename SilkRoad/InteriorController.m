@@ -135,6 +135,7 @@
       case 3:
         _roadGameController.delegate = self;
         minigameViewController = _roadGameController;
+        [_roadGameController setMapBackgroundForCivilization:INDIA];
         break;
       case 4:
         _masterMindGameController.delegate = self;
@@ -148,6 +149,7 @@
       case 7:
         _roadGameController.delegate = self;
         minigameViewController = _roadGameController;
+        [_roadGameController setMapBackgroundForCivilization:CHINA];
         break;
     }
   }
