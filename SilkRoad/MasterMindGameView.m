@@ -310,6 +310,10 @@
 {
   [self clearBoard];
   [self.delegate newGame];
+  //Reset turn arrow frame
+  CGRect arrowFrame = _turnArrow.frame;
+  arrowFrame.origin.y = (CGRectGetHeight(self.frame) - 19 * (_charSize + (_charSize * 0.10))) / 2;
+  _turnArrow.frame = arrowFrame;
 }
 
 -(void)returnToPrevious

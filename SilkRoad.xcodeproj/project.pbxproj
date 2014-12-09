@@ -127,6 +127,7 @@
 		937AE8E419E9A8C300CEB0E7 /* MatchingGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */; };
 		937AE8E619F0505B00CEB0E7 /* Dialogue.txt in Resources */ = {isa = PBXBuildFile; fileRef = 937AE8E519F0505B00CEB0E7 /* Dialogue.txt */; };
 		937AE8F419F47A3B00CEB0E7 /* RoadPuzzle1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 937AE8F319F47A3B00CEB0E7 /* RoadPuzzle1.txt */; };
+		9384CD341A379F930010C0FC /* scalesmove.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9384CD331A379F930010C0FC /* scalesmove.mp3 */; };
 		93CA8F691A00412E00B4B722 /* RoadGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F641A00412E00B4B722 /* RoadGameController.m */; };
 		93CA8F6A1A00412E00B4B722 /* RoadGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F661A00412E00B4B722 /* RoadGameModel.m */; };
 		93CA8F6B1A00412E00B4B722 /* RoadGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8F681A00412E00B4B722 /* RoadGameView.m */; };
@@ -297,18 +298,19 @@
 		937AE8E019E9A8C300CEB0E7 /* MatchingGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MatchingGameView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MatchingGameView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		937AE8E519F0505B00CEB0E7 /* Dialogue.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue.txt; sourceTree = "<group>"; };
-		937AE8F319F47A3B00CEB0E7 /* RoadPuzzle1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle1.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
-		93CA8F631A00412E00B4B722 /* RoadGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RoadGameController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		93CA8F641A00412E00B4B722 /* RoadGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RoadGameController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		93CA8F651A00412E00B4B722 /* RoadGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RoadGameModel.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		93CA8F661A00412E00B4B722 /* RoadGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RoadGameModel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		93CA8F671A00412E00B4B722 /* RoadGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RoadGameView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		93CA8F681A00412E00B4B722 /* RoadGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RoadGameView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		93CA8F881A09C5AF00B4B722 /* RoadTestGrid.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadTestGrid.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
-		93CA8F9A1A102F1100B4B722 /* RoadPuzzle2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle2.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
-		93CA8F9B1A102F1100B4B722 /* RoadPuzzle3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle3.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
-		93CA8F9C1A102F1100B4B722 /* RoadPuzzle4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle4.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
-		93CA8F9D1A102F1100B4B722 /* RoadPuzzle5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle5.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		937AE8F319F47A3B00CEB0E7 /* RoadPuzzle1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle1.txt; sourceTree = "<group>"; };
+		9384CD331A379F930010C0FC /* scalesmove.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scalesmove.mp3; sourceTree = "<group>"; };
+		93CA8F631A00412E00B4B722 /* RoadGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadGameController.h; sourceTree = "<group>"; };
+		93CA8F641A00412E00B4B722 /* RoadGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadGameController.m; sourceTree = "<group>"; };
+		93CA8F651A00412E00B4B722 /* RoadGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadGameModel.h; sourceTree = "<group>"; };
+		93CA8F661A00412E00B4B722 /* RoadGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadGameModel.m; sourceTree = "<group>"; };
+		93CA8F671A00412E00B4B722 /* RoadGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadGameView.h; sourceTree = "<group>"; };
+		93CA8F681A00412E00B4B722 /* RoadGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadGameView.m; sourceTree = "<group>"; };
+		93CA8F881A09C5AF00B4B722 /* RoadTestGrid.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadTestGrid.txt; sourceTree = "<group>"; };
+		93CA8F9A1A102F1100B4B722 /* RoadPuzzle2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle2.txt; sourceTree = "<group>"; };
+		93CA8F9B1A102F1100B4B722 /* RoadPuzzle3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle3.txt; sourceTree = "<group>"; };
+		93CA8F9C1A102F1100B4B722 /* RoadPuzzle4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle4.txt; sourceTree = "<group>"; };
+		93CA8F9D1A102F1100B4B722 /* RoadPuzzle5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle5.txt; sourceTree = "<group>"; };
 		93CA8FA21A10337B00B4B722 /* RoadPuzzle0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle0.txt; sourceTree = "<group>"; };
 		93CA8FA31A10337B00B4B722 /* RoadPuzzle6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle6.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		93CA8FA41A10337B00B4B722 /* RoadPuzzle7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle7.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
@@ -379,6 +381,7 @@
 				268D53301A36AF8500C54CB3 /* coinchest.mp3 */,
 				268D53311A36AF8500C54CB3 /* coinclick.mp3 */,
 				5156A25D1A0D544000263DF2 /* correct_gong.wav */,
+				9384CD331A379F930010C0FC /* scalesmove.mp3 */,
 				5156A25E1A0D544000263DF2 /* incorrect_buzzer.wav */,
 				269AC80F1A3119E300C29564 /* bamboo.wav */,
 				269AC8131A311A2600C29564 /* ChinaMusic.mp3 */,
@@ -724,7 +727,7 @@
 				7F3BF50C1A169038006E82DD /* Dialogue14.txt in Resources */,
 				7F3BF5051A169038006E82DD /* Dialogue02.txt in Resources */,
 				7FD31EA81A25333300024936 /* Dialogue23.txt in Resources */,
-				5159D0F81A379FCA00370608 /* scalesmove.mp3 in Resources */,
+				9384CD341A379F930010C0FC /* scalesmove.mp3 in Resources */,
 				937AE8A919E73A4500CEB0E7 /* InfoPlist.strings in Resources */,
 				51948EE71A0987100075DD82 /* stage5.txt in Resources */,
 				93CA8FAD1A10337B00B4B722 /* RoadPuzzle8.txt in Resources */,
