@@ -18,4 +18,5 @@ This game uses sounds from freesound.org:
   MAD_GANJIRA_LOOP by Zagorius_mpc
 
 This game uses images from Wikimedia Commons:
-  Blank Map of China, distributed by historicair under the GNU Free Documentation License
+  Blank Map of China, distributed by historicair
+  Panoramic view of the stupa mound and great bath in Mohenjodaro by Saqib Qayyum
