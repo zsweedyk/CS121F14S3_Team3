@@ -2,8 +2,8 @@
 //  MasterMindGameView.m
 //  SilkRoad
 //
-//  Created by Katharine Finlay on 11/23/14.
-//  Copyright (c) 2014 Kate Finlay, Melissa Galonsky, Rachel Macfarlane, and Sarah Trisorus. All rights reserved.
+//  Created by Katharine Finlay on 11/23/13.
+//  Copyright (c) 2013 Kate Finlay, Melissa Galonsky, Rachel Macfarlane, and Sarah Trisorus. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,16 +11,14 @@
 
 @interface MasterMindGameView()
 {
-  UIView* _turnView;
-  UIView* _turnFeedbackView;
-  UIView* _password;
   NSMutableArray* _turnViewButtons;
   NSMutableArray* _turnViewFeedbackButtons;
   NSMutableArray* _letterButtons;
-  int _currentTurn[4];
+  int _currentTurn[3];
   int _numTurns;
   int _charSize;
   int _inputCharSelected;
+  //Miscellaneous buttons
   UIButton* _checkSolutionButton;
   UIButton* _newGameButton;
   UIButton* _returnButton;
@@ -35,21 +33,23 @@
   self = [super initWithFrame:frame];
   
   if (self) {
+    [self setBackgroundColor:[UIColor grayColor]];
+    _charSize = 35;
+    
     _turnViewButtons = [[NSMutableArray alloc] init];
     _turnViewFeedbackButtons = [[NSMutableArray alloc] init];
     _letterButtons = [[NSMutableArray alloc] init];
-    _turnFeedbackView = [[UIView alloc] init];
-    _password = [[UIView alloc] init];
-    _charSize = 35;
+    
     [self initTurnsViewWithFrame:frame];
+    
     [self initFeedbackViewWithFrame:frame];
+    
     [self initLettersWithFrame:frame];
-    [self setBackgroundColor:[UIColor grayColor]];
+    
     [self initSidebarButtons:frame];
-    //Clear current turn attempt
-    for (int i = 0; i < 4; ++i) {
-      _currentTurn[i] = 100;
-    }
+    
+    //Constant display information
+    memset(_currentTurn, 100, sizeof(_currentTurn));
   }
   
   return self;
@@ -57,18 +57,23 @@
 
 -(void)initSidebarButtons:(CGRect)frame
 {
+  //Set up check solution button
   _checkSolutionButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(frame)*.1 - .3*_charSize, 7*_charSize, 200, 50)];
   [self addSubview:_checkSolutionButton];
   [_checkSolutionButton addTarget:self action:@selector(checkSolution) forControlEvents:UIControlEventTouchUpInside];
   [_checkSolutionButton setBackgroundColor:[UIColor redColor]];
   [_checkSolutionButton setTitle:@"Check Solution" forState:UIControlStateNormal];
   _checkSolutionButton.showsTouchWhenHighlighted = YES;
+  
+  //Set up new game button
   _newGameButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(frame)*.8, CGRectGetHeight(frame)*.5 + 100, 200, 50)];
   [self addSubview:_newGameButton];
   [_newGameButton addTarget:self action:@selector(newGame) forControlEvents:UIControlEventTouchUpInside];
   [_newGameButton setBackgroundColor:[UIColor redColor]];
   [_newGameButton setTitle:@"New Game" forState:UIControlStateNormal];
   _newGameButton.showsTouchWhenHighlighted = YES;
+  
+  //Set up return button
   _returnButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(frame)*.8, CGRectGetHeight(frame)*.5, 200, 50)];
   [self addSubview:_returnButton];
   [_returnButton addTarget:self action:@selector(returnToPrevious) forControlEvents:UIControlEventTouchUpInside];
@@ -77,9 +82,9 @@
   _returnButton.showsTouchWhenHighlighted = YES;
   
 }
+
 -(void)initTurnsViewWithFrame:(CGRect)frame
 {
-  _turnView = [[UIView alloc] initWithFrame:frame];
   // Get the dimensions of the frame
   CGFloat frameWidth = CGRectGetWidth(frame);
   CGFloat frameHeight = CGRectGetHeight(frame);
@@ -99,11 +104,11 @@
   
   // Create 2 rows of 6 cells
   for (int row = 0; row < 10; row++) {
-    for (int col = 0; col < 4; col++) {
+    for (int col = 0; col < 3; col++) {
       CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
       UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
       //tags start at 50, then increase by 10's so that the color can be added in the 1's place
-      cell.tag = row*4+col;
+      cell.tag = row*3+col;
       
       [_turnViewButtons addObject:cell];
       [cell setBackgroundColor:[UIColor blackColor]];
@@ -122,14 +127,13 @@
 
 -(void)initFeedbackViewWithFrame:(CGRect)frame
 {
-  _turnFeedbackView = [[UIView alloc] initWithFrame:frame];
   // Get the dimensions of the frame
   CGFloat frameWidth = CGRectGetWidth(frame);
   CGFloat frameHeight = CGRectGetHeight(frame);
   
   // Make each cell in the tray the size of a button with 5% padding on all sides
   CGFloat cellSize = _charSize/4;
-  CGFloat horizontalPadding = (frameWidth - (cellSize * 5.5)) / 2 + 5.75*_charSize;
+  CGFloat horizontalPadding = (frameWidth - (cellSize * 4.5)) / 2 + 3.75*_charSize;
   CGFloat verticalPadding = (frameHeight - 21*_charSize)/2;
   
   // Set the x- and y-offsets accordingly
@@ -137,12 +141,15 @@
   CGFloat yOffset = verticalPadding + cellSize;//frameHeight - ((2 * cellSize) + verticalPadding);
   
   // Create 2 rows of 6 cells
-  for (int row = 0; row < 20; row++) {
-    for (int col = 0; col < 2; col++) {
+  for (int i = 0; i < 10; i++) {
+    for (int j = 0; j < 3; j++) {
+      if (j==2) {
+        yOffset += 2*cellSize;
+        xOffset = horizontalPadding;
+      }
       CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
       UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
-      cell.tag = (row * 4) + col;
-      
+      cell.tag = (i * 3) + j;
       [_turnViewFeedbackButtons addObject:cell];
       [cell setBackgroundColor:[UIColor grayColor]];
       cell.showsTouchWhenHighlighted = YES;
@@ -150,11 +157,8 @@
       
       xOffset += 2*cellSize;
     }
-    if (row%2 != 0) {
-      yOffset += 1.5*_charSize + 1.05*cellSize;
-    } else {
-      yOffset += 2*cellSize;
-    }
+    
+    yOffset += 1.5*_charSize + 1.05*cellSize;
     xOffset = horizontalPadding;
   }
   
@@ -178,7 +182,7 @@
   CGFloat yOffset = verticalPadding;
   
   // Create 2 rows of 6 cells
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 3; i++) {
     CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
     UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
     cell.tag = i;
@@ -261,7 +265,7 @@
   UIButton *newButton = (UIButton*) sender;
   
   int tag = (int) [newButton tag];
-  if (tag >= (_numTurns+1)*4 || tag < _numTurns*4) {
+  if (tag >= (_numTurns+1)*3 || tag < _numTurns*3) {
     return;
   }
   UIButton* buttonSelected = [_turnViewButtons objectAtIndex:tag];
@@ -270,22 +274,22 @@
   if (_numTurns == 0) {
     _currentTurn[tag] = _inputCharSelected;
   } else {
-    _currentTurn[tag % (_numTurns*4)] = _inputCharSelected;
+    _currentTurn[tag % (_numTurns*3)] = _inputCharSelected;
   }
 }
 
 -(void)checkSolution
 {
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 3; i++) {
     if (_currentTurn[i] == 100) //not been set
       return;
   }
   _numTurns++;
   int matches = [self.delegate checkSolution:_currentTurn];
-  if (matches == 40) {//4 exact matches, 0 half matches)
+  if (matches == 30) {//3 exact matches, 0 half matches)
     [self.delegate returnToPrevious];
   }
-  for (int i = 0; i < 4; i++) { //clear new turn solution
+  for (int i = 0; i < 3; i++) { //clear new turn solution
     _currentTurn[i] = 100;
   }
   //Move arrow down to the next turn
@@ -306,61 +310,86 @@
   [self.delegate returnToPrevious];
 }
 
--(void)displayNewTurn:(int*) turn
-{
-  for (int i = 0; i < 4; i++) {
-    UIButton* currentButton = [_turnViewButtons objectAtIndex:_numTurns+i];
-    switch (turn[i]) {
-      case 0:
-        [currentButton setBackgroundColor:[UIColor redColor]];
-      case 1:
-        [currentButton setBackgroundColor:[UIColor greenColor]];
-      case 2:
-        [currentButton setBackgroundColor:[UIColor purpleColor]];
-      case 3:
-        [currentButton setBackgroundColor:[UIColor yellowColor]];
-    }
-  }
-}
-
 -(void)displayNewTurnFeedback:(int) matches
 {
   int exactMatches = matches/10;
   int halfMatches = matches % 10;
+  int totalMatches = exactMatches + halfMatches;
   int i = 0;
+  [self showAlertFeedbackForTotalMatches:totalMatches exactMatches:exactMatches halfMatches:halfMatches];
+  UIButton* currentButton;
   //First set exact matches to black
-  while (i < 4 && exactMatches > 0) {
-    int index = ((_numTurns-1)*4)+i;
-    UIButton* currentButton = [_turnViewFeedbackButtons objectAtIndex:index];
+  while (i < 3 && exactMatches > 0) {
+    int index = ((_numTurns-1)*3)+i;
+    currentButton = [_turnViewFeedbackButtons objectAtIndex:index];
     [currentButton setBackgroundColor:[UIColor blackColor]];
     exactMatches--;
     i++;
   }
   //Then set half matches to white
-  while (i < 4 && halfMatches > 0) {
-    UIButton* currentButton = [_turnViewFeedbackButtons objectAtIndex:((_numTurns-1)*4)+i];
+  while (i < 3 && halfMatches > 0) {
+    currentButton = [_turnViewFeedbackButtons objectAtIndex:((_numTurns-1)*3)+i];
     [currentButton setBackgroundColor:[UIColor whiteColor]];
     halfMatches--;
     i++;
   }
 }
 
--(void)displayPassword:(int*) password
+-(void)showAlertFeedbackForTotalMatches:(int)totalMatches exactMatches:(int)exactMatches halfMatches:(int)halfMatches
 {
-  _numTurns = 11;
-  [self displayNewTurn:password];
+  NSMutableString *message = [[NSMutableString alloc] init];
+  if (totalMatches == 0) {
+    [message setString:@"Try again! My password doesn't use any of those letters."];
+  } else {
+    if (totalMatches == 1) {
+      [message setString:@"My password has 1 letter in common with your guess! "];
+      if (exactMatches != 0) {
+        [message appendString:@"That letter is in the same place in my word."];
+      } else {
+        [message appendString:@"That letter is in a different place in my word."];
+      }
+    } else {
+      [message setString:[NSString stringWithFormat:@"My password has %d letters in common with your guess! ", totalMatches]];
+      if (exactMatches == 0) {
+        [message appendString:@"Those letters are in a different place in my word. "];
+      } else if (halfMatches > 1) {
+        [message appendString:[NSString stringWithFormat:@"%d of the letters you guessed are in a different place in my word. ", halfMatches]];
+      }
+      if (halfMatches == 0) {
+        [message appendString:@"Those letters are in the place in my word! "];
+      } else if (exactMatches > 1) {
+        [message appendString:[NSString stringWithFormat:@"%d of the letters you guessed are in the same place in my word. ", exactMatches]];
+      }
+      if (exactMatches == 1) {
+        [message appendString:@"One letter you guessed is in the same place in my word. "];
+      } if (halfMatches == 1) {
+        [message appendString:@"One letter you guessed is in a different place in my word. "];
+      }
+      if (exactMatches == 3) {
+        [message setString:@"That's my password! You win!"];
+      }
+    }
+  }
+  
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Good guess!"
+                                                  message:message
+                                                 delegate:self
+                                        cancelButtonTitle:@"Ok"
+                                        otherButtonTitles:nil];
+  [alert show];
+
 }
 
 -(void)clearBoard
 {
   _numTurns = 0;
-  for (int i = 0; i < 40; i++) {
+  for (int i = 0; i < 30; i++) {
     UIButton* currentButton = [_turnViewButtons objectAtIndex:i];
     UIButton* currentFeedbackButton = [_turnViewFeedbackButtons objectAtIndex:i];
     [currentButton setBackgroundColor:[UIColor blackColor]];
     [currentFeedbackButton setBackgroundColor:[UIColor grayColor]];
   }
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 3; i++) {
     _currentTurn[i] = 100;
   }
 }
