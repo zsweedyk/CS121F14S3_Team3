@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "RoadGameView.h"
+#import "Constants.h"
 
 @interface RoadGameView()
 {
@@ -37,9 +38,6 @@
     // The grid is 9 x 9, so there are 10 spaces, dividing the frame into 19
     _buttonSize = MIN(_frameWidth / 19.0, _frameHeight * 0.90 / 19.0);
     
-    // Set the minigame background to be a map of China
-    [self setBackground];
-    
     [self initializeGridWithFrame:frame];
     
     // Each click event needs to be paired with another, as the player is trying to
@@ -47,12 +45,12 @@
     _waitingForPair = NO;
     
     // Add the bottom buttons
-    NSArray* buttonLabels = @[@"Return", @"New Puzzle", @"Reset Puzzle"];
-    NSArray* buttonActions = @[@"exitGame", @"newGame", @"resetGame"];
+    NSArray* buttonLabels = @[@"Return", @"New Puzzle", @"Reset Puzzle", @"Instructions"];
+    NSArray* buttonActions = @[@"exitGame", @"newGame", @"resetGame", @"alertInstructions"];
     
     CGFloat yOffset = _frameHeight * 0.90;
     CGFloat xOffset = 20 * _buttonSize;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
       CGRect buttonFrame = CGRectMake(xOffset, yOffset, 5 * _buttonSize, _buttonSize);
       [self createButtonWithFrame:buttonFrame Action:NSSelectorFromString(buttonActions[i]) AndLabel:buttonLabels[i]];
       xOffset -= 6 * _buttonSize;
@@ -61,10 +59,15 @@
   return self;
 }
 
--(void)setBackground
+-(void)setBackgroundForCivilization:(int)civilization
 {
   // Setup a new context with the correct size
-  UIImage* backgroundMap = [UIImage imageNamed:@"China_blank_map-1.png"];
+  UIImage* backgroundMap;
+  if (civilization == INDIA) {
+    backgroundMap = [UIImage imageNamed:@"AsiaMapBlank.png"];
+  } else {
+    backgroundMap = [UIImage imageNamed:@"ChinaBlankMap.png"];
+  }
   UIGraphicsBeginImageContextWithOptions(CGSizeMake(_frameWidth, _frameHeight), YES, 0.0);
   CGContextRef context = UIGraphicsGetCurrentContext();
   UIGraphicsPushContext(context);
@@ -362,5 +365,13 @@
 -(void)resetGame
 {
   [self.delegate resetGame];
+}
+
+-(void)alertInstructions
+{
+  NSString *message = [NSString stringWithFormat:@"Your goal is to connect all of the cities with the right number of roads. A city is a black dot with a number that tells you how many roads it should have. To build a road, tap a city and then tap a city that is directly up, down, left, or right of it to connect them. You can build two roads between cities by doing this twice. You can get rid of a road by doing it another time. You win when all of the black dots have a '0' on them."];
+  UIAlertView *instructions = [[UIAlertView alloc] initWithTitle:@"How To Play" message:message delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+
+  [instructions show];
 }
 @end

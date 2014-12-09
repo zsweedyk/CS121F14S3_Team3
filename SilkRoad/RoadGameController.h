@@ -15,5 +15,6 @@
 @property (assign, nonatomic) id <ReturnToPreviousFromMatching> delegate;
 
 -(BOOL)hasBeenWon;
+-(void)setMapBackgroundForCivilization:(int)civilization;
 
 @end

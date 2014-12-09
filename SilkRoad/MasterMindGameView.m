@@ -81,6 +81,13 @@
   [_returnButton setTitle:@"Back" forState:UIControlStateNormal];
   _returnButton.showsTouchWhenHighlighted = YES;
   
+  UIButton* instructionsButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(frame)*.8, CGRectGetHeight(frame)*.5 - 100, 200, 50)];
+  [self addSubview:instructionsButton];
+  [instructionsButton addTarget:self action:@selector(alertInstructions) forControlEvents:UIControlEventTouchUpInside];
+  [instructionsButton setBackgroundColor:[UIColor redColor]];
+  [instructionsButton setTitle:@"Instructions" forState:UIControlStateNormal];
+  instructionsButton.showsTouchWhenHighlighted = YES;
+  
 }
 
 -(void)initTurnsViewWithFrame:(CGRect)frame
@@ -92,13 +99,13 @@
   // Make each cell in the tray the size of a button with 5% padding on all sides
   CGFloat cellSize = _charSize + (_charSize * 0.10);
   CGFloat horizontalPadding = (frameWidth - (cellSize * 5.5)) / 2;
-  CGFloat verticalPadding = (frameHeight - 19*cellSize)/2;
+  CGFloat verticalPadding = (frameHeight - 19 * cellSize) / 2;
   
   // Set the x- and y-offsets accordingly
   CGFloat xOffset = horizontalPadding;
   CGFloat yOffset = verticalPadding;
   
-  _turnArrow = [[UIButton alloc] initWithFrame:CGRectMake(horizontalPadding - _charSize*1.5, verticalPadding + _charSize*.25, _charSize, _charSize/2)];
+  _turnArrow = [[UIButton alloc] initWithFrame:CGRectMake(horizontalPadding - _charSize * 1.5, verticalPadding + _charSize * .25, _charSize, _charSize/2)];
   [_turnArrow setBackgroundImage:[UIImage imageNamed:@"dialoguearrow"] forState:UIControlStateNormal];
   [self addSubview:_turnArrow];
   
@@ -116,11 +123,11 @@
       [self addSubview:cell];
       [cell addTarget:self action:@selector(turnCharSelected:) forControlEvents:UIControlEventTouchUpInside];
       
-      xOffset += 2*cellSize;
+      xOffset += 2 * cellSize;
     }
     
     xOffset = horizontalPadding;
-    yOffset += 2*cellSize;
+    yOffset += 2 * cellSize;
   }
   
 }
@@ -134,7 +141,7 @@
   // Make each cell in the tray the size of a button with 5% padding on all sides
   CGFloat cellSize = _charSize/4;
   CGFloat horizontalPadding = (frameWidth - (cellSize * 4.5)) / 2 + 3.75*_charSize;
-  CGFloat verticalPadding = (frameHeight - 21*_charSize)/2;
+  CGFloat verticalPadding = (frameHeight - 21 * _charSize)/2;
   
   // Set the x- and y-offsets accordingly
   CGFloat xOffset = horizontalPadding;
@@ -172,8 +179,8 @@
   
   // Make each cell in the tray the size of a button with 5% padding on all sides
   CGFloat cellSize = _charSize*1.5;
-  CGFloat horizontalPadding = frameWidth/10 - cellSize;
-  CGFloat verticalPadding = frameHeight/2 - cellSize/2;
+  CGFloat horizontalPadding = frameWidth / 10 - cellSize;
+  CGFloat verticalPadding = frameHeight / 2 - cellSize/2;
   UILabel* selectColor = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPadding, verticalPadding-_charSize, 200, 25)];
   [selectColor setText:@"Select a color:"];
   [self addSubview:selectColor];
@@ -204,7 +211,7 @@
     cell.showsTouchWhenHighlighted = YES;
     [self addSubview:cell];
     
-    xOffset += 1.5*cellSize;
+    xOffset += 1.5 * cellSize;
   }
   
   _inputCharSelected = 0;
@@ -265,7 +272,7 @@
   UIButton *newButton = (UIButton*) sender;
   
   int tag = (int) [newButton tag];
-  if (tag >= (_numTurns+1)*3 || tag < _numTurns*3) {
+  if (tag >= (_numTurns + 1) * 3 || tag < _numTurns * 3) {
     return;
   }
   UIButton* buttonSelected = [_turnViewButtons objectAtIndex:tag];
@@ -274,7 +281,7 @@
   if (_numTurns == 0) {
     _currentTurn[tag] = _inputCharSelected;
   } else {
-    _currentTurn[tag % (_numTurns*3)] = _inputCharSelected;
+    _currentTurn[tag % (_numTurns * 3)] = _inputCharSelected;
   }
 }
 
@@ -294,7 +301,7 @@
   }
   //Move arrow down to the next turn
   CGRect buttonFrame = _turnArrow.frame;
-  buttonFrame.origin.y += 2.2*_charSize;
+  buttonFrame.origin.y += 2.2 * _charSize;
   _turnArrow.frame = buttonFrame;
   [self displayNewTurnFeedback:matches];
 }
@@ -312,7 +319,7 @@
 
 -(void)displayNewTurnFeedback:(int) matches
 {
-  int exactMatches = matches/10;
+  int exactMatches = matches / 10;
   int halfMatches = matches % 10;
   int totalMatches = exactMatches + halfMatches;
   int i = 0;
@@ -320,7 +327,7 @@
   UIButton* currentButton;
   //First set exact matches to black
   while (i < 3 && exactMatches > 0) {
-    int index = ((_numTurns-1)*3)+i;
+    int index = ((_numTurns - 1) * 3) + i;
     currentButton = [_turnViewFeedbackButtons objectAtIndex:index];
     [currentButton setBackgroundColor:[UIColor blackColor]];
     exactMatches--;
@@ -339,31 +346,31 @@
 {
   NSMutableString *message = [[NSMutableString alloc] init];
   if (totalMatches == 0) {
-    [message setString:@"Try again! My password doesn't use any of those letters."];
+    [message setString:@"Try again! My password doesn't use any of those colors."];
   } else {
     if (totalMatches == 1) {
-      [message setString:@"My password has 1 letter in common with your guess! "];
+      [message setString:@"My password has 1 color in common with your guess! "];
       if (exactMatches != 0) {
-        [message appendString:@"That letter is in the same place in my word."];
+        [message appendString:@"That color is in the same place in my password."];
       } else {
-        [message appendString:@"That letter is in a different place in my word."];
+        [message appendString:@"That color is in a different place in my password."];
       }
     } else {
-      [message setString:[NSString stringWithFormat:@"My password has %d letters in common with your guess! ", totalMatches]];
+      [message setString:[NSString stringWithFormat:@"My password has %d colors in common with your guess! ", totalMatches]];
       if (exactMatches == 0) {
-        [message appendString:@"Those letters are in a different place in my word. "];
+        [message appendString:@"Those colors are in a different place in my password. "];
       } else if (halfMatches > 1) {
-        [message appendString:[NSString stringWithFormat:@"%d of the letters you guessed are in a different place in my word. ", halfMatches]];
+        [message appendString:[NSString stringWithFormat:@"%d of the colors you guessed are in a different place in my password. ", halfMatches]];
       }
       if (halfMatches == 0) {
-        [message appendString:@"Those letters are in the place in my word! "];
+        [message appendString:@"Those colors are in the place in my password! "];
       } else if (exactMatches > 1) {
-        [message appendString:[NSString stringWithFormat:@"%d of the letters you guessed are in the same place in my word. ", exactMatches]];
+        [message appendString:[NSString stringWithFormat:@"%d of the colors you guessed are in the same place in my password. ", exactMatches]];
       }
       if (exactMatches == 1) {
-        [message appendString:@"One letter you guessed is in the same place in my word. "];
+        [message appendString:@"One color you guessed is in the same place in my password. "];
       } if (halfMatches == 1) {
-        [message appendString:@"One letter you guessed is in a different place in my word. "];
+        [message appendString:@"One color you guessed is in a different place in my password. "];
       }
       if (exactMatches == 3) {
         [message setString:@"That's my password! You win!"];
@@ -392,6 +399,14 @@
   for (int i = 0; i < 3; i++) {
     _currentTurn[i] = 100;
   }
+}
+
+-(void)alertInstructions
+{
+  NSString *message = [NSString stringWithFormat:@"Your goal is to guess the secret password, which is a sequence of colors. It might be Yellow, Green, Red, for example. Each row on the right allows you to make a guess. Click a color on the left, then click one of the black squares in the current row. When you have filled in all of the black squares, I'll tell you how close you were to the password. If you had a right color, but in the wrong position, a white square will appear next to the row. If you had a right color in the right position, a black square will appear next to the row. You get ten tries to guess the password."];
+  UIAlertView *instructions = [[UIAlertView alloc] initWithTitle:@"How To Play" message:message delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+  
+  [instructions show];
 }
 
 @end
