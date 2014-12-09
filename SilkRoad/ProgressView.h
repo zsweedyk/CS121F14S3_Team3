@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ToggleMap
+@protocol ProgressProtocol
 -(void)showMap;
+-(void)switchSound;
 @end;
 
 @interface ProgressView : UIView
 
-@property (assign, nonatomic) id <ToggleMap> delegate;
+@property (assign, nonatomic) id <ProgressProtocol> delegate;
 
 -(id)initWithFrame:(CGRect)frame andCurrentStage:(int)stage;
 

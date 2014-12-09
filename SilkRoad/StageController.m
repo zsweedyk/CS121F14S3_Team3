@@ -157,7 +157,12 @@ int const NUM_HOUSES = 4;
   [self.delegate showMap];
 }
 
--(void)buttonPressed:(id)button
+-(void)switchSound
+{
+  [self.delegate switchSound];
+}
+
+- (void)buttonPressed:(id)button
 {
   UIButton* ourButton = (UIButton*)button;
   int tag = (int)ourButton.tag;
