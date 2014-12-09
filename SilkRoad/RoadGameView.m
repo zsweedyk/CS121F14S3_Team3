@@ -116,23 +116,26 @@
     [_buttonGrid addObject:[[NSMutableArray alloc] initWithCapacity:9]];
     CGFloat xOffset = extraHorizontalSpace / 2.0;
     
-    for (int col = 0; col < 9; col++) {
-      CGRect buttonFrame = CGRectMake(xOffset, yOffset, _buttonSize, _buttonSize);
-      UIButton* button = [[UIButton alloc] initWithFrame:buttonFrame];
-      
-      
-      [button.titleLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:18]];
-      
-      
-      [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-      [button setTag: row * 10 + col];
-      
-      [[_buttonGrid objectAtIndex:row] addObject:button];
-      [self addSubview:button];
-      
-      xOffset += 2 * _buttonSize;
+      for (int col = 0; col < 9; col++) {
+        CGRect buttonFrame = CGRectMake(xOffset, yOffset, _buttonSize, _buttonSize);
+        UIButton* button = [[UIButton alloc] initWithFrame:buttonFrame];
+        
+        
+        [button.titleLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:18]];
+        
+        
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setTag: row * 10 + col];
+        
+        [[_buttonGrid objectAtIndex:row] addObject:button];
+        [self addSubview:button];
+        
+        xOffset += 2 * _buttonSize;
+      }
+
+      yOffset += 2 * _buttonSize;
     }
-    yOffset += 2 * _buttonSize;
+  
     // Make the frame for the return button
     CGRect resetFrame = CGRectMake(8 * _buttonSize, yOffset, 5 *_buttonSize, _buttonSize);
     // Make the button and add it to the view
@@ -150,7 +153,6 @@
     _roadSound = [[AVAudioPlayer alloc]
                   initWithContentsOfURL:pathURL
                   error:&correct_error];
-  }
 }
 
 -(void)createButtonWithFrame:(CGRect)frame Action:(SEL)selector AndLabel:(NSString*)label

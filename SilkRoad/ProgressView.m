@@ -13,10 +13,7 @@
 @interface ProgressView()
 {
   int _currentStage;
-<<<<<<< HEAD
-=======
   UIButton* _soundButton;
->>>>>>> upstream/sound
 }
 @end
 
