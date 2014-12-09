@@ -2,7 +2,7 @@
 //  MasterMindGameController.m
 //  SilkRoad
 //
-//  Created by Katharine Finlay on 11/25/13.
+//  Created by Katharine Finlay on 11/25/14.
 //  Copyright (c) 2014 Kate Finlay, Melissa Galonsky, Rachel Macfarlane, and Sarah Trisorus. All rights reserved.
 //
 
