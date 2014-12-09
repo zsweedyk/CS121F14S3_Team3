@@ -17,6 +17,7 @@
   UIButton* _backButton;
   UIButton* _roadGameButton;
   UIButton* _scalesGameButton;
+  UIButton* _mastermindGameButton;
 }
 @end
 
@@ -65,8 +66,11 @@
   [_roadGameButton setBackgroundImage:[UIImage imageNamed:@"roadGameButtonDesaturated"] forState:UIControlStateNormal];
   _scalesGameButton = [[UIButton alloc] initWithFrame:CGRectMake(700, 600, 125, 125)];
   [_scalesGameButton setBackgroundImage:[UIImage imageNamed:@"scalesGameButtonDesaturated"] forState:UIControlStateNormal];
+  _mastermindGameButton = [[UIButton alloc] initWithFrame:CGRectMake(540, 600, 125, 125)];
+  [_mastermindGameButton setBackgroundImage:[UIImage imageNamed:@"desaturatedMastermind"] forState:UIControlStateNormal];
   [self addSubview:_roadGameButton];
   [self addSubview:_scalesGameButton];
+  [self addSubview:_mastermindGameButton];
 }
 
 -(void) addButtonNumber:(int)index WithFrame:(CGRect)buttonFrame
@@ -98,6 +102,11 @@
   [currentStageButton setBackgroundImage:[UIImage imageNamed:@"buttonVisited"] forState:UIControlStateNormal];
   [currentStageButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
   
+  if (_currentStage == 1) {
+    //You've beaten the mastermind game, have a button that lets you play again!
+    [_mastermindGameButton setBackgroundImage:[UIImage imageNamed:@"mastermindbutton"] forState:UIControlStateNormal];
+    [_mastermindGameButton addTarget:self action:@selector(goToMasterMindGame) forControlEvents:UIControlEventTouchUpInside];
+  }
   if (_currentStage == 2) {
     //You've beaten the scales game, have a button that lets you play again!
     [_scalesGameButton setBackgroundImage:[UIImage imageNamed:@"scalesGameButton"] forState:UIControlStateNormal];
@@ -124,6 +133,11 @@
 -(void) goToRoadGame
 {
   [self.delegate goToRoadGame];
+}
+
+-(void) goToMasterMindGame
+{
+  [self.delegate goToMasterMindGame];
 }
 
 @end

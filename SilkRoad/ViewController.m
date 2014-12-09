@@ -213,7 +213,7 @@
 
 -(void)goToMasterMindGame
 {
-  //_masterMindGameController.delegate = self;
+  _masterMindGameController.delegate = self;
   [self presentViewController:_masterMindGameController animated:YES completion: nil];
 }
 

@@ -13,7 +13,6 @@
 {
   int* _currentSolution;
   BOOL _hasBeenWon;
-  NSMutableArray* _turns;
   int _numTurns;
 }
 @end
@@ -25,10 +24,9 @@
   
   if (self) {
     // Put all the phrases in the file into an array for easy access by level
-    _currentSolution = malloc(4*sizeof(int));
+    _currentSolution = malloc(3*sizeof(int));
     _hasBeenWon = NO;
     _numTurns = 0;
-    _turns = [[NSMutableArray alloc] init];
     [self makeNewSolution];
   }
   
@@ -37,8 +35,8 @@
 
 -(void)makeNewSolution
 {
-  for (int i = 0; i < 4; i++) {
-    _currentSolution[i] = (arc4random() % 4);
+  for (int i = 0; i < 3; i++) {
+    _currentSolution[i] = (arc4random() % 3);
   }
 }
 
@@ -47,13 +45,9 @@
 {
   const int NULL_CHAR = 100;
   _numTurns++;
-  int passwordCopy[4];
+  int passwordCopy[3];
   int exactMatches = 0;
-  for (int i = 0; i < 4; ++i) {
-    //put this attempt in the turns array
-    NSNumber* numToInput = [NSNumber numberWithInt:attempt[i]];
-    [_turns addObject:numToInput];
-
+  for (int i = 0; i < 3; ++i) {
     NSAssert(attempt[i] <= 3, @"attempt out of bounds");
     //count and mark exact matches as seen with NULL_CHAR
     if (attempt[i] == _currentSolution[i]) {
@@ -67,18 +61,19 @@
   
   //iterate through the answer again, counting the half matches
   int halfMatches = 0;
-  for (int i = 0; i < 4; ++i) {
-    for (int j = 0; j < 4; ++j) {
-      if (attempt[i] == passwordCopy[j] && passwordCopy[i] != NULL_CHAR) {
+  for (int i = 0; i < 3; ++i) {
+    for (int j = 0; j < 3; ++j) {
+      if (attempt[i] == passwordCopy[j] && passwordCopy[j] != NULL_CHAR) {
         halfMatches++;
+        passwordCopy[j] = NULL_CHAR;
         break;
       }
     }
   }
   
-  NSAssert(halfMatches + exactMatches <= 4, @"Too many matches");
+  NSAssert(halfMatches + exactMatches <= 3, @"Too many matches");
   
-  if (exactMatches == 4) {
+  if (exactMatches == 3) {
     _hasBeenWon = YES;
   }
   
@@ -91,7 +86,6 @@
 {
   [self makeNewSolution];
   _numTurns = 0;
-  [_turns removeAllObjects];
 }
 
 -(BOOL)hasBeenWon
@@ -101,7 +95,7 @@
 
 -(void)setPassword:(int*)mockPassword
 {
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 3; i++) {
     _currentSolution[i] = mockPassword[i];
   }
 }

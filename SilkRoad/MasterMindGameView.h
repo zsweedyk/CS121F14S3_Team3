@@ -21,9 +21,7 @@
 
 
 -(id)initWithFrame:(CGRect)frame;
--(void)displayNewTurn:(int*) turn;
 -(void)displayNewTurnFeedback:(int) matches;
--(void)displayPassword:(int*) password;
 -(void)clearBoard;
 
 @end

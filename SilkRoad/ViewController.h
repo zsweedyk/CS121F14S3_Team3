@@ -14,7 +14,7 @@
 #import "MapView.h"
 #import "CharacterDescriptionView.h"
 
-@interface ViewController : UIViewController <MainMenuProtocol, CreditsProtocol, StageProtocol, MapProtocol, ReturnToPreviousFromScales,ReturnToPreviousFromMatching, HideCharacterDescription>
+@interface ViewController : UIViewController <MainMenuProtocol, CreditsProtocol, StageProtocol, MapProtocol, ReturnToPreviousFromScales,ReturnToPreviousFromMatching, HideCharacterDescription, ReturnToPreviousFromMasterMind>
 
 -(void)hideMap;
 

@@ -13,6 +13,7 @@
 -(void)jumpToStage:(int)stage;
 -(void)goToScalesGame;
 -(void)goToRoadGame;
+-(void)goToMasterMindGame;
 @end
 
 @interface MapView : UIView

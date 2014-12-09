@@ -56,6 +56,7 @@
 		5156A2621A0E8B7C00263DF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5156A2611A0E8B7C00263DF2 /* AVFoundation.framework */; };
 		5156A2651A102F5100263DF2 /* buttonUnvisited.png in Resources */ = {isa = PBXBuildFile; fileRef = 5156A2631A102F5100263DF2 /* buttonUnvisited.png */; };
 		5156A2661A102F5100263DF2 /* buttonVisited.png in Resources */ = {isa = PBXBuildFile; fileRef = 5156A2641A102F5100263DF2 /* buttonVisited.png */; };
+		5159D0F81A379FCA00370608 /* scalesmove.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5159D0F71A379FCA00370608 /* scalesmove.mp3 */; };
 		51948EE71A0987100075DD82 /* stage5.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE41A0987100075DD82 /* stage5.txt */; };
 		51948EE81A0987100075DD82 /* stage1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE51A0987100075DD82 /* stage1.txt */; };
 		51948EE91A0987100075DD82 /* stage4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE61A0987100075DD82 /* stage4.txt */; };
@@ -160,23 +161,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		261E657E19F89ADB00D12027 /* ScalesGameCoin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScalesGameCoin.h; sourceTree = "<group>"; };
-		261E657F19F89ADB00D12027 /* ScalesGameCoin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalesGameCoin.m; sourceTree = "<group>"; };
-		261E658119F978B200D12027 /* MainMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuView.h; sourceTree = "<group>"; };
-		261E658219F978B200D12027 /* MainMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuView.m; sourceTree = "<group>"; };
+		261E657E19F89ADB00D12027 /* ScalesGameCoin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ScalesGameCoin.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		261E657F19F89ADB00D12027 /* ScalesGameCoin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ScalesGameCoin.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		261E658119F978B200D12027 /* MainMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MainMenuView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		261E658219F978B200D12027 /* MainMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainMenuView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2628DEF119EF2AB9003487ED /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
-		2628DEF519EF2DD8003487ED /* MatchingGamePhrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MatchingGamePhrases.txt; sourceTree = "<group>"; };
-		26643E771A059FB400C50B72 /* ScalesGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScalesGameController.h; sourceTree = "<group>"; };
-		26643E781A059FB400C50B72 /* ScalesGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalesGameController.m; sourceTree = "<group>"; };
-		26643E791A059FB400C50B72 /* ScalesGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScalesGameModel.h; sourceTree = "<group>"; };
-		26643E7A1A059FB400C50B72 /* ScalesGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalesGameModel.m; sourceTree = "<group>"; };
-		26643E7B1A059FB400C50B72 /* ScalesGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScalesGameView.h; sourceTree = "<group>"; };
-		26643E7C1A059FB400C50B72 /* ScalesGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalesGameView.m; sourceTree = "<group>"; };
-		26643E831A06CC1500C50B72 /* ScalesGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScalesGameTests.m; sourceTree = "<group>"; };
-		2679E8221A12A8A700C9BD51 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = SilkRoad/Constants.h; sourceTree = "<group>"; };
-		2679E8231A12A8A700C9BD51 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = SilkRoad/Constants.m; sourceTree = "<group>"; };
-		268AF9241A2148D500F06633 /* CreditsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditsView.h; sourceTree = "<group>"; };
-		268AF9251A2148D500F06633 /* CreditsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditsView.m; sourceTree = "<group>"; };
+		2628DEF519EF2DD8003487ED /* MatchingGamePhrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = MatchingGamePhrases.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		26643E771A059FB400C50B72 /* ScalesGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ScalesGameController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		26643E781A059FB400C50B72 /* ScalesGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ScalesGameController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		26643E791A059FB400C50B72 /* ScalesGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ScalesGameModel.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		26643E7A1A059FB400C50B72 /* ScalesGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ScalesGameModel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		26643E7B1A059FB400C50B72 /* ScalesGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ScalesGameView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		26643E7C1A059FB400C50B72 /* ScalesGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ScalesGameView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		26643E831A06CC1500C50B72 /* ScalesGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ScalesGameTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		2679E8221A12A8A700C9BD51 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = Constants.h; path = SilkRoad/Constants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		2679E8231A12A8A700C9BD51 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = Constants.m; path = SilkRoad/Constants.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		268AF9241A2148D500F06633 /* CreditsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CreditsView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		268AF9251A2148D500F06633 /* CreditsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CreditsView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		268AF9271A214C4F00F06633 /* Credits.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Credits.txt; sourceTree = "<group>"; };
 		268D53301A36AF8500C54CB3 /* coinchest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinchest.mp3; sourceTree = "<group>"; };
 		268D53311A36AF8500C54CB3 /* coinclick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinclick.mp3; sourceTree = "<group>"; };
@@ -214,13 +215,14 @@
 		5156A2611A0E8B7C00263DF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5156A2631A102F5100263DF2 /* buttonUnvisited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonUnvisited.png; path = SilkRoad/buttonUnvisited.png; sourceTree = "<group>"; };
 		5156A2641A102F5100263DF2 /* buttonVisited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonVisited.png; path = SilkRoad/buttonVisited.png; sourceTree = "<group>"; };
-		51948EE41A0987100075DD82 /* stage5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage5.txt; sourceTree = "<group>"; };
-		51948EE51A0987100075DD82 /* stage1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage1.txt; sourceTree = "<group>"; };
-		51948EE61A0987100075DD82 /* stage4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage4.txt; sourceTree = "<group>"; };
-		51948EEA1A0987380075DD82 /* MatchingGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchingGameTests.m; sourceTree = "<group>"; };
-		51948EEB1A0987380075DD82 /* RoadGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadGameTests.m; sourceTree = "<group>"; };
-		51D9447819F8CC6E00335978 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
-		51D9447919F8CC6E00335978 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
+		5159D0F71A379FCA00370608 /* scalesmove.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scalesmove.mp3; sourceTree = "<group>"; };
+		51948EE41A0987100075DD82 /* stage5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = stage5.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		51948EE51A0987100075DD82 /* stage1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = stage1.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		51948EE61A0987100075DD82 /* stage4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = stage4.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		51948EEA1A0987380075DD82 /* MatchingGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MatchingGameTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		51948EEB1A0987380075DD82 /* RoadGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RoadGameTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		51D9447819F8CC6E00335978 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Character.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		51D9447919F8CC6E00335978 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Character.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7F2D0FCB1A3109C60030EE44 /* Dialogue60.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue60.txt; sourceTree = "<group>"; };
 		7F2D0FCD1A3109DB0030EE44 /* Dialogue61.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue61.txt; sourceTree = "<group>"; };
 		7F2D0FCF1A3109EA0030EE44 /* Dialogue62.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue62.txt; sourceTree = "<group>"; };
@@ -231,11 +233,11 @@
 		7F2D0FD91A310A5F0030EE44 /* Dialogue72.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue72.txt; sourceTree = "<group>"; };
 		7F2D0FDB1A310A6C0030EE44 /* Dialogue73.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue73.txt; sourceTree = "<group>"; };
 		7F2D0FDD1A310A790030EE44 /* Dialogue74.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue74.txt; sourceTree = "<group>"; };
-		7F2D0FDF1A310F790030EE44 /* stage6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage6.txt; sourceTree = "<group>"; };
-		7F2D0FE11A310FE00030EE44 /* stage7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage7.txt; sourceTree = "<group>"; };
-		7F3BF4EC1A169005006E82DD /* InteriorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteriorModel.h; sourceTree = "<group>"; };
-		7F3BF4ED1A169005006E82DD /* InteriorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorModel.m; sourceTree = "<group>"; };
-		7F3BF4EF1A169038006E82DD /* Dialogue00.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue00.txt; sourceTree = "<group>"; };
+		7F2D0FDF1A310F790030EE44 /* stage6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = stage6.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		7F2D0FE11A310FE00030EE44 /* stage7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = stage7.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		7F3BF4EC1A169005006E82DD /* InteriorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = InteriorModel.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7F3BF4ED1A169005006E82DD /* InteriorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = InteriorModel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7F3BF4EF1A169038006E82DD /* Dialogue00.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = Dialogue00.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		7F3BF4F01A169038006E82DD /* Dialogue01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue01.txt; sourceTree = "<group>"; };
 		7F3BF4F11A169038006E82DD /* Dialogue02.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue02.txt; sourceTree = "<group>"; };
 		7F3BF4F21A169038006E82DD /* Dialogue03.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue03.txt; sourceTree = "<group>"; };
@@ -245,7 +247,7 @@
 		7F3BF4F61A169038006E82DD /* Dialogue12.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue12.txt; sourceTree = "<group>"; };
 		7F3BF4F71A169038006E82DD /* Dialogue13.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue13.txt; sourceTree = "<group>"; };
 		7F3BF4F81A169038006E82DD /* Dialogue14.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue14.txt; sourceTree = "<group>"; };
-		7F3BF4F91A169038006E82DD /* Dialogue40.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue40.txt; sourceTree = "<group>"; };
+		7F3BF4F91A169038006E82DD /* Dialogue40.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = Dialogue40.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		7F3BF4FA1A169038006E82DD /* Dialogue41.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue41.txt; sourceTree = "<group>"; };
 		7F3BF4FB1A169038006E82DD /* Dialogue42.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue42.txt; sourceTree = "<group>"; };
 		7F3BF4FC1A169038006E82DD /* Dialogue43.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue43.txt; sourceTree = "<group>"; };
@@ -255,9 +257,9 @@
 		7F3BF5001A169038006E82DD /* Dialogue52.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue52.txt; sourceTree = "<group>"; };
 		7F3BF5011A169038006E82DD /* Dialogue53.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue53.txt; sourceTree = "<group>"; };
 		7F3BF5021A169038006E82DD /* Dialogue54.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue54.txt; sourceTree = "<group>"; };
-		7F85AA141A0590FC00B687E8 /* InteriorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteriorTests.m; sourceTree = "<group>"; };
-		7FD31E9D1A25304600024936 /* stage2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage2.txt; sourceTree = "<group>"; };
-		7FD31E9F1A25306000024936 /* stage3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage3.txt; sourceTree = "<group>"; };
+		7F85AA141A0590FC00B687E8 /* InteriorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = InteriorTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7FD31E9D1A25304600024936 /* stage2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = stage2.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		7FD31E9F1A25306000024936 /* stage3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = stage3.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		7FD31EA11A2532EE00024936 /* Dialogue20.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue20.txt; sourceTree = "<group>"; };
 		7FD31EA31A25330600024936 /* Dialogue21.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue21.txt; sourceTree = "<group>"; };
 		7FD31EA51A25331C00024936 /* Dialogue22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue22.txt; sourceTree = "<group>"; };
@@ -268,33 +270,33 @@
 		7FD31EAF1A25346900024936 /* Dialogue32.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue32.txt; sourceTree = "<group>"; };
 		7FD31EB11A25347A00024936 /* Dialogue33.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue33.txt; sourceTree = "<group>"; };
 		7FD31EB31A25349500024936 /* Dialogue34.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue34.txt; sourceTree = "<group>"; };
-		7FDFDB6A1A05906400D7EEE3 /* StageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageTests.m; sourceTree = "<group>"; };
-		7FEFF16D1A02B8D000231C13 /* stage0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage0.txt; sourceTree = "<group>"; };
-		7FF6C79319F6F58B00CA4D19 /* House.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = House.h; sourceTree = "<group>"; };
-		7FF6C79419F6F58B00CA4D19 /* House.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = House.m; sourceTree = "<group>"; };
+		7FDFDB6A1A05906400D7EEE3 /* StageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = StageTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7FEFF16D1A02B8D000231C13 /* stage0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = stage0.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		7FF6C79319F6F58B00CA4D19 /* House.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = House.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7FF6C79419F6F58B00CA4D19 /* House.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = House.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		937AE89B19E73A4500CEB0E7 /* SilkRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SilkRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		937AE89E19E73A4500CEB0E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		937AE8A019E73A4500CEB0E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		937AE8A219E73A4500CEB0E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		937AE8A619E73A4500CEB0E7 /* SilkRoad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SilkRoad-Info.plist"; sourceTree = "<group>"; };
 		937AE8A819E73A4500CEB0E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		937AE8AA19E73A4500CEB0E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		937AE8AA19E73A4500CEB0E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		937AE8AC19E73A4500CEB0E7 /* SilkRoad-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SilkRoad-Prefix.pch"; sourceTree = "<group>"; };
-		937AE8AD19E73A4500CEB0E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		937AE8AE19E73A4500CEB0E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		937AE8AD19E73A4500CEB0E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		937AE8AE19E73A4500CEB0E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		937AE8B119E73A4500CEB0E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		937AE8B619E73A4500CEB0E7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		937AE8BC19E73A4500CEB0E7 /* SilkRoadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SilkRoadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		937AE8BD19E73A4500CEB0E7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		937AE8C519E73A4500CEB0E7 /* SilkRoadTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SilkRoadTests-Info.plist"; sourceTree = "<group>"; };
 		937AE8C719E73A4500CEB0E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		937AE8C919E73A4500CEB0E7 /* SilkRoadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SilkRoadTests.m; sourceTree = "<group>"; };
-		937AE8DC19E9A8C300CEB0E7 /* MatchingGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchingGameController.h; sourceTree = "<group>"; };
-		937AE8DD19E9A8C300CEB0E7 /* MatchingGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchingGameController.m; sourceTree = "<group>"; };
-		937AE8DE19E9A8C300CEB0E7 /* MatchingGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchingGameModel.h; sourceTree = "<group>"; };
-		937AE8DF19E9A8C300CEB0E7 /* MatchingGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchingGameModel.m; sourceTree = "<group>"; };
-		937AE8E019E9A8C300CEB0E7 /* MatchingGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchingGameView.h; sourceTree = "<group>"; };
-		937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchingGameView.m; sourceTree = "<group>"; };
+		937AE8C919E73A4500CEB0E7 /* SilkRoadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SilkRoadTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		937AE8DC19E9A8C300CEB0E7 /* MatchingGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MatchingGameController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		937AE8DD19E9A8C300CEB0E7 /* MatchingGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MatchingGameController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		937AE8DE19E9A8C300CEB0E7 /* MatchingGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MatchingGameModel.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		937AE8DF19E9A8C300CEB0E7 /* MatchingGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MatchingGameModel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		937AE8E019E9A8C300CEB0E7 /* MatchingGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MatchingGameView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		937AE8E119E9A8C300CEB0E7 /* MatchingGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MatchingGameView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		937AE8E519F0505B00CEB0E7 /* Dialogue.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialogue.txt; sourceTree = "<group>"; };
 		937AE8F319F47A3B00CEB0E7 /* RoadPuzzle1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle1.txt; sourceTree = "<group>"; };
 		9384CD331A379F930010C0FC /* scalesmove.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scalesmove.mp3; sourceTree = "<group>"; };
@@ -310,19 +312,19 @@
 		93CA8F9C1A102F1100B4B722 /* RoadPuzzle4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle4.txt; sourceTree = "<group>"; };
 		93CA8F9D1A102F1100B4B722 /* RoadPuzzle5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle5.txt; sourceTree = "<group>"; };
 		93CA8FA21A10337B00B4B722 /* RoadPuzzle0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle0.txt; sourceTree = "<group>"; };
-		93CA8FA31A10337B00B4B722 /* RoadPuzzle6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle6.txt; sourceTree = "<group>"; };
-		93CA8FA41A10337B00B4B722 /* RoadPuzzle7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle7.txt; sourceTree = "<group>"; };
-		93CA8FA51A10337B00B4B722 /* RoadPuzzle8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle8.txt; sourceTree = "<group>"; };
-		93CA8FA61A10337B00B4B722 /* RoadPuzzle9.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle9.txt; sourceTree = "<group>"; };
-		93CA8FA71A10337B00B4B722 /* RoadPuzzle10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle10.txt; sourceTree = "<group>"; };
-		93CA8FA81A10337B00B4B722 /* RoadPuzzle11.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle11.txt; sourceTree = "<group>"; };
-		93CA8FA91A10337B00B4B722 /* RoadPuzzle12.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadPuzzle12.txt; sourceTree = "<group>"; };
-		93EFCBCF1A2142AC00A350D5 /* CharacterDescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterDescriptionView.h; sourceTree = "<group>"; };
-		93EFCBD01A2142AC00A350D5 /* CharacterDescriptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterDescriptionView.m; sourceTree = "<group>"; };
+		93CA8FA31A10337B00B4B722 /* RoadPuzzle6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle6.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		93CA8FA41A10337B00B4B722 /* RoadPuzzle7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle7.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		93CA8FA51A10337B00B4B722 /* RoadPuzzle8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle8.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		93CA8FA61A10337B00B4B722 /* RoadPuzzle9.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle9.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		93CA8FA71A10337B00B4B722 /* RoadPuzzle10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle10.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		93CA8FA81A10337B00B4B722 /* RoadPuzzle11.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle11.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		93CA8FA91A10337B00B4B722 /* RoadPuzzle12.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = RoadPuzzle12.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		93EFCBCF1A2142AC00A350D5 /* CharacterDescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CharacterDescriptionView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		93EFCBD01A2142AC00A350D5 /* CharacterDescriptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CharacterDescriptionView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		93EFCBD21A214CDC00A350D5 /* chinaDescription.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chinaDescription.txt; sourceTree = "<group>"; };
 		93EFCBD41A214CFB00A350D5 /* indiaDescription.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = indiaDescription.txt; sourceTree = "<group>"; };
-		93EFCBE41A3004DB00A350D5 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
-		93EFCBE51A3004DB00A350D5 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
+		93EFCBE41A3004DB00A350D5 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Node.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		93EFCBE51A3004DB00A350D5 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Node.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,6 +377,7 @@
 		268D532F1A36AEF600C54CB3 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				5159D0F71A379FCA00370608 /* scalesmove.mp3 */,
 				268D53301A36AF8500C54CB3 /* coinchest.mp3 */,
 				268D53311A36AF8500C54CB3 /* coinclick.mp3 */,
 				5156A25D1A0D544000263DF2 /* correct_gong.wav */,
