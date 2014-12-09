@@ -1,9 +1,22 @@
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis erat, finibus vel tristique ac, finibus sit amet arcu. Praesent pulvinar ex in mi malesuada imperdiet. In hac habitasse platea dictumst. Nulla eget dui lobortis, consequat nisl eget, sollicitudin sapien. Suspendisse potenti. Morbi at sem diam. Donec dictum magna quam, non convallis purus mollis ac. Donec eu viverra augue. Vestibulum lacinia, tortor at pretium ornare, dui metus bibendum urna, porta fringilla augue mi tristique risus. Pellentesque suscipit feugiat molestie. Suspendisse non arcu consequat, egestas ante scelerisque, maximus dui. Nullam vel elementum ex. Sed sagittis ipsum sed mauris efficitur condimentum ut in ligula. Vivamus vitae augue dui.
+This game was developed as part of CS121 at Harvey Mudd College as part of the Games Network, which is funded by NSF grant #1042472.
 
-Integer iaculis, elit nec congue gravida, ipsum dolor rhoncus velit, eget volutpat lacus ante a mi. Duis at turpis condimentum, maximus orci non, gravida nulla. Nunc porttitor lacinia turpis vel facilisis. Donec rutrum aliquet diam, ut dapibus sapien fringilla sed. Proin sollicitudin diam tortor, nec feugiat eros consequat id. Sed sed molestie justo. Nullam velit libero, tincidunt at euismod nec, luctus tristique lorem. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam semper libero id orci ornare, sed aliquet felis pretium. Ut luctus orci et elit tincidunt ullamcorper. Nam accumsan bibendum scelerisque. Pellentesque quam orci, rhoncus eu sem sit amet, convallis convallis diam. Donec rhoncus malesuada ante, vel rutrum mauris mollis in.
+Developers:
+  Kate Finlay
+  Melissa Galonsky
+  Rachel Macfarlane
+  Sarah Trisorus
 
-Suspendisse molestie purus nec pulvinar congue. Donec pulvinar mi neque. In tempor tellus id diam congue accumsan. Mauris dapibus erat sit amet gravida maximus. Duis augue nisi, fermentum et fringilla a, eleifend eu nunc. Sed pharetra, felis quis porttitor faucibus, magna diam pretium mauris, id suscipit nulla metus eget tellus. Pellentesque euismod placerat placerat. Curabitur lorem nulla, posuere eu interdum sed, consectetur non ipsum.
+Original Artwork:
+  Kate Finlay
+  Sarah Trisorus
 
-Curabitur pretium magna eu nulla consectetur ultrices. Aliquam erat volutpat. Etiam dapibus diam in augue tempor, eget aliquam odio ultricies. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean enim tortor, tempor eget ullamcorper eu, tincidunt a lorem. Nunc non nibh quis enim sollicitudin porttitor. Curabitur consequat nunc a lorem pellentesque vestibulum. Donec ultrices fermentum nunc, a rutrum dui imperdiet et. Integer eu felis et mi placerat dictum. Nullam fermentum nunc mi, vitae auctor dui iaculis vel. Suspendisse mattis lacus non semper varius. Cras placerat nunc non erat malesuada commodo. Aliquam erat volutpat. Nunc orci enim, rhoncus sed nisi nec, lobortis commodo mi.
+Original Music:
+  Sarah Trisorus
 
-Maecenas ac nulla libero. Vestibulum nisi mi, lobortis ac condimentum sodales, rhoncus ac arcu. Sed in dui quis turpis ornare pharetra. Sed ultricies fringilla auctor. Vivamus ultricies velit nec leo blandit, non dictum dolor laoreet. Etiam at justo tortor. In lobortis eleifend purus et mollis. Nunc laoreet ultricies ligula, vel faucibus ligula luctus fringilla. Mauris vulputate nibh dignissim fringilla fermentum. Praesent interdum orci ullamcorper ornare rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi eget lectus suscipit, blandit est eget, gravida augue. Nam scelerisque urna vel massa finibus, a tempor est dictum. Suspendisse potenti.
+This game uses sounds from freesound.org:
+  bamboo1 by PercussionFiend
+  MAD_GANJIRA_LOOP by Zagorius_mpc
+
+This game uses images from Wikimedia Commons:
+  Blank Map of China, distributed by historicair
+  Panoramic view of the stupa mound and great bath in Mohenjodaro by Saqib Qayyum
