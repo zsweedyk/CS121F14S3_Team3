@@ -56,7 +56,6 @@
 		5156A2621A0E8B7C00263DF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5156A2611A0E8B7C00263DF2 /* AVFoundation.framework */; };
 		5156A2651A102F5100263DF2 /* buttonUnvisited.png in Resources */ = {isa = PBXBuildFile; fileRef = 5156A2631A102F5100263DF2 /* buttonUnvisited.png */; };
 		5156A2661A102F5100263DF2 /* buttonVisited.png in Resources */ = {isa = PBXBuildFile; fileRef = 5156A2641A102F5100263DF2 /* buttonVisited.png */; };
-		5159D0F81A379FCA00370608 /* scalesmove.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5159D0F71A379FCA00370608 /* scalesmove.mp3 */; };
 		51948EE71A0987100075DD82 /* stage5.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE41A0987100075DD82 /* stage5.txt */; };
 		51948EE81A0987100075DD82 /* stage1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE51A0987100075DD82 /* stage1.txt */; };
 		51948EE91A0987100075DD82 /* stage4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE61A0987100075DD82 /* stage4.txt */; };
@@ -920,7 +919,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -953,7 +952,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
