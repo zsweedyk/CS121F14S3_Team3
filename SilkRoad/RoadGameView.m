@@ -217,7 +217,7 @@
     if ([self.delegate checkConnectionValidBetweenRow:oldRow Col:oldCol AndRow:row Col:col]) {
       
       // Get the key to lookup the lines currently drawn between our nodes
-      NSString* key = [self getKeyForNodeOne:button.tag NodeTwo:_lastButtonPressed.tag];
+      NSString* key = [self getKeyForNodeOne:(int)button.tag NodeTwo:(int)_lastButtonPressed.tag];
       
       // The new number of connections after updating
       NSInteger numConnections = [self.delegate createConnectionBetweenRow:oldRow Col:oldCol AndRow:row Col:col];
