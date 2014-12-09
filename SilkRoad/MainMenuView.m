@@ -7,6 +7,14 @@
 //
 
 #import "MainMenuView.h"
+#import "DataClass.h"
+
+#import <AVFoundation/AVFoundation.h>
+@interface MainMenuView()
+{
+  AVAudioPlayer* _introMusic;
+}
+@end
 
 @implementation MainMenuView
 
@@ -31,12 +39,28 @@
     [creditsButton setBackgroundImage:[UIImage imageNamed:@"creditsbutton"] forState:UIControlStateNormal];
     [creditsButton addTarget:self action:@selector(showCredits) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:creditsButton];
+    
+    NSString *path  = [[NSBundle mainBundle] pathForResource:@"drums" ofType:@"wav"];
+    NSURL *pathURL = [NSURL fileURLWithPath:path];
+    NSError *correct_error = nil;
+    _introMusic = [[AVAudioPlayer alloc]
+                   initWithContentsOfURL:pathURL
+                   error:&correct_error];
+    [_introMusic setNumberOfLoops:-1];
+    
+    DataClass *gameData = [DataClass getInstance];
+    if ([gameData soundOn]) {
+      [_introMusic play];
+    }
   }
   
   return self;
 }
 
 -(void)startGame {
+  if ([_introMusic isPlaying]) {
+    [_introMusic stop];
+  }
   [self.delegate exitMenu];
 }
 

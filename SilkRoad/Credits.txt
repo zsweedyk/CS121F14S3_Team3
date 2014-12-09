@@ -1,8 +1,26 @@
-Copyright (c) 2014 Kate Finlay, Melissa Galonsky, Rachel Macfarlane, and Sarah Trisorus. All rights reserved.
+This game was developed as part of CS121 at Harvey Mudd College as part of the Games Network, which is funded by NSF grant #1042472.
 
-Special thanks to Professor Elizabeth Sweedyk and the CS121 grutors.
+Developers:
+  Kate Finlay
+  Melissa Galonsky
+  Rachel Macfarlane
+  Sarah Trisorus
 
-Image credits:
-"World Map"(commons.wikimedia.org/wiki/File:Button_Icon_Yellow.svg) by unknown licensed under CC BY 3.0
-"Yellow button icon"(commons.wikimedia.org/wiki/File:Button_Icon_Yellow.svg) by Semhur under licence GFDL
-"Left arrow button direction back"(pixabay.com/en/left-arrow-button-direction-back-28998/) by Nemo licensed under CC0 Public Domain
+Original Artwork:
+  Kate Finlay
+  Sarah Trisorus
+
+Original Music:
+  Sarah Trisorus
+
+This game uses sounds from freesound.org:
+  bamboo1 by PercussionFiend
+  MAD_GANJIRA_LOOP by Zagorius_mpc
+
+This game uses images from Wikimedia Commons:
+  Blank Map of China, distributed by historicair
+  Panoramic view of the stupa mound and great bath in Mohenjodaro by Saqib Qayyum
+  "World Map"(commons.wikimedia.org/wiki/File:Button_Icon_Yellow.svg) by unknown licensed under CC BY 3.0
+  "Yellow button icon"(commons.wikimedia.org/wiki/File:Button_Icon_Yellow.svg) by Semhur under licence GFDL
+  "Left arrow button direction back"(pixabay.com/en/left-arrow-button-direction-back-28998/) by Nemo licensed under CC0 Public Domain
+

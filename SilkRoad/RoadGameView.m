@@ -7,8 +7,10 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import <AVFoundation/AVFoundation.h>
 #import "RoadGameView.h"
 #import "Constants.h"
+#import "DataClass.h"
 
 @interface RoadGameView()
 {
@@ -20,6 +22,7 @@
   CGFloat _frameWidth;
   CGFloat _frameHeight;
   CGFloat _buttonSize;
+  AVAudioPlayer* _roadSound;
 }
 
 @end
@@ -113,24 +116,32 @@
     [_buttonGrid addObject:[[NSMutableArray alloc] initWithCapacity:9]];
     CGFloat xOffset = extraHorizontalSpace / 2.0;
     
-    for (int col = 0; col < 9; col++) {
-      CGRect buttonFrame = CGRectMake(xOffset, yOffset, _buttonSize, _buttonSize);
-      UIButton* button = [[UIButton alloc] initWithFrame:buttonFrame];
-      
-      
-      [button.titleLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:18]];
-      
-      
-      [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-      [button setTag: row * 10 + col];
-      
-      [[_buttonGrid objectAtIndex:row] addObject:button];
-      [self addSubview:button];
-      
-      xOffset += 2 * _buttonSize;
+      for (int col = 0; col < 9; col++) {
+        CGRect buttonFrame = CGRectMake(xOffset, yOffset, _buttonSize, _buttonSize);
+        UIButton* button = [[UIButton alloc] initWithFrame:buttonFrame];
+        
+        
+        [button.titleLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:18]];
+        
+        
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setTag: row * 10 + col];
+        
+        [[_buttonGrid objectAtIndex:row] addObject:button];
+        [self addSubview:button];
+        
+        xOffset += 2 * _buttonSize;
+      }
+
+      yOffset += 2 * _buttonSize;
     }
-    yOffset += 2 * _buttonSize;
-  }
+    
+    NSString *path  = [[NSBundle mainBundle] pathForResource:@"bamboo" ofType:@"wav"];
+    NSURL *pathURL = [NSURL fileURLWithPath:path];
+    NSError *correct_error = nil;
+    _roadSound = [[AVAudioPlayer alloc]
+                  initWithContentsOfURL:pathURL
+                  error:&correct_error];
 }
 
 -(void)createButtonWithFrame:(CGRect)frame Action:(SEL)selector AndLabel:(NSString*)label
@@ -181,6 +192,7 @@
 
 -(void)drawLines:(id)sender
 {
+  DataClass *gameData = [DataClass getInstance];
   UIButton* button = (UIButton*)sender;
   // Has button been clicked previously to this?
   // If not, set button to be highlighted, wait
@@ -190,6 +202,9 @@
     _waitingForPair = YES;
   }
   else {
+    if ([gameData soundOn]) {
+      [_roadSound play];
+    }
     // Otherwise, see if current button and last button can be connected
     int oldRow = floor(_lastButtonPressed.tag / 10);
     int oldCol = _lastButtonPressed.tag % 10;

@@ -9,6 +9,8 @@
 #import "ScalesGameView.h"
 #import "ScalesGameCoin.h"
 #import "Constants.h"
+#import <AVFoundation/AVFoundation.h>
+#import "DataClass.h"
 
 @interface ScalesGameView()
 {
@@ -34,6 +36,10 @@
   ScalesGameCoin* _currentCoin;
   ScalesGameCoin* _guessCoin;
   int _currentCoinNum;
+  
+  AVAudioPlayer *_scaleSound;
+  AVAudioPlayer *_coinClickSound;
+  AVAudioPlayer *_coinChestSound;
 }
 @end
 
@@ -92,10 +98,43 @@
     _fakeCoinBucket.tag = 500;
     [_fakeCoinBucket addTarget:self action:@selector(moveCoinTo:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_fakeCoinBucket];
-  
+    
+    // Initialize the audio
+    [self setupAudio];
   }
-  
+
   return self;
+}
+
+-(void)setupAudio
+{
+  NSString *path_click  = [[NSBundle mainBundle] pathForResource:@"coinclick" ofType:@"mp3"];
+  NSString *path_chest  = [[NSBundle mainBundle] pathForResource:@"coinchest" ofType:@"mp3"];
+  NSString *path_scale = [[NSBundle mainBundle] pathForResource:@"scalesmove" ofType:@"mp3"];
+  
+  NSURL *url_click = [NSURL fileURLWithPath:path_click];
+  NSURL *url_chest = [NSURL fileURLWithPath:path_chest];
+  NSURL *url_scale = [NSURL fileURLWithPath:path_scale];
+
+  NSError *error_click = nil;
+  NSError *error_chest = nil;
+  NSError *error_scale = nil;
+
+  _coinClickSound = [[AVAudioPlayer alloc] initWithContentsOfURL:url_click
+                                                           error:&error_click];
+  _coinChestSound = [[AVAudioPlayer alloc] initWithContentsOfURL:url_chest
+                                                           error:&error_chest];
+  _scaleSound = [[AVAudioPlayer alloc] initWithContentsOfURL:url_scale
+                                                           error:&error_scale];
+  
+  [_coinClickSound setVolume:0.0];
+  [_coinClickSound play];
+   
+  [_coinChestSound setVolume:0.0];
+  [_coinChestSound play];
+  
+  [_scaleSound setVolume:0.0];
+  [_scaleSound play];
 }
 
 -(void)setCurrencyForCiv:(int)civ
@@ -139,6 +178,13 @@
   // Add the coins to the game graphics
   [self makeScalesBalanced];
   [self initCoins];
+  
+  DataClass *gameData = [DataClass getInstance];
+  
+  if ([gameData soundOn]) {
+    [_coinChestSound setVolume:1.0];
+    [_coinChestSound play];
+  }
 }
 
 -(void)initScalesWithFrame:(CGRect)frame
@@ -410,6 +456,13 @@
 
 -(void)coinSelected:(id)sender
 {
+  DataClass *gameData = [DataClass getInstance];
+  
+  if ([gameData soundOn]) {
+    [_coinClickSound setVolume:1.0];
+    [_coinClickSound play];
+  }
+  
   // Get the coin number
   UIButton* coin = (UIButton*) sender;
   int coinNum = (int)coin.tag;
@@ -458,13 +511,28 @@
   coinFrame.origin.y = (frameHeight - coinSize) / 2;
   currentCoin.frame = coinFrame;
   
-  // Tell the controller the coin has been moved
-  [self.delegate moveCoin:_currentCoin toPlace:placeToMove];
+  DataClass *gameData = [DataClass getInstance];
   
   // If it's in the fake coin bucket, save it as a guess
   if (placeToMove == SCALES_FAKECOINBUCKET) {
     _guessCoin = _currentCoin;
+    
+    if ([gameData soundOn]) {
+      [_coinChestSound setVolume:1.0];
+      [_coinChestSound play];
+    }
   }
+  else {
+    
+    if ([gameData soundOn]) {
+      [_coinClickSound setVolume:1.0];
+      [_coinClickSound play];
+    }
+  }
+  
+  // Tell the controller the coin has been moved
+  [self.delegate moveCoin:_currentCoin toPlace:placeToMove];
+  
   
   // Reset the selected coin
   _currentCoinNum = (int)[_coinArray count];
@@ -474,6 +542,13 @@
 
 -(void)weighCoins
 {
+  DataClass *gameData = [DataClass getInstance];
+
+  if ([gameData soundOn]) {
+    [_scaleSound setVolume:1.0];
+    [_scaleSound play];
+  }
+  
   [self.delegate weighCoinsInScale];
 }
 
