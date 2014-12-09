@@ -104,7 +104,7 @@
     [_scalesGameButton addTarget:self action:@selector(goToScalesGame) forControlEvents:UIControlEventTouchUpInside];
   }
   
-  if (_currentStage == 3) {
+  if (_currentStage == 4) {
     //You've beaten the road game, have a button that lets you play again!
     [_roadGameButton setBackgroundImage:[UIImage imageNamed:@"roadGameButton"] forState:UIControlStateNormal];
     [_roadGameButton addTarget:self action:@selector(goToRoadGame) forControlEvents:UIControlEventTouchUpInside];
