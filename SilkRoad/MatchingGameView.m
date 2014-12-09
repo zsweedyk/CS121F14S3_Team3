@@ -275,7 +275,7 @@
   }
   else {
     if ([gameData soundOn]) {
-      [_incorrectAudio setVolume:0.5]; 
+      [_incorrectAudio setVolume:0.5];
       [_incorrectAudio play];
     }
 
