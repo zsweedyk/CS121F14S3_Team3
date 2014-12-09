@@ -7,8 +7,10 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import <AVFoundation/AVFoundation.h>
 #import "RoadGameView.h"
 #import "Constants.h"
+#import "DataClass.h"
 
 @interface RoadGameView()
 {
@@ -20,6 +22,7 @@
   CGFloat _frameWidth;
   CGFloat _frameHeight;
   CGFloat _buttonSize;
+  AVAudioPlayer* _roadSound;
 }
 
 @end
@@ -130,6 +133,23 @@
       xOffset += 2 * _buttonSize;
     }
     yOffset += 2 * _buttonSize;
+    // Make the frame for the return button
+    CGRect resetFrame = CGRectMake(8 * _buttonSize, yOffset, 5 *_buttonSize, _buttonSize);
+    // Make the button and add it to the view
+    UIButton* resetButton = [[UIButton alloc] initWithFrame:resetFrame];
+
+    [resetButton addTarget:self action:@selector(resetGame) forControlEvents:UIControlEventTouchUpInside];
+    [resetButton setTitle:@"Reset Puzzle" forState:UIControlStateNormal];
+    [self styleButton:resetButton];
+
+    [self addSubview:resetButton];
+    
+    NSString *path  = [[NSBundle mainBundle] pathForResource:@"bamboo" ofType:@"wav"];
+    NSURL *pathURL = [NSURL fileURLWithPath:path];
+    NSError *correct_error = nil;
+    _roadSound = [[AVAudioPlayer alloc]
+                  initWithContentsOfURL:pathURL
+                  error:&correct_error];
   }
 }
 
@@ -181,6 +201,7 @@
 
 -(void)drawLines:(id)sender
 {
+  DataClass *gameData = [DataClass getInstance];
   UIButton* button = (UIButton*)sender;
   // Has button been clicked previously to this?
   // If not, set button to be highlighted, wait
@@ -190,6 +211,9 @@
     _waitingForPair = YES;
   }
   else {
+    if ([gameData soundOn]) {
+      [_roadSound play];
+    }
     // Otherwise, see if current button and last button can be connected
     int oldRow = floor(_lastButtonPressed.tag / 10);
     int oldCol = _lastButtonPressed.tag % 10;
