@@ -63,12 +63,14 @@
   [_checkSolutionButton setBackgroundColor:[UIColor redColor]];
   [_checkSolutionButton setTitle:@"Check Solution" forState:UIControlStateNormal];
   _checkSolutionButton.showsTouchWhenHighlighted = YES;
+  
   _newGameButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(frame)*.8, CGRectGetHeight(frame)*.5 + 100, 200, 50)];
   [self addSubview:_newGameButton];
   [_newGameButton addTarget:self action:@selector(newGame) forControlEvents:UIControlEventTouchUpInside];
   [_newGameButton setBackgroundColor:[UIColor redColor]];
   [_newGameButton setTitle:@"New Game" forState:UIControlStateNormal];
   _newGameButton.showsTouchWhenHighlighted = YES;
+  
   _returnButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(frame)*.8, CGRectGetHeight(frame)*.5, 200, 50)];
   [self addSubview:_returnButton];
   [_returnButton addTarget:self action:@selector(returnToPrevious) forControlEvents:UIControlEventTouchUpInside];
@@ -76,7 +78,15 @@
   [_returnButton setTitle:@"Back" forState:UIControlStateNormal];
   _returnButton.showsTouchWhenHighlighted = YES;
   
+  UIButton* instructionsButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(frame)*.8, CGRectGetHeight(frame)*.5 - 100, 200, 50)];
+  [self addSubview:instructionsButton];
+  [instructionsButton addTarget:self action:@selector(alertInstructions) forControlEvents:UIControlEventTouchUpInside];
+  [instructionsButton setBackgroundColor:[UIColor redColor]];
+  [instructionsButton setTitle:@"Instructions" forState:UIControlStateNormal];
+  instructionsButton.showsTouchWhenHighlighted = YES;
+  
 }
+
 -(void)initTurnsViewWithFrame:(CGRect)frame
 {
   _turnView = [[UIView alloc] initWithFrame:frame];
@@ -87,13 +97,13 @@
   // Make each cell in the tray the size of a button with 5% padding on all sides
   CGFloat cellSize = _charSize + (_charSize * 0.10);
   CGFloat horizontalPadding = (frameWidth - (cellSize * 5.5)) / 2;
-  CGFloat verticalPadding = (frameHeight - 19*cellSize)/2;
+  CGFloat verticalPadding = (frameHeight - 19 * cellSize) / 2;
   
   // Set the x- and y-offsets accordingly
   CGFloat xOffset = horizontalPadding;
   CGFloat yOffset = verticalPadding;
   
-  _turnArrow = [[UIButton alloc] initWithFrame:CGRectMake(horizontalPadding - _charSize*1.5, verticalPadding + _charSize*.25, _charSize, _charSize/2)];
+  _turnArrow = [[UIButton alloc] initWithFrame:CGRectMake(horizontalPadding - _charSize * 1.5, verticalPadding + _charSize * .25, _charSize, _charSize/2)];
   [_turnArrow setBackgroundImage:[UIImage imageNamed:@"dialoguearrow"] forState:UIControlStateNormal];
   [self addSubview:_turnArrow];
   
@@ -103,7 +113,7 @@
       CGRect cellFrame = CGRectMake(xOffset, yOffset, cellSize, cellSize);
       UIButton *cell = [[UIButton alloc] initWithFrame:cellFrame];
       //tags start at 50, then increase by 10's so that the color can be added in the 1's place
-      cell.tag = row*4+col;
+      cell.tag = row * 4 + col;
       
       [_turnViewButtons addObject:cell];
       [cell setBackgroundColor:[UIColor blackColor]];
@@ -111,11 +121,11 @@
       [self addSubview:cell];
       [cell addTarget:self action:@selector(turnCharSelected:) forControlEvents:UIControlEventTouchUpInside];
       
-      xOffset += 2*cellSize;
+      xOffset += 2 * cellSize;
     }
     
     xOffset = horizontalPadding;
-    yOffset += 2*cellSize;
+    yOffset += 2 * cellSize;
   }
   
 }
@@ -129,8 +139,8 @@
   
   // Make each cell in the tray the size of a button with 5% padding on all sides
   CGFloat cellSize = _charSize/4;
-  CGFloat horizontalPadding = (frameWidth - (cellSize * 5.5)) / 2 + 5.75*_charSize;
-  CGFloat verticalPadding = (frameHeight - 21*_charSize)/2;
+  CGFloat horizontalPadding = (frameWidth - (cellSize * 5.5)) / 2 + 5.75 * _charSize;
+  CGFloat verticalPadding = (frameHeight - 21 * _charSize) / 2;
   
   // Set the x- and y-offsets accordingly
   CGFloat xOffset = horizontalPadding;
@@ -151,9 +161,9 @@
       xOffset += 2*cellSize;
     }
     if (row%2 != 0) {
-      yOffset += 1.5*_charSize + 1.05*cellSize;
+      yOffset += 1.5 * _charSize + 1.05 * cellSize;
     } else {
-      yOffset += 2*cellSize;
+      yOffset += 2 * cellSize;
     }
     xOffset = horizontalPadding;
   }
@@ -168,8 +178,8 @@
   
   // Make each cell in the tray the size of a button with 5% padding on all sides
   CGFloat cellSize = _charSize*1.5;
-  CGFloat horizontalPadding = frameWidth/10 - cellSize;
-  CGFloat verticalPadding = frameHeight/2 - cellSize/2;
+  CGFloat horizontalPadding = frameWidth / 10 - cellSize;
+  CGFloat verticalPadding = frameHeight / 2 - cellSize/2;
   UILabel* selectColor = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPadding, verticalPadding-_charSize, 200, 25)];
   [selectColor setText:@"Select a color:"];
   [self addSubview:selectColor];
@@ -200,7 +210,7 @@
     cell.showsTouchWhenHighlighted = YES;
     [self addSubview:cell];
     
-    xOffset += 1.5*cellSize;
+    xOffset += 1.5 * cellSize;
   }
   
   _inputCharSelected = 0;
@@ -261,7 +271,7 @@
   UIButton *newButton = (UIButton*) sender;
   
   int tag = (int) [newButton tag];
-  if (tag >= (_numTurns+1)*4 || tag < _numTurns*4) {
+  if (tag >= (_numTurns + 1) * 4 || tag < _numTurns * 4) {
     return;
   }
   UIButton* buttonSelected = [_turnViewButtons objectAtIndex:tag];
@@ -270,7 +280,7 @@
   if (_numTurns == 0) {
     _currentTurn[tag] = _inputCharSelected;
   } else {
-    _currentTurn[tag % (_numTurns*4)] = _inputCharSelected;
+    _currentTurn[tag % (_numTurns * 4)] = _inputCharSelected;
   }
 }
 
@@ -290,7 +300,7 @@
   }
   //Move arrow down to the next turn
   CGRect buttonFrame = _turnArrow.frame;
-  buttonFrame.origin.y += 2.2*_charSize;
+  buttonFrame.origin.y += 2.2 * _charSize;
   _turnArrow.frame = buttonFrame;
   [self displayNewTurnFeedback:matches];
 }
@@ -325,12 +335,12 @@
 
 -(void)displayNewTurnFeedback:(int) matches
 {
-  int exactMatches = matches/10;
+  int exactMatches = matches / 10;
   int halfMatches = matches % 10;
   int i = 0;
   //First set exact matches to black
   while (i < 4 && exactMatches > 0) {
-    int index = ((_numTurns-1)*4)+i;
+    int index = ((_numTurns - 1) * 4) + i;
     UIButton* currentButton = [_turnViewFeedbackButtons objectAtIndex:index];
     [currentButton setBackgroundColor:[UIColor blackColor]];
     exactMatches--;
@@ -363,6 +373,14 @@
   for (int i = 0; i < 4; i++) {
     _currentTurn[i] = 100;
   }
+}
+
+-(void)alertInstructions
+{
+  NSString *message = [NSString stringWithFormat:@"Your goal is to guess the secret password, which is a sequence of colors. It might be Yellow, Yellow, Red, Purple, for example. Each row on the right allows you to make a guess. Click a color on the left, then click one of the black squares in the current row. When you have filled in all of the black squares, I'll tell you how close you were to the password. If you had a right color, but in the wrong position, a white square will appear next to the row. If you had a right color in the right position, a black square will appear next to the row. You get ten tries to guess the password."];
+  UIAlertView *instructions = [[UIAlertView alloc] initWithTitle:@"How To Play" message:message delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+  
+  [instructions show];
 }
 
 @end

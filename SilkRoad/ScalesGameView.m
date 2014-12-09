@@ -72,6 +72,9 @@
     // Initialize the return button
     [self initReturnButtonWithFrame:frame];
     
+    // Initialize instructions button
+    [self initInstructionsButtonWithFrame:frame];
+    
     // Fake coin bucket
     // Each cell in the tray is the size of a button with 5% padding on each side
     // The bucket should be double that size
@@ -373,9 +376,36 @@
   UIButton* returnButton = [[UIButton alloc] initWithFrame:returnFrame];
   [returnButton setTitle:@"Return" forState:UIControlStateNormal];
   // TODO: set background color to green for visibility
-  [returnButton setBackgroundColor:[UIColor greenColor]];
+  [returnButton setBackgroundColor:[UIColor brownColor]];
   [returnButton addTarget:self action:@selector(exitGame) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:returnButton];
+}
+
+-(void)initInstructionsButtonWithFrame:(CGRect)frame
+{
+  // Get the dimensions of the frame
+  CGFloat frameWidth = CGRectGetWidth(frame);
+  CGFloat frameHeight = CGRectGetHeight(frame);
+  
+  // The return button will be 10% of the screen height and 15% of the width, with
+  //   padding equal to 10% of button width all around
+  CGFloat instructionsFrameWidth = frameWidth * 0.15;
+  CGFloat instructionsFrameHeight = frameHeight * 0.10;
+  CGFloat padding = instructionsFrameWidth * 0.10;
+  
+  CGFloat verticalOffset = frameHeight - (instructionsFrameHeight + padding);
+  // Leave space for the return button, which requires padding + instructionsFrameWidth
+  CGFloat horizontalOffset = frameWidth - (2 * instructionsFrameWidth + 2 * padding);
+  
+  // Make the frame for the return button
+  CGRect instructionsFrame = CGRectMake(horizontalOffset, verticalOffset, instructionsFrameWidth, instructionsFrameHeight);
+  // Make the button and add it to the view
+  UIButton* instructions = [[UIButton alloc] initWithFrame:instructionsFrame];
+  [instructions setTitle:@"Instructions" forState:UIControlStateNormal];
+  // TODO: set background color to green for visibility
+  [instructions setBackgroundColor:[UIColor brownColor]];
+  [instructions addTarget:self action:@selector(alertInstructions) forControlEvents:UIControlEventTouchUpInside];
+  [self addSubview:instructions];
 }
 
 -(void)coinSelected:(id)sender
@@ -583,4 +613,11 @@
   }
 }
 
+-(void)alertInstructions
+{
+  NSString *message = [NSString stringWithFormat:@"You are trying to find the fake coin, which is lighter or heavier than the others. You can move a coin to the scales by tapping it and then anywhere in the scales. It doesn't matter where the coin is on the scales. You can compare as many coins as you want to at a time; maybe only two, or all of them. When you find the fake, put it in the box on the left and then tell me if it is lighter or heavier."];
+  UIAlertView *instructions = [[UIAlertView alloc] initWithTitle:@"How To Play" message:message delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+  
+  [instructions show];
+}
 @end
