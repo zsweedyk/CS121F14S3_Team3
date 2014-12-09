@@ -56,6 +56,7 @@
 		5156A2621A0E8B7C00263DF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5156A2611A0E8B7C00263DF2 /* AVFoundation.framework */; };
 		5156A2651A102F5100263DF2 /* buttonUnvisited.png in Resources */ = {isa = PBXBuildFile; fileRef = 5156A2631A102F5100263DF2 /* buttonUnvisited.png */; };
 		5156A2661A102F5100263DF2 /* buttonVisited.png in Resources */ = {isa = PBXBuildFile; fileRef = 5156A2641A102F5100263DF2 /* buttonVisited.png */; };
+		5159D0F81A379FCA00370608 /* scalesmove.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5159D0F71A379FCA00370608 /* scalesmove.mp3 */; };
 		51948EE71A0987100075DD82 /* stage5.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE41A0987100075DD82 /* stage5.txt */; };
 		51948EE81A0987100075DD82 /* stage1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE51A0987100075DD82 /* stage1.txt */; };
 		51948EE91A0987100075DD82 /* stage4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51948EE61A0987100075DD82 /* stage4.txt */; };
@@ -179,7 +180,6 @@
 		268AF9271A214C4F00F06633 /* Credits.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Credits.txt; sourceTree = "<group>"; };
 		268D53301A36AF8500C54CB3 /* coinchest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinchest.mp3; sourceTree = "<group>"; };
 		268D53311A36AF8500C54CB3 /* coinclick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinclick.mp3; sourceTree = "<group>"; };
-		268D53321A36AF8500C54CB3 /* scalesmove.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scalesmove.mp3; sourceTree = "<group>"; };
 		2692B35B19E84D3200EE08F8 /* StageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageController.h; sourceTree = "<group>"; };
 		2692B35C19E84D3200EE08F8 /* StageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageController.m; sourceTree = "<group>"; };
 		2692B35E19E84D4700EE08F8 /* StageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageView.h; sourceTree = "<group>"; };
@@ -214,6 +214,7 @@
 		5156A2611A0E8B7C00263DF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5156A2631A102F5100263DF2 /* buttonUnvisited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonUnvisited.png; path = SilkRoad/buttonUnvisited.png; sourceTree = "<group>"; };
 		5156A2641A102F5100263DF2 /* buttonVisited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonVisited.png; path = SilkRoad/buttonVisited.png; sourceTree = "<group>"; };
+		5159D0F71A379FCA00370608 /* scalesmove.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scalesmove.mp3; sourceTree = "<group>"; };
 		51948EE41A0987100075DD82 /* stage5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = stage5.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		51948EE51A0987100075DD82 /* stage1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = stage1.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		51948EE61A0987100075DD82 /* stage4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = stage4.txt; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
@@ -374,9 +375,9 @@
 		268D532F1A36AEF600C54CB3 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				5159D0F71A379FCA00370608 /* scalesmove.mp3 */,
 				268D53301A36AF8500C54CB3 /* coinchest.mp3 */,
 				268D53311A36AF8500C54CB3 /* coinclick.mp3 */,
-				268D53321A36AF8500C54CB3 /* scalesmove.mp3 */,
 				5156A25D1A0D544000263DF2 /* correct_gong.wav */,
 				5156A25E1A0D544000263DF2 /* incorrect_buzzer.wav */,
 				269AC80F1A3119E300C29564 /* bamboo.wav */,
@@ -723,6 +724,7 @@
 				7F3BF50C1A169038006E82DD /* Dialogue14.txt in Resources */,
 				7F3BF5051A169038006E82DD /* Dialogue02.txt in Resources */,
 				7FD31EA81A25333300024936 /* Dialogue23.txt in Resources */,
+				5159D0F81A379FCA00370608 /* scalesmove.mp3 in Resources */,
 				937AE8A919E73A4500CEB0E7 /* InfoPlist.strings in Resources */,
 				51948EE71A0987100075DD82 /* stage5.txt in Resources */,
 				93CA8FAD1A10337B00B4B722 /* RoadPuzzle8.txt in Resources */,
@@ -739,7 +741,6 @@
 				7F3BF5031A169038006E82DD /* Dialogue00.txt in Resources */,
 				51948EE81A0987100075DD82 /* stage1.txt in Resources */,
 				268AF9281A214C4F00F06633 /* Credits.txt in Resources */,
-				7F3BF50D1A169038006E82DD /* Dialogue40.txt in Resources */,
 				93CA8FAF1A10337B00B4B722 /* RoadPuzzle10.txt in Resources */,
 				7F2D0FD01A3109EA0030EE44 /* Dialogue62.txt in Resources */,
 				7FD31EA21A2532EE00024936 /* Dialogue20.txt in Resources */,
