@@ -377,7 +377,7 @@
 
 -(void)alertInstructions
 {
-  NSString *message = [NSString stringWithFormat:@"Your goal is to guess the secret password, which is a sequence of colors. It might be Yellow, Yellow, Red, Purple, for example. Each row on the right allows you to make a guess. Click a color on the right, then click one of the black squares in the current row. When you have filled in all of the black squares, I'll tell you how close you were to the password. If you had a right color, but in the wrong position, a white square will appear next to the row. If you had a right color in the right position, a black square will appear next to the row. You get ten tries to guess the password."];
+  NSString *message = [NSString stringWithFormat:@"Your goal is to guess the secret password, which is a sequence of colors. It might be Yellow, Yellow, Red, Purple, for example. Each row on the right allows you to make a guess. Click a color on the left, then click one of the black squares in the current row. When you have filled in all of the black squares, I'll tell you how close you were to the password. If you had a right color, but in the wrong position, a white square will appear next to the row. If you had a right color in the right position, a black square will appear next to the row. You get ten tries to guess the password."];
   UIAlertView *instructions = [[UIAlertView alloc] initWithTitle:@"How To Play" message:message delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
   
   [instructions show];
