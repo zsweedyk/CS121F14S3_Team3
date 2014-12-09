@@ -24,7 +24,8 @@
 		261E658019F89ADB00D12027 /* ScalesGameCoin.m in Sources */ = {isa = PBXBuildFile; fileRef = 261E657F19F89ADB00D12027 /* ScalesGameCoin.m */; };
 		261E658319F978B200D12027 /* MainMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 261E658219F978B200D12027 /* MainMenuView.m */; };
 		2628DEF319EF2AB9003487ED /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2628DEF119EF2AB9003487ED /* TemplateIcon2x.png */; };
-		2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2628DEF519EF2DD8003487ED /* MatchingGamePhrases.txt */; }; 26643E7D1A059FB400C50B72 /* ScalesGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E781A059FB400C50B72 /* ScalesGameController.m */; };
+		2628DEF619EF2DD8003487ED /* MatchingGamePhrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2628DEF519EF2DD8003487ED /* MatchingGamePhrases.txt */; };
+		26643E7D1A059FB400C50B72 /* ScalesGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E781A059FB400C50B72 /* ScalesGameController.m */; };
 		26643E7E1A059FB400C50B72 /* ScalesGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E7A1A059FB400C50B72 /* ScalesGameModel.m */; };
 		26643E7F1A059FB400C50B72 /* ScalesGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E7C1A059FB400C50B72 /* ScalesGameView.m */; };
 		26643E841A06CC1500C50B72 /* ScalesGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26643E831A06CC1500C50B72 /* ScalesGameTests.m */; };
@@ -33,7 +34,6 @@
 		268AF9281A214C4F00F06633 /* Credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 268AF9271A214C4F00F06633 /* Credits.txt */; };
 		268D53331A36AF8500C54CB3 /* coinchest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 268D53301A36AF8500C54CB3 /* coinchest.mp3 */; };
 		268D53341A36AF8500C54CB3 /* coinclick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 268D53311A36AF8500C54CB3 /* coinclick.mp3 */; };
-		268D53351A36AF8500C54CB3 /* scalesmove.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 268D53321A36AF8500C54CB3 /* scalesmove.mp3 */; };
 		2692B35D19E84D3200EE08F8 /* StageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35C19E84D3200EE08F8 /* StageController.m */; };
 		2692B36019E84D4700EE08F8 /* StageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B35F19E84D4700EE08F8 /* StageView.m */; };
 		2692B36319E84D8200EE08F8 /* StageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36219E84D8200EE08F8 /* StageModel.m */; };
@@ -42,15 +42,15 @@
 		2692B36F19E84DF100EE08F8 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B36E19E84DF100EE08F8 /* MapView.m */; };
 		2692B37219E84E1300EE08F8 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37119E84E1300EE08F8 /* ProgressView.m */; };
 		2692B37819E995E300EE08F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692B37719E995E300EE08F8 /* ViewController.m */; };
-		5104F3591A22A4B5008CA75C /* MasterMindGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F3571A22A4B5008CA75C /* MasterMindGameModel.m */; };
-		5104F35B1A22AAD5008CA75C /* MasterMindGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F35A1A22AAD5008CA75C /* MasterMindGameView.m */; };
-		5104F35F1A2532A7008CA75C /* MasterMindGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F35E1A2532A7008CA75C /* MasterMindGameController.m */; };
-		5104F3611A25430D008CA75C /* MasterMindGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F3601A25430D008CA75C /* MasterMindGameTests.m */; };
 		269AC8101A3119E300C29564 /* bamboo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 269AC80F1A3119E300C29564 /* bamboo.wav */; };
 		269AC8121A311A0100C29564 /* drums.wav in Resources */ = {isa = PBXBuildFile; fileRef = 269AC8111A311A0100C29564 /* drums.wav */; };
 		269AC8151A311A2600C29564 /* ChinaMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 269AC8131A311A2600C29564 /* ChinaMusic.mp3 */; };
 		269AC8161A311A2600C29564 /* IndiaMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 269AC8141A311A2600C29564 /* IndiaMusic.mp3 */; };
 		269F3DDB1A337E420030AB54 /* DataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 269F3DDA1A337E420030AB54 /* DataClass.m */; };
+		5104F3591A22A4B5008CA75C /* MasterMindGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F3571A22A4B5008CA75C /* MasterMindGameModel.m */; };
+		5104F35B1A22AAD5008CA75C /* MasterMindGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F35A1A22AAD5008CA75C /* MasterMindGameView.m */; };
+		5104F35F1A2532A7008CA75C /* MasterMindGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F35E1A2532A7008CA75C /* MasterMindGameController.m */; };
+		5104F3611A25430D008CA75C /* MasterMindGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104F3601A25430D008CA75C /* MasterMindGameTests.m */; };
 		5156A25F1A0D544000263DF2 /* correct_gong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5156A25D1A0D544000263DF2 /* correct_gong.wav */; };
 		5156A2601A0D544000263DF2 /* incorrect_buzzer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5156A25E1A0D544000263DF2 /* incorrect_buzzer.wav */; };
 		5156A2621A0E8B7C00263DF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5156A2611A0E8B7C00263DF2 /* AVFoundation.framework */; };
@@ -87,13 +87,10 @@
 		7F3BF50A1A169038006E82DD /* Dialogue12.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F61A169038006E82DD /* Dialogue12.txt */; };
 		7F3BF50B1A169038006E82DD /* Dialogue13.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F71A169038006E82DD /* Dialogue13.txt */; };
 		7F3BF50C1A169038006E82DD /* Dialogue14.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F81A169038006E82DD /* Dialogue14.txt */; };
-		7F3BF50D1A169038006E82DD /* Dialogue40.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4F91A169038006E82DD /* Dialogue40.txt */; };
 		7F3BF50E1A169038006E82DD /* Dialogue41.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FA1A169038006E82DD /* Dialogue41.txt */; };
 		7F3BF5101A169038006E82DD /* Dialogue43.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FC1A169038006E82DD /* Dialogue43.txt */; };
-		7F3BF5121A169038006E82DD /* Dialogue50.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FE1A169038006E82DD /* Dialogue50.txt */; };
 		7F3BF5131A169038006E82DD /* Dialogue51.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF4FF1A169038006E82DD /* Dialogue51.txt */; };
 		7F3BF5141A169038006E82DD /* Dialogue52.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF5001A169038006E82DD /* Dialogue52.txt */; };
-		7F3BF5151A169038006E82DD /* Dialogue53.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF5011A169038006E82DD /* Dialogue53.txt */; };
 		7F3BF5161A169038006E82DD /* Dialogue54.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7F3BF5021A169038006E82DD /* Dialogue54.txt */; };
 		7F85AA151A0590FC00B687E8 /* InteriorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F85AA141A0590FC00B687E8 /* InteriorTests.m */; };
 		7FD31E9E1A25304600024936 /* stage2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7FD31E9D1A25304600024936 /* stage2.txt */; };
@@ -199,6 +196,12 @@
 		2692B37119E84E1300EE08F8 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		2692B37619E995E300EE08F8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2692B37719E995E300EE08F8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		269AC80F1A3119E300C29564 /* bamboo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bamboo.wav; sourceTree = "<group>"; };
+		269AC8111A311A0100C29564 /* drums.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drums.wav; sourceTree = "<group>"; };
+		269AC8131A311A2600C29564 /* ChinaMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ChinaMusic.mp3; sourceTree = "<group>"; };
+		269AC8141A311A2600C29564 /* IndiaMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = IndiaMusic.mp3; sourceTree = "<group>"; };
+		269F3DD91A337E420030AB54 /* DataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataClass.h; sourceTree = "<group>"; };
+		269F3DDA1A337E420030AB54 /* DataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataClass.m; sourceTree = "<group>"; };
 		5104F3571A22A4B5008CA75C /* MasterMindGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterMindGameModel.m; sourceTree = "<group>"; };
 		5104F3581A22A4B5008CA75C /* MasterMindGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterMindGameModel.h; sourceTree = "<group>"; };
 		5104F35A1A22AAD5008CA75C /* MasterMindGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterMindGameView.m; sourceTree = "<group>"; };
@@ -206,12 +209,6 @@
 		5104F35D1A253272008CA75C /* MasterMindGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterMindGameController.h; sourceTree = "<group>"; };
 		5104F35E1A2532A7008CA75C /* MasterMindGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterMindGameController.m; sourceTree = "<group>"; };
 		5104F3601A25430D008CA75C /* MasterMindGameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterMindGameTests.m; sourceTree = "<group>"; };
-		269AC80F1A3119E300C29564 /* bamboo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bamboo.wav; sourceTree = "<group>"; };
-		269AC8111A311A0100C29564 /* drums.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drums.wav; sourceTree = "<group>"; };
-		269AC8131A311A2600C29564 /* ChinaMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ChinaMusic.mp3; sourceTree = "<group>"; };
-		269AC8141A311A2600C29564 /* IndiaMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = IndiaMusic.mp3; sourceTree = "<group>"; };
-		269F3DD91A337E420030AB54 /* DataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataClass.h; sourceTree = "<group>"; };
-		269F3DDA1A337E420030AB54 /* DataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataClass.m; sourceTree = "<group>"; };
 		5156A25D1A0D544000263DF2 /* correct_gong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correct_gong.wav; sourceTree = "<group>"; };
 		5156A25E1A0D544000263DF2 /* incorrect_buzzer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = incorrect_buzzer.wav; sourceTree = "<group>"; };
 		5156A2611A0E8B7C00263DF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -732,8 +729,6 @@
 				7FD31EA41A25330600024936 /* Dialogue21.txt in Resources */,
 				93EFCBD31A214CDC00A350D5 /* chinaDescription.txt in Resources */,
 				5156A25F1A0D544000263DF2 /* correct_gong.wav in Resources */,
-				7F3BF5121A169038006E82DD /* Dialogue50.txt in Resources */,
-				7F3BF5121A169038006E82DD /* Dialogue30.txt in Resources */,
 				269AC8101A3119E300C29564 /* bamboo.wav in Resources */,
 				937AE8B219E73A4500CEB0E7 /* Main.storyboard in Resources */,
 				7F2D0FD21A3109FA0030EE44 /* Dialogue63.txt in Resources */,
@@ -743,9 +738,7 @@
 				93CA8FB11A10337B00B4B722 /* RoadPuzzle12.txt in Resources */,
 				7F3BF5031A169038006E82DD /* Dialogue00.txt in Resources */,
 				51948EE81A0987100075DD82 /* stage1.txt in Resources */,
-				7F3BF50D1A169038006E82DD /* Dialogue40.txt in Resources */,
 				268AF9281A214C4F00F06633 /* Credits.txt in Resources */,
-				7F3BF50D1A169038006E82DD /* Dialogue20.txt in Resources */,
 				93CA8FAF1A10337B00B4B722 /* RoadPuzzle10.txt in Resources */,
 				7F2D0FD01A3109EA0030EE44 /* Dialogue62.txt in Resources */,
 				7FD31EA21A2532EE00024936 /* Dialogue20.txt in Resources */,
@@ -754,9 +747,7 @@
 				7F3BF5041A169038006E82DD /* Dialogue01.txt in Resources */,
 				7FD31EB01A25346900024936 /* Dialogue32.txt in Resources */,
 				7F3BF5071A169038006E82DD /* Dialogue04.txt in Resources */,
-				7F3BF5151A169038006E82DD /* Dialogue53.txt in Resources */,
 				7F2D0FDE1A310A790030EE44 /* Dialogue74.txt in Resources */,
-				7F3BF5151A169038006E82DD /* Dialogue33.txt in Resources */,
 				269AC8151A311A2600C29564 /* ChinaMusic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -796,7 +787,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "source ~/.bashrc\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\n\ncd ${TARGET_TEMP_DIR}\nif [ ! -f compile_commands.json ]; then\necho \"[*] compile_commands.json not found, possibly clean was performed\"\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd ${SRCROOT}\nxcodebuild clean\n\n#build xcodebuild.log\nxcodebuild | tee ${TARGET_TEMP_DIR}/xcodebuild.log\n#xcodebuild <options>| tee ${TARGET_TEMP_DIR}/xcodebuild.log\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\ncd ${TARGET_TEMP_DIR}\n#transform it into compile_commands.json\noclint-xcodebuild\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp ${TARGET_TEMP_DIR}/compile_commands.json ${SRCROOT}/compile_commands.json\nfi\n\necho \"[*] starting analyzing\"\ncd ${TARGET_TEMP_DIR}\noclint-json-compilation-database | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
+			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\n\ncd ${TARGET_TEMP_DIR}\nif [ ! -f compile_commands.json ]; then\necho \"[*] compile_commands.json not found, possibly clean was performed\"\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd ${SRCROOT}\nxcodebuild clean\n\n#build xcodebuild.log\nxcodebuild | tee ${TARGET_TEMP_DIR}/xcodebuild.log\n#xcodebuild <options>| tee ${TARGET_TEMP_DIR}/xcodebuild.log\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\ncd ${TARGET_TEMP_DIR}\n#transform it into compile_commands.json\noclint-xcodebuild\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp ${TARGET_TEMP_DIR}/compile_commands.json ${SRCROOT}/compile_commands.json\nfi\n\necho \"[*] starting analyzing\"\ncd ${TARGET_TEMP_DIR}\noclint-json-compilation-database | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
 		};
 /* End PBXShellScriptBuildPhase section */
 

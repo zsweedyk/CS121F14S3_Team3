@@ -61,7 +61,7 @@
   if ([_introMusic isPlaying]) {
     [_introMusic stop];
   }
-  [self.delegate showStage];
+  [self.delegate exitMenu];
 }
 
 -(void)showCredits {
